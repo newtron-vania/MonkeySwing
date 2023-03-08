@@ -11,4 +11,6 @@ public class LinesMove : MonoBehaviour
         transform.position += Vector3.up * speed * Time.deltaTime;
         // Debug.Log("movemove");
     }
+
+    
 }

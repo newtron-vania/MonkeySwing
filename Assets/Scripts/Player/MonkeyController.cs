@@ -11,10 +11,15 @@ public class MonkeyController : MonoBehaviour
     public float gravity = 1f;
     public int weight = 50;
 
+    public float invincibilityTime = 2f;
     public bool isDamaged = false;
+
+
+    Coroutine InvinvibleCoroutine;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        StartCoroutine(LooseWeight());
     }
 
     // Update is called once per frame
@@ -32,22 +37,52 @@ public class MonkeyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isDamaged)
-            StartCoroutine(BeDamaged());
-        
+        if(!isDamaged && (collision.tag == "Enemy" || collision.tag == "Snake"))
+            BeDamaged();
+        else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
+        {
+            Distance.distance += 5;
+        }
     }
     IEnumerator LooseWeight()
     {
-        weight = 50;
-        yield return new WaitForSeconds(1f);
-        weight -= 1;
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if(weight > 10)
+                weight -= 1;
+        }
+        
     }
 
-    IEnumerator BeDamaged()
+    public void BeDamaged()
+    {
+        HeartCount.heartcount -= 1;
+        StartInvinvible(invincibilityTime);
+    }
+
+    public void StartInvinvible(float time)
+    {
+        StopInvincible();
+        InvinvibleCoroutine = StartCoroutine(OnInvincible(time));
+    }
+
+    private void StopInvincible()
+    {
+        if (InvinvibleCoroutine != null)
+        {
+            StopCoroutine(InvinvibleCoroutine);
+        }
+    }
+
+    IEnumerator OnInvincible(float time)
     {
         isDamaged = true;
-        health -= 1;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(time);
         isDamaged = false;
+    }
+    void CameraShake()
+    {
+
     }
 }

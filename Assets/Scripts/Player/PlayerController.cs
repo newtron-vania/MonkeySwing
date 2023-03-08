@@ -28,6 +28,5 @@ public class PlayerController : MonoBehaviour
                 nextMove.x = 2.5f;
             rigid.MovePosition(nextMove);
         }
-
     }
 }
