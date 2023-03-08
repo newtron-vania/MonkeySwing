@@ -4,16 +4,21 @@ using UnityEngine;
 
 public abstract class Items : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    protected abstract void ItemEvent();
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField]
+    protected MonkeyController monkey;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
+    }
+    protected abstract void ItemEvent();
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Monkey")
+        {
+            ItemEvent();
+            Destroy(this.gameObject);
+        }
     }
 }

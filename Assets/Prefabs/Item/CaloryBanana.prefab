@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4127703554456918692}
   - component: {fileID: 2846645247538548858}
+  - component: {fileID: -2977434369585427594}
+  - component: {fileID: 2955958858156382280}
   m_Layer: 0
   m_Name: CaloryBanana
   m_TagString: Item
@@ -84,3 +86,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2977434369585427594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062779260201023814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdd29c9143824344a97cb8d8b2775f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &2955958858156382280
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062779260201023814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.21133332}
+  serializedVersion: 2
+  m_Radius: 0.3

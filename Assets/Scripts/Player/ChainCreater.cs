@@ -13,11 +13,17 @@ public class ChainCreater : MonoBehaviour
     public float length = 0f;
     void Start()
     {
-        if(lastChainedObject == null)
-        {
-            lastChainedObject = GameObject.FindWithTag("Monkey");
-        }
-        CalculateChainCount();
+        ChainLastObject();
+        //CalculateChainCount();
+    }
+
+    private void ChainLastObject()
+    {
+        lastChainedObject = Instantiate(lastChainedObject, startChainedObject.transform.position, Quaternion.identity, startChainedObject.transform.parent);
+        
+        HingeJoint2D hingeJoint2D = lastChainedObject.GetComponent<HingeJoint2D>();
+        hingeJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();
+        hingeJoint2D.anchor = new Vector2(0, 2.5f);
     }
 
     private void CalculateChainCount()
