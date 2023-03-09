@@ -57,7 +57,7 @@ public class MonkeyController : MonoBehaviour
 
     public void BeDamaged()
     {
-        health -= 1;
+        HeartCount.heartcount -= 1;
         StartInvinvible(invincibilityTime);
     }
 
