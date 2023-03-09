@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f884d1330e66544b0b2e4f85c37218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monkey: {fileID: 0}
+  MagnetFieldPrefab: {fileID: 6654091097703116398, guid: c6762a36f6f3f6c429228fc927e26dca, type: 3}
 --- !u!58 &8227829582140831326
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +110,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.21133332}

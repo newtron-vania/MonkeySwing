@@ -14,7 +14,6 @@ public class MonkeyController : MonoBehaviour
     public float invincibilityTime = 2f;
     public bool isDamaged = false;
 
-
     Coroutine InvinvibleCoroutine;
     void Start()
     {
