@@ -12,8 +12,6 @@ public class MagnetField : MonoBehaviour
             Object.Destroy(this.gameObject);
         transform.rotation = Quaternion.identity;
         time += Time.fixedDeltaTime;
-        Debug.Log(Time.fixedDeltaTime);
-        Debug.Log(time);
     }
 
     public void ResetTime()

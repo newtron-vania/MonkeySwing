@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Banana : Items
 {
+    [SerializeField]
     private bool Magneting = false;
     protected override void ItemEvent()
     {
