@@ -9,7 +9,7 @@ public class Magnet : Items
     protected override void ItemEvent()
     {
         if (monkey.transform.GetComponentInChildren<MagnetField>() != null)
-            monkey.transform.GetComponentInChildren<MagnetField>().time = 0f;
+            monkey.transform.GetComponentInChildren<MagnetField>().ResetTime();
         else
             Instantiate(MagnetFieldPrefab, monkey.transform.position, Quaternion.identity, monkey.transform);
     }

@@ -29,6 +29,6 @@ public abstract class Items : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
-        Debug.Log($"{this.transform.name} find {monkey.transform.name}");
+        //Debug.Log($"{this.transform.name} find {monkey.transform.name}");
     }
 }

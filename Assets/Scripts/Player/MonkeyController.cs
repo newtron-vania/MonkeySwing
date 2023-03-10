@@ -57,6 +57,7 @@ public class MonkeyController : MonoBehaviour
     public void BeDamaged()
     {
         HeartCount.heartcount -= 1;
+        CameraController.CameraShakeEvent(invincibilityTime, 1f);
         StartInvinvible(invincibilityTime);
     }
 
@@ -79,9 +80,5 @@ public class MonkeyController : MonoBehaviour
         isDamaged = true;
         yield return new WaitForSeconds(time);
         isDamaged = false;
-    }
-    void CameraShake()
-    {
-
     }
 }

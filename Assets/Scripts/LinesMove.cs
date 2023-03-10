@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LinesMove : MonoBehaviour
 {
-    private float speed = 2;
+    public float speed = 2f;
     // Update is called once per frame
     void Update()
     {
