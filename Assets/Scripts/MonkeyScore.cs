@@ -9,7 +9,7 @@ public class MonkeyScore : MonoBehaviour
             Destroy(other.gameObject);
             BananaCount.bananacount++;
         }
-        else if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "Snake"){
+        else if(other.gameObject.tag == "Enemy"){
             //Destroy(other.gameObject);
             HeartCount.heartcount--;
             //Debug.Log(HeartCount.heartcount);
