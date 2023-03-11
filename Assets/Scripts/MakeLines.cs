@@ -11,11 +11,17 @@ public class MakeLines : MonoBehaviour
     float distance = 11.0f;
     private Vector3 StartPosition;
     private Vector3 EndPosition;
+
     GameObject NewLines = null;
 
+    public Queue<GameObject> lineQueue = new Queue<GameObject>();
+
+    public float lineSpeed = 2f;
+    public float appliedLineSpeed = 2f;
     void Start() {
         StartPosition = new Vector3(0,-10,0);
         EndPosition = new Vector3(0,10,0);
+        appliedLineSpeed = lineSpeed;
     }
     // Update is called once per frame
     void Update()
@@ -24,10 +30,11 @@ public class MakeLines : MonoBehaviour
             NewLines = MakeLinesPlay();
             //Debug.Log("create success");
             NewLines.transform.position = new Vector3(0,-10,0);
+            lineQueue.Enqueue(NewLines);
             distance = 0;
         }
         distance = NewLines.transform.position.y - StartPosition.y;
-        //Debug.Log(distance);
+
     }
 
     GameObject MakeLinesPlay(){
@@ -42,8 +49,31 @@ public class MakeLines : MonoBehaviour
             case 2:
                 mNewLines = Instantiate(lev2, transform.position, Quaternion.identity);
                 break;
-        
         }
+        LinesMove linesMove = mNewLines.GetComponent<LinesMove>();
+        
+        linesMove.speed = appliedLineSpeed;
         return mNewLines;
+    }
+
+    public void BoostLineSpeed(float time, float force)
+    {
+        StopCoroutine("BoostLineSpeedCoroutine");
+        StartCoroutine(BoostLineSpeedCoroutine(time, force));
+    }
+
+    IEnumerator BoostLineSpeedCoroutine(float time, float force)
+    {
+        appliedLineSpeed *= force;
+        foreach (GameObject go in lineQueue)
+        {
+            go.GetComponent<LinesMove>().speed = appliedLineSpeed;
+        }
+        yield return new WaitForSeconds(time);
+        appliedLineSpeed = lineSpeed;
+        foreach (GameObject go in lineQueue)
+        {
+            go.GetComponent<LinesMove>().speed = appliedLineSpeed;
+        }
     }
 }

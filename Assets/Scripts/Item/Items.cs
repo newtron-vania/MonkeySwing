@@ -9,16 +9,26 @@ public abstract class Items : MonoBehaviour
 
     private void Start()
     {
-        monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
+        StartCoroutine("FindMonkey");
     }
     protected abstract void ItemEvent();
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Monkey")
         {
             ItemEvent();
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator FindMonkey()
+    {
+        while(GameObject.FindWithTag("Monkey") == null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
+        //Debug.Log($"{this.transform.name} find {monkey.transform.name}");
     }
 }

@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class LinesMove : MonoBehaviour
 {
+<<<<<<< HEAD
     public float speed = 2;
+=======
+    public float speed = 2f;
+>>>>>>> PlayerMove_Test
     // Update is called once per frame
     void Update()
     {

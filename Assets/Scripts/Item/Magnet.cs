@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Magnet : Items
 {
+    [SerializeField]
+    private GameObject MagnetFieldPrefab;
     protected override void ItemEvent()
     {
-        throw new System.NotImplementedException();
+        if (monkey.transform.GetComponentInChildren<MagnetField>() != null)
+            monkey.transform.GetComponentInChildren<MagnetField>().ResetTime();
+        else
+            Instantiate(MagnetFieldPrefab, monkey.transform.position, Quaternion.identity, monkey.transform);
     }
 }
