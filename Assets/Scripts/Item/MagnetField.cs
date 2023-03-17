@@ -9,7 +9,7 @@ public class MagnetField : MonoBehaviour
     private void FixedUpdate()
     {
         if(time >= maxTTL)
-            Object.Destroy(this.gameObject);
+            Managers.Resource.Destroy(this.gameObject);
         transform.rotation = Quaternion.identity;
         time += Time.fixedDeltaTime;
     }

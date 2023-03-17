@@ -40,7 +40,7 @@ public class Util
         }
         else
         {
-            foreach(T component in go.GetComponentsInChildren<T>())
+            foreach(T component in go.GetComponentsInChildren<T>(true))
             {
                 if (string.IsNullOrEmpty(name) ||  component.name == name)
                     return component;
@@ -49,4 +49,28 @@ public class Util
 
         return null;
     }
+
+    //public static bool CheckContainsKey(Dictionary<object, object> dict, object key, object value)
+    //{
+    //    if (dict.Keys.GetType() != key.GetType())
+    //    {
+    //        Debug.Log("unVaild type of key");
+    //        return false;
+    //    }
+    //    else if(dict.Values.GetType() != value.GetType())
+    //    {
+    //        Debug.Log("unVaild type of value");
+    //        return false;
+    //    }
+    //    else if (!dict.ContainsKey(key))
+    //    {
+    //        Debug.Log($"There's no key in weaponDict");
+    //        return false;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Fine");
+    //        return true;
+    //    }
+    //}
 }

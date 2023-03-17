@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager
 {
-    //current used order
-    int _order = 10;
+    private int _order = 10;
 
-    Stack<UI_Popup> _popupStack = new Stack<UI_Popup>();
-    UI_Scene _sceneUI = null;
+    private Dictionary<Define.PopupUIGroup, Stack<UI_Popup>> _popupStackDict = new Dictionary<Define.PopupUIGroup, Stack<UI_Popup>>();
+    private UI_Scene _sceneUI = null;
 
     public GameObject Root()
     {
@@ -18,18 +18,19 @@ public class UIManager
 
         return root;
     }
-    public void SetCanvas(GameObject go, bool sort = true)
+
+    public void SetCanvas(GameObject go, bool sorting = false)
     {
-        Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
+        Canvas canvas = go.GetOrAddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
 
-        if (sort)
-            canvas.sortingOrder = (_order++);
+        if (sorting)
+            canvas.sortingOrder = _order++;
         else
             canvas.sortingOrder = 0;
-
     }
+    
     public T MakeWorldSpaceUI<T>(Transform parent, string name = null) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))
@@ -47,7 +48,7 @@ public class UIManager
         //return go.GetOrAddComponent<T>();
         return Util.GetOrAddComponent<T>(go);
     }
-
+    
     public T MakeSubItem<T>(Transform parent, string name = null) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))
@@ -60,10 +61,12 @@ public class UIManager
 
         return go.GetOrAddComponent<T>();
     }
+    
     public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
+
 
         GameObject go = Managers.Resource.Instantiate($"UI/Scene/{name}");
 
@@ -74,55 +77,133 @@ public class UIManager
         go.transform.SetParent(Root().transform);
         return sceneUI;
     }
-
-    public T ShowPopupUI<T>(string name = null) where T : UI_Popup
+    public UI_Scene getSceneUI()
     {
+        return _sceneUI;
+    }
+
+    public T ShowPopupUI<T>(string name = null, bool forEffect = false) where T : UI_Popup
+    {
+        Managers.Sound.SetAudioVolumn(Define.Sound.Bgm, Managers.Sound.SoundVolumn/2);
+
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
 
-        GameObject go =  Managers.Resource.Instantiate($"UI/Popup/{name}");
-
-        T popup = Util.GetOrAddComponent<T>(go);
-        _popupStack.Push(popup);
-
+        GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
+        
         go.transform.SetParent(Root().transform);
-        return popup;
+        
+        T popup =  go.GetOrAddComponent<T>();
+        Define.PopupUIGroup popupType = popup._popupID;
+
+        if (!_popupStackDict.ContainsKey(popupType))
+            _popupStackDict.Add(popupType, new Stack<UI_Popup>());
+            
+        _popupStackDict[popupType].Push(popup);
+
+        if (forEffect)
+            popup.GetComponent<Canvas>().sortingOrder = -1;
+
+
+        return popup as T;
     }
 
-    public void ClosePopupUI()
+    public void ClosePopupUI(Define.PopupUIGroup popupType)
     {
-        if (_popupStack.Count == 0)
+        if (_popupStackDict.TryGetValue(popupType, out Stack<UI_Popup> popupStack) == false
+            || _popupStackDict[popupType].Count == 0)
             return;
 
-        UI_Popup popup = _popupStack.Pop();
+        UI_Popup popup = _popupStackDict[popupType].Pop();
         Managers.Resource.Destroy(popup.gameObject);
+        _order--;
         popup = null;
 
-
+        CheckPopupUICountAndRemove();
     }
 
     public void ClosePopupUI(UI_Popup popup)
     {
-        if (_popupStack.Count == 0)
+        Define.PopupUIGroup popupType = popup._popupID;
+        if (_popupStackDict.TryGetValue(popupType, out Stack<UI_Popup> popupStack) == false
+            || _popupStackDict[popupType].Count == 0)
             return;
 
-        if (_popupStack.Peek() != popup)
+        if (popup != popupStack.Peek())
         {
             Debug.Log("Close Popup Failed");
             return;
         }
-        ClosePopupUI();
 
+        ClosePopupUI(popupType);
     }
-
     public void CloseAllPopupUI()
     {
-        while(_popupStack.Count != 0)
+        foreach (KeyValuePair<Define.PopupUIGroup, Stack<UI_Popup>> kv in _popupStackDict)
         {
-            UI_Popup popup = _popupStack.Pop();
+            Define.PopupUIGroup popupType = kv.Key;
+            Stack<UI_Popup> popupStack = kv.Value;
+            while(popupStack.Count != 0)
+            {
+                UI_Popup popup = popupStack.Pop();
+                Managers.Resource.Destroy(popup.gameObject);
+                _order--;
+                popup = null;
+            }
+        }
+        CheckPopupUICountAndRemove();
+    }
+
+    public void CloseAllGroupPopupUI(Define.PopupUIGroup popupType)
+    {
+        if (_popupStackDict.TryGetValue(popupType, out Stack<UI_Popup> popupStack) == false
+            || _popupStackDict[popupType].Count == 0)
+            return;
+
+        while (popupStack.Count != 0)
+        {
+            UI_Popup popup = popupStack.Pop();
             Managers.Resource.Destroy(popup.gameObject);
+            _order--;
             popup = null;
         }
+        CheckPopupUICountAndRemove();
+    }
+
+
+    void CheckPopupUICountAndRemove()
+    {
+        List<Define.PopupUIGroup> popupType = new List<Define.PopupUIGroup>();
+        foreach(Define.PopupUIGroup popupUI in _popupStackDict.Keys)
+        {
+            popupType.Add(popupUI);
+        }
+        for(int i = 0; i<_popupStackDict.Count; i++)
+        {
+            if (_popupStackDict.GetValueOrDefault<Define.PopupUIGroup, Stack<UI_Popup>>(popupType[i]).Count == 0)
+                _popupStackDict.Remove(popupType[i]);
+        }
+        CheckPopupUICountInScene();
+    }
+    
+    void CheckPopupUICountInScene()
+    {
+
+        Debug.Log($"popupCount : {_popupStackDict.Count}");
+        foreach(Define.PopupUIGroup popupKey in _popupStackDict.Keys)
+        {
+            Debug.Log($"popupList : {popupKey}");
+        }
+            
+        if (_popupStackDict.Count == 0)
+        {
+            Managers.Sound.SetAudioVolumn(Define.Sound.Bgm, Managers.Sound.SoundVolumn);
+        }
+    }
+
+    public int GetPopupUICount()
+    {
+        return _popupStackDict.Count;
     }
     public void Clear()
     {

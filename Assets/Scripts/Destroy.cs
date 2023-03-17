@@ -8,7 +8,7 @@ public class Destroy : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.tag == "LineBottom"){
             GameObject go = lineGenerator.lineQueue.Dequeue();
-            Object.Destroy(go, 1f);
+            Managers.Resource.Destroy(go, 1f);
             //Debug.Log("line destroy");
         }
     }
