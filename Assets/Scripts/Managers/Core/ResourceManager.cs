@@ -75,6 +75,19 @@ public class ResourceManager
         return go;
     }
 
+    public GameObject Instantiate(GameObject original, Vector3 position, Transform parent = null)
+    {
+        if (original.GetComponent<Poolable>() != null)
+            return Managers.Pool.Pop(original, parent).gameObject;
+
+
+        GameObject go = Object.Instantiate(original, position, Quaternion.identity, parent);
+        go.name = original.name;
+
+        return go;
+    }
+
+
     public void Destroy(GameObject obj, float time = 0)
     {
         if(obj == null)
@@ -90,6 +103,6 @@ public class ResourceManager
             return;
         }
 
-        Managers.Resource.Destroy(obj, time);
+        Object.Destroy(obj, time);
     }
 }

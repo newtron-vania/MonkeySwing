@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
         {
             moveX = Input.GetAxisRaw("Mouse X");
         }
+
+#elif (UNITY_ANDROID)
+        if(Input.touches.Length > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+        }
 #endif
         Vector2 nextMove = rigid.position + new Vector2(moveX * slideSpeed * Time.fixedDeltaTime, 0);
         if (nextMove.x < -2.5f)

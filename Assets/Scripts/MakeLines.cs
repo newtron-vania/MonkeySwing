@@ -44,10 +44,10 @@ public class MakeLines : MonoBehaviour
         switch (LinesObj)
         {
             case 1:
-                mNewLines = Instantiate(lev1, transform.position, Quaternion.identity);
+                mNewLines = Managers.Resource.Instantiate(lev1, transform.position);
                 break;
             case 2:
-                mNewLines = Instantiate(lev2, transform.position, Quaternion.identity);
+                mNewLines = Managers.Resource.Instantiate(lev2, transform.position);
                 break;
         }
         LinesMove linesMove = mNewLines.GetComponent<LinesMove>();
