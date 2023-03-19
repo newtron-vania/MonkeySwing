@@ -10,7 +10,7 @@ public class Booster : Items
     {
         CameraController.CameraShakeEvent(invinciblityTime, 1f);
         monkey.StartInvinvible(invinciblityTime);
-        MakeLines lineGenerator = GameObject.Find("LinesGenerator").GetComponent<MakeLines>();
+        MakeLines lineGenerator = GameManagerEx.Instance.makeLines;
         lineGenerator.BoostLineSpeed(invinciblityTime, boostForce);
     }
 }

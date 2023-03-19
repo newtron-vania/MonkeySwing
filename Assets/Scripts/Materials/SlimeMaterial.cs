@@ -8,8 +8,10 @@ public class SlimeMaterial : MonoBehaviour
     float downForce = 2f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if(collision.transform.tag == "Monkey")
         {
+            Debug.Log("Monkey Check!");
             Rigidbody2D monkeyRigid = collision.gameObject.GetComponent<Rigidbody2D>();
             monkeyRigid.velocity = monkeyRigid.velocity.normalized* downForce;
         }

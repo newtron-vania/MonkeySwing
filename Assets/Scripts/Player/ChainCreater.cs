@@ -10,7 +10,8 @@ public class ChainCreater : MonoBehaviour
 
     public List<GameObject> chainList = new List<GameObject>();
 
-    public float length = 0f;
+    [SerializeField]
+    float length = 2.5f;
     void Start()
     {
         ChainLastObject();
@@ -23,7 +24,7 @@ public class ChainCreater : MonoBehaviour
         
         HingeJoint2D hingeJoint2D = lastChainedObject.GetComponent<HingeJoint2D>();
         hingeJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();
-        hingeJoint2D.anchor = new Vector2(0, 2.5f);
+        hingeJoint2D.anchor = new Vector2(0, length);
     }
 
     private void CalculateChainCount()
