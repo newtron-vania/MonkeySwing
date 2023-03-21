@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MakeLines : MonoBehaviour
 {
     [SerializeField]
-    Dictionary<int, List<GameObject>> levelLinesDict = new Dictionary<int, List<GameObject>>();
+    Dictionary<int, GameObject[]> levelLinesDict = new Dictionary<int, GameObject[]>();
+    int maxLineLv = 2;
 
     float distance = 11.0f;
     private Vector3 StartPosition;
@@ -35,8 +37,24 @@ public class MakeLines : MonoBehaviour
         StartPosition = new Vector3(0,-10,0);
         EndPosition = new Vector3(0,10,0);
         appliedLineSpeed = lineSpeed;
+        SetDictionary();
     }
-    // Update is called once per frame
+
+    void SetDictionary()
+    {
+        for(int i=1; i<=maxLineLv; i++)
+        {
+            string maplevel = $"level {i}";
+            GameObject[] maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
+            levelLinesDict.Add(i, maps);
+            foreach(GameObject map in maps)
+            {
+                Debug.Log($"level : {i} , name : {map.name}");
+            }
+        }
+    }
+
+
     void Update()
     {
         if(distance >= 10.0f){
@@ -71,7 +89,7 @@ public class MakeLines : MonoBehaviour
     int SettingLineNum(int level)
     {
         //각 라인의 생성유무(pool을 확인)하여 제외하고 다시 반복
-        int num = Random.Range(0, levelLinesDict[level].Count);
+        int num = Random.Range(0, levelLinesDict[level].Length);
         return num;
     }
 

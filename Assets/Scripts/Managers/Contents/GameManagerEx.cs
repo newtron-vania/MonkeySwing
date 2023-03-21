@@ -27,13 +27,18 @@ public class GameManagerEx
     public void GameOver()
     {
         GameStop();
+        //UI 생성 및 처리
     }
 
+
+    //시간 정지
     public void GameStop()
     {
         Time.timeScale = 0;
     }
 
+
+    //시간 다시 실시
     public void GameStart()
     {
         Time.timeScale = 1;

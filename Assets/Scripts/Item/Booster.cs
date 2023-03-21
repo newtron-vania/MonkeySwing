@@ -8,7 +8,7 @@ public class Booster : Items
     public float boostForce = 2f;
     protected override void ItemEvent()
     {
-        CameraController.CameraShakeEvent(invinciblityTime, 1f);
+        //CameraController.CameraShakeEvent(invinciblityTime, 1f);
         monkey.StartInvinvible(invinciblityTime);
         MakeLines lineGenerator = GameManagerEx.Instance.makeLines;
         lineGenerator.BoostLineSpeed(invinciblityTime, boostForce);

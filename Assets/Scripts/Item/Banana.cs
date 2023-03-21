@@ -13,8 +13,12 @@ public class Banana : Items
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        if(collision.tag == "MagnetField" && !Magneting)
+        if (collision.tag == "Monkey")
+        {
+            ItemEvent();
+            this.gameObject.SetActive(false);
+        }
+        else if (collision.tag == "MagnetField" && !Magneting)
         {
             Magneting = true;
             StartCoroutine(MoveToPlayer());
