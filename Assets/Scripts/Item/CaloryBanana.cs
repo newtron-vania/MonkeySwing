@@ -8,4 +8,5 @@ public class CaloryBanana : Items
     {
         monkey.weight = Mathf.Min(monkey.weight + 20, 100);
     }
+
 }

@@ -7,9 +7,12 @@ public abstract class Items : MonoBehaviour
     [SerializeField]
     protected MonkeyController monkey;
 
+    protected Rigidbody2D rigid;
+
     private void Start()
     {
         StartCoroutine("FindMonkey");
+        rigid = this.GetComponent<Rigidbody2D>();
     }
     protected abstract void ItemEvent();
 

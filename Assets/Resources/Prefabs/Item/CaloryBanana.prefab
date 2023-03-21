@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2977434369585427594}
   - component: {fileID: 2955958858156382280}
   - component: {fileID: -4373704536714105304}
+  - component: {fileID: -5201235752298056091}
   m_Layer: 0
   m_Name: CaloryBanana
   m_TagString: Item
@@ -129,3 +130,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUsing: 0
+--- !u!114 &-5201235752298056091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062779260201023814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d37487bbade4f84cbd5744634090cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Magneting: 0
+  force: 0.5

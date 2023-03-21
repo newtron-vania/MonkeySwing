@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4169638106282650534}
   - component: {fileID: -1380185202835294399}
   - component: {fileID: -3173289365674766944}
+  - component: {fileID: 339172457327807981}
   m_Layer: 0
   m_Name: BANANA
   m_TagString: Banana
@@ -116,7 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monkey: {fileID: 0}
-  Magneting: 0
 --- !u!114 &-3173289365674766944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,3 +130,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUsing: 0
+--- !u!114 &339172457327807981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790928134209432049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d37487bbade4f84cbd5744634090cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Magneting: 0
+  force: 0.5
