@@ -13,6 +13,7 @@ public class MonkeyController : MonoBehaviour
             health = value; 
             if(health <= 0)
             {
+                HeartCount.heartcount -= 1;
                 GameManagerEx.Instance.GameOver();
             }
         }
@@ -86,7 +87,7 @@ public class MonkeyController : MonoBehaviour
 
     public void BeDamaged()
     {
-        HeartCount.heartcount -= 1;
+        Health -= 1;
         CameraController.CameraShakeEvent(invincibilityTime, 1f);
         StartInvinvible(invincibilityTime);
     }
