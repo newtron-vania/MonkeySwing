@@ -17,7 +17,7 @@ public class Weight : MonoBehaviour
 
     void Update()
     {
-        weightText.text = $"Weight : {monkey.weight}";
+        weightText.text = $"Weight : {monkey.Weight}";
     }
 
     IEnumerator FindMonkey()

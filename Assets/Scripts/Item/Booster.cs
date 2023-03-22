@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Booster : Items
 {
-    public float invinciblityTime = 10f;
-    public float boostForce = 2f;
+    [SerializeField]
+    GameObject boostEffect;
     protected override void ItemEvent()
     {
         //CameraController.CameraShakeEvent(invinciblityTime, 1f);
-        monkey.StartInvinvible(invinciblityTime);
-        MakeLines lineGenerator = GameManagerEx.Instance.makeLines;
-        lineGenerator.BoostLineSpeed(invinciblityTime, boostForce);
+        if (GameObject.FindWithTag("BoostEffect"))
+            GameObject.FindWithTag("BoostEffect").GetComponent<BoostEffect>().ResetTime();
+        else
+        {
+            GameObject go = Managers.Resource.Instantiate(boostEffect, boostEffect.transform.position);
+            go.transform.parent = monkey.transform.parent.GetChild(0);
+        }
+        
     }
 }

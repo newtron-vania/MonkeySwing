@@ -5,6 +5,8 @@ using UnityEngine;
 public class MonkeyController : MonoBehaviour
 {
     Rigidbody2D rigid;
+    Animator anime;
+
     private int health;
     public int Health
     {
@@ -23,16 +25,27 @@ public class MonkeyController : MonoBehaviour
 
 
     public float gravity = 1f;
-    public int weight = 50;
+    [SerializeField]
+    private int weight = 50;
+    public int Weight { 
+        get { return weight; } 
+        set 
+        { 
+            weight = value;
+            anime.SetInteger("weight", weight);
+        } 
+    }
+    [SerializeField]
+    private float invincibilityTime = 2f;
+    private bool isDamaged = false;
+    
 
-    public float invincibilityTime = 2f;
-    public bool isDamaged = false;
 
-    Coroutine InvinvibleCoroutine;
     void Start()
     {
         health = 3;
         rigid = GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
         StartCoroutine(LooseWeight());
     }
 
@@ -46,7 +59,7 @@ public class MonkeyController : MonoBehaviour
 
     void CheckVelocity()
     {
-        maxVelocityForce = (-12 / 90f * weight) + 49 / 3f;
+        maxVelocityForce = (-12 / 90f * Weight) + 49 / 3f;
         if (rigid.velocity.magnitude > maxVelocityForce)
         {
             Vector3 moveVec = rigid.velocity.normalized;
@@ -56,7 +69,7 @@ public class MonkeyController : MonoBehaviour
 
     void CheckLinearDrag()
     {
-        rigid.drag = (float)(1 / 30f * (weight - 10) + 1);
+        rigid.drag = (float)(1 / 30f * (Weight - 10) + 1);
     }
 
     void CheckGravity()
@@ -67,7 +80,7 @@ public class MonkeyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!isDamaged && (collision.tag == "Enemy" || collision.tag == "Snake"))
+        if(!isDamaged && (collision.tag == "Enemy"))
             BeDamaged();
         else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
         {
@@ -79,18 +92,39 @@ public class MonkeyController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if(weight > 10)
-                weight -= 1;
+            if(Weight > 10)
+                Weight -= 1;
         }
         
     }
 
+    Coroutine InvinvibleCoroutine;
     public void BeDamaged()
     {
         Health -= 1;
-        CameraController.CameraShakeEvent(invincibilityTime, 1f);
+        CameraController.CameraShakeEvent(0.5f, 1f);
+        StartDamagedAnime();
         StartInvinvible(invincibilityTime);
+        Invoke("EndDamagedAnime", invincibilityTime);
     }
+
+    public void StartBoost(float continuousTime, float waitTime)
+    {
+        Invoke("StartDamagedAnime", continuousTime);
+        Invoke("EndDamagedAnime", continuousTime + waitTime);
+        StartInvinvible(continuousTime+ waitTime);
+    }
+
+    public void StartDamagedAnime()
+    {
+        anime.SetBool("isDamaged", true);
+    }
+    public void EndDamagedAnime()
+    {
+        anime.SetBool("isDamaged", false);
+    }
+
+
 
     public void StartInvinvible(float time)
     {

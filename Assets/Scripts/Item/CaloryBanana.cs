@@ -6,7 +6,7 @@ public class CaloryBanana : Items
 {
     protected override void ItemEvent()
     {
-        monkey.weight = Mathf.Min(monkey.weight + 20, 100);
+        monkey.Weight = Mathf.Min(monkey.Weight + 20, 100);
     }
 
 }

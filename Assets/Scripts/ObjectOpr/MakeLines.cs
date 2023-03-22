@@ -101,10 +101,13 @@ public class MakeLines : MonoBehaviour
         return level;
     }
 
+
+    Coroutine boostLineSpeedCoroutine;
     public void BoostLineSpeed(float time, float force)
     {
-        StopCoroutine("BoostLineSpeedCoroutine");
-        StartCoroutine(BoostLineSpeedCoroutine(time, force));
+        if(boostLineSpeedCoroutine != null)
+            StopCoroutine(boostLineSpeedCoroutine);
+        boostLineSpeedCoroutine = StartCoroutine(BoostLineSpeedCoroutine(time, force));
     }
 
     IEnumerator BoostLineSpeedCoroutine(float time, float force)
