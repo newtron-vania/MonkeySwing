@@ -5,7 +5,7 @@ using TMPro;
 
 public class Distance : MonoBehaviour
 {
-    int dist = 0;
+    public static int dist = 0;
 
     public int Dist { 
         get { return dist; }
