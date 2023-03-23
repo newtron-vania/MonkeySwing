@@ -45,7 +45,6 @@ public class ResourceManager
             return null;
         }
 
-
         if (original.GetComponent<Poolable>() != null)
             return Managers.Pool.Pop(original, parent).gameObject;
 
@@ -64,12 +63,16 @@ public class ResourceManager
             return null;
         }
 
-
+        GameObject go = null;
         if (original.GetComponent<Poolable>() != null)
-            return Managers.Pool.Pop(original, parent).gameObject;
+        {
+            go = Managers.Pool.Pop(original, parent).gameObject;
+            go.transform.position = position;
+            return go;
+        }
 
 
-        GameObject go = Object.Instantiate(original, position, Quaternion.identity, parent);
+        go = Object.Instantiate(original, position, Quaternion.identity, parent);
         go.name = original.name;
 
         return go;
@@ -77,11 +80,17 @@ public class ResourceManager
 
     public GameObject Instantiate(GameObject original, Vector3 position, Transform parent = null)
     {
+        GameObject go = null;
         if (original.GetComponent<Poolable>() != null)
-            return Managers.Pool.Pop(original, parent).gameObject;
+        {
+            go = Managers.Pool.Pop(original, parent).gameObject;
+            go.transform.position = position;
+            return go;
+        }
+           
 
 
-        GameObject go = Object.Instantiate(original, position, Quaternion.identity, parent);
+        go = Object.Instantiate(original, position, Quaternion.identity, parent);
         go.name = original.name;
 
         return go;

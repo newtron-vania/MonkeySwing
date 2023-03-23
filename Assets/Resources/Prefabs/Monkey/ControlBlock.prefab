@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 2391590228812486216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -2041280339
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b99638afcae1aef43b713513bad7343f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2391590228812486216}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf4e54dca16e3443b4bf8cf5eee7030, type: 3}
   m_Name: 
@@ -123,4 +123,4 @@ MonoBehaviour:
   startChainedObject: {fileID: 2391590228812486216}
   lastChainedObject: {fileID: 8923223496050003487, guid: cf8b49bfcb5aa53449487417aef3a3b3, type: 3}
   chainList: []
-  length: 0
+  length: 2.5

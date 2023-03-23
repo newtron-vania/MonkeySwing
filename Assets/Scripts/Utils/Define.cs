@@ -46,4 +46,13 @@ public class Define
         MainScene,
         GameScene
     }
+
+    public enum Items
+    {
+        CaloryBanana,
+        Boost,
+        Magnet,
+        Count,
+        None
+    }
 }

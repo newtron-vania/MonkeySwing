@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainScene : MonoBehaviour
+public class MainScene : BaseScene
 {
-    // Start is called before the first frame update
-    void Start()
+    public override Define.SceneType _sceneType { get { return Define.SceneType.MainScene; } }
+
+
+    private void Start()
     {
-        
+        GameManagerEx.Instance.distance = GameObject.FindFirstObjectByType<Distance>();
+        GameManagerEx.Instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
+        GameManagerEx.Instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
+        Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Clear()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

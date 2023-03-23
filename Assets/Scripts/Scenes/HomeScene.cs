@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomeScene : MonoBehaviour
+public class HomeScene : BaseScene
 {
-    // Start is called before the first frame update
-    void Start()
+    public override Define.SceneType _sceneType { get { return Define.SceneType.Home; } }
+
+    private void Start()
     {
-        
+        if(!PlayerPrefs.HasKey("Money"))
+        {
+            PlayerPrefs.SetInt("Money", 0);
+            PlayerPrefs.SetInt("MonkeySkinId", 0);
+        }
+
+        GameManagerEx.Instance.player.SetData();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Clear()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

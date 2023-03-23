@@ -12,10 +12,10 @@ public class MonkeyController : MonoBehaviour
     {
         get { return health; }
         set { 
-            health = value; 
-            if(health <= 0)
+            health = value;
+            HeartCount.heartcount = health;
+            if (health <= 0)
             {
-                HeartCount.heartcount -= 1;
                 GameManagerEx.Instance.GameOver();
             }
         }
@@ -26,7 +26,7 @@ public class MonkeyController : MonoBehaviour
 
     public float gravity = 1f;
     [SerializeField]
-    private int weight = 50;
+    private int weight;
     public int Weight { 
         get { return weight; } 
         set 
@@ -43,7 +43,8 @@ public class MonkeyController : MonoBehaviour
 
     void Start()
     {
-        health = 3;
+        health = 99;
+        weight = 50;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         StartCoroutine(LooseWeight());

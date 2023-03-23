@@ -11,5 +11,9 @@ public class Destroy : MonoBehaviour
             Managers.Resource.Destroy(go, 1f);
             //Debug.Log("line destroy");
         }
+        else if (other.CompareTag("Item"))
+        {
+            Managers.Resource.Destroy(other.gameObject);
+        }
     }
 }

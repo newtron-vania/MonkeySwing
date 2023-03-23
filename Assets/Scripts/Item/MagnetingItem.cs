@@ -15,17 +15,23 @@ public class MagnetingItem : MonoBehaviour
         if (collision.tag == "MagnetField" && !Magneting)
         {
             Magneting = true;
-            StartCoroutine(MoveToPlayer(collision));
+            MonkeyController monkey = GameManagerEx.Instance.monkey;
+            StartCoroutine(MoveToPlayer(monkey));
             Debug.Log("Banana is MagnetField!");
         }
     }
 
-    IEnumerator MoveToPlayer(Collider2D magnet)
+    private void OnDisable()
+    {
+        Magneting = false;
+    }
+
+    IEnumerator MoveToPlayer(MonkeyController monkey)
     {
         float speed = -4f;
         while (true)
         {
-            Vector3 dirVec = magnet.transform.position - this.transform.position;
+            Vector3 dirVec = monkey.transform.position - this.transform.position;
             this.transform.position += dirVec.normalized * speed * Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
             speed += force;

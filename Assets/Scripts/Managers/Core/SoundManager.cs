@@ -99,7 +99,7 @@ public class SoundManager
 
 		return audioClip;
     }
-    public void SetAudioVolumn(Define.Sound type = Define.Sound.Bgm, float volumn = 1)
+    public void SetAudioVolumn(Define.Sound type = Define.Sound.Bgm, float volumn = 1f)
     {
         if (type == Define.Sound.Effect)
             volumn *= 0.8f;

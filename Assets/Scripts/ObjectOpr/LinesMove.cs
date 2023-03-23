@@ -14,11 +14,13 @@ public class LinesMove : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach(Banana banana in gameObject.GetComponentsInChildren<Banana>())
+        Debug.Log("Item Setting!");
+        int count = 0;
+        foreach(Banana banana in gameObject.GetComponentsInChildren<Banana>(true))
         {
             banana.gameObject.SetActive(true);
+            count++;
         }
     }
-
 
 }

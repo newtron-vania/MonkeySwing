@@ -21,21 +21,17 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = 0;
 #if (UNITY_EDITOR)
+
         if (Input.GetMouseButton(0))
         {
             moveX = Input.GetAxisRaw("Mouse X");
         }
 
 #elif (UNITY_ANDROID)
-        if ((Input.GetTouch(0).phase == TouchPhase.Stationary) || (Input.GetTouch(0).phase == TouchPhase.Began))
+        if(Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.position.x <= Screen.width)
-                moveX = -1;
-            else if (touch.position.x > Screen.width)
-                moveX = 1;
+            moveX = Input.GetTouch(0).deltaPosition.normalized.x;
         }
-        Debug.Log("Android");
 #endif
 
 

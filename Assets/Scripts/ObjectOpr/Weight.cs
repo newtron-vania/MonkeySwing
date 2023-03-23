@@ -18,7 +18,7 @@ public class Weight : MonoBehaviour
 
     void Update()
     {
-        WeightSlider.value = (float)monkey.weight;
+        WeightSlider.value = (float)GameManagerEx.Instance.monkey.Weight;
         // weightText.text = $"Weight : {monkey.weight}";
     }
 

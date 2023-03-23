@@ -21,8 +21,11 @@ public abstract class Items : MonoBehaviour
         if(collision.tag == "Monkey")
         {
             ItemEvent();
-            //Managers.Resource.Destroy(this.gameObject);
-            this.gameObject.SetActive(false);
+            Managers.Resource.Destroy(this.gameObject);
+        }
+        else if(collision.tag == "Banana")
+        {
+            collision.gameObject.SetActive(false);
         }
     }
 

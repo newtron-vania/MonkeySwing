@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class SoundSlider : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider BGMSlider;
+    [SerializeField] Slider EffectSlider;
 
     void Start()
     {
-        if(!PlayerPrefs.HasKey("musicVolume"))
+        if(!PlayerPrefs.HasKey("BGMVolumn"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
+            PlayerPrefs.SetFloat("BGMVolumn", 1);
+            PlayerPrefs.SetFloat("EffectVolumn", 1);
             Load();
         }
         else
@@ -21,20 +23,29 @@ public class SoundSlider : MonoBehaviour
     }
 
 
-    public void ChangeVolume()
+    public void ChangeBGM()
     {
-        AudioListener.volume = volumeSlider.value;
+        Managers.Sound.SetAudioVolumn(Define.Sound.Bgm, BGMSlider.value);
+        Save();
+    }
+    
+    public void ChangeEffect()
+    {
+        Managers.Sound.SetAudioVolumn(Define.Sound.Effect, EffectSlider.value);
         Save();
     }
 
     private void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        BGMSlider.value = PlayerPrefs.GetFloat("BGMVolumn");
+        EffectSlider.value = PlayerPrefs.GetFloat("EffectVolumn");
 
     }
 
     private void Save()
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat("BGMVolumn", BGMSlider.value);
+        PlayerPrefs.SetFloat("EffectVolumn", EffectSlider.value);
+
     }
 }

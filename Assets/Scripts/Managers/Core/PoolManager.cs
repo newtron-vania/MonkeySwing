@@ -10,7 +10,7 @@ public class PoolManager
         //오브젝트 풀 역할의 Root Object
         public Transform Root { get; set; }
         //Poolable Object를 저장하는 poolStack. stack이 아니라 queue를 사용해도 된다.
-        Stack<Poolable> _poolStack = new Stack<Poolable>();
+        Queue<Poolable> _poolQueue = new Queue<Poolable>();
         //original Object를 Pooling할 Pool이 존재하지 않을 경우 Pool을 생성한다.
         public void Init(GameObject original, int count = 2)
         {
@@ -38,16 +38,16 @@ public class PoolManager
             poolable.gameObject.SetActive(false);
             poolable.isUsing = false;
             //poolStack에 저장
-            _poolStack.Push(poolable);
+            _poolQueue.Enqueue(poolable);
         }
         //pool에 배치된 오브젝트를 꺼내온다.
         public Poolable Pop(Transform parent)
         {
             Poolable poolable = null;
             //pool에 남아있는 Poolable Object가 있는지 확인한다. 없을 경우 새로 생성.
-            while (_poolStack.Count > 0)
+            while (_poolQueue.Count > 0)
             {
-                poolable = _poolStack.Pop();
+                poolable = _poolQueue.Dequeue();
                 if (poolable.gameObject.activeSelf == false)
                     break;
             }

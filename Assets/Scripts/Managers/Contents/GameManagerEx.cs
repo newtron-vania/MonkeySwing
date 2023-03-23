@@ -7,9 +7,11 @@ public class GameManagerEx
     static GameManagerEx g_instance;
     public static GameManagerEx Instance { get { Init(); return g_instance; } }
 
+    public PlayerData player;
     public MakeLines makeLines;
     public Distance distance;
-    public MonkeyController player;
+    public MonkeyController monkey;
+    public BananaCount banana;
 
     static void Init()
     {
@@ -19,7 +21,7 @@ public class GameManagerEx
             //TODO
             g_instance.distance = GameObject.FindFirstObjectByType<Distance>();
             g_instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
-            g_instance.player = GameObject.FindFirstObjectByType<MonkeyController>();
+            g_instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
         }
     }
 
@@ -27,6 +29,7 @@ public class GameManagerEx
     {
         GameStop();
         Managers.Sound.Play("GameOver");
+        GameObject.FindWithTag("ScorePopup").SetActive(true);
         //UI 积己 棺 贸府
     }
 

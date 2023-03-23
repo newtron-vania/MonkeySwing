@@ -11,14 +11,14 @@ public class Banana : Items
         BananaCount.bananacount += 1;
     }
 
-    private void Start()
+    private void Awake()
     {
-        startPoint = transform.position;
+        startPoint = transform.localPosition;
     }
 
     private void OnEnable()
     {
-        transform.position = startPoint;
+        transform.localPosition = startPoint;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +28,6 @@ public class Banana : Items
             ItemEvent();
             Managers.Sound.Play("Coin");
             this.gameObject.SetActive(false);
-            
         }
     }
 
