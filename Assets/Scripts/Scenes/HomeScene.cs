@@ -15,6 +15,11 @@ public class HomeScene : BaseScene
         }
 
         GameManagerEx.Instance.player.SetData();
+        if(BananaCount.bananacount > 0)
+        {
+            GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+            BananaCount.bananacount = 0;
+        }
 
     }
 

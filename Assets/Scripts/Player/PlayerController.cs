@@ -27,10 +27,18 @@ public class PlayerController : MonoBehaviour
             moveX = Input.GetAxisRaw("Mouse X");
         }
 
-#elif (UNITY_ANDROID)
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
-            moveX = Input.GetTouch(0).deltaPosition.normalized.x;
+            moveX = Input.GetTouch(0).deltaPosition.normalized.x * 0.2f;
+            if (moveX < 0.01f)
+                moveX = 0;
+        }
+#elif (UNITY_ANDROID)
+        if (Input.touchCount > 0)
+        {
+            moveX = Input.GetTouch(0).deltaPosition.normalized.x * 0.2f;
+            if (moveX < 0.01f)
+                moveX = 0;
         }
 #endif
 

@@ -12,6 +12,7 @@ public class MainScene : BaseScene
         GameManagerEx.Instance.distance = GameObject.FindFirstObjectByType<Distance>();
         GameManagerEx.Instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
         GameManagerEx.Instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
+        BananaCount.bananacount = 0;
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
 
