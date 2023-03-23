@@ -11,12 +11,11 @@ public class ChangeScene : MonoBehaviour
         {
             case "GameStartBtn":
             // 여기 씬이름 수정 필요
-                SceneManager.LoadScene("PlayerMoveTestScene");
+                SceneManager.LoadScene("PlayerMoveTestScene2");
                 break;
             case "GoHomeBtn":
                 SceneManager.LoadScene("Home");
                 break;
-
         }
     }
 }
