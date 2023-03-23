@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigid;
     
 
-
     public float slideSpeed = 2f;
     void Start()
     {
@@ -28,11 +27,18 @@ public class PlayerController : MonoBehaviour
         }
 
 #elif (UNITY_ANDROID)
-        if(Input.touches.Length > 0)
+        if ((Input.GetTouch(0).phase == TouchPhase.Stationary) || (Input.GetTouch(0).phase == TouchPhase.Began))
         {
             Touch touch = Input.GetTouch(0);
+            if (touch.position.x <= Screen.width)
+                moveX = -1;
+            else if (touch.position.x > Screen.width)
+                moveX = 1;
         }
+        Debug.Log("Android");
 #endif
+
+
         Vector2 nextMove = rigid.position + new Vector2(moveX * slideSpeed * Time.fixedDeltaTime, 0);
         if (nextMove.x < -2.5f)
             nextMove.x = -2.5f;

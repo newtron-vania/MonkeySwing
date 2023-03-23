@@ -6,6 +6,7 @@ public class MagnetField : MonoBehaviour
 {
     public float maxTTL = 5f;
     private float time = 0f;
+
     private void FixedUpdate()
     {
         if(time >= maxTTL)

@@ -9,7 +9,7 @@ public class SoundManager
 
 
     public float SoundVolumn = 1f;
-    public Define.BGMs BGM = Define.BGMs.A_Bit_Of_Hope;
+    public Define.BGMs BGM = Define.BGMs.MainBGM;
     // MP3 Player   -> AudioSource
     // MP3 음원     -> AudioClip
     // 관객(귀)     -> AudioListener
@@ -101,6 +101,8 @@ public class SoundManager
     }
     public void SetAudioVolumn(Define.Sound type = Define.Sound.Bgm, float volumn = 1)
     {
+        if (type == Define.Sound.Effect)
+            volumn *= 0.8f;
         _audioSources[(int)type].volume = volumn;
     }
 }

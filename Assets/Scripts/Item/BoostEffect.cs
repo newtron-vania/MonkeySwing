@@ -17,6 +17,7 @@ public class BoostEffect : MonoBehaviour
         monkey.StartBoost(TTL, waitInvincibleTime);
         lineGenerator = GameManagerEx.Instance.makeLines;
         lineGenerator.BoostLineSpeed(TTL, boostForce);
+        Managers.Sound.Play("Boost");
     }
 
     private void Update()
@@ -30,6 +31,7 @@ public class BoostEffect : MonoBehaviour
 
     public void ResetTime()
     {
+        Managers.Sound.Play("Boost");
         curTime = 0f;
         monkey.StartBoost(TTL, waitInvincibleTime);
         lineGenerator.BoostLineSpeed(TTL, boostForce);

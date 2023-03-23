@@ -10,7 +10,6 @@ public class GameManagerEx
     public MakeLines makeLines;
     public Distance distance;
     public MonkeyController player;
-    
 
     static void Init()
     {
@@ -27,6 +26,7 @@ public class GameManagerEx
     public void GameOver()
     {
         GameStop();
+        Managers.Sound.Play("GameOver");
         //UI 积己 棺 贸府
     }
 

@@ -12,5 +12,13 @@ public class LinesMove : MonoBehaviour
         // Debug.Log("movemove");
     }
 
-    
+    private void OnEnable()
+    {
+        foreach(Banana banana in gameObject.GetComponentsInChildren<Banana>())
+        {
+            banana.gameObject.SetActive(true);
+        }
+    }
+
+
 }

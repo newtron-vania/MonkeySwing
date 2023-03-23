@@ -29,11 +29,8 @@ public class Define
     }
     public enum BGMs
     {
-        BGM_01,
-        BGM_02,
-        BGM_03,
-        BGM_04,
-        A_Bit_Of_Hope
+        MainBGM,
+        PlayGGM
     }
     public enum UIEvent
     {
