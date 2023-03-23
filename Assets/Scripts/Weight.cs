@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Weight : MonoBehaviour
 {
-    [SerializeField]
-    protected MonkeyController monkey;
-    TextMeshProUGUI weightText;
+    [SerializeField] Slider WeightSlider;
+    [SerializeField] protected MonkeyController monkey;
+    //TextMeshProUGUI weightText;
 
     private void Start()
     {
         StartCoroutine("FindMonkey");
-        weightText = this.GetComponent<TextMeshProUGUI>();
+        //weightText = this.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
-        weightText.text = $"Weight : {monkey.weight}";
+        WeightSlider.value = (float)monkey.weight;
+        // weightText.text = $"Weight : {monkey.weight}";
     }
 
     IEnumerator FindMonkey()

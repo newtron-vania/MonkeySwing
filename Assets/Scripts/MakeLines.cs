@@ -59,7 +59,7 @@ public class MakeLines : MonoBehaviour
     {
         if(distance >= 10.0f){
             NewLines = MakeLinesPlay();
-            //Debug.Log("create success");
+            // Debug.Log("create success");
             NewLines.transform.position = StartPosition;
             lineQueue.Enqueue(NewLines);
             distance = 0;

@@ -19,7 +19,7 @@ public class Distance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = "Distance : " + dist.ToString() + "m";
+        GetComponent<TextMeshProUGUI>().text = dist.ToString() + "m";
     }
 
     void ControlSpeedwithDist()
