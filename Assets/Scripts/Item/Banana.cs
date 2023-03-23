@@ -26,7 +26,7 @@ public class Banana : Items
         if (collision.tag == "Monkey")
         {
             ItemEvent();
-            Managers.Sound.Play("Coint");
+            Managers.Sound.Play("Coin");
             this.gameObject.SetActive(false);
             
         }
