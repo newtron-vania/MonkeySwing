@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigid = player.GetComponent<Rigidbody2D>();
+        slideSpeed = PlayerPrefs.GetFloat("slideSpeed");
     }
 
 
@@ -21,21 +22,21 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = 0;
 #if (UNITY_EDITOR)
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButton(0))
         {
-            moveX = Input.GetTouch(0).deltaPosition.normalized.x * 0.2f;
-            if (Mathf.Abs(moveX) < 0.01f)
-                moveX = 0;
+            moveX = Input.GetAxisRaw("Mouse X");
         }
-#elif (UNITY_ANDROID)
+#elif (UNITY_ANDROID || UNITY_IOS)
         if (Input.touchCount > 0)
         {
-            moveX = Input.GetTouch(0).deltaPosition.normalized.x * 0.1f;
-            if (moveX < 0.001f)
-                moveX = 0;
+            if(Input.GetTouch(0).phase == TouchPhase.Moved)
+            {
+                moveX = Input.GetTouch(0).deltaPosition.x * 0.05f;
+                if (Mathf.Abs(moveX) < 0.1f)
+                    moveX = 0;
+            }
         }
 #endif
-
 
         Vector2 nextMove = rigid.position + new Vector2(moveX * slideSpeed * Time.fixedDeltaTime, 0);
         if (nextMove.x < -2.5f)

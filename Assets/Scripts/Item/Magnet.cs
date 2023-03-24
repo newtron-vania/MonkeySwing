@@ -11,7 +11,7 @@ public class Magnet : Items
         if (monkey.transform.GetComponentInChildren<MagnetField>() != null)
             monkey.transform.GetComponentInChildren<MagnetField>().ResetTime();
         else
-            Managers.Resource.Instantiate(MagnetFieldPrefab, monkey.transform.position+ new Vector3(0,0,-10f), monkey.transform);
+            Managers.Resource.Instantiate(MagnetFieldPrefab, monkey.transform.position, monkey.transform);
         Managers.Sound.Play("ItemGet");
     }
 }

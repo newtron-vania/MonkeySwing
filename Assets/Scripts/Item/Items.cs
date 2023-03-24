@@ -9,7 +9,7 @@ public abstract class Items : MonoBehaviour
 
     protected Rigidbody2D rigid;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine("FindMonkey");
         rigid = this.GetComponent<Rigidbody2D>();
