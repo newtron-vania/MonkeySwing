@@ -5,23 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene
 {
-    public void ChangeSceneBtn(string TargetScene)
+    public void ChangeSceneBtn(string name)
     {
-        //Time.timeScale = 1;
-        //SceneManager.LoadScene(TargetScene);
-        
-        switch (TargetScene)
-        {
-            case "PlayerMoveTestScene2":
-            // 여기 씬이름 수정 필요
-                SceneManager.LoadScene(TargetScene);
-                Time.timeScale = 1;
-                break;
-            case "Home":
-                SceneManager.LoadScene(TargetScene);
-
-                break;
-        }
-        
+        SceneManager.LoadScene(name);
     }
 }

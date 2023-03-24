@@ -29,8 +29,8 @@ public class Define
     }
     public enum BGMs
     {
+        HomeBGM,
         MainBGM,
-        PlayGGM
     }
     public enum UIEvent
     {

@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HomeScene : BaseScene
 {
     public override Define.SceneType _sceneType { get { return Define.SceneType.Home; } }
+    [SerializeField]
+    GameObject cutSceneUI;
+    [SerializeField]
+    GameObject startToPlayUI;
+
 
     private void Start()
     {
@@ -15,13 +21,8 @@ public class HomeScene : BaseScene
         }
 
         GameManagerEx.Instance.player.SetData();
-        if(BananaCount.bananacount > 0)
-        {
-            GameManagerEx.Instance.player.Money += BananaCount.bananacount;
-            BananaCount.bananacount = 0;
-        }
-
     }
+
 
     public override void Clear()
     {

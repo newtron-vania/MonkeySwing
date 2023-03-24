@@ -8,7 +8,7 @@ public class SoundSlider : MonoBehaviour
     [SerializeField] Slider BGMSlider;
     [SerializeField] Slider EffectSlider;
 
-    void Start()
+    void OnEnable()
     {
         if(!PlayerPrefs.HasKey("BGMVolumn"))
         {

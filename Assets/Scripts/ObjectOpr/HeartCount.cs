@@ -7,7 +7,7 @@ public class HeartCount : MonoBehaviour
 {
     public static int heartcount = 3;
     public bool is_dead = false;
-    [SerializeField] GameObject Result_Popup;
+    public GameObject resultPopup;
 
     private void OnEnable() {
         // Result_Popup = GameObject.Find("ResultPopup");
@@ -22,31 +22,32 @@ public class HeartCount : MonoBehaviour
         //Debug.Log("update rpop");
         GetComponent<TextMeshProUGUI>().text = "Heart Count : " + heartcount.ToString();
         //Debug.Log(heartcount);
-        if(heartcount <= 0 & is_dead == false){
-            is_dead = true;
-            Time.timeScale = 0;
-            Result_Popup.SetActive(true);
-            /*
-            int now_banana = PlayerPrefs.GetInt("totalbananacount");
-            PlayerPrefs.SetInt("totalbananacount", now_banana + BananaCount.bananacount);
-            */
-        }
-    }
-/*
-    public void Heart_Counting()
-    {
-        StartCoroutine(Is_dead());
+        //if(heartcount <= 0 & is_dead == false){
+        //    is_dead = true;
+        //    Time.timeScale = 0;
+        //    Result_Popup.SetActive(true);
+        //    /*
+        //    int now_banana = PlayerPrefs.GetInt("totalbananacount");
+        //    PlayerPrefs.SetInt("totalbananacount", now_banana + BananaCount.bananacount);
+        //    */
+        //}
     }
 
-    private IEnumerator Is_dead()
-    {
-        yield return null;
-        Debug.Log("update rpop");
-        GetComponent<TextMeshProUGUI>().text = "Heart Count : " + heartcount.ToString();
-        // yield return new WaitForSeconds(1f);
-        
-        if(heartcount <= 0){
-            Result_Popup.SetActive(true);
+    /*
+        public void Heart_Counting()
+        {
+            StartCoroutine(Is_dead());
         }
-    }*/
+
+        private IEnumerator Is_dead()
+        {
+            yield return null;
+            Debug.Log("update rpop");
+            GetComponent<TextMeshProUGUI>().text = "Heart Count : " + heartcount.ToString();
+            // yield return new WaitForSeconds(1f);
+
+            if(heartcount <= 0){
+                Result_Popup.SetActive(true);
+            }
+        }*/
 }

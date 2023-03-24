@@ -12,6 +12,7 @@ public class GameManagerEx
     public Distance distance;
     public MonkeyController monkey;
     public BananaCount banana;
+    public bool isPlaying = false;
 
     static void Init()
     {
@@ -22,18 +23,20 @@ public class GameManagerEx
             g_instance.distance = GameObject.FindFirstObjectByType<Distance>();
             g_instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
             g_instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
+            g_instance.player = new PlayerData();
         }
     }
 
+
     public void GameOver()
     {
-        GameStop();
+        GameManagerEx.Instance.GameStop();
+        Managers.Sound.Clear();
         Managers.Sound.Play("GameOver");
-        GameObject.FindWithTag("ScorePopup").SetActive(true);
+        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        resultPopup.SetActive(true);
         //UI 생성 및 처리
     }
-
-
     //시간 정지
     public void GameStop()
     {

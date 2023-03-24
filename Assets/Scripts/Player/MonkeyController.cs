@@ -6,7 +6,7 @@ public class MonkeyController : MonoBehaviour
 {
     Rigidbody2D rigid;
     Animator anime;
-
+    CameraController camera;
     private int health;
     public int Health
     {
@@ -43,8 +43,9 @@ public class MonkeyController : MonoBehaviour
 
     void Start()
     {
-        health = 99;
+        health = 3;
         weight = 50;
+        camera = GetComponent<CameraController>();
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         StartCoroutine(LooseWeight());
@@ -103,7 +104,7 @@ public class MonkeyController : MonoBehaviour
     public void BeDamaged()
     {
         Health -= 1;
-        CameraController.CameraShakeEvent(0.5f, 1f);
+        CameraShake(0.4f, 0.5f);
         StartDamagedAnime();
         StartInvinvible(invincibilityTime);
         Invoke("EndDamagedAnime", invincibilityTime);
@@ -146,5 +147,29 @@ public class MonkeyController : MonoBehaviour
         isDamaged = true;
         yield return new WaitForSeconds(time);
         isDamaged = false;
+    }
+
+    public void CameraShake(float time, float force)
+    {
+        StartCoroutine(StartShake(time, force));
+    }
+
+    IEnumerator StartShake(float maxTime, float force)
+    {
+        Vector3 cameraPos = Camera.main.transform.position;
+        float shakeTerm = 0.1f;
+        float time = 0;
+        float basicForce = 0.1f * force;
+        while (time <= maxTime)
+        {
+            Vector3 nextCameraPos = cameraPos;
+            float randX = UnityEngine.Random.Range(-basicForce, basicForce);
+            float randY = UnityEngine.Random.Range(-basicForce, basicForce);
+            Vector3 nextMove = new Vector3(randX, randY, 0);
+            Camera.main.transform.position = nextCameraPos + nextMove;
+            yield return new WaitForSeconds(shakeTerm);
+            time += shakeTerm;
+        }
+        Camera.main.transform.position = cameraPos;
     }
 }

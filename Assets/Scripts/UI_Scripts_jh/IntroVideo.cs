@@ -6,30 +6,36 @@ using UnityEngine.Video;
 public class IntroVideo : MonoBehaviour
 {
     private VideoPlayer vid;
-
-    private void Awake() {
-        PlayerPrefs.SetInt("tutorial_played", PlayerPrefs.GetInt("tutorial_played", 0));
-        vid = GetComponent<VideoPlayer>();
-    }
+    [SerializeField]
+    private GameObject TouchToStartUI;
 
     private void Start()
     {
-        PlayerPrefs.SetInt("tutorial_played", 0); // 테스트를 위해 추가 (항상 재생되도록 함)
+        vid = GetComponent<VideoPlayer>();
         // !PlayerPrefs.HasKey("tutorial_played")
-        if(PlayerPrefs.GetInt("tutorial_played") == 0)
+        if(!PlayerPrefs.HasKey("tutorial_played"))
         {
-            PlayerPrefs.SetInt("tutorial_played", 0);
             vid.Play();
             Tutorial_Start();
             Debug.Log("video started");
             PlayerPrefs.SetInt("tutorial_played",1);
             PlayerPrefs.Save();
         }
-        else if (PlayerPrefs.GetInt("tutorial_played") == 1)
+        else
         {
             Debug.Log("already played");
+            TouchToStartUI.SetActive(true);
             transform.parent.gameObject.SetActive(false);
             return;
+        }
+    }
+
+    private void Update()
+    {
+        if (vid.isPaused)
+        {
+            TouchToStartUI.SetActive(true);
+            transform.parent.gameObject.SetActive(false);
         }
     }
 

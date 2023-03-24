@@ -5,14 +5,10 @@ using TMPro;
 
 public class Distance : MonoBehaviour
 {
-<<<<<<< HEAD:Assets/Scripts/ObjectOpr/Distance.cs
     [SerializeField]
     int dist = 0;
     [SerializeField]
     BackgroundScrolling backgroundController;
-=======
-    public static int dist = 0;
->>>>>>> GameOver_Popup:Assets/Scripts/Distance.cs
 
     public int Dist { 
         get { return dist; }

@@ -11,13 +11,24 @@ public class MainScene : BaseScene
     {
         GameManagerEx.Instance.distance = GameObject.FindFirstObjectByType<Distance>();
         GameManagerEx.Instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
-        GameManagerEx.Instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
+        StartCoroutine("FindMonkey");
         BananaCount.bananacount = 0;
+        GameManagerEx.Instance.GameStart();
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
 
     public override void Clear()
     {
         throw new System.NotImplementedException();
+    }
+
+    IEnumerator FindMonkey()
+    {
+        while (GameObject.FindWithTag("Monkey") == null)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        GameManagerEx.Instance.monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
+        //Debug.Log($"{this.transform.name} find {monkey.transform.name}");
     }
 }

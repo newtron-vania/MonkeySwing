@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Popup_manager : MonoBehaviour
 {
-    ChangeScene change_scene = new ChangeScene();
-
+    ChangeScene changeScene = new ChangeScene();
+    [SerializeField]
+    CountUI countUI;
     private void OnEnable()
     {
         SetTimeScale(0);
@@ -30,13 +31,20 @@ public class Popup_manager : MonoBehaviour
         // OnClickCloseButton();
         // æ¿ ¿Ã∏ß πŸ≤Ó∏È πŸ≤„æﬂ«‘
         // SceneManager.LoadScene("PlayerMoveTestScene2");
-        change_scene.ChangeSceneBtn("PlayerMoveTestScene2");
+        changeScene.ChangeSceneBtn("MainScene");
     }
 
     public void OnClickHomeButton()
     {
         OnClickCloseButton();
-        change_scene.ChangeSceneBtn("Home");
+        BananaCount.bananacount = 0;
+        changeScene.ChangeSceneBtn("Home");
+    }
+
+    public void OnClickGameOverButton()
+    {
+        OnClickCloseButton();
+        changeScene.ChangeSceneBtn("Home");
     }
 
     public void OnClickContinueButton()
@@ -57,6 +65,13 @@ public class Popup_manager : MonoBehaviour
         gameObject.SetActive(false);
         //Debug.Log("Time.timeScale1" + Time.timeScale);
         //animator.ResetTrigger("close");
+    }
+
+    public void OnClickRetryButton()
+    {
+        gameObject.SetActive(false);
+        countUI.gameObject.SetActive(true);
+        countUI.SetCount(3f);
     }
 
     public void OnClickExitButton()
