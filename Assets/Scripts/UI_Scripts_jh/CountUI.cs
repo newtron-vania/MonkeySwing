@@ -7,8 +7,6 @@ public class CountUI : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI countText;
 
-    // Start is called before the first frame update
-
     public void SetCount(float time)
     {
         StartCoroutine(countCoroutine(time));

@@ -72,6 +72,8 @@ public class Popup_manager : MonoBehaviour
         gameObject.SetActive(false);
         countUI.gameObject.SetActive(true);
         countUI.SetCount(3f);
+
+        HeartCount.is_retry = true;
     }
 
     public void OnClickExitButton()

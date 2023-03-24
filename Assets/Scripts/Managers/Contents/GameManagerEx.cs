@@ -37,7 +37,8 @@ public class GameManagerEx
         GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
         resultPopup.SetActive(true);
         //UI 생성 및 처리
-    }
+    }   
+
     //시간 정지
     public void GameStop()
     {

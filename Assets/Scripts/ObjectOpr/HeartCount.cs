@@ -1,53 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HeartCount : MonoBehaviour
 {
     public static int heartcount = 3;
-    public bool is_dead = false;
+    public GameObject[] hearts;
+    private static bool[] flag = new bool[3] {true, true, true};   
+    public static bool is_retry = false;
     public GameObject resultPopup;
 
-    private void OnEnable() {
-        // Result_Popup = GameObject.Find("ResultPopup");
-        is_dead = false;
-        Debug.Log("start sdsd rpop");
-        //Heart_Counting();
-    }
- 
-    // Update is called once per frame
-    private void Update()
+    void OnEnable()
     {
-        //Debug.Log("update rpop");
-        GetComponent<TextMeshProUGUI>().text = "Heart Count : " + heartcount.ToString();
-        //Debug.Log(heartcount);
-        //if(heartcount <= 0 & is_dead == false){
-        //    is_dead = true;
-        //    Time.timeScale = 0;
-        //    Result_Popup.SetActive(true);
-        //    /*
-        //    int now_banana = PlayerPrefs.GetInt("totalbananacount");
-        //    PlayerPrefs.SetInt("totalbananacount", now_banana + BananaCount.bananacount);
-        //    */
-        //}
+        heartcount = 3;
+        heartImg_reset();
     }
 
-    /*
-        public void Heart_Counting()
+    void Update()
+    {   
+        // GameObject.Find("HeartCount").GetComponent<TextMeshProUGUI>().text = "heartcount : " + heartcount.ToString();
+
+        if (heartcount != 3 && flag[heartcount])
         {
-            StartCoroutine(Is_dead());
+            GameObject ht = hearts[heartcount];
+            ht.SetActive(false);
+            flag[heartcount] = false;
         }
 
-        private IEnumerator Is_dead()
+        if (is_retry)
         {
-            yield return null;
-            Debug.Log("update rpop");
-            GetComponent<TextMeshProUGUI>().text = "Heart Count : " + heartcount.ToString();
-            // yield return new WaitForSeconds(1f);
+            heartImg_reset();
+        }
+    }
 
-            if(heartcount <= 0){
-                Result_Popup.SetActive(true);
+    
+    public void heartImg_reset()
+    {
+        if (heartcount == 3 && flag[heartcount-1] == false)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject.Find("HeartContainer").transform.GetChild(i).gameObject.SetActive(true);
+                flag[heartcount-(i+1)] = true;
             }
-        }*/
+        }
+    } 
 }
