@@ -8,7 +8,7 @@ public class CaloryBanana : Items
     {
         monkey.Weight = Mathf.Min(monkey.Weight + 20, 100);
         //Todo
-        Managers.Sound.Play("Coin");
+        Managers.Sound.Play("CaloryBanana");
     }
 
 }
