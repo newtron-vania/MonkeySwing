@@ -43,7 +43,7 @@ public class MonkeyController : MonoBehaviour
 
     void Start()
     {
-        health = 99;
+        health = 3;
         weight = 50;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
