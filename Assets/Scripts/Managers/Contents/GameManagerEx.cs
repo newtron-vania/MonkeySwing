@@ -36,8 +36,23 @@ public class GameManagerEx
         Managers.Sound.Play("GameOver");
         GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
         resultPopup.SetActive(true);
+
+        // Invoke("Delay", 5);
+
+        //Popup_manager popup_mg = new Popup_manager();
+        //popup_mg.ResultPopupOpen();
+
+        //StartCoroutine(DelayCoroution());
         //UI 생성 및 처리
-    }   
+    }
+
+    /*IEnumerator DelayCoroution()
+    {
+        yield return new WaitForSeconds(5);
+        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        resultPopup.SetActive(true);
+    }*/
+     
 
     //시간 정지
     public void GameStop()

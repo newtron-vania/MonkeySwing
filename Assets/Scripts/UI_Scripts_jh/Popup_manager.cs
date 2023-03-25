@@ -21,9 +21,21 @@ public class Popup_manager : MonoBehaviour
     public void ResultPopupOpen()
     {   
         SetTimeScale(0);
-        gameObject.SetActive(true);
-        //OnClickCloseButton();
+        //GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        //resultPopup.SetActive(true);
+        OnClickCloseButton();
+        // StartCoroutine(DelayCoroution());
+        //UI ?? ? ??
     }
+
+    /*IEnumerator DelayCoroution()
+    {
+        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        
+        
+        resultPopup.SetActive(true);
+        yield return new WaitForSeconds(5);
+    }*/
 
     public void OnClickStartButton()
     {   
