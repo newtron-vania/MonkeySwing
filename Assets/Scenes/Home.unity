@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1895556846109595939, guid: 27f89d91028f17348a3ef57464c1d79a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f89d91028f17348a3ef57464c1d79a, type: 3}
@@ -929,12 +929,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3695218185914990666, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695218185945277045, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3695218185979816804, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3695218186320667845, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695218186483526872, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
+      propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3695218186483526874, guid: 6e3abab9af179964eae094b4ba684006, type: 3}
@@ -962,6 +974,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 85891376}
+    - target: {fileID: 6068757193994046668, guid: 3ed0d93eba45c8a4fb3464e410094cd7, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6068757195225547046, guid: 3ed0d93eba45c8a4fb3464e410094cd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
