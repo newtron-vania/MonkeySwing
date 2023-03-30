@@ -20,11 +20,14 @@ public class MakeLines : MonoBehaviour
     [SerializeField]
     float lineSpeed = 2f;
     float appliedLineSpeed = 2f;
+    bool isBoosting = false;
 
     public float LineSpeed { 
         get { return lineSpeed; } 
         set { 
             lineSpeed = value;
+            if (isBoosting)
+                return;
             appliedLineSpeed = lineSpeed;
             foreach (GameObject go in lineQueue)
             {
@@ -47,10 +50,6 @@ public class MakeLines : MonoBehaviour
             string maplevel = $"level {i}";
             GameObject[] maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
             levelLinesDict.Add(i, maps);
-            foreach(GameObject map in maps)
-            {
-                Debug.Log($"level : {i} , name : {map.name}");
-            }
         }
     }
 
@@ -112,13 +111,14 @@ public class MakeLines : MonoBehaviour
 
     IEnumerator BoostLineSpeedCoroutine(float time, float force)
     {
-        appliedLineSpeed = lineSpeed;
-        appliedLineSpeed *= force;
+        isBoosting = true;
+        appliedLineSpeed = lineSpeed * force;
         foreach (GameObject go in lineQueue)
         {
             go.GetComponent<LinesMove>().speed = appliedLineSpeed;
         }
         yield return new WaitForSeconds(time);
+        isBoosting = false;
         appliedLineSpeed = lineSpeed;
         foreach (GameObject go in lineQueue)
         {

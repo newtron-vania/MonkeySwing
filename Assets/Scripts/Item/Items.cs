@@ -16,14 +16,6 @@ public abstract class Items : MonoBehaviour
     }
     protected abstract void ItemEvent();
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Banana")
-        {
-            collision.gameObject.SetActive(false);
-        }
-    }
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Monkey")

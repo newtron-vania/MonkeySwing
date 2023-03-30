@@ -21,11 +21,19 @@ public class ItemSpawner : MonoBehaviour
             Managers.Resource.Instantiate(items[(int)lockItem], this.transform.position, transform.parent);
             return;
         }
-        int itemNum = (int)RandomItem();
+        int itemNum = Random.Range(0, items.Length);//(int)RandomItem();
         if (itemNum > items.Length)
             return;
+        Collider2D[] goes = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
+        foreach(Collider2D collision in goes)
+        {
+            if (collision.tag == "Banana")
+            {
+                collision.gameObject.SetActive(false);
+            }
+        }
+
         GameObject item = items[itemNum];
-        Debug.Log($"itemname : {item.name}, position : {this.transform.position}");
         Managers.Resource.Instantiate(item, this.transform.position, transform.parent);
     }
 

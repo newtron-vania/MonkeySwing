@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class MonkeyController : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    Animator anime;
-    CameraController camera;
+    enum CharacterState
+    {
+        Hunger,
+        Normal,
+        Full,
+        Damaged,
+    }
+
+    private Rigidbody2D rigid;
+    private Animator anime;
+
+    [SerializeField]
+    private Sprite[] monkeyFaceMode;
+    [SerializeField]
+    private SpriteRenderer monkeyFace;
+
+    private SpriteRenderer[] monkeyBody;
+
     private int health;
     public int Health
     {
@@ -30,14 +45,53 @@ public class MonkeyController : MonoBehaviour
     public int Weight { 
         get { return weight; } 
         set 
-        { 
+        {
             weight = value;
-            anime.SetInteger("weight", weight);
+            if (isDamaged)
+                return;
+            if (weight <= 20)
+                PlayerState = CharacterState.Hunger;
+            else if (weight < 80)
+                PlayerState = CharacterState.Normal;
+            else
+                PlayerState = CharacterState.Full;
         } 
     }
+
+    CharacterState playerState = CharacterState.Normal;
+    CharacterState PlayerState { 
+        get { return playerState; } 
+        set 
+        { 
+            playerState = value;
+            switch (playerState)
+            {
+                case CharacterState.Hunger:
+                    anime.Play("HungerFace");
+                    rigid.drag = .5f;
+                    break;
+                case CharacterState.Normal:
+                    anime.Play("NormalFace");
+                    rigid.drag = 2f;
+                    break;
+                case CharacterState.Full:
+                    anime.Play("FullFace");
+                    rigid.drag = 4f;
+                    break;
+                case CharacterState.Damaged:
+                    Debug.Log("isDamaged!");
+                    BeDamaged();
+                    anime.Play("BeDamaged");
+                    isDamaged = true;
+                    break;
+            }
+        } 
+    }
+
     [SerializeField]
-    private float invincibilityTime = 2f;
+    private float damagedTime = 2f;
     private bool isDamaged = false;
+    private bool isInvincible = false;
     
 
 
@@ -45,17 +99,18 @@ public class MonkeyController : MonoBehaviour
     {
         health = 3;
         weight = 50;
-        camera = GetComponent<CameraController>();
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         StartCoroutine(LooseWeight());
+
+        monkeyBody = transform.GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //VelocityCheck();
-        CheckLinearDrag();
+
         CheckGravity();
     }
 
@@ -82,8 +137,8 @@ public class MonkeyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!isDamaged && (collision.tag == "Enemy"))
-            BeDamaged();
+        if(!isInvincible && (collision.tag == "Enemy"))
+            PlayerState = CharacterState.Damaged;
         else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
         {
             GameManagerEx.Instance.distance.Dist += 5;
@@ -101,21 +156,62 @@ public class MonkeyController : MonoBehaviour
     }
 
     Coroutine InvinvibleCoroutine;
+    Coroutine BoostCoroutine;
     public void BeDamaged()
+    {
+        StartCoroutine(OnDamaged(damagedTime));
+    }
+
+    IEnumerator OnDamaged(float damagedTime)
     {
         Health -= 1;
         CameraShake(0.4f, 0.5f);
-        StartDamagedAnime();
-        StartInvinvible(invincibilityTime);
-        Invoke("EndDamagedAnime", invincibilityTime);
+        StartInvinvible(damagedTime);
+        while (isInvincible)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        isDamaged = false;
     }
 
     public void StartBoost(float continuousTime, float waitTime)
     {
-        Invoke("StartDamagedAnime", continuousTime);
-        Invoke("EndDamagedAnime", continuousTime + waitTime);
-        StartInvinvible(continuousTime+ waitTime);
+        StopBoost();
+        BoostCoroutine = StartCoroutine(OnBoost(continuousTime, waitTime));
     }
+
+    private void StopBoost()
+    {
+        if (BoostCoroutine != null)
+        {
+            foreach(SpriteRenderer sprite in monkeyBody)
+            {
+                SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 1f));
+            }
+            StopCoroutine(BoostCoroutine);
+        }
+    }
+
+    void SetMonkeyColorAlpha(Color color)
+    {
+        foreach (SpriteRenderer sprite in monkeyBody)
+        {
+            sprite.color = color;
+        }
+    }
+
+    IEnumerator OnBoost(float continuousTime, float waitTime)
+    {
+        StartInvinvible(continuousTime + waitTime);
+        yield return new WaitForSeconds(continuousTime);
+        SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 0.5f));
+        Debug.Log($"Face Color Setting : { monkeyFace.color}");
+        yield return new WaitForSeconds(waitTime);
+        SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 1f));
+    }
+
+
+
 
     public void StartDamagedAnime()
     {
@@ -138,15 +234,19 @@ public class MonkeyController : MonoBehaviour
     {
         if (InvinvibleCoroutine != null)
         {
+            isInvincible = false;
             StopCoroutine(InvinvibleCoroutine);
         }
     }
 
+
+
+
     IEnumerator OnInvincible(float time)
     {
-        isDamaged = true;
+        isInvincible = true;
         yield return new WaitForSeconds(time);
-        isDamaged = false;
+        isInvincible = false;
     }
 
     public void CameraShake(float time, float force)

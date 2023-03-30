@@ -71,7 +71,6 @@ public class BackgroundScrolling : MonoBehaviour
             foreach (SpriteRenderer backSR in backgroundSpriteRenderers)
             {
                 backSR.color += new Color(1f, 1f, 1f, 0) * diff;
-                Debug.Log(backSR.color);
             }
             yield return new WaitForSeconds(0.1f);
             changeTime += 0.1f;

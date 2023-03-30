@@ -55,4 +55,12 @@ public class Define
         Count,
         None
     }
+
+    public enum Rarelity
+    {
+        Normal,
+        Rare,
+        Unique,
+        Legendary
+    }
 }

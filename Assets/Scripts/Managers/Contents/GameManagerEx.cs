@@ -18,7 +18,6 @@ public class GameManagerEx
     {
         if (g_instance == null)
         {
-            Debug.Log("Instance Reset");
             g_instance = new GameManagerEx();
             //TODO
             g_instance.distance = GameObject.FindFirstObjectByType<Distance>();

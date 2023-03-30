@@ -52,4 +52,6 @@ public class ChainCreater : MonoBehaviour
         lastHinge.connectedBody = chainList[count - 1].GetComponent<Rigidbody2D>();
     }
 
+
+
 }
