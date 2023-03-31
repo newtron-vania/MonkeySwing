@@ -12,6 +12,7 @@ using System;
 //public struct SkinData
 //[System.Serializable]
 //public class SkinData 
+/*
 public struct SkinData{
         public int id;
         public string name;
@@ -25,7 +26,7 @@ public struct SkinData{
 
         
     }
-
+*/
 
 public class Monkey_Skin : MonoBehaviour
 {

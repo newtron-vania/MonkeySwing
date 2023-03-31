@@ -37,6 +37,21 @@ public class Popup_manager : MonoBehaviour
         yield return new WaitForSeconds(5);
     }*/
 
+
+    public void OnClick_Purchase_Yes_Btn()
+    { 
+        Skin_Manager skin_manager = new Skin_Manager();
+        skin_manager.OnClick_Purchase_Yes_Btn();
+        OnClickCloseButton();
+    }
+
+    public void OnClick_Purchase_No_Btn()
+    {
+        Skin_Manager skin_manager = new Skin_Manager();
+        skin_manager.OnClick_Purchase_No_Btn();
+        OnClickCloseButton();
+    }
+
     public void OnClickStartButton()
     {   
         SetTimeScale(1);

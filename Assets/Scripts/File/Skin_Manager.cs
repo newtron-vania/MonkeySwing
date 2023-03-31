@@ -10,94 +10,45 @@ using System;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
- 
-
-//public struct SkinData
-//[System.Serializable]
-//public class SkinData 
 
 
 public class Skin_Manager : MonoBehaviour
-{
-    [System.Serializable]
-    public class SkinData
     {
-        public int id;
-        public string name;
-        public bool is_locked;
-        public string slot_lock_img_path;
-        public string slot_unlock_img_path;
-        public List<string> monkey_skin_path;
-        public int price;
-        public bool is_current_PlayerSkin;
-        public bool is_current_PreviewSkin;
-    }
-
-     public class SkinDatas
-    {
-        public SkinData[] skins;
-    }
+    public int Skin_id;
+    private static int currentSkin_ID;
 
 
-    public int id;
-
-    private string filename = "SkinDatas.json";
     private Sprite BodySprite;
     private Sprite TailSprite;
 
-    SkinDatas MySkinList = new SkinDatas();
-
-    JsonData Skins = new JsonData ();
-    SkinData currentSkinData = new SkinData();
-
-    //JsonData Skins_ = new jsonData();
-    //static List<SkinData> Skins = new List<SkinData> ();
-    //JsonData currentSkinData 
+    //SkinData_Manager skindata_MG = new SkinData_Manager();
+    //List<SkinData> MySkinList = new List<SkinData>();
+    //MySkinList = SkinData_Manager.MySkinList.skins;
+    //public SkinData_Manager skindata_MG = new SkinData_Manager();
+    // skindata_MG.MySkinList
+    SkinData currentSkinData;
    
-   void Awake() {
-        //FileHandler.SaveToJSON<SkinData> (Skins, filename);
-        Data_Load();
-    }
-
     void Start()
     {
+        Debug.Log("Skin_Manager 시작! ID : " +  Skin_id);
+        Debug.Log(SkinData_Manager.MySkinList.skins.Count);
+        Debug.Log(SkinData_Manager.MySkinList.skins[0].name);
+
+        currentSkinData =  Get_SkinData(Skin_id);
+;
         SkinImg_Load();
         PreviewBtn_Img_Load();
         PurchaseBtn_Load();        
     }
 
-    public void Data_Load()
+    public void CurrentSkinData_Load()
     {
-        Debug.Log("불러오기");
-        // List<SkinData>로 json파일의 내용 받아옴.
-        string filePath = Application.dataPath + "/example.json";
-        
-        string jsonData = File.ReadAllText(filePath);
-        Debug.Log(jsonData);
-
-        MySkinList = JsonUtility.FromJson<SkinDatas>(jsonData);
-        Debug.Log(MySkinList.Count);
-
-
-        
-        Skins = JsonMapper.ToObject(jsonData);
-
-        JsonData nowData = Skins[id];
-        currentSkinData = nowData.ToList();
-
-
-        //string filePath = Application.dataPath + "/SkinDatas.json";
-        //string jsonData = File.ReadAllText(filePath);
-        //Skins = JsonUtility.FromJson<List<SkinData>>(jsonData);
-
-        // Skins = FileHandler.ReadListFromJSON<SkinData>("SkinDatas.json");
-        Debug.Log(Skins.Count);
-        Debug.Log(Skins[0]["name"]);  
-        // id번째의 skindata를 currentSkinData에 저장.
-        //currentSkinData = Skins[id];
-        Debug.Log(currentSkinData);
+        if (currentSkinData == null){
+            currentSkinData = Get_SkinData(currentSkin_ID);
+        }
     }
 
+    // 현재 Skin_id의 숭숭이 sprite 불러오기
     public void SkinImg_Load()
     {
         string body_path = currentSkinData.monkey_skin_path[0];
@@ -124,56 +75,118 @@ public class Skin_Manager : MonoBehaviour
     public void PurchaseBtn_Load()
     {
         string state = "";
-        if(currentSkinData.is_locked){ //잠겨있으면
+        CurrentSkinData_Load();
+        Debug.Log(currentSkinData + "은 현재 스킨 데이터 입니다.");
+        if(currentSkinData.is_locked){ // 잠겨있으면 금액 가져오기
             state = currentSkinData.price.ToString();
         }
-        else if(!currentSkinData.is_locked){ //안잠겨있고
-            if(currentSkinData.is_current_PlayerSkin){ // 현재 착용중이면
+        else if(!currentSkinData.is_locked){ //안잠겨있으고
+            if(currentSkinData.is_current_PlayerSkin){ // 현재 플래이어 스킨이라면
                 state = "사용중";
+                // 여기서 슬롯 파란박스 추가하기
             }
             else{
-                state = "장착";
+                state = "장착"; // 현재 플래이어 스킨이 아니라면
             }
         }
-        
-        GameObject PurchaseBtn = transform.Find("state").gameObject;
-        PurchaseBtn.GetComponent<TextMeshProUGUI>().text = state;
+        GameObject PurchaseBtn = transform.Find("Skin_purchase_btn").gameObject;
+        GameObject PurchaseBtn_Txt = PurchaseBtn.transform.Find("state").gameObject;
+        PurchaseBtn_Txt.GetComponent<TextMeshProUGUI>().text = state;
 
     }
 
     public void OnClick_purchase_Btn()
     {
-        Reset_is_current_PlayerSkin();
-        if (!currentSkinData.is_locked){
-            //구매하시겠습니까 팝업 띄우기
-            // 구매 진행
-
+        currentSkin_ID = Skin_id;
+        CurrentSkinData_Load(); // currentSkinData 비어있는지 확인
+        if (currentSkinData.is_locked){
+            // 스킨 구매 팝업 띄우기
+            Debug.Log("구매하시겠습니까");
+            GameObject Purchase_popup = GameObject.Find("Shop").transform.Find("Purchase_popup").gameObject;
+            Purchase_popup.SetActive(true);
+            // popup 창에서 yes or no 판단
         }
-        else if(currentSkinData.is_locked)
+        else if(!currentSkinData.is_locked)
         {
             if(currentSkinData.is_current_PlayerSkin)
             {
-                Debug.Log("이미 장착중인 스킨입니다.");
+                Debug.Log("이미 사용중인 스킨입니다.");
             }
-            if(!currentSkinData.is_current_PlayerSkin)
+            else if(!currentSkinData.is_current_PlayerSkin)
             {
-                MonkeyPreviewSKin_Change();
+                Debug.Log("스킨을 변경합니다. 스킨 변경이 완료되었습니다.");
+                Reset_is_current_PlayerSkin();
+                currentSkinData.is_current_PlayerSkin = true;
+                
+                OnClick_Preview_Btn();
                 MonkeyPrefabSKin_Change();
-                // slot 파란 박스선 추가
                 PurchaseBtn_Load();
             }
         }
     }
 
+    public int GetCurrentPreviewID(){
+        //Debug.Log(MySkinList.skins[2]);
+        Debug.Log(SkinData_Manager.MySkinList.skins);
+        Debug.Log(SkinData_Manager.MySkinList.skins[0].name);
+        for (int count = 0; count < SkinData_Manager.MySkinList.skins.Count; count++)
+        {
+            if (SkinData_Manager.MySkinList.skins[count].is_current_PreviewSkin == true){
+                return SkinData_Manager.MySkinList.skins[count].id;
+            }
+        }
+        return 0;
+    }
+
+    public void OnClick_Purchase_Yes_Btn()
+    { 
+        //GameManagerEx.Instance.player.Money
+
+
+        Debug.Log("구매시작합니다아아");
+        int ID = GetCurrentPreviewID();
+        CurrentSkinData_Load();
+        Debug.Log("구매하겠습니다.");
+        SkinData now_Skin = Get_SkinData(ID);
+        Debug.Log( now_Skin.price + " : 현재 바나나");
+
+        //int bananacount = PlayerPrefs.GetInt("totalbananacount");
+       
+        GameManagerEx.Instance.player.Money = 10000; // 나중에 지우기
+        int bananacount = GameManagerEx.Instance.player.Money;
+        Debug.Log(bananacount + " : 전체 바나나");
+        if (bananacount >= now_Skin.price){
+            Debug.Log("스킨을 구매합니다.");
+            now_Skin.is_locked = false;
+            bananacount -= now_Skin.price;
+            GameManagerEx.Instance.player.Money = bananacount; 
+            // PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
+            PurchaseBtn_Load(); // 버튼 상태를 장착으로 바꾸기
+        }
+        else if (bananacount < now_Skin.price){
+             Debug.Log("재화가 부족합니다.");
+        }
+        //gameObject.SetActive(false);
+    }
+
+    public void OnClick_Purchase_No_Btn()
+    {
+        int ID = GetCurrentPreviewID();
+        SkinData now_Skin = Get_SkinData(ID);
+
+        now_Skin.is_locked = true;
+        Debug.Log("스킨을  구입하지 않습니다.");
+        //gameObject.SetActive(false);
+    }
+
     public void OnClick_Preview_Btn()
     {
-        Reset_is_current_PreviewSkin();
+        // PreviewBtn_Img_Load();
         if (!currentSkinData.is_current_PreviewSkin)
         {
             MonkeyPreviewSKin_Change();
-            // Preview Monkey name change
-            GameObject MonkeyName = GameObject.Find("MonkeyName_TXT").gameObject;
-            MonkeyName.GetComponent<TextMeshProUGUI>().text = currentSkinData.name; // 계속 저장해야 함.!!!
+            Reset_is_current_PreviewSkin();
+            currentSkinData.is_current_PreviewSkin = true;
         }
     }
 
@@ -185,6 +198,9 @@ public class Skin_Manager : MonoBehaviour
         Monkey_body.GetComponent<Image>().sprite = BodySprite;
         GameObject Monkey_tail = Monkey_preview.transform.Find("Monkey_Tail").gameObject;
         Monkey_tail.GetComponent<Image>().sprite = TailSprite;
+        GameObject MonkeyName = Monkey_preview.transform.Find("MonkeyName").gameObject;
+        GameObject MonkeyName_TXT = MonkeyName.transform.Find("MonkeyName_TXT").gameObject;
+        MonkeyName_TXT.GetComponent<TextMeshProUGUI>().text = currentSkinData.name;
 
         string path = "Assets/Resources/Shop/Monkey_preview.prefab";
         PrefabUtility.SaveAsPrefabAsset(Monkey_preview, path);
@@ -205,23 +221,37 @@ public class Skin_Manager : MonoBehaviour
         currentSkinData.is_current_PlayerSkin = true;
     }
 
+
     public void Reset_is_current_PlayerSkin()
     {
-        for (int i = 0; i < Skins.Count; i++)
+        for (int count = 0; count < SkinData_Manager.MySkinList.skins.Count; count++)
         {
-            SkinData temp = Skins[i];
-            temp.is_current_PlayerSkin = false;
-            Skins[i] = temp;
+            if (SkinData_Manager.MySkinList.skins[count].is_current_PlayerSkin == true){
+                // 파란 박스 제거, 장착으로 텍스트 변경
+                SkinData_Manager.MySkinList.skins[count].is_current_PlayerSkin = false;
+            }
         }
     }
 
     public void Reset_is_current_PreviewSkin()
     {
-        for (int i = 0; i < Skins.Count; i++)
+        for (int count = 0; count < SkinData_Manager.MySkinList.skins.Count; count++)
         {
-            SkinData temp = Skins[i];
-            temp.is_current_PreviewSkin = false;
-            Skins[i] = temp;
+            if (SkinData_Manager.MySkinList.skins[count].is_current_PreviewSkin == true){
+                SkinData_Manager.MySkinList.skins[count].is_current_PreviewSkin = false;
+            }
         }
     }
+
+    public SkinData Get_SkinData(int ID)
+    {
+        for (int count = 0; count < SkinData_Manager.MySkinList.skins.Count; count++)
+        {
+            if (SkinData_Manager.MySkinList.skins[count].id == ID){
+                return SkinData_Manager.MySkinList.skins[count];
+            }
+        }
+        return null;
+    }
+
 }
