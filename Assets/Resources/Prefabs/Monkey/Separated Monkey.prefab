@@ -364,7 +364,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08686ad05b5177e4a8c8c1a418354450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monkeyFace: {fileID: 6086349689563042623}
+  monkeyFaceMode:
+  - {fileID: 21300000, guid: cd738416e0693f34ea33da3a313476f8, type: 3}
+  - {fileID: 21300000, guid: 0040eecf8e622d64f9235eb38dc3335a, type: 3}
+  - {fileID: 21300000, guid: 6b0460f4a0667834e98eb557c96dbfa1, type: 3}
+  - {fileID: 21300000, guid: c3fe1507595b2cb4a9aa057a7c84c476, type: 3}
+  monkeyFace: {fileID: 6257984603325008965}
+  monkeyBody:
+  - {fileID: 6382364990898066313}
+  - {fileID: 6086349689563042623}
+  - {fileID: 6257984603325008965}
   maxVelocityForce: 10
   gravity: 1
   weight: 50

@@ -19,7 +19,7 @@ public class MonkeyController : MonoBehaviour
     private Sprite[] monkeyFaceMode;
     [SerializeField]
     private SpriteRenderer monkeyFace;
-
+    [SerializeField]
     private SpriteRenderer[] monkeyBody;
 
     private int health;
@@ -67,21 +67,22 @@ public class MonkeyController : MonoBehaviour
             switch (playerState)
             {
                 case CharacterState.Hunger:
-                    anime.Play("HungerFace");
+                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Hunger];
                     rigid.drag = .5f;
                     break;
                 case CharacterState.Normal:
-                    anime.Play("NormalFace");
+                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Normal];
                     rigid.drag = 2f;
                     break;
                 case CharacterState.Full:
-                    anime.Play("FullFace");
+                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Full];
                     rigid.drag = 4f;
                     break;
                 case CharacterState.Damaged:
                     Debug.Log("isDamaged!");
                     BeDamaged();
                     anime.Play("BeDamaged");
+                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Damaged];
                     isDamaged = true;
                     break;
             }
@@ -103,7 +104,7 @@ public class MonkeyController : MonoBehaviour
         anime = GetComponent<Animator>();
         StartCoroutine(LooseWeight());
 
-        monkeyBody = transform.GetComponentsInChildren<SpriteRenderer>();
+        //monkeyBody = transform.GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -172,6 +173,7 @@ public class MonkeyController : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         isDamaged = false;
+        anime.Play("Normal");
     }
 
     public void StartBoost(float continuousTime, float waitTime)
@@ -184,19 +186,8 @@ public class MonkeyController : MonoBehaviour
     {
         if (BoostCoroutine != null)
         {
-            foreach(SpriteRenderer sprite in monkeyBody)
-            {
-                SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 1f));
-            }
+            anime.Play("Normal");
             StopCoroutine(BoostCoroutine);
-        }
-    }
-
-    void SetMonkeyColorAlpha(Color color)
-    {
-        foreach (SpriteRenderer sprite in monkeyBody)
-        {
-            sprite.color = color;
         }
     }
 
@@ -204,10 +195,11 @@ public class MonkeyController : MonoBehaviour
     {
         StartInvinvible(continuousTime + waitTime);
         yield return new WaitForSeconds(continuousTime);
-        SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 0.5f));
-        Debug.Log($"Face Color Setting : { monkeyFace.color}");
+        Debug.Log("Boost Over! Invinvible continue");
+        anime.Play("BoostOver");
         yield return new WaitForSeconds(waitTime);
-        SetMonkeyColorAlpha(new Color(1f, 1f, 1f, 1f));
+        Debug.Log("Boost Over! Invinvible Over!");
+        anime.Play("Normal");
     }
 
 
@@ -235,6 +227,7 @@ public class MonkeyController : MonoBehaviour
         if (InvinvibleCoroutine != null)
         {
             isInvincible = false;
+            anime.Play("Normal");
             StopCoroutine(InvinvibleCoroutine);
         }
     }

@@ -7,10 +7,14 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     GameObject[] items;
 
+
+ 
     [SerializeField]
     Define.Items lockItem = Define.Items.None;
+
     private void OnEnable()
     {
+        Debug.Log($"{this.gameObject.name} OnEnable!");
         SpawnItem();
     }
 
@@ -21,9 +25,11 @@ public class ItemSpawner : MonoBehaviour
             Managers.Resource.Instantiate(items[(int)lockItem], this.transform.position, transform.parent);
             return;
         }
+
         int itemNum = Random.Range(0, items.Length);//(int)RandomItem();
         if (itemNum > items.Length)
             return;
+
         Collider2D[] goes = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
         foreach(Collider2D collision in goes)
         {

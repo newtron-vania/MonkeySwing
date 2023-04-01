@@ -8,7 +8,7 @@ public class Magnet : Items
     private GameObject MagnetFieldPrefab;
     protected override void ItemEvent()
     {
-        if (monkey.transform.GetComponentInChildren<MagnetField>() != null)
+        if (monkey.transform.GetComponentInChildren<MagnetField>(true) != null)
             monkey.transform.GetComponentInChildren<MagnetField>().ResetTime();
         else
             Managers.Resource.Instantiate(MagnetFieldPrefab, monkey.transform.position, monkey.transform);
