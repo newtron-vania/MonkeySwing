@@ -40,15 +40,17 @@ public class Popup_manager : MonoBehaviour
 
     public void OnClick_Purchase_Yes_Btn()
     { 
-        Skin_Manager skin_manager = new Skin_Manager();
-        skin_manager.OnClick_Purchase_Yes_Btn();
+        GameObject current_slot_object = SkinData_Manager.current_slot;
+        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
+        slotData_manager.OnClick_Purchase_Yes_Btn();
         OnClickCloseButton();
     }
 
     public void OnClick_Purchase_No_Btn()
     {
-        Skin_Manager skin_manager = new Skin_Manager();
-        skin_manager.OnClick_Purchase_No_Btn();
+        GameObject current_slot_object = SkinData_Manager.current_slot;
+        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
+        slotData_manager.OnClick_Purchase_No_Btn();
         OnClickCloseButton();
     }
 
