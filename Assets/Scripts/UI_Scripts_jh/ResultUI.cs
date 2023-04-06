@@ -15,7 +15,7 @@ public class ResultUI : MonoBehaviour
     {
         scoreText.text = $"{GameManagerEx.Instance.distance.Dist.ToString()}m";
         rewardText.text = BananaCount.bananacount.ToString();
-
+        Debug.Log($" score : {GameManagerEx.Instance.distance.Dist}, BestScore : {GameManagerEx.Instance.player.BestScore}");
         if (GameManagerEx.Instance.distance.Dist > GameManagerEx.Instance.player.BestScore)
         {
             GameManagerEx.Instance.player.BestScore = GameManagerEx.Instance.distance.Dist;

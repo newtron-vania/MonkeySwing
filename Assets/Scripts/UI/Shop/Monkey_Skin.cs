@@ -192,7 +192,7 @@ public class Monkey_Skin : MonoBehaviour
         Monkey_tail.GetComponent<Image>().sprite = TailSprite;
 
         string path = "Assets/Resources/Shop/Monkey_preview.prefab";
-        PrefabUtility.SaveAsPrefabAsset(Monkey_preview, path);
+
         currentSkinData.is_current_PreviewSkin = true;
     }
 
@@ -206,7 +206,7 @@ public class Monkey_Skin : MonoBehaviour
         Monkey_tail.GetComponent<SpriteRenderer>().sprite = TailSprite;
 
         string path = "Assets/Resources/Shop/Monkey_prefab.prefab";
-        PrefabUtility.SaveAsPrefabAsset(Monkey_prefab, path);
+
         currentSkinData.is_current_PlayerSkin = true;
     }
 

@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4534630552788527936}
   - component: {fileID: 7289697085397016790}
   m_Layer: 5
-  m_Name: Add_btn (1)
+  m_Name: AddTextImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,12 +213,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2006335653578838272}
-  m_RootOrder: 1
+  m_Father: {fileID: 2006335654679641171}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -766}
+  m_AnchoredPosition: {x: 80, y: -0.000061035156}
   m_SizeDelta: {x: 315.215, y: 72.437}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4534630552788527936
@@ -565,7 +565,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2006335654679641171}
-  - {fileID: 3428246096520505969}
   m_Father: {fileID: 2006335653389989649}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1077,7 +1076,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2006335653389989648}
         m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickGameOverButton
+        m_MethodName: OnClickGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1264,7 +1263,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3428246096520505969}
   m_Father: {fileID: 2006335653578838272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2006335653389989648}
         m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickGameOverButton
+        m_MethodName: OnClickGameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

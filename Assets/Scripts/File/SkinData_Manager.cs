@@ -52,7 +52,6 @@ public class SkinData_Manager : MonoBehaviour
         Monkey_preview_tail.GetComponent<Image>().sprite = TailSprite;
         Monkey_previewName_TXT.GetComponent<TextMeshProUGUI>().text = currentSkinData.name;
 
-        PrefabUtility.SaveAsPrefabAsset(Monkey_preview, Monkey_preview_path);
         currentSkinData.is_current_PreviewSkin = true;
     }
 
@@ -61,7 +60,6 @@ public class SkinData_Manager : MonoBehaviour
         Monkey_prefab_body.GetComponent<SpriteRenderer>().sprite = BodySprite;
         Monkey_prefab_tail.GetComponent<SpriteRenderer>().sprite = TailSprite;
 
-        PrefabUtility.SaveAsPrefabAsset(Monkey_prefab, Monkey_prefab_path);
         currentSkinData.is_current_PlayerSkin = true;
     }
 

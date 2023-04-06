@@ -15,7 +15,7 @@ public class TouchToStartUI : MonoBehaviour
         }
         else
         {
-            GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); });
+            GameManagerEx.Instance.player.LoadData();
             GameManagerEx.Instance.isPlaying = true;
         }
     }

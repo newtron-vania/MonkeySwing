@@ -24,6 +24,7 @@ public class GameManagerEx
             g_instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
             g_instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
             g_instance.player = new PlayerData();
+            Debug.Log($"g_instance.player : { g_instance.player.Money}");
         }
     }
 

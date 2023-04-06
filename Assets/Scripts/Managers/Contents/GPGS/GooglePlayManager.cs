@@ -76,33 +76,36 @@ public class GooglePlayManager : MonoBehaviour
     }
     public void Login(Action successAction, Action hideUIAction)
     {
+        hideUI.SetActive(true);
         Social.localUser.Authenticate((bool success) =>
         {
             Debug.Log(Social.localUser.id + "\n" + Social.localUser.userName);
+            hideUIAction.Invoke();
             if (!success)
             {
 
-            GPGSUIText.text = "Fail Login";
+                Debug.Log("Fail Login");
             }
             else
             {
                 successAction.Invoke();
-            GPGSUIText.text = "Login Succeed";
+                Debug.Log("Login Succeed");
             }
-            hideUIAction.Invoke();
+            
         });
     }
 
 
     private void ProcessCloudData(byte[] cloudData)
     {
-        if (cloudData == null)
+        if (cloudData == null || cloudData.Length < 10)
         {
-            GPGSUIText.text =  "No Data saved to the cloud";
-            GameManagerEx.Instance.player = new PlayerData();
+            Debug.Log("No Data saved to the cloud");
+            loadedData = JsonUtility.ToJson(new PlayerData());
             return;
         }
         //TODO : 
+        Debug.Log("Load Completed!");
         string progress = BytesToString(cloudData);
         //json File
         loadedData = progress;
@@ -111,7 +114,7 @@ public class GooglePlayManager : MonoBehaviour
 
     public void LoadFromCloud(Action<string> afterLoadAction)
     {
-        hideUI.SetActive(true);
+        
         if (isAuthenticated && !isProcessing)
         {
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
@@ -125,8 +128,8 @@ public class GooglePlayManager : MonoBehaviour
     private IEnumerator LoadFromCloudRoutin(Action<string> loadAction)
     {
         isProcessing = true;
-        GPGSUIText.text = "Loading game progress from the cloud.";
-
+        Debug.Log("Loading game progress from the cloud.");
+        hideUI.SetActive(true);
 
         ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(
             m_saveFileName, //name of file.
@@ -159,6 +162,7 @@ public class GooglePlayManager : MonoBehaviour
 
     private void OnFileOpenToSave(SavedGameRequestStatus status, ISavedGameMetadata metaData)
     {
+        hideUI.SetActive(true);
         if (status == SavedGameRequestStatus.Success)
         {
             byte[] data = StringToBytes(loadedData);
@@ -171,8 +175,9 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            GPGSUIText.text = "Error opening Saved Game" + status;
+            Debug.Log("Error opening Saved Game" + status);
         }
+        hideUI.SetActive(false);
     }
 
 
@@ -184,7 +189,7 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            GPGSUIText.text = "Error opening Saved Game" + status;
+            Debug.Log("Error opening Saved Game" + status);
         }
     }
 
@@ -193,7 +198,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         if (status != SavedGameRequestStatus.Success)
         {
-            GPGSUIText.text = "Error Saving" + status;
+            Debug.Log("Error Saving" + status);
         }
         else
         {
@@ -207,7 +212,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         if (status != SavedGameRequestStatus.Success)
         {
-            GPGSUIText.text =  "Error Saving" + status;
+            Debug.Log("Error Saving" + status);
         }
 
         isProcessing = false;
@@ -222,4 +227,10 @@ public class GooglePlayManager : MonoBehaviour
     {
         return Encoding.UTF8.GetString(bytes);
     }
+
+    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null) =>
+        Social.ReportScore(score, gpgsId, success => onReported?.Invoke(success));
+
+    public void ShowBestScoreLeaderboardUI() =>
+        Social.ShowLeaderboardUI();
 }
