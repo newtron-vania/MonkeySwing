@@ -245,6 +245,7 @@ public class MonkeyController : MonoBehaviour
 
     IEnumerator OnInvincible(float time)
     {
+        yield return new WaitForFixedUpdate();
         isInvincible = true;
         yield return new WaitForSeconds(time);
         isInvincible = false;
