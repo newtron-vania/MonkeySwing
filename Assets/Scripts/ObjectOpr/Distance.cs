@@ -21,6 +21,7 @@ public class Distance : MonoBehaviour
     {
         bestScore = GameManagerEx.Instance.player.BestScore;
     }
+
     public int Dist { 
         get { return dist; }
         set
@@ -40,8 +41,10 @@ public class Distance : MonoBehaviour
             if (dist > bestScore)
             {
                 isReach = true;
-                bestScoreText.color = Color.yellow;
+                curScoreText.color = Color.yellow;
+                curScoreText.fontSize = 120;
                 bestScoreText.fontSize = 100;
+                bestScoreText.text = curScoreText.text;
             }
         }
         else

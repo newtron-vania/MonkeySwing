@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MonkeyController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MonkeyController : MonoBehaviour
         Damaged,
     }
 
+
+
     private Rigidbody2D rigid;
     private Animator anime;
 
@@ -20,7 +23,7 @@ public class MonkeyController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer monkeyFace;
     [SerializeField]
-    private SpriteRenderer[] monkeyBody;
+    private SpriteRenderer[] monkeyBody; // 0 : tail 1 : head  2 : face
 
     private int health;
     public int Health
@@ -47,16 +50,19 @@ public class MonkeyController : MonoBehaviour
         set 
         {
             weight = value;
+            weightEvent.Invoke(weight);
             if (isDamaged)
                 return;
             if (weight <= 30)
                 PlayerState = CharacterState.Hunger;
-            else if (weight < 80)
+            else if (weight <= 80)
                 PlayerState = CharacterState.Normal;
             else
                 PlayerState = CharacterState.Full;
         } 
     }
+
+    public Action<int> weightEvent;
 
     CharacterState playerState = CharacterState.Normal;
     CharacterState PlayerState { 
@@ -157,11 +163,30 @@ public class MonkeyController : MonoBehaviour
             if(Weight > 10)
                 Weight -= 1;
         }
-        
-    }
 
+    }
+    Coroutine OnDamagedCoroutine;
     Coroutine InvinvibleCoroutine;
     Coroutine BoostCoroutine;
+
+    public void StartOnDamaged(float damagedTime)
+    {
+        StopOnDamaged();
+        OnDamagedCoroutine = StartCoroutine(OnDamaged(damagedTime));
+    }
+
+    private void StopOnDamaged() 
+    {
+        if (OnDamagedCoroutine != null)
+        {
+            Debug.Log("OnDamaged Coroutine Out!");
+            isDamaged = false;
+            anime.Play("Normal");
+            Weight = weight;
+            StopCoroutine(OnDamagedCoroutine);
+        }
+    }
+
     public void BeDamaged()
     {
         StartCoroutine(OnDamaged(damagedTime));
@@ -172,10 +197,7 @@ public class MonkeyController : MonoBehaviour
         Health -= 1;
         CameraShake(0.4f, 0.5f);
         StartInvinvible(damagedTime);
-        while (isInvincible)
-        {
-            yield return new WaitForFixedUpdate();
-        }
+        yield return new WaitForSeconds(damagedTime);
         Debug.Log("OnDamaged Out!");
         isDamaged = false;
         anime.Play("Normal");
@@ -232,8 +254,8 @@ public class MonkeyController : MonoBehaviour
     {
         if (InvinvibleCoroutine != null)
         {
+            StopOnDamaged();
             isInvincible = false;
-            isDamaged = false;
             anime.Play("Normal");
             Weight = weight;
             StopCoroutine(InvinvibleCoroutine);

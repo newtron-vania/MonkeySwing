@@ -6,7 +6,7 @@ public class CaloryBanana : Items
 {
     protected override void ItemEvent()
     {
-        monkey.Weight = Mathf.Min(monkey.Weight + 20, 100);
+        GameManagerEx.Instance.monkey.Weight = Mathf.Min(GameManagerEx.Instance.monkey.Weight + 20, 100);
         //Todo
         Managers.Sound.Play("CaloryBanana");
     }

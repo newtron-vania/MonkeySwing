@@ -4,14 +4,11 @@ using UnityEngine;
 
 public abstract class Items : MonoBehaviour
 {
-    [SerializeField]
-    protected MonkeyController monkey;
 
     protected Rigidbody2D rigid;
 
     private void OnEnable()
     {
-        StartCoroutine("FindMonkey");
         rigid = this.GetComponent<Rigidbody2D>();
     }
     protected abstract void ItemEvent();
@@ -25,15 +22,4 @@ public abstract class Items : MonoBehaviour
         }
     }
 
-
-
-    IEnumerator FindMonkey()
-    {
-        while(GameObject.FindWithTag("Monkey") == null)
-        {
-            yield return new WaitForFixedUpdate();
-        }
-        monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
-        //Debug.Log($"{this.transform.name} find {monkey.transform.name}");
-    }
 }
