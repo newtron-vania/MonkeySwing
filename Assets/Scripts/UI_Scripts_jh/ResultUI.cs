@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ResultUI : MonoBehaviour
@@ -14,6 +15,11 @@ public class ResultUI : MonoBehaviour
     {
         scoreText.text = $"{GameManagerEx.Instance.distance.Dist.ToString()}m";
         rewardText.text = BananaCount.bananacount.ToString();
+
+        if (GameManagerEx.Instance.distance.Dist > GameManagerEx.Instance.player.BestScore)
+        {
+            GameManagerEx.Instance.player.BestScore = GameManagerEx.Instance.distance.Dist;
+        }
     }
     public void ShowAds()
     {

@@ -49,7 +49,7 @@ public class MonkeyController : MonoBehaviour
             weight = value;
             if (isDamaged)
                 return;
-            if (weight <= 20)
+            if (weight <= 30)
                 PlayerState = CharacterState.Hunger;
             else if (weight < 80)
                 PlayerState = CharacterState.Normal;
@@ -139,7 +139,11 @@ public class MonkeyController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(!isInvincible && (collision.tag == "Enemy"))
+        {
+            Debug.Log($"collision name : {collision.name } collision tag : {collision.tag}");
             PlayerState = CharacterState.Damaged;
+        }
+            
         else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
         {
             GameManagerEx.Instance.distance.Dist += 5;
@@ -172,8 +176,10 @@ public class MonkeyController : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("OnDamaged Out!");
         isDamaged = false;
         anime.Play("Normal");
+        Weight = weight;
     }
 
     public void StartBoost(float continuousTime, float waitTime)
@@ -227,7 +233,9 @@ public class MonkeyController : MonoBehaviour
         if (InvinvibleCoroutine != null)
         {
             isInvincible = false;
+            isDamaged = false;
             anime.Play("Normal");
+            Weight = weight;
             StopCoroutine(InvinvibleCoroutine);
         }
     }

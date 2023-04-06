@@ -12,8 +12,8 @@ public class SetSkin : MonoBehaviour
     private SpriteRenderer monkeyHead;
 
 
-    private void Start()
+    public void Init()
     {
-        //TODO 현재 스킨 불러와서 스킨 적용하기
+        
     }
 }
