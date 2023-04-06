@@ -13,7 +13,7 @@ public class BoostEffect : MonoBehaviour
     float curTime = 0f;
     void Start()
     {
-        monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
+        monkey = GameManagerEx.Instance.monkey;
         monkey.StartBoost(TTL, waitInvincibleTime);
         lineGenerator = GameManagerEx.Instance.makeLines;
         lineGenerator.BoostLineSpeed(TTL, boostForce);
