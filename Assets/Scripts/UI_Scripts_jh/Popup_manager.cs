@@ -36,13 +36,7 @@ public class Popup_manager : MonoBehaviour
 
     public void OnClickHomeButton()
     {
-        OnClickCloseButton();
-        BananaCount.bananacount = 0;
-        changeScene.ChangeSceneBtn("Home");
-    }
-
-    public void OnClickGameOverButton()
-    {
+        AddBanana();
         OnClickCloseButton();
         changeScene.ChangeSceneBtn("Home");
     }
@@ -50,6 +44,14 @@ public class Popup_manager : MonoBehaviour
     public void OnClickContinueButton()
     {
         OnClickCloseButton();
+    }
+
+    void AddBanana()
+    {
+        Debug.Log($"bananacount : {BananaCount.bananacount}");
+        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+        Debug.Log($"player.Money : {GameManagerEx.Instance.player.Money}");
+        BananaCount.bananacount = 0;
     }
 
     public void OnClickCloseButton()

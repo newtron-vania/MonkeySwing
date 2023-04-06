@@ -8,16 +8,14 @@ public class TouchToStartUI : MonoBehaviour
     void Start()
     {
         Managers.Sound.Play("HomeBGM", Define.Sound.Bgm);
-        if(GameManagerEx.Instance.isPlaying)
+        
+        if (GameManagerEx.Instance.isPlaying)
         {
-            Debug.Log($"bananacount : {BananaCount.bananacount}");
-            GameManagerEx.Instance.player.Money += BananaCount.bananacount;
-            Debug.Log($"player.Money : {GameManagerEx.Instance.player.Money}");
-            BananaCount.bananacount = 0;
             this.gameObject.SetActive(false);
         }
         else
         {
+            GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); });
             GameManagerEx.Instance.isPlaying = true;
         }
     }

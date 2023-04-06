@@ -139,7 +139,11 @@ public class MonkeyController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(!isInvincible && (collision.tag == "Enemy"))
+        {
+            Debug.Log($"collision name : {collision.name } collision tag : {collision.tag}");
             PlayerState = CharacterState.Damaged;
+        }
+            
         else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
         {
             GameManagerEx.Instance.distance.Dist += 5;
@@ -172,6 +176,7 @@ public class MonkeyController : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("OnDamaged Out!");
         isDamaged = false;
         anime.Play("Normal");
     }
@@ -237,6 +242,7 @@ public class MonkeyController : MonoBehaviour
 
     IEnumerator OnInvincible(float time)
     {
+        yield return new WaitForFixedUpdate();
         isInvincible = true;
         yield return new WaitForSeconds(time);
         isInvincible = false;

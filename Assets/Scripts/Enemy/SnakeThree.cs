@@ -9,6 +9,7 @@ public class SnakeThree : MonoBehaviour
     public Vector3[] segmentPoses;
     private Vector3[] segmentV;
 
+    public Transform SnakeModel;
     public Transform targetDir;
     public float targetDist;
 
@@ -26,7 +27,7 @@ public class SnakeThree : MonoBehaviour
         segmentPoses = new Vector3[length];
         segmentV = new Vector3[length];
 
-        startPoint = targetDir.position;
+        startPoint = targetDir.position - SnakeModel.position;
         ResetPosition();
 
         anime = GetComponent<Animator>();
@@ -36,16 +37,12 @@ public class SnakeThree : MonoBehaviour
     void Update()
     {
         SetLinePos();
-    }
+        GetComponent<GenerateCollider>().SetEdgeCollider(lineRend);
 
-
-    private void OnEnable()
-    {
-        anime.Play("snakeMove");
     }
     void SetLinePos()
     {
-        segmentPoses[0] = targetDir.position;
+        segmentPoses[0] = targetDir.position - SnakeModel.position;
 
         float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;
         if (dir < targetDist)
@@ -60,7 +57,19 @@ public class SnakeThree : MonoBehaviour
     {
         for (int i = 0; i < segmentPoses.Length; i++)
         {
-            segmentPoses[i] = targetDir.position;
+            segmentPoses[i] = targetDir.position - SnakeModel.position;
+        }
+        lineRend.SetPositions(segmentPoses);
+    }
+
+    void lastSetLinePos()
+    {
+        segmentPoses[0] = targetDir.position - SnakeModel.position;
+
+        float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;
+        for (int i = segmentPoses.Length - 1; i >= 1; i--)
+        {
+            segmentPoses[i] = segmentPoses[i - 1];
         }
         lineRend.SetPositions(segmentPoses);
     }

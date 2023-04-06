@@ -7,7 +7,8 @@ public class MakeLines : MonoBehaviour
 {
     [SerializeField]
     Dictionary<int, GameObject[]> levelLinesDict = new Dictionary<int, GameObject[]>();
-    int maxLineLv = 2;
+    [SerializeField]
+    int maxLineLv = 3;
 
     float distance = 11.0f;
     private Vector3 StartPosition;

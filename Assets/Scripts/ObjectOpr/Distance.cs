@@ -7,22 +7,47 @@ public class Distance : MonoBehaviour
 {
     [SerializeField]
     int dist = 0;
+    float bestScore;
     [SerializeField]
     BackgroundScrolling backgroundController;
 
+    [SerializeField]
+    TextMeshProUGUI bestScoreText;
+    [SerializeField]
+    TextMeshProUGUI curScoreText;
+
+    bool isReach = false;
+    private void Start()
+    {
+        bestScore = GameManagerEx.Instance.player.BestScore;
+    }
     public int Dist { 
         get { return dist; }
         set
         {
             dist = value;
-            ControlSpeedwithDist();
+            SetDist(dist);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetDist(int dist)
     {
-        GetComponent<TextMeshProUGUI>().text = dist.ToString() + "m";
+        curScoreText.text = dist.ToString() + "m";
+        ControlSpeedwithDist();
+
+        if (!isReach)
+        {
+            if (dist > bestScore)
+            {
+                isReach = true;
+                bestScoreText.color = Color.yellow;
+                bestScoreText.fontSize = 100;
+            }
+        }
+        else
+        {
+            bestScoreText.text = curScoreText.text;
+        }
     }
 
     void ControlSpeedwithDist()
