@@ -40,5 +40,7 @@ public class SkinData_LoadSave : MonoBehaviour
         TextAsset textAsset = Resources.Load<TextAsset>(filename);
         MySkinList = JsonUtility.FromJson<SkinDatas>(textAsset.text);
         Debug.Log("data load");
+
+        // Application.persistentDataPath + "/" + filename; 
     }
 }
