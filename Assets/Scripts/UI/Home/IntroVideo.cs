@@ -12,7 +12,7 @@ public class IntroVideo : MonoBehaviour
     private void Start()
     {
         vid = GetComponent<VideoPlayer>();
-        // !PlayerPrefs.HasKey("tutorial_played")
+        // || PlayerPrefs.GetInt("tutorial_played") == 1// test¿ë
         if(!PlayerPrefs.HasKey("tutorial_played"))
         {
             vid.Play();

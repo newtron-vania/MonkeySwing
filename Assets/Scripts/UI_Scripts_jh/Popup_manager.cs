@@ -21,8 +21,37 @@ public class Popup_manager : MonoBehaviour
     public void ResultPopupOpen()
     {   
         SetTimeScale(0);
-        gameObject.SetActive(true);
-        //OnClickCloseButton();
+        //GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        //resultPopup.SetActive(true);
+        OnClickCloseButton();
+        // StartCoroutine(DelayCoroution());
+        //UI ?? ? ??
+    }
+
+    /*IEnumerator DelayCoroution()
+    {
+        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        
+        
+        resultPopup.SetActive(true);
+        yield return new WaitForSeconds(5);
+    }*/
+
+
+    public void OnClick_Purchase_Yes_Btn()
+    { 
+        GameObject current_slot_object = SkinData_Manager.current_slot;
+        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
+        slotData_manager.OnClick_Purchase_Yes_Btn();
+        OnClickCloseButton();
+    }
+
+    public void OnClick_Purchase_No_Btn()
+    {
+        GameObject current_slot_object = SkinData_Manager.current_slot;
+        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
+        slotData_manager.OnClick_Purchase_No_Btn();
+        OnClickCloseButton();
     }
 
     public void OnClickStartButton()

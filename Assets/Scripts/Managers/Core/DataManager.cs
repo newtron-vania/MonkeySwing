@@ -5,18 +5,18 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     [SerializeField]
-    private List<SkinData> skindataList;
+    private List<SkinDataSO> skindataList;
 
     private void Start()
     {
         skindataList.Sort((data1, data2) => data1.SkinId.CompareTo(data2.SkinId));
 
-        foreach (SkinData skindata in skindataList)
+        foreach (SkinDataSO skindata in skindataList)
         {
             Debug.Log($"id : {skindata.SkinId}, name : {skindata.SkinHead}");
         }
     }
-    public List<SkinData> SkinDatas { get { return skindataList; } }
+    public List<SkinDataSO> SkinDatas { get { return skindataList; } }
     public void Init()
     {
         GameObject root = GameObject.Find("@DataManager");
