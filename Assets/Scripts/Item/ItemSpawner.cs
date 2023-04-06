@@ -26,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
-        int itemNum = Random.Range(0, items.Length);//(int)RandomItem();
+        int itemNum = (int)RandomItem();
         if (itemNum > items.Length)
             return;
 
@@ -46,13 +46,11 @@ public class ItemSpawner : MonoBehaviour
     Define.Items RandomItem()
     {
         float rand = Random.Range(0, 1f) * 100;
-        if (rand < 60)
-            return Define.Items.None;
-        else if (rand < 80)
+        if (rand < 8)
             return Define.Items.CaloryBanana;
-        else if (rand < 90)
+        else if (rand < 11)
             return Define.Items.Boost;
-        else if (rand <= 100)
+        else if (rand <= 14)
             return Define.Items.Magnet;
         else
             return Define.Items.None;

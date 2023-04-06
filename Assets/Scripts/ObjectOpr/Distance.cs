@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Distance : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Distance : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI curScoreText;
 
+    public Action<int> distanceEvent;
+
     bool isReach = false;
     private void Start()
     {
@@ -28,6 +31,7 @@ public class Distance : MonoBehaviour
         {
             dist = value;
             SetDist(dist);
+            distanceEvent.Invoke(dist);
         }
     }
 
