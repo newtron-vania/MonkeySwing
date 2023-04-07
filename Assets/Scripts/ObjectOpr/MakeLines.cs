@@ -17,7 +17,7 @@ public class MakeLines : MonoBehaviour
     GameObject NewLines = null;
 
     public Queue<GameObject> lineQueue = new Queue<GameObject>();
-
+    string curLineName = string.Empty;
 
     Rito.WeightedRandomPicker<int> wrPicker;
     [SerializeField]
@@ -61,11 +61,12 @@ public class MakeLines : MonoBehaviour
 
     void SetWrPick()
     {
+        float w = wNum;
         wrPicker = new Rito.WeightedRandomPicker<int>();
         for (int i = 1; i <= maxLineLv; i++)
         {
-            wrPicker.Add(i, wNum);
-            wNum /= 10;
+            wrPicker.Add(i, w);
+            w /= 10;
         }
     }
 
@@ -98,15 +99,20 @@ public class MakeLines : MonoBehaviour
     }
 
     GameObject MakeLinesPlay(){
-        int level = settingLevel();
-
-        int lineNum = SettingLineNum(level);
-        GameObject line = levelLinesDict[level][lineNum];
-
-
         GameObject mNewLines = null;
 
-        mNewLines = Managers.Resource.Instantiate(line, transform.position);
+        while (true)
+        {
+            int level = settingLevel();
+
+            int lineNum = SettingLineNum(level);
+
+            if(curLineName.Equals(string.Empty) || curLineName.Equals(levelLinesDict[level][lineNum].name))
+            {
+                mNewLines = Managers.Resource.Instantiate(levelLinesDict[level][lineNum], transform.position);
+                break;
+            }
+        }
 
         LinesMove linesMove = mNewLines.GetComponent<LinesMove>();
         
@@ -132,6 +138,7 @@ public class MakeLines : MonoBehaviour
         else
         {
             level = maxLineLv + 1;
+            createCount = 0;
         }
         return level;
     }
