@@ -10,7 +10,7 @@ public class SetSkinComponent : MonoBehaviour
     [SerializeField]
     List<SpriteRenderer> skinPos;
 
-    private void Start()
+    private void Awake()
     {
         chainCreater.createMonkeyEvent -= SetSkin;
         chainCreater.createMonkeyEvent += SetSkin;

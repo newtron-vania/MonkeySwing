@@ -48,9 +48,9 @@ public class ItemSpawner : MonoBehaviour
         float rand = Random.Range(0, 1f) * 100;
         if (rand < 8)
             return Define.Items.CaloryBanana;
-        else if (rand < 11)
+        else if (rand < 12)
             return Define.Items.Boost;
-        else if (rand <= 14)
+        else if (rand <= 16)
             return Define.Items.Magnet;
         else
             return Define.Items.None;

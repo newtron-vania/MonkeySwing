@@ -28,7 +28,6 @@ public class ChainCreater : MonoBehaviour
     private void ChainLastObject()
     {
         lastChainedObject = Managers.Resource.Instantiate(lastChainedObject, startChainedObject.transform.position, startChainedObject.transform.parent);
-        
         HingeJoint2D hingeJoint2D = lastChainedObject.GetComponent<HingeJoint2D>();
         FixedJoint2D fixedJoint2D = lastChainedObject.GetComponent<FixedJoint2D>();
         hingeJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();

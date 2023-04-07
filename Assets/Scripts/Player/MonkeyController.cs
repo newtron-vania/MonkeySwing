@@ -43,7 +43,8 @@ public class MonkeyController : MonoBehaviour
         set 
         {
             weight = value;
-            weightEvent.Invoke(weight);
+            if (weightEvent != null)
+                weightEvent.Invoke(weight);
             if (isDamaged)
                 return;
             if (weight <= 30)
@@ -80,7 +81,6 @@ public class MonkeyController : MonoBehaviour
                 case Define.CharacterState.Damaged:
                     Debug.Log("isDamaged!");
                     BeDamaged();
-                    anime.Play("BeDamaged");
                     monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Damaged];
                     isDamaged = true;
                     break;
@@ -97,10 +97,10 @@ public class MonkeyController : MonoBehaviour
 
     private void Awake()
     {
-        Health = 3;
-        Weight = 50;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+        Health = 3;
+        Weight = 50;
         StartCoroutine(LooseWeight());
     }
 
@@ -190,6 +190,7 @@ public class MonkeyController : MonoBehaviour
 
     IEnumerator OnDamaged(float damagedTime)
     {
+        anime.Play("BeDamaged");
         Health -= 1;
         CameraShake(0.4f, 0.5f);
         StartInvinvible(damagedTime);
@@ -253,8 +254,8 @@ public class MonkeyController : MonoBehaviour
         if (InvinvibleCoroutine != null)
         {
             StopOnDamaged();
+            StopBoost();
             isInvincible = false;
-            anime.Play("Normal");
             Weight = weight;
             StopCoroutine(InvinvibleCoroutine);
         }
@@ -265,7 +266,6 @@ public class MonkeyController : MonoBehaviour
 
     IEnumerator OnInvincible(float time)
     {
-        yield return new WaitForFixedUpdate();
         isInvincible = true;
         yield return new WaitForSeconds(time);
         isInvincible = false;

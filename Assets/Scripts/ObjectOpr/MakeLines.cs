@@ -144,7 +144,7 @@ public class MakeLines : MonoBehaviour
             double w = wrPicker.GetWeight(i);
             if (wrPicker.GetWeight(i) < wNum)
             {
-                wrPicker.Add(i, w/10);
+                wrPicker.Add(i, w/6);
             }
         }
     }
