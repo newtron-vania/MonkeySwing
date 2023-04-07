@@ -20,11 +20,6 @@ public class ChainCreater : MonoBehaviour
         ChainLastObject();
         //CalculateChainCount();
     }
-    
-    private void Update()
-    {
-        Debug.Log($"monkeyController Enabled! : {GameManagerEx.Instance.monkey.enabled}");
-    }
     private void ChainLastObject()
     {
         lastChainedObject = Managers.Resource.Instantiate(lastChainedObject, startChainedObject.transform.position, startChainedObject.transform.parent);
@@ -34,11 +29,13 @@ public class ChainCreater : MonoBehaviour
         fixedJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();
         hingeJoint2D.anchor = new Vector2(0, length);
         fixedJoint2D.anchor = new Vector2(0, length);
+        fixedJoint2D.enabled = true;
 
         List<SpriteRenderer> skinPositons = lastChainedObject.GetComponent<MonkeyController>().GetSkin();
         skinPositons.Add(GetComponent<SpriteRenderer>());
 
-        createMonkeyEvent.Invoke(skinPositons);
+        if(createMonkeyEvent != null)
+            createMonkeyEvent.Invoke(skinPositons);
     }
 
     private void CalculateChainCount()

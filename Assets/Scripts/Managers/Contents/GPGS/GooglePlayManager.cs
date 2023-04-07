@@ -151,8 +151,9 @@ public class GooglePlayManager : MonoBehaviour
         if (isAuthenticated)
         {
             loadedData = dataToSave;
+            Debug.Log("loadedData");
             isProcessing = true;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(m_saveFileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OnFileOpenToSave);
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(m_saveFileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseMostRecentlySaved, OnFileOpenToSave);
         }
         else
         {

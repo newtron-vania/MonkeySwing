@@ -161,25 +161,23 @@ public class MonkeyController : MonoBehaviour
         }
 
     }
-    Coroutine OnDamagedCoroutine;
+    Coroutine Coroutine;
     Coroutine InvinvibleCoroutine;
-    Coroutine BoostCoroutine;
 
     public void StartOnDamaged(float damagedTime)
     {
         StopOnDamaged();
-        OnDamagedCoroutine = StartCoroutine(OnDamaged(damagedTime));
+        Coroutine = StartCoroutine(OnDamaged(damagedTime));
     }
 
     private void StopOnDamaged() 
     {
-        if (OnDamagedCoroutine != null)
+        if (Coroutine != null)
         {
             Debug.Log("OnDamaged Coroutine Out!");
-            isDamaged = false;
-            anime.Play("Normal");
             Weight = weight;
-            StopCoroutine(OnDamagedCoroutine);
+            StopCoroutine(Coroutine);
+            isDamaged = false;
         }
     }
 
@@ -204,23 +202,24 @@ public class MonkeyController : MonoBehaviour
     public void StartBoost(float continuousTime, float waitTime)
     {
         StopBoost();
-        BoostCoroutine = StartCoroutine(OnBoost(continuousTime, waitTime));
+        Coroutine = StartCoroutine(OnBoost(continuousTime, waitTime));
     }
 
     private void StopBoost()
     {
-        if (BoostCoroutine != null)
+        if (Coroutine != null)
         {
-            anime.Play("Normal");
-            StopCoroutine(BoostCoroutine);
+            StopCoroutine(Coroutine);
+            Debug.Log("BoostStop");
         }
     }
 
     IEnumerator OnBoost(float continuousTime, float waitTime)
     {
-        anime.Play("Booster");
-        Debug.Log("Boost!!!");
+
         StartInvinvible(continuousTime + waitTime);
+        anime.Play("Booster");
+        Debug.Log("Boost On");
         yield return new WaitForSeconds(continuousTime);
         Debug.Log("Boost Over! Invinvible continue");
         anime.Play("BoostOver");
@@ -228,19 +227,6 @@ public class MonkeyController : MonoBehaviour
         Debug.Log("Boost Over! Invinvible Over!");
         anime.Play("Normal");
     }
-
-
-
-
-    public void StartDamagedAnime()
-    {
-        anime.SetBool("isDamaged", true);
-    }
-    public void EndDamagedAnime()
-    {
-        anime.SetBool("isDamaged", false);
-    }
-
 
 
     public void StartInvinvible(float time)
@@ -253,8 +239,6 @@ public class MonkeyController : MonoBehaviour
     {
         if (InvinvibleCoroutine != null)
         {
-            StopOnDamaged();
-            StopBoost();
             isInvincible = false;
             Weight = weight;
             StopCoroutine(InvinvibleCoroutine);

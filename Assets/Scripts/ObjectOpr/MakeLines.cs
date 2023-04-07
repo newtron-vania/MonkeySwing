@@ -134,6 +134,7 @@ public class MakeLines : MonoBehaviour
         {
             //각 레벨별 가중치 처리 필요
             level = wrPicker.GetRandomPick();
+            createCount += 1;
         }
         else
         {
@@ -149,10 +150,11 @@ public class MakeLines : MonoBehaviour
         for (int i = 1; i <= maxLineLv; i++)
         {
             double w = wrPicker.GetWeight(i);
-            if (wrPicker.GetWeight(i) < wNum)
+            if (wrPicker.GetWeight(i) < wNum*i)
             {
-                wrPicker.Add(i, w/6);
+                wrPicker.Add(i, w/4);
             }
+                Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
         }
     }
 

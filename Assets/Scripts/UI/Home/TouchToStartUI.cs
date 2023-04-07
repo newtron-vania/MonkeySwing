@@ -18,5 +18,7 @@ public class TouchToStartUI : MonoBehaviour
             GameManagerEx.Instance.player.LoadData();
             GameManagerEx.Instance.isPlaying = true;
         }
+
+        Debug.Log($"BestScore : {GameManagerEx.Instance.player.BestScore}");
     }
 }

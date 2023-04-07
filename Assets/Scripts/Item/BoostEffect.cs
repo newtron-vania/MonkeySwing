@@ -5,18 +5,14 @@ using UnityEngine;
 public class BoostEffect : MonoBehaviour
 {
     public float boostForce = 2f;
-    MonkeyController monkey;
-    MakeLines lineGenerator;
 
     float TTL = 8f;
     float waitInvincibleTime = 2f;
     float curTime = 0f;
     void Start()
     {
-        monkey = GameManagerEx.Instance.monkey;
-        monkey.StartBoost(TTL, waitInvincibleTime);
-        lineGenerator = GameManagerEx.Instance.makeLines;
-        lineGenerator.BoostLineSpeed(TTL, boostForce);
+        GameManagerEx.Instance.monkey.StartBoost(TTL, waitInvincibleTime);
+        GameManagerEx.Instance.makeLines.BoostLineSpeed(TTL, boostForce);
         Managers.Sound.Play("Boost");
     }
 
@@ -33,7 +29,7 @@ public class BoostEffect : MonoBehaviour
     {
         Managers.Sound.Play("Boost");
         curTime = 0f;
-        monkey.StartBoost(TTL, waitInvincibleTime);
-        lineGenerator.BoostLineSpeed(TTL, boostForce);
+        GameManagerEx.Instance.monkey.StartBoost(TTL, waitInvincibleTime);
+        GameManagerEx.Instance.makeLines.BoostLineSpeed(TTL, boostForce);
     }
 }

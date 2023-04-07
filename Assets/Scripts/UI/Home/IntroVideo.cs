@@ -9,14 +9,19 @@ public class IntroVideo : MonoBehaviour
     [SerializeField]
     private GameObject TouchToStartUI;
 
+    [SerializeField]
+    bool isTesting = false;
+
     private void Start()
     {
         vid = GetComponent<VideoPlayer>();
+        if (isTesting)
+            PlayerPrefs.DeleteKey("tutorial_played");
         // || PlayerPrefs.GetInt("tutorial_played") == 1// test¿ë
-        if(!PlayerPrefs.HasKey("tutorial_played"))
+        if (!PlayerPrefs.HasKey("tutorial_played"))
         {
             vid.Play();
-            Tutorial_Start();
+            //Tutorial_Start();
             Debug.Log("video started");
             PlayerPrefs.SetInt("tutorial_played",1);
             PlayerPrefs.Save();
