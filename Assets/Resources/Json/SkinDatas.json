@@ -2,8 +2,22 @@
   "skins" : [
     {
       "id": 0,
-      "name": "Monkey_blue",
+      "name": "Monkey_basic",
       "is_locked": false,
+      "slot_lock_img_path": "Shop/Slot/box_basic_lock",
+      "slot_unlock_img_path":"Shop/Slot/box_basic",
+      "monkey_skin_path": [
+        "Shop/Skin/Monkey_basic",
+        "Shop/Skin/Monkey_basic_tail"
+      ],
+      "price" : 100,
+      "is_current_PlayerSkin" : false,
+      "is_current_PreviewSkin" : false
+    },
+    {
+      "id": 1,
+      "name": "Monkey_blue",
+      "is_locked": true,
       "slot_lock_img_path": "Shop/Slot/box_blue_lock",
       "slot_unlock_img_path":"Shop/Slot/box_blue",
       "monkey_skin_path": [
@@ -11,11 +25,11 @@
         "Shop/Skin/Monkey_blue_tail"
       ],
       "price" : 100,
-      "is_current_PlayerSkin" : true,
-      "is_current_PreviewSkin" : true
+      "is_current_PlayerSkin" : false,
+      "is_current_PreviewSkin" : false
     },
     {
-        "id": 1,
+        "id": 2,
         "name": "Monkey_yellow",
         "is_locked": true,
         "slot_lock_img_path": "Shop/Slot/box_yellow_lock",
@@ -29,7 +43,7 @@
         "is_current_PreviewSkin" : false
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Monkey_pink",
         "is_locked": true,
         "slot_lock_img_path": "Shop/Slot/box_pink_lock",
@@ -43,7 +57,7 @@
         "is_current_PreviewSkin" : false
       },
       {
-        "id": 3,
+        "id": 4,
         "name": "Monkey_heart",
         "is_locked": true,
         "slot_lock_img_path": "Shop/Slot/box_heart_lock",
@@ -57,7 +71,7 @@
         "is_current_PreviewSkin" : false
       },
       {
-        "id": 4,
+        "id": 5,
         "name": "Monkey_milk",
         "is_locked": true,
         "slot_lock_img_path": "Shop/Slot/box_milk_lock",
@@ -69,6 +83,21 @@
         "price" : 300,
         "is_current_PlayerSkin" : false,
         "is_current_PreviewSkin" : false
+      }
+      ,
+      {
+        "id": 6,
+        "name": "Monkey_cloud",
+        "is_locked": false,
+        "slot_lock_img_path": "Shop/Slot/box_cloud_lock",
+        "slot_unlock_img_path":"Shop/Slot/box_cloud",
+        "monkey_skin_path": [
+          "Shop/Skin/Monkey_cloud",
+          "Shop/Skin/Monkey_cloud_tail"
+        ],
+        "price" : 300,
+        "is_current_PlayerSkin" : true,
+        "is_current_PreviewSkin" : true
       }
     ]
   }
