@@ -9,8 +9,8 @@ public class PlayerData
 
     public int Money { get { return money; } set { money = value; SetData(); } }
     [SerializeField]
-    float currentSkinId = 0;
-    public float MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
+    int currentSkinId = 0;
+    public int MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
     [SerializeField]
     List<int> collectedSkinId = new List<int>();
     [SerializeField]

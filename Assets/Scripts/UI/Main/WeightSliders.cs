@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class WeightSliders : MonoBehaviour
 {
+
+
+    [SerializeField]
+    Sprite[] FaceStyle;
+    [SerializeField]
+    Image faceImg;
     [SerializeField]
     MainScene GameScene;
 
@@ -21,7 +27,19 @@ public class WeightSliders : MonoBehaviour
     {
         //특정 구간을 지날 때마다 사운드 추가
         weightSlider.value = value;
+        ChangeStateFace(value);
     }
+
+    private void ChangeStateFace(int value)
+    {
+        if (value <= 30)
+            faceImg.sprite = FaceStyle[(int)Define.CharacterState.Hunger];
+        else if (value <= 80)
+            faceImg.sprite = FaceStyle[(int)Define.CharacterState.Normal];
+        else
+            faceImg.sprite = FaceStyle[(int)Define.CharacterState.Full];
+
+    } 
 
     public void ConnectToMonkeyWeight(MonkeyController monkey)
     {

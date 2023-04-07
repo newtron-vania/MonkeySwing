@@ -21,6 +21,16 @@ public class Define
         Unknown
     }
 
+
+    public enum CharacterState
+    {
+        Hunger,
+        Normal,
+        Full,
+        Damaged,
+    }
+
+
     public enum Sound
     {
         Bgm,
@@ -63,4 +73,5 @@ public class Define
         Unique,
         Legendary
     }
+
 }

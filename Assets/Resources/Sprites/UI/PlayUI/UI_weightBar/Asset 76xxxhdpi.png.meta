@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9fbaf589d49fba3439d87d50dd304588
+guid: 02e6f17a475629049a65a16978d65414
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,13 +42,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 51, y: 25, z: 49, w: 25}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,20 +113,104 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Asset 76xxxhdpi_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 25
+        width: 844
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 30, y: 0, z: 30, w: 0}
+      outline:
+      - - {x: -422, y: 28.5}
+        - {x: -422, y: -28.5}
+        - {x: 422, y: -28.5}
+        - {x: 422, y: 28.5}
+      physicsShape:
+      - - {x: 416, y: -20.5}
+        - {x: 416, y: -19.5}
+        - {x: 419, y: -17.5}
+        - {x: 421, y: -12.5}
+        - {x: 421, y: -10.5}
+        - {x: 422, y: -9.5}
+        - {x: 422, y: 6.5}
+        - {x: 421, y: 7.5}
+        - {x: 421, y: 9.5}
+        - {x: 418, y: 16.5}
+        - {x: 410, y: 24.5}
+        - {x: 403, y: 27.5}
+        - {x: 401, y: 27.5}
+        - {x: 400, y: 28.5}
+        - {x: -400, y: 28.5}
+        - {x: -401, y: 27.5}
+        - {x: -403, y: 27.5}
+        - {x: -408, y: 25.5}
+        - {x: -416, y: 17.5}
+        - {x: -416, y: 16.5}
+        - {x: -420, y: 12.5}
+        - {x: -421, y: 9.5}
+        - {x: -421, y: 6.5}
+        - {x: -422, y: 5.5}
+        - {x: -422, y: -8.5}
+        - {x: -421, y: -9.5}
+        - {x: -421, y: -11.5}
+        - {x: -418, y: -18.5}
+        - {x: -410, y: -26.5}
+        - {x: -405, y: -28.5}
+        - {x: 406, y: -28.5}
+        - {x: 409, y: -27.5}
+        - {x: 412, y: -23.5}
+        - {x: 413, y: -23.5}
+      tessellationDetail: 1
+      bones: []
+      spriteID: c8c182543fc046148abfce2f746aced8
+      internalID: -154657976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Asset 76xxxhdpi_0: -154657976
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

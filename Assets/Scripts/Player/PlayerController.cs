@@ -14,7 +14,19 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigid = player.GetComponent<Rigidbody2D>();
-        slideSpeed = PlayerPrefs.GetFloat("slideSpeed");
+#if(UNITY_EDITOR)
+        slideSpeed = PlayerPrefs.GetFloat("slideSpeed", 24f);
+        if(slideSpeed < 24f)
+            slideSpeed = 24f;
+        PlayerPrefs.SetFloat("slideSpeed", slideSpeed);
+#elif (UNITY_ANDROID)
+
+        slideSpeed = PlayerPrefs.GetFloat("slideSpeed", 5f);
+        if(slideSpeed < 5f)
+            slideSpeed = 5f;
+        PlayerPrefs.SetFloat("slideSpeed", slideSpeed);
+
+#endif
     }
 
 
