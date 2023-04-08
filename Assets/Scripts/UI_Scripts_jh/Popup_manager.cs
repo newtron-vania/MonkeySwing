@@ -18,32 +18,12 @@ public class Popup_manager : MonoBehaviour
         Time.timeScale = time;
     }
 
-    public void ResultPopupOpen()
-    {   
-        SetTimeScale(0);
-        //GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
-        //resultPopup.SetActive(true);
-        OnClickCloseButton();
-        // StartCoroutine(DelayCoroution());
-        //UI ?? ? ??
-    }
-
-    /*IEnumerator DelayCoroution()
-    {
-        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
-        
-        
-        resultPopup.SetActive(true);
-        yield return new WaitForSeconds(5);
-    }*/
-
-
     public void OnClick_Purchase_Yes_Btn()
     { 
-        GameObject current_slot_object = SkinData_Manager.current_slot;
-        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
-        slotData_manager.OnClick_Purchase_Yes_Btn();
+        GameObject clicked_slot_object = SkinData_Manager.clicked_slot;
+        SlotData_Manager slotData_manager = clicked_slot_object.GetComponent<SlotData_Manager>();
         OnClickCloseButton();
+        slotData_manager.OnClick_Purchase_Yes_Btn();
     }
 
     public void OnClick_Purchase_No_Btn()
@@ -51,6 +31,12 @@ public class Popup_manager : MonoBehaviour
         GameObject current_slot_object = SkinData_Manager.current_slot;
         SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
         slotData_manager.OnClick_Purchase_No_Btn();
+        OnClickCloseButton();
+    }
+
+    public void ResultPopupOpen()
+    {   
+        SetTimeScale(0);
         OnClickCloseButton();
     }
 

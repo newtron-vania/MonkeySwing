@@ -19,11 +19,10 @@ public class SlotData_Manager : MonoBehaviour
 
     SkinData_Manager skinData_manager = new SkinData_Manager();
 
-    private Sprite BodySprite;
-    private Sprite TailSprite;
+    public Sprite BodySprite;
+    public Sprite TailSprite;
     
-    
-    SkinData Slot_SkinData;
+    public SkinData Slot_SkinData;
     GameObject PreviewBtn;
     GameObject Purchase_popup;
     GameObject PurchaseBtn;
@@ -71,7 +70,7 @@ public class SlotData_Manager : MonoBehaviour
     {
         string state = "";
         Slot_SkinData_Load();
-        Debug.Log(Slot_SkinData + "은 현재 스킨 데이터 입니다.");
+        Debug.Log(Slot_SkinData.is_locked);
         if(Slot_SkinData.is_locked){ // 잠겨있으면 금액 가져오기
             state = Slot_SkinData.price.ToString();
         }
@@ -87,8 +86,7 @@ public class SlotData_Manager : MonoBehaviour
                 // 여기서 슬롯 파란 박스 제거
             }
         }
-        GameObject PurchaseBtn = transform.Find("Skin_purchase_btn").gameObject;
-        GameObject PurchaseBtn_Txt = PurchaseBtn.transform.Find("state").gameObject;
+        Debug.Log(state);
         PurchaseBtn_Txt.GetComponent<TextMeshProUGUI>().text = state;
 
     }
@@ -96,8 +94,7 @@ public class SlotData_Manager : MonoBehaviour
     public void OnClick_purchase_Btn()
     {
         SkinData_Manager.Player_SkinData_ID = Skin_id;
-        SkinData_Manager.last_slot = SkinData_Manager.current_slot;
-        SkinData_Manager.current_slot = this.gameObject;
+        SkinData_Manager.clicked_slot = this.gameObject;
         
         if (Slot_SkinData.is_locked){
             // 스킨 구매 팝업 띄우기
@@ -116,7 +113,14 @@ public class SlotData_Manager : MonoBehaviour
                 Debug.Log("스킨을 변경합니다. 스킨 변경이 완료되었습니다.");
                 Reset_is_current_PlayerSkin();
                 Slot_SkinData.is_current_PlayerSkin = true;
-                Change_LastSlot();// 이전 slot 파란 박스 제거, 장착으로 텍스트 변경
+                
+                SkinData_Manager.last_slot = SkinData_Manager.current_slot;
+                SkinData_Manager.current_slot = this.gameObject;
+                if (SkinData_Manager.last_slot != SkinData_Manager.current_slot)
+                {
+                    Change_LastSlot();// 이전 slot 파란 박스 제거, 장착으로 텍스트 변경
+                }
+
                 skinData_manager.MonkeyPrefabSKin_Change(BodySprite, TailSprite, Slot_SkinData);
                 OnClick_Preview_Btn();
                 PurchaseBtn_Load();
@@ -129,7 +133,7 @@ public class SlotData_Manager : MonoBehaviour
         Debug.Log("구매시작합니다아아");
         Debug.Log(Slot_SkinData.price + " : 스킨 가격");
 
-        GameManagerEx.Instance.player.Money = 10000; // 나중에 지우기
+        // GameManagerEx.Instance.player.Money = 10000; // 활성화 시키면 재화 10000으로 증가
         int bananacount = GameManagerEx.Instance.player.Money;
         Debug.Log(bananacount + " : 전체 바나나");
         if (bananacount >= Slot_SkinData.price){
@@ -137,7 +141,7 @@ public class SlotData_Manager : MonoBehaviour
             Slot_SkinData.is_locked = false;
             bananacount -= Slot_SkinData.price;
             GameManagerEx.Instance.player.Money = bananacount; 
-            // PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
+            PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
             PurchaseBtn_Load(); // 버튼 상태를 장착으로 바꾸기
             PreviewBtn_Img_Load();
         }
@@ -218,7 +222,8 @@ public class SlotData_Manager : MonoBehaviour
     {
         SlotData_Manager Last_slotData_manager = SkinData_Manager.last_slot.GetComponent<SlotData_Manager>();
         Last_slotData_manager.Slot_SkinData.is_current_PlayerSkin = false;
-        Last_slotData_manager.PurchaseBtn_Load();
+        Last_slotData_manager.Usage_Status.SetActive(false);
+        Last_slotData_manager.PurchaseBtn_Txt.GetComponent<TextMeshProUGUI>().text = "장착";
     }
 
     public SlotData_Manager GetCurrent_SkinData()
