@@ -38,6 +38,7 @@ public class SkinData_LoadSave : MonoBehaviour
 
     private GameObject Origin_Slot;
 
+    
     void Awake()
     {
         LoadData();
@@ -52,6 +53,7 @@ public class SkinData_LoadSave : MonoBehaviour
         MySkinList = JsonUtility.FromJson<SkinDatas>(textAsset.text);
         Debug.Log("data load");
 
+
         // Application.persistentDataPath + "/" + filename; 
     }
 
@@ -59,7 +61,7 @@ public class SkinData_LoadSave : MonoBehaviour
         for (int i=0; i < MySkinList.skins.Count; i++){
             GameObject Slot = Instantiate(Origin_Slot);
             SlotData_Manager slotData_manager = Slot.GetComponent<SlotData_Manager>();
-            slotData_manager.Skin_id = i;
+            slotData_manager.Skin_id = MySkinList.skins[i].id;
             Slot.transform.SetParent(Skin_content.transform);
         }  
     }

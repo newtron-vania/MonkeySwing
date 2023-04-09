@@ -30,6 +30,7 @@ public class GooglePlayManager : MonoBehaviour
         get;
         private set;
     }
+
     private const string m_saveFileName = "playerData";
     public bool isAuthenticated
     {

@@ -113,7 +113,8 @@ public class SlotData_Manager : MonoBehaviour
                 Debug.Log("스킨을 변경합니다. 스킨 변경이 완료되었습니다.");
                 Reset_is_current_PlayerSkin();
                 Slot_SkinData.is_current_PlayerSkin = true;
-                
+                GameManagerEx.Instance.player.MonkeySkinId = Skin_id;
+
                 SkinData_Manager.last_slot = SkinData_Manager.current_slot;
                 SkinData_Manager.current_slot = this.gameObject;
                 if (SkinData_Manager.last_slot != SkinData_Manager.current_slot)
@@ -140,8 +141,10 @@ public class SlotData_Manager : MonoBehaviour
             Debug.Log("스킨을 구매합니다.");
             Slot_SkinData.is_locked = false;
             bananacount -= Slot_SkinData.price;
-            GameManagerEx.Instance.player.Money = bananacount; 
-            PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
+            GameManagerEx.Instance.player.Money = bananacount;
+            GameManagerEx.Instance.player.MonkeySkinId = Skin_id;
+            GameManagerEx.Instance.player.AddSkinId(Skin_id);
+            //PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
             PurchaseBtn_Load(); // 버튼 상태를 장착으로 바꾸기
             PreviewBtn_Img_Load();
         }
