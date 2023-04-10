@@ -23,7 +23,7 @@ public class Distance : MonoBehaviour
     private void Start()
     {
         bestScore = GameManagerEx.Instance.player.BestScore;
-        bestScoreText.text = bestScore.ToString() + "m";
+        bestScoreText.text = "BEST" + bestScore.ToString() + "m";
     }
 
     public int Dist { 
@@ -48,10 +48,11 @@ public class Distance : MonoBehaviour
                 isReach = true;
                 curScoreText.color = Color.yellow;
                 curScoreText.fontSize = 120;
-                bestScoreText.fontSize = 100;
-                bestScoreText.text = curScoreText.text;
+                bestScoreText.fontSize = 80;
+                bestScoreText.text = "BEST " + curScoreText.text;
             }
         }
+
         else
         {
             bestScoreText.text = curScoreText.text;

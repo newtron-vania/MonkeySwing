@@ -97,6 +97,13 @@ public class Popup_manager : MonoBehaviour
         HeartCount.is_retry = true;
     }
 
+    public void OnClickReplayButton()
+    {
+        AddBanana();
+        SetTimeScale(1);
+        changeScene.ChangeSceneBtn("MainScene");
+    }
+
     public void OnClickExitButton()
     {
         Debug.Log("click Exit");

@@ -12,6 +12,8 @@ public class WeightSliders : MonoBehaviour
     [SerializeField]
     Image faceImg;
     [SerializeField]
+    Image slideView;
+    [SerializeField]
     MainScene GameScene;
 
     Slider weightSlider;
@@ -26,6 +28,7 @@ public class WeightSliders : MonoBehaviour
     public void SetValue(int value)
     {
         //특정 구간을 지날 때마다 사운드 추가
+        slideView.fillAmount = (value - 10) / 90f;
         weightSlider.value = value;
         ChangeStateFace(value);
     }

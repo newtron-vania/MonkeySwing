@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoostEffect : MonoBehaviour
 {
-    public float boostForce = 2f;
+    public float boostForce = 3f;
 
-    float TTL = 8f;
+    float TTL = 4f;
     float waitInvincibleTime = 2f;
     float curTime = 0f;
     void Start()

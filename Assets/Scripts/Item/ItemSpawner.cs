@@ -7,7 +7,6 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     GameObject[] items;
 
-
  
     [SerializeField]
     Define.Items lockItem = Define.Items.None;
@@ -46,11 +45,11 @@ public class ItemSpawner : MonoBehaviour
     Define.Items RandomItem()
     {
         float rand = Random.Range(0, 1f) * 100;
-        if (rand < 10)
+        if (rand < 8)
             return Define.Items.CaloryBanana;
-        else if (rand < 14)
+        else if (rand < 11)
             return Define.Items.Boost;
-        else if (rand <= 18)
+        else if (rand <= 13)
             return Define.Items.Magnet;
         else
             return Define.Items.None;

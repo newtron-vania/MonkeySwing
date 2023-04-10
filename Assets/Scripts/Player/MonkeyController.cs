@@ -68,7 +68,7 @@ public class MonkeyController : MonoBehaviour
             {
                 case Define.CharacterState.Hunger:
                     monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Hunger];
-                    rigid.drag = .5f;
+                    rigid.drag = .8f;
                     break;
                 case Define.CharacterState.Normal:
                     monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Normal];
@@ -76,7 +76,7 @@ public class MonkeyController : MonoBehaviour
                     break;
                 case Define.CharacterState.Full:
                     monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Full];
-                    rigid.drag = 4f;
+                    rigid.drag = 5f;
                     break;
                 case Define.CharacterState.Damaged:
                     Debug.Log("isDamaged!");
