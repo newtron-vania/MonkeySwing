@@ -17,6 +17,7 @@ public class BoostEffect : MonoBehaviour
     {
         GameManagerEx.Instance.monkey.StartBoost(TTL, waitInvincibleTime);
         GameManagerEx.Instance.makeLines.BoostLineSpeed(TTL, boostForce);
+        Managers.Sound.Play("FeverBGM", Define.Sound.Bgm);
         Managers.Sound.Play("Boost");
     }
 
@@ -24,6 +25,7 @@ public class BoostEffect : MonoBehaviour
     {
         if (curTime > TTL)
         {
+            Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
             Managers.Resource.Destroy(this.gameObject);
         }
         curTime += Time.deltaTime;

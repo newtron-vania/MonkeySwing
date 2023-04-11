@@ -41,6 +41,8 @@ public class Define
     {
         HomeBGM,
         MainBGM,
+        FeverBGM,
+        ShopBGM
     }
     public enum UIEvent
     {

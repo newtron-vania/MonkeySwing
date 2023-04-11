@@ -40,7 +40,8 @@ public class MakeLines : MonoBehaviour
             lineSpeed = value;
             if (isBoosting)
                 return;
-            lineSpeedAction.Invoke(lineSpeed);
+            if(lineSpeedAction != null)
+                lineSpeedAction.Invoke(lineSpeed);
             appliedLineSpeed = lineSpeed;
             foreach (GameObject go in lineQueue)
             {
