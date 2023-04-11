@@ -29,6 +29,7 @@ public class SkinData
 [System.Serializable]
 public class SkinDatas {
     public List<SkinData> skins;
+
 }
 
 public class SkinData_LoadSave : MonoBehaviour
@@ -48,6 +49,7 @@ public class SkinData_LoadSave : MonoBehaviour
         Origin_Slot = Resources.Load<GameObject>("Prefabs/Shop/Slot");
         Create_TotalSlot();
         Update_skindata();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadData(){

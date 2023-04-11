@@ -142,7 +142,6 @@ public class SlotData_Manager : MonoBehaviour
             Slot_SkinData.is_locked = false;
             GameManagerEx.Instance.player.Money -=  Slot_SkinData.price;
             GameManagerEx.Instance.player.AddSkinId(Skin_id); // collected_skinid에 구매한 id 추가
-            //PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
             PurchaseBtn_Load(); // 버튼 상태를 장착으로 바꾸기
             PreviewBtn_Img_Load();
         }
