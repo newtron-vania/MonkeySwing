@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class WeightSliders : MonoBehaviour
 {
-
+    enum ColorSlide
+    {
+        Blue,
+        Yellow,
+        Red,
+    }
 
     [SerializeField]
     Sprite[] FaceStyle;
@@ -13,6 +18,8 @@ public class WeightSliders : MonoBehaviour
     Image faceImg;
     [SerializeField]
     Image slideView;
+    [SerializeField]
+    Sprite[] slideColor;
     [SerializeField]
     MainScene GameScene;
 
@@ -30,17 +37,27 @@ public class WeightSliders : MonoBehaviour
         //특정 구간을 지날 때마다 사운드 추가
         slideView.fillAmount = (value - 10) / 90f;
         weightSlider.value = value;
-        ChangeStateFace(value);
+        ChangeStates(value);
     }
 
-    private void ChangeStateFace(int value)
+    private void ChangeStates(int value)
     {
         if (value <= 30)
+        {
             faceImg.sprite = FaceStyle[(int)Define.CharacterState.Hunger];
+            slideView.sprite = slideColor[(int)ColorSlide.Blue];
+        }
         else if (value <= 80)
+        {
             faceImg.sprite = FaceStyle[(int)Define.CharacterState.Normal];
+            slideView.sprite = slideColor[(int)ColorSlide.Yellow];
+        }
         else
+        {
             faceImg.sprite = FaceStyle[(int)Define.CharacterState.Full];
+            slideView.sprite = slideColor[(int)ColorSlide.Red];
+        }
+            
 
     } 
 

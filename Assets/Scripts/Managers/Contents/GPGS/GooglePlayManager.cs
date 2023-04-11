@@ -235,4 +235,22 @@ public class GooglePlayManager : MonoBehaviour
 
     public void ShowBestScoreLeaderboardUI() =>
         Social.ShowLeaderboardUI();
+
+
+
+    public void LoadBestScoreRankingArray(int rowCount, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onLoadedPlayerRankAction = null, Action<bool, LeaderboardScoreData> onLoadedTopRankAction = null)
+    {
+        hideUI.SetActive(true);
+        LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, 1, LeaderboardStart.PlayerCentered, leaderboardTimeSpan, onLoadedPlayerRankAction);
+        LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, rowCount, LeaderboardStart.TopScores, leaderboardTimeSpan, onLoadedTopRankAction);
+        hideUI.SetActive(false);
+    }
+    private void LoadCustomLeaderboardArray(string gpgsId, int rowCount, LeaderboardStart leaderboardStart,
+    LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onloaded = null)
+    {
+        PlayGamesPlatform.Instance.LoadScores(gpgsId, leaderboardStart, rowCount, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
+        {
+            onloaded?.Invoke(data.Status == ResponseStatus.Success, data);
+        });
+    }
 }

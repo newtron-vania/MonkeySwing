@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoostEffect : MonoBehaviour
 {
     public float boostForce = 3f;
+
+    [SerializeField]
+    Image BoostSlider;
 
     float TTL = 4f;
     float waitInvincibleTime = 2f;
@@ -23,6 +27,8 @@ public class BoostEffect : MonoBehaviour
             Managers.Resource.Destroy(this.gameObject);
         }
         curTime += Time.deltaTime;
+        BoostSlider.fillAmount = (TTL - curTime) * (1 / TTL);
+        Debug.Log($"Boost gage : {(TTL - curTime) * (1 / TTL)}");
     }
 
     public void ResetTime()

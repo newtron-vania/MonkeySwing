@@ -26,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
         }
 
         int itemNum = (int)RandomItem();
-        if (itemNum > items.Length)
+        if (itemNum >= (int)Define.Items.Count)
             return;
 
         Collider2D[] goes = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);

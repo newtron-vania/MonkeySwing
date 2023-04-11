@@ -23,7 +23,7 @@ public class Distance : MonoBehaviour
     private void Start()
     {
         bestScore = GameManagerEx.Instance.player.BestScore;
-        bestScoreText.text = "BEST" + bestScore.ToString() + "m";
+        bestScoreText.text = "BEST  " + bestScore.ToString() + "m";
     }
 
     public int Dist { 
