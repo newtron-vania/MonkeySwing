@@ -7,6 +7,8 @@ public class BackgroundScrolling : MonoBehaviour
     [SerializeField]
     Sprite[] backgrounds;
 
+
+    float changeBackgroundLimit = 600f;
     [SerializeField]
     Transform startPoint;
     [SerializeField]
