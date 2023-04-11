@@ -47,4 +47,15 @@ public class PlayerData
     {
         return collectedSkinId;
     }
+
+    public Dictionary<int, bool> GetSkinDict()
+    {
+        Dictionary<int, bool> skinDict = new Dictionary<int, bool>();
+        foreach (int id in collectedSkinId)
+        {
+            skinDict.Add(id, true);
+        }
+
+        return skinDict;
+    }
 }
