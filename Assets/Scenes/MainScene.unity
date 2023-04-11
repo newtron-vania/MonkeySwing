@@ -813,30 +813,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733044768}
     m_Modifications:
-    - target: {fileID: 1907253377749410804, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_Transition
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640366246590932157, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640366246676811097, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640366246872696134, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640366247179471591, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5003228298328950336, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_Transition
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5778713488236506965, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
       propertyPath: countUI
       value: 
@@ -929,8 +905,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingPopup
       objectReference: {fileID: 0}
-    - target: {fileID: 5778713488236506967, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 7891840432776345245, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891840434313976007, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891840434353795363, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891840434566461756, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -940,58 +928,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5778713488236506966, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
   m_PrefabInstance: {fileID: 485053706}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &485053708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 29735280620782448, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-  m_PrefabInstance: {fileID: 485053706}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &485053709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5003228298328950365, guid: 5baab3c19487ac340ba4c94ad38b6cc1, type: 3}
-  m_PrefabInstance: {fileID: 485053706}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &485053710
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485053708}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7c1378fe5b0d764aba2f3c3cb30fb18, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!95 &485053711
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485053709}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7c1378fe5b0d764aba2f3c3cb30fb18, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &494274132
 PrefabInstance:
   m_ObjectHideFlags: 0
