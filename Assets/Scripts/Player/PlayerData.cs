@@ -12,7 +12,7 @@ public class PlayerData
     int currentSkinId = 0;
     public int MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
     [SerializeField]
-    List<int> collectedSkinId = new List<int>();
+    public List<int> collectedSkinId = new List<int>();
     [SerializeField]
     int bestScore = 0;
     public int BestScore { get { return bestScore; } set { bestScore = value; SetData(); UploadToBestScoreRanking(); } }
