@@ -17,7 +17,7 @@ public class SlotData_Manager : MonoBehaviour
     public int Skin_id;
     private static int currentSkin_ID;
 
-    SkinData_Manager skinData_manager = new SkinData_Manager();
+    SkinData_Manager skinData_manager;
 
     public Sprite BodySprite;
     public Sprite TailSprite;
@@ -29,16 +29,22 @@ public class SlotData_Manager : MonoBehaviour
     GameObject PurchaseBtn_Txt;
     GameObject Usage_Status;
    
+
+    public void init(SkinData_Manager skindataManager)
+    {
+        Slot_SkinData = Get_SkinData(Skin_id);
+        SkinImg_Load();
+        skinData_manager = skindataManager;
+    }
     void Start()
     {
-        Slot_SkinData =  Get_SkinData(Skin_id);
         Purchase_popup = GameObject.Find("Shop").transform.Find("Purchase_popup").gameObject;
         PreviewBtn = transform.Find("Skin_preview_btn").gameObject;
         PurchaseBtn = transform.Find("Skin_purchase_btn").gameObject;
         PurchaseBtn_Txt = PurchaseBtn.transform.Find("state").gameObject;
         Usage_Status = transform.Find("Usage_Status").gameObject;
 ;
-        SkinImg_Load();
+        
         PreviewBtn_Img_Load();
         PurchaseBtn_Load();        
     }
@@ -71,6 +77,7 @@ public class SlotData_Manager : MonoBehaviour
         string state = "";
         Slot_SkinData_Load();
         Debug.Log(Slot_SkinData.is_locked);
+
         if(Slot_SkinData.is_locked){ // 잠겨있으면 금액 가져오기
             state = Slot_SkinData.price.ToString();
         }
@@ -93,10 +100,12 @@ public class SlotData_Manager : MonoBehaviour
 
     public void OnClick_purchase_Btn()
     {
+        
         SkinData_Manager.Player_SkinData_ID = Skin_id;
         SkinData_Manager.clicked_slot = this.gameObject;
         
         if (Slot_SkinData.is_locked){
+            Managers.Sound.Play("ButtonConfirm");
             // 스킨 구매 팝업 띄우기
             Debug.Log("구매하시겠습니까");
             Purchase_popup.SetActive(true);
@@ -107,9 +116,11 @@ public class SlotData_Manager : MonoBehaviour
             if(Slot_SkinData.is_current_PlayerSkin)
             {
                 Debug.Log("이미 사용중인 스킨입니다.");
+                Managers.Sound.Play("ButtonConfirm");
             }
             else if(!Slot_SkinData.is_current_PlayerSkin)
             {
+                Managers.Sound.Play("Equit");
                 Debug.Log("스킨을 변경합니다. 스킨 변경이 완료되었습니다.");
                 Reset_is_current_PlayerSkin();
                 Slot_SkinData.is_current_PlayerSkin = true;
@@ -160,6 +171,7 @@ public class SlotData_Manager : MonoBehaviour
 
     public void OnClick_Preview_Btn()
     {
+        Managers.Sound.Play("ButtonConfirm");
         // PreviewBtn_Img_Load();
         if (!Slot_SkinData.is_current_PreviewSkin)
         {

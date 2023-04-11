@@ -18,14 +18,18 @@ public class SkinData_Manager : MonoBehaviour
     private string Monkey_preview_path = "Assets/Resources/Shop/Monkey_preview.prefab";
     private string Monkey_prefab_path = "Assets/Resources/Shop/Monkey_prefab.prefab";
 
-    private static GameObject Monkey_preview;
-    private static GameObject Monkey_preview_body;
-    private static GameObject Monkey_preview_tail;
-    private static GameObject Monkey_previewName_TXT;
 
-    private static GameObject Monkey_prefab;
-    private static GameObject Monkey_prefab_body;
-    private static GameObject Monkey_prefab_tail;
+    [SerializeField]
+    private  GameObject Monkey_preview_body;
+    [SerializeField]
+    private  GameObject Monkey_preview_tail;
+    [SerializeField]
+    private  GameObject Monkey_previewName_TXT;
+
+    [SerializeField]
+    private  GameObject Monkey_prefab_body;
+    [SerializeField]
+    private  GameObject Monkey_prefab_tail;
 
 
 
@@ -39,15 +43,6 @@ public class SkinData_Manager : MonoBehaviour
 
     private void DataLoad()
     {   
-        Monkey_preview = GameObject.Find("Monkey_preview");
-        Monkey_preview_body = Monkey_preview.transform.Find("Monkey_Body").gameObject;
-        Monkey_preview_tail = Monkey_preview.transform.Find("Monkey_Tail").gameObject;
-        Monkey_previewName_TXT = Monkey_preview.transform.Find("MonkeyName").gameObject.transform.Find("MonkeyName_TXT").gameObject;
-
-        Monkey_prefab = GameObject.Find("Monkey_prefab");
-        Monkey_prefab_body = Monkey_prefab.transform.Find("Monkey_Body").gameObject;
-        Monkey_prefab_tail = Monkey_prefab.transform.Find("Monkey_Tail").gameObject;
-
         last_slot = GameObject.Find("Usage_Status");
     }
 
