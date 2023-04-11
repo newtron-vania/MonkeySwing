@@ -13,7 +13,6 @@ public class ItemSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log($"{this.gameObject.name} OnEnable!");
         SpawnItem();
     }
 

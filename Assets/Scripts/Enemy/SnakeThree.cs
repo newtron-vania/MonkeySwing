@@ -32,6 +32,9 @@ public class SnakeThree : MonoBehaviour
         startPoint = targetDir.position - SnakeModel.position;
 
         dirVec = transform.parent.localScale;
+
+        GameManagerEx.Instance.makeLines.lineSpeedAction -= SetAnimeSpeed;
+        GameManagerEx.Instance.makeLines.lineSpeedAction += SetAnimeSpeed;
     }
 
     // Update is called once per frame
@@ -43,6 +46,11 @@ public class SnakeThree : MonoBehaviour
     private void OnEnable()
     {
         anime.Play("None");
+    }
+
+    void SetAnimeSpeed(float value)
+    {
+        anime.speed = value * 0.5f;
     }
 
     void SetLinePos()

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class MakeLines : MonoBehaviour
 {
@@ -32,7 +32,7 @@ public class MakeLines : MonoBehaviour
     float appliedLineSpeed = 2f;
     bool isBoosting = false;
 
-
+    public Action<float> lineSpeedAction;
 
     public float LineSpeed { 
         get { return lineSpeed; } 
@@ -40,6 +40,7 @@ public class MakeLines : MonoBehaviour
             lineSpeed = value;
             if (isBoosting)
                 return;
+            lineSpeedAction.Invoke(lineSpeed);
             appliedLineSpeed = lineSpeed;
             foreach (GameObject go in lineQueue)
             {
@@ -123,7 +124,7 @@ public class MakeLines : MonoBehaviour
     private int SettingLineNum(int level)
     {
         //각 라인의 생성유무(pool을 확인)하여 제외하고 다시 반복
-        int num = Random.Range(0, levelLinesDict[level].Length);
+        int num = UnityEngine.Random.Range(0, levelLinesDict[level].Length);
         return num;
     }
 
