@@ -18,23 +18,12 @@ public class DataManager
         {
             skinDict.Add(skindata.SkinId, skindata);
         }
-        Debug.Log("SetSkinStart");
-        foreach (KeyValuePair<int, SkinDataSO> keyValue in skinDict)
-        {
-            Debug.Log($"skinid : {keyValue.Key} , data : {keyValue.Value.SkinHead}");
-        }
     }
 
     public SkinDataSO GetSkin(int skinid)
     {
-        Debug.Log("GetSkinStart");
-        foreach (KeyValuePair<int, SkinDataSO> keyValue in skinDict)
-        {
-            Debug.Log($"skinid : {keyValue.Key} , data : {keyValue.Value.SkinHead}");
-        }
         SkinDataSO skinData = null;
-        Debug.Log($"skin is not null :{skinDict.TryGetValue(skinid, out skinData)}");
-        Debug.Log($"Get skinData id {skinData.SkinId}");
+        skinDict.TryGetValue(skinid, out skinData);
         return skinData;
     }
 

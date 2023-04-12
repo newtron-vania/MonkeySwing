@@ -85,6 +85,17 @@ public class MakeLines : MonoBehaviour
         maplevel = $"level Event";
         maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
         levelLinesDict.Add(maxLineLv+1, maps);
+
+        foreach(KeyValuePair<int, GameObject[]> keyValuePair in levelLinesDict)
+        {
+            int i = keyValuePair.Key;
+            string name = string.Empty;
+            foreach (GameObject go in keyValuePair.Value)
+            {
+                name += go.name+", ";
+            }
+            Debug.Log($"level {i} list - {name}");
+        }
     }
 
 
@@ -154,7 +165,7 @@ public class MakeLines : MonoBehaviour
             double w = wrPicker.GetWeight(i);
             if (wrPicker.GetWeight(i) < wNum*i)
             {
-                wrPicker.Add(i, w/4);
+                    wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.2);
             }
                 Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
         }
