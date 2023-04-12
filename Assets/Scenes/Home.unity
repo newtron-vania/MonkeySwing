@@ -138,6 +138,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1895556846109595939, guid: 27f89d91028f17348a3ef57464c1d79a, type: 3}
   m_PrefabInstance: {fileID: 1895556847591998895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &805417738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1813593391696477423, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
+  m_PrefabInstance: {fileID: 1813593390891257829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835037087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8871110074396709236, guid: dc2df1747fc9b82498b9e911d95bd1f1, type: 3}
@@ -516,6 +521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1886933428}
     m_Modifications:
+    - target: {fileID: 270856919, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1813593392512840292, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -606,9 +615,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1813593392512840293, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 270856921, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 865083602d10c7a4aa11f9328a2cf5c6, type: 3}
 --- !u!1001 &1895556847591998895
 PrefabInstance:
@@ -873,6 +883,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3397f6f0e7d6c0f4f9d55685a4bf84e2, type: 3}
+--- !u!114 &3532976735132761716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621687680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6d4400bf5458f4089539daec1e5bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skin_content: {fileID: 805417738}
 --- !u!114 &3695218185435555458 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9169712956041167824, guid: 07b3d7c6362e78c4d9089e67c58ea6e7, type: 3}
