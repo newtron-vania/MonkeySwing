@@ -15,7 +15,9 @@ public class GooglePlayManager : MonoBehaviour
     static public GameObject GPGSUI;
     static TextMeshProUGUI GPGSUIText;
     static private GooglePlayManager instance;
-    static public GooglePlayManager Instance { get { Init();  return instance; }
+    static public GooglePlayManager Instance
+    {
+        get { Init(); return instance; }
     }
 
     static GameObject hideUI;
@@ -40,12 +42,12 @@ public class GooglePlayManager : MonoBehaviour
         }
     }
 
-    static void Init() 
-    { 
-        if(instance == null)
+    static void Init()
+    {
+        if (instance == null)
         {
             GameObject go = GameObject.Find("@GooglePlayManager");
-            if(go == null)
+            if (go == null)
             {
                 go = new GameObject { name = "@GooglePlayManager" };
                 go.AddComponent<GooglePlayManager>();
@@ -60,6 +62,7 @@ public class GooglePlayManager : MonoBehaviour
             instance = go.GetComponent<GooglePlayManager>();
         }
     }
+
     private void InitiatePlayGames()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
@@ -92,7 +95,7 @@ public class GooglePlayManager : MonoBehaviour
                 successAction.Invoke();
                 Debug.Log("Login Succeed");
             }
-            
+
         });
     }
 
@@ -115,7 +118,7 @@ public class GooglePlayManager : MonoBehaviour
 
     public void LoadFromCloud(Action<string> afterLoadAction)
     {
-        
+
         if (isAuthenticated && !isProcessing)
         {
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
@@ -238,19 +241,61 @@ public class GooglePlayManager : MonoBehaviour
 
 
 
-    public void LoadBestScoreRankingArray(int rowCount, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onLoadedPlayerRankAction = null, Action<bool, LeaderboardScoreData> onLoadedTopRankAction = null)
+    public void LoadBestScoreRankingArray(int rowCount, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, UserRankData, UserRankData[]> onLoadedRankAction = null)
     {
         hideUI.SetActive(true);
-        LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, 1, LeaderboardStart.PlayerCentered, leaderboardTimeSpan, onLoadedPlayerRankAction);
-        LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, rowCount, LeaderboardStart.TopScores, leaderboardTimeSpan, onLoadedTopRankAction);
-        hideUI.SetActive(false);
-    }
-    private void LoadCustomLeaderboardArray(string gpgsId, int rowCount, LeaderboardStart leaderboardStart,
-    LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, LeaderboardScoreData> onloaded = null)
-    {
-        PlayGamesPlatform.Instance.LoadScores(gpgsId, leaderboardStart, rowCount, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
+
+        List<IScore> userDatas = new List<IScore>();
+        PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_bestscore, LeaderboardStart.TopScores, rowCount, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
         {
-            onloaded?.Invoke(data.Status == ResponseStatus.Success, data);
+            for(int i=0; i<data.Scores.Length; i++)
+            {
+                userDatas.Add(data.Scores[i]);
+            }
+            PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_bestscore, LeaderboardStart.PlayerCentered, 1, LeaderboardCollection.Public, leaderboardTimeSpan, data =>
+            {
+                userDatas.Add(data.Scores[0]);
+                LoadUsers(data.Status == ResponseStatus.Success, userDatas, onLoadedRankAction);
+            });
         });
     }
+
+    private void LoadUsers(bool success, List<IScore> scores, Action<bool, UserRankData, UserRankData[]> onloaded = null)
+    {
+        if (success)
+        {
+            string[] userIds = new string[scores.Count];
+
+            for (int i = 0; i < scores.Count; i++)
+            {
+                userIds[i] = scores[i].userID;
+            }
+            // forward scores with loaded profiles
+            Social.LoadUsers(userIds, profiles => loadUserName(profiles, scores, onloaded));
+        }
+        else
+        {
+            onloaded?.Invoke(success, null, null);
+            hideUI.SetActive(false);
+        }
+    }
+
+    private void loadUserName(IUserProfile[] profiles, List<IScore> data, Action<bool, UserRankData, UserRankData[]> onloaded = null)
+    {
+        UserRankData[] userRankDatas = new UserRankData[profiles.Length];
+        for (int i = 0; i < profiles.Length; i++)
+        {
+            userRankDatas[i] = new UserRankData() { userName = profiles[i].userName, userScore = data[i].value , rank = data[i].rank};
+        }
+        onloaded?.Invoke(true, userRankDatas[0], userRankDatas[1..profiles.Length]);
+        hideUI.SetActive(false);
+    }
+
+}
+
+public class UserRankData
+{
+    public string userName;
+    public long userScore;
+    public int rank;
 }

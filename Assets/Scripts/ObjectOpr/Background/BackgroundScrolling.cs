@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class BackgroundScrolling : MonoBehaviour
 {
-    [SerializeField]
-    Sprite[] backgrounds;
+    BackgroundChanger backgroundChanger;
 
-
-    float changeBackgroundLimit = 600f;
+    
     [SerializeField]
     Transform startPoint;
     [SerializeField]
@@ -28,27 +26,32 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void Start()
     {
+        backgroundChanger = this.GetComponent<BackgroundChanger>();
         StartCoroutine("ScrollBackground");
+        GameManagerEx.Instance.distance.distanceEvent -= ChangeDay;
+        GameManagerEx.Instance.distance.distanceEvent += ChangeDay;
+
+    }
+
+    private void ChangeDay(int dist)
+    {
+        if (dist > 0 && dist % 100 == 0)
+            IsDay = !IsDay;
     }
 
     IEnumerator ScrollBackground()
     {
-        int i = 0;
-        if (backgrounds.Length < 1)
-            yield return null;
-        ScrollBackgroundList[0].GetComponent<SpriteRenderer>().sprite = backgrounds[i];
-        if (backgrounds.Length >= 2)
-            i++;
-        ScrollBackgroundList[1].GetComponent<SpriteRenderer>().sprite = backgrounds[i];
+        backgroundChanger.SetBackgroundImg(ScrollBackgroundList[0].GetComponent<SpriteRenderer>());
+        backgroundChanger.SetBackgroundImg(ScrollBackgroundList[1].GetComponent<SpriteRenderer>());
         while (true)
         {
             foreach(Transform background in ScrollBackgroundList)
             {
                 background.position += Vector3.up * scrollSpeed * Time.fixedDeltaTime;
-                if (background.position.y > endPoint.position.y)
+                if (background.position.y >= endPoint.position.y)
                 {
+                    backgroundChanger.SetBackgroundImg(background.GetComponent<SpriteRenderer>());
                     background.position = startPoint.position;
-                    background.GetComponent<SpriteRenderer>().sprite = backgrounds[i];
                 }
             }
             yield return new WaitForFixedUpdate();
@@ -78,4 +81,5 @@ public class BackgroundScrolling : MonoBehaviour
             changeTime += 0.1f;
         }
     }
+
 }

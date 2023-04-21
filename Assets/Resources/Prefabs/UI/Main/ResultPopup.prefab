@@ -274,6 +274,7 @@ MonoBehaviour:
   scoreText: {fileID: 2006335653846541719}
   rewardText: {fileID: 2006335654996980679}
   BestScoreSticker: {fileID: 1174110456020466475}
+  ceremonyAnime: {fileID: 8729180875526927369}
 --- !u!95 &1409876385
 Animator:
   serializedVersion: 5
@@ -2019,7 +2020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3534908876839576803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2161,6 +2162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2006335653594585747}
     m_Modifications:
+    - target: {fileID: 5356719663845835639, guid: 4354ca7724324fa47b777e2759b0b5f7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2118a336be4eb114ab6f3a1a95e064ae, type: 3}
     - target: {fileID: 7841991571407315221, guid: 4354ca7724324fa47b777e2759b0b5f7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2254,5 +2259,10 @@ PrefabInstance:
 --- !u!224 &5990419105284032648 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7841991571407315221, guid: 4354ca7724324fa47b777e2759b0b5f7, type: 3}
+  m_PrefabInstance: {fileID: 4608985313253796253}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8729180875526927369 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5103177030796991892, guid: 4354ca7724324fa47b777e2759b0b5f7, type: 3}
   m_PrefabInstance: {fileID: 4608985313253796253}
   m_PrefabAsset: {fileID: 0}

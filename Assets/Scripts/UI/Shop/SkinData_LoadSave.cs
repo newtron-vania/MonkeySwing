@@ -47,7 +47,12 @@ public class SkinData_LoadSave : MonoBehaviour
     private SpriteRenderer Monkey_prefab_tail;
 
 
-    void Awake()
+    private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         LoadData();
         Origin_Slot = Resources.Load<GameObject>("Prefabs/Shop/Slot");
@@ -81,11 +86,10 @@ public class SkinData_LoadSave : MonoBehaviour
 
     public void Create_TotalSlot(){
         for (int i=0; i < MySkinList.skins.Count; i++){
-            GameObject Slot = Instantiate(Origin_Slot);
+            GameObject Slot = Instantiate(Origin_Slot, Skin_content.transform);
             SlotData_Manager slotData_manager = Slot.GetComponent<SlotData_Manager>();
             slotData_manager.Skin_id = MySkinList.skins[i].id;
             slotData_manager.init(skinDataManager);
-            Slot.transform.SetParent(Skin_content.transform);
         }  
     }
 

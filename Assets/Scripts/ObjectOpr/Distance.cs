@@ -39,7 +39,6 @@ public class Distance : MonoBehaviour
     void SetDist(int dist)
     {
         curScoreText.text = dist.ToString() + "m";
-        ControlSpeedwithDist();
 
         if (!isReach)
         {
@@ -56,16 +55,6 @@ public class Distance : MonoBehaviour
         else
         {
             bestScoreText.text = curScoreText.text;
-        }
-    }
-
-    void ControlSpeedwithDist()
-    {
-        if(Dist>0 && Dist%100 == 0)
-        {
-            GameManagerEx.Instance.makeLines.LineSpeed += 0.3f;
-            backgroundController.IsDay = !backgroundController.IsDay;
-            Debug.Log("Dist Start!");
         }
     }
 }

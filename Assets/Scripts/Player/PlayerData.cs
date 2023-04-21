@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerData
 {
     [SerializeField]
-    int money = 1000;
+    int money = 0;
 
     public int Money { get { return money; } set { money = value; SetData(); } }
     [SerializeField]

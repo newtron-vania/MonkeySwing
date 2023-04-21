@@ -24,42 +24,29 @@ public class RankUI : MonoBehaviour
     void OnEnable()
     {
         GooglePlayManager.Instance.LoadBestScoreRankingArray(10, GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime,
-            (success, data) => { ShowMyRankScoreData(success, data); },
-            (success, data) => { ShowRankScoreData(success, data); }) ;
+            (success, mydata, data) => { ShowRankScoreData(success, mydata, data); }) ;
     }
 
 
-    void ShowRankScoreData(bool success, GooglePlayGames.BasicApi.LeaderboardScoreData data)
+    void ShowRankScoreData(bool success, UserRankData mydata, UserRankData[] data)
     {
+
         if (success)
         {
-            var scores = data.Scores;
+            myRankNum = mydata.rank;
+            myRankItem.SetData(mydata.userName, mydata.userScore.ToString());
             int i = 0;
-            foreach(var score in scores)
+            foreach(var score in data)
             {
                 rankItems[i].SetActive(true);
                 RankItemController rankItem = rankItems[i].GetComponent<RankItemController>();
-                rankItem.SetData(score.rank, score.rank == myRankNum, score.userID, score.value.ToString());
+                rankItem.SetData(score.rank, score.rank == myRankNum, score.userName, score.userScore.ToString());
             }
         }
         else
         {
-            errorText.gameObject.SetActive(true);
-        }
-    }
-
-
-    void ShowMyRankScoreData(bool success, GooglePlayGames.BasicApi.LeaderboardScoreData data)
-    {
-        if (success)
-        {
-            var scores = data.Scores;
-            myRankNum = scores[0].rank;
-            myRankItem.SetData(scores[0].userID, scores[0].value.ToString());
-        }
-        else
-        {
             myRankItem.SetData("loadError", "loadError");
+            errorText.gameObject.SetActive(true);
         }
     }
 
