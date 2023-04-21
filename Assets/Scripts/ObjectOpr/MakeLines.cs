@@ -58,6 +58,8 @@ public class MakeLines : MonoBehaviour
         SetWrPick();
         GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
         GameManagerEx.Instance.distance.distanceEvent += AddWrPick;
+        GameManagerEx.Instance.distance.distanceEvent -= LineSpeedUp;
+        GameManagerEx.Instance.distance.distanceEvent += LineSpeedUp;
     }
 
 
@@ -159,7 +161,7 @@ public class MakeLines : MonoBehaviour
 
     private void AddWrPick(int value)
     {
-        if(value % 50 == 0)
+        if(value > 0 && value % 100 == 0)
         for (int i = 1; i <= maxLineLv; i++)
         {
             double w = wrPicker.GetWeight(i);
@@ -168,6 +170,14 @@ public class MakeLines : MonoBehaviour
                     wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.2);
             }
                 Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
+        }
+    }
+
+    private void LineSpeedUp(int dist)
+    {
+        if (dist > 0 && dist % 100 == 0)
+        {
+            GameManagerEx.Instance.makeLines.LineSpeed += 0.3f;
         }
     }
 
