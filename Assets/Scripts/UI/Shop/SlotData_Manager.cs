@@ -23,10 +23,14 @@ public class SlotData_Manager : MonoBehaviour
     public Sprite TailSprite;
     
     public SkinData Slot_SkinData;
+    [SerializeField]
     GameObject PreviewBtn;
     GameObject Purchase_popup;
+    [SerializeField]
     GameObject PurchaseBtn;
+    [SerializeField]
     GameObject PurchaseBtn_Txt;
+    [SerializeField]
     GameObject Usage_Status;
    
 
@@ -39,10 +43,6 @@ public class SlotData_Manager : MonoBehaviour
     void Start()
     {
         Purchase_popup = GameObject.Find("Shop").transform.Find("Purchase_popup").gameObject;
-        PreviewBtn = transform.Find("Skin_preview_btn").gameObject;
-        PurchaseBtn = transform.Find("Skin_purchase_btn").gameObject;
-        PurchaseBtn_Txt = PurchaseBtn.transform.Find("state").gameObject;
-        Usage_Status = transform.Find("Usage_Status").gameObject;
 ;
         
         PreviewBtn_Img_Load();
