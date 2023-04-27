@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GoogleMobileAds.Api;
+using System;
 
 public class AdmobManager : MonoBehaviour
 {
@@ -10,7 +11,13 @@ public class AdmobManager : MonoBehaviour
 
     public static AdmobManager Instance { get { Init(); return instance; } }
 
-    public bool isTestMode;
+    public bool isTestMode = true;
+
+
+    private float time = 0f;
+
+    [SerializeField]
+    private float limitTime = 300f;
 
 
     static void Init()
@@ -36,7 +43,7 @@ public class AdmobManager : MonoBehaviour
         MobileAds.Initialize(initStatus => { });
 
         LoadFrontAd();
-        LoadRewardAd();
+        LoadRewardAd(null);
     }
 
     AdRequest GetAdRequest()
@@ -55,15 +62,17 @@ public class AdmobManager : MonoBehaviour
     {
         frontAd = new InterstitialAd(isTestMode ? frontTestID : frontID);
         frontAd.LoadAd(GetAdRequest());
-        frontAd.OnAdClosed += (sender, e) =>
-        {
-            //LogText.text = "전면광고 성공";
-        };
     }
 
     public void ShowFrontAd()
     {
-        frontAd.Show();
+        if (time > limitTime)
+        {
+            if (this.frontAd.IsLoaded())
+            {
+                frontAd.Show();
+            }
+        }
     }
     #endregion
 
@@ -75,20 +84,23 @@ public class AdmobManager : MonoBehaviour
     RewardedAd rewardAd;
 
 
-    void LoadRewardAd()
+    void LoadRewardAd(EventHandler<Reward> rewardEvent)
     {
         rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
         rewardAd.LoadAd(GetAdRequest());
-        rewardAd.OnUserEarnedReward += (sender, e) =>
-        {
-            //LogText.text = "리워드 광고 성공";
-        };
+        rewardAd.OnUserEarnedReward -= rewardEvent;
+        rewardAd.OnUserEarnedReward += rewardEvent;
+
     }
 
-    public void ShowRewardAd()
+    public void ShowRewardAd(EventHandler<Reward> rewardEvent)
     {
-        rewardAd.Show();
-        LoadRewardAd();
+        if (rewardAd.IsLoaded())
+        {
+            LoadRewardAd(rewardEvent);
+            rewardAd.Show();
+        }
+            
     }
     #endregion
 }

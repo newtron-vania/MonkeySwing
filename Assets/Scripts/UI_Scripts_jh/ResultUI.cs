@@ -15,6 +15,9 @@ public class ResultUI : MonoBehaviour
     Image BestScoreSticker;
 
     [SerializeField]
+    Button continueButton;
+
+    [SerializeField]
     Animator ceremonyAnime;
     private void OnEnable()
     {
@@ -32,15 +35,36 @@ public class ResultUI : MonoBehaviour
             return;
         }
         ceremonyAnime.SetInteger("IsBest", 1);
+
+
+        AdmobManager.Instance.ShowFrontAd();
     }
 
-    public void ShowAds()
+    public void AddBanana()
     {
-        GiveMulCoin();
+        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+        BananaCount.bananacount = 0;
+    }
+
+    public void ShowAdsWithContinue()
+    {
+        AdmobManager.Instance.ShowRewardAd((sender, rewardEvent) => { StartContinue(); });
+    }
+
+    public void ShowAdsWithBanana()
+    {
+        AdmobManager.Instance.ShowRewardAd((sender, rewardEvent) => { GiveMulCoin(); });
     }
 
     private void GiveMulCoin()
     {
         BananaCount.bananacount *= 2;
+        AddBanana();
+    }
+
+    private void StartContinue()
+    {
+        continueButton.gameObject.SetActive(false);
+        
     }
 }

@@ -12,8 +12,6 @@ using TMPro;
 
 public class GooglePlayManager : MonoBehaviour
 {
-    static public GameObject GPGSUI;
-    static TextMeshProUGUI GPGSUIText;
     static private GooglePlayManager instance;
     static public GooglePlayManager Instance
     {
@@ -53,12 +51,9 @@ public class GooglePlayManager : MonoBehaviour
                 go.AddComponent<GooglePlayManager>();
                 hideUI = Managers.Resource.Instantiate("UI/HideUI");
                 hideUI.SetActive(false);
-                GPGSUI = Managers.Resource.Instantiate("UI/GPGSUI");
-                GPGSUIText = GPGSUI.FindChild<TextMeshProUGUI>();
             }
             DontDestroyOnLoad(go);
             DontDestroyOnLoad(hideUI);
-            DontDestroyOnLoad(GPGSUI);
             instance = go.GetComponent<GooglePlayManager>();
         }
     }
