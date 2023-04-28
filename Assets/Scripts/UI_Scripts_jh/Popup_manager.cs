@@ -94,7 +94,14 @@ public class Popup_manager : MonoBehaviour
     public void OnClickReplayButton()
     {
         SetTimeScale(1);
+        AddBanana();
         changeScene.ChangeSceneBtn("MainScene");
+    }
+
+    public void AddBanana()
+    {
+        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+        BananaCount.bananacount = 0;
     }
 
     public void OnClickExitButton()

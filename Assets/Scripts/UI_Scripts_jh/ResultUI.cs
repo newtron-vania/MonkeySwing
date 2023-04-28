@@ -48,23 +48,24 @@ public class ResultUI : MonoBehaviour
 
     public void ShowAdsWithContinue()
     {
-        AdmobManager.Instance.ShowRewardAd((sender, rewardEvent) => { StartContinue(); });
+        AdmobManager.Instance.ShowRewardAd(1, (sender, rewardEvent) => { StartContinue(); });
     }
 
     public void ShowAdsWithBanana()
     {
-        AdmobManager.Instance.ShowRewardAd((sender, rewardEvent) => { GiveMulCoin(); });
+        AdmobManager.Instance.ShowRewardAd(0, (sender, rewardEvent) => { GiveMulCoin(); });
     }
 
     private void GiveMulCoin()
     {
+        Debug.Log("ShowGiveBananaAd Complete!");
         BananaCount.bananacount *= 2;
         AddBanana();
     }
 
     private void StartContinue()
     {
-        continueButton.gameObject.SetActive(false);
-        
+        Debug.Log("ShowContinueAd Complete!");
+        continueButton.interactable = false;
     }
 }

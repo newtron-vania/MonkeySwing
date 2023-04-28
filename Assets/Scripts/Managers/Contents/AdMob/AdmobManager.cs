@@ -15,21 +15,28 @@ public class AdmobManager : MonoBehaviour
 
 
     private float time = 0f;
+    private int count = 0;
 
     [SerializeField]
-    private float limitTime = 300f;
+    private float limitTime = 120f;
+    [SerializeField]
+    private int maxCount = 3;
 
+
+    public void call()
+    {
+
+    }
 
     static void Init()
     {
         if (instance == null)
         {
-
             //매니저 초기화
-            GameObject go = GameObject.Find("@AdmobManager");
+            GameObject go = GameObject.Find("AdmobManager");
             if (go == null)
             {
-                go = new GameObject { name = "@AdmobManager" };
+                go = new GameObject { name = "AdmobManager" };
                 go.AddComponent<AdmobManager>();
             }
             //삭제되지 않게끔 설정 -> Scene 이동을 하더라도 파괴되지 않음
@@ -37,13 +44,18 @@ public class AdmobManager : MonoBehaviour
             instance = go.GetComponent<AdmobManager>();
         }
     }
+    private void Update()
+    {
+        time += Time.deltaTime;
+    }
 
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
 
         LoadFrontAd();
-        LoadRewardAd(null);
+        LoadBananaRewardAd();
+        LoadContinueRewardAd();
     }
 
     AdRequest GetAdRequest()
@@ -66,12 +78,18 @@ public class AdmobManager : MonoBehaviour
 
     public void ShowFrontAd()
     {
-        if (time > limitTime)
+        if (time > limitTime || count >= maxCount)
         {
             if (this.frontAd.IsLoaded())
             {
                 frontAd.Show();
+                time = 0f;
+                count = 0;
             }
+        }
+        else
+        {
+            Debug.Log($"Ad time = {time}, count = {count}");
         }
     }
     #endregion
@@ -80,27 +98,49 @@ public class AdmobManager : MonoBehaviour
 
     #region 리워드 광고
     const string rewardTestID = "ca-app-pub-3940256099942544/5224354917";
-    const string rewardID = "ca-app-pub-5201529208326516/9990033838";
-    RewardedAd rewardAd;
+    const string bananaRewardID = "ca-app-pub-5201529208326516/9990033838";
+    const string continueRewardID = "ca-app-pub-5201529208326516/8829598046";
+    RewardedAd bananaRewardAd;
+    RewardedAd continueRewardAd;
 
 
-    void LoadRewardAd(EventHandler<Reward> rewardEvent)
+    void LoadBananaRewardAd()
     {
-        rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
-        rewardAd.LoadAd(GetAdRequest());
-        rewardAd.OnUserEarnedReward -= rewardEvent;
-        rewardAd.OnUserEarnedReward += rewardEvent;
-
+        bananaRewardAd = new RewardedAd(isTestMode ? rewardTestID : bananaRewardID);
+        bananaRewardAd.LoadAd(GetAdRequest());
     }
 
-    public void ShowRewardAd(EventHandler<Reward> rewardEvent)
+    void LoadContinueRewardAd()
     {
-        if (rewardAd.IsLoaded())
+        continueRewardAd = new RewardedAd(isTestMode ? rewardTestID : continueRewardID);
+        continueRewardAd.LoadAd(GetAdRequest());
+    }
+
+    public void ShowRewardAd(int num, EventHandler<Reward> rewardEvent)
+    {
+        switch (num)
         {
-            LoadRewardAd(rewardEvent);
-            rewardAd.Show();
+            case 0:
+                if (bananaRewardAd.IsLoaded())
+                {
+                    bananaRewardAd.OnUserEarnedReward -= rewardEvent;
+                    bananaRewardAd.OnUserEarnedReward += rewardEvent;
+                    bananaRewardAd.Show();
+                    return;
+                }
+                break;
+            case 1:
+                if (continueRewardAd.IsLoaded())
+                {
+                    continueRewardAd.OnUserEarnedReward -= rewardEvent;
+                    continueRewardAd.OnUserEarnedReward += rewardEvent;
+                    continueRewardAd.Show();
+                    return;
+                }
+                break;
         }
-            
+        
+        Debug.Log("Cannot Loaded RewardAd");
     }
     #endregion
 }

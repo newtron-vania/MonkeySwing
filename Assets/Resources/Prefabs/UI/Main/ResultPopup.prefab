@@ -629,7 +629,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2006335653389989648}
         m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickRetryButton
+        m_MethodName: OnClickReplayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -917,6 +917,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1853888976081631520}
+        m_TargetAssemblyTypeName: ResultUI, Assembly-CSharp
+        m_MethodName: AddBanana
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2006335653389989648}
         m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
         m_MethodName: OnClickGameOver

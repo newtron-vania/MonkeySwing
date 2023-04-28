@@ -457,6 +457,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnClickReplayButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1717079946744431643, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2006335653389989648, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
       propertyPath: countUI
       value: 
@@ -553,6 +557,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 519135038}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 519135037}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 519135036}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonPlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddBanana
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnClickGameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonSoundPlay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ResultUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006335653882765698, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Popup_manager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8475919214003989226, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -564,6 +604,39 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2006335653389989649, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
   m_PrefabInstance: {fileID: 519135034}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &519135036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2006335653389989648, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+  m_PrefabInstance: {fileID: 519135034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409876381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ff68857addd8f4a96db523ba3c95e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &519135037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853888976081631520, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+  m_PrefabInstance: {fileID: 519135034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409876381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59856eaf18c74434c9adae7ec3fd0edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &519135038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4703288756256457906, guid: 6a21f709b95c0d3438d80cc55784cf01, type: 3}
+  m_PrefabInstance: {fileID: 519135034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409876381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab8a445a4dc57741acbc18fcd259f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
