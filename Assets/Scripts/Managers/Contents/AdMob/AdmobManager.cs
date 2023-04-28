@@ -44,6 +44,7 @@ public class AdmobManager : MonoBehaviour
             instance = go.GetComponent<AdmobManager>();
         }
     }
+
     private void Update()
     {
         time += Time.deltaTime;
@@ -76,6 +77,12 @@ public class AdmobManager : MonoBehaviour
         frontAd.LoadAd(GetAdRequest());
     }
 
+    public void ShowFrontAdWithClick()
+    {
+        ShowFrontAd();
+        count++;
+    }
+
     public void ShowFrontAd()
     {
         if (time > limitTime || count >= maxCount)
@@ -83,6 +90,7 @@ public class AdmobManager : MonoBehaviour
             if (this.frontAd.IsLoaded())
             {
                 frontAd.Show();
+                LoadFrontAd();
                 time = 0f;
                 count = 0;
             }
@@ -126,6 +134,7 @@ public class AdmobManager : MonoBehaviour
                     bananaRewardAd.OnUserEarnedReward -= rewardEvent;
                     bananaRewardAd.OnUserEarnedReward += rewardEvent;
                     bananaRewardAd.Show();
+                    LoadBananaRewardAd();
                     return;
                 }
                 break;
@@ -135,6 +144,7 @@ public class AdmobManager : MonoBehaviour
                     continueRewardAd.OnUserEarnedReward -= rewardEvent;
                     continueRewardAd.OnUserEarnedReward += rewardEvent;
                     continueRewardAd.Show();
+                    LoadContinueRewardAd();
                     return;
                 }
                 break;

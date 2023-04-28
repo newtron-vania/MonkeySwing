@@ -99,6 +99,11 @@ public class SoundManager
 
 		return audioClip;
     }
+
+    public void StopPlayingSound(Define.Sound type = Define.Sound.Bgm)
+    {
+        _audioSources[(int)type].Stop();
+    }
     public void SetAudioVolumn(Define.Sound type = Define.Sound.Bgm, float volumn = 1f)
     {
         if (type == Define.Sound.Effect)

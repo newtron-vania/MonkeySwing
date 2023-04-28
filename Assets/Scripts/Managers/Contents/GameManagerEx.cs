@@ -33,7 +33,6 @@ public class GameManagerEx
     {
         GameManagerEx.Instance.GameStop();
         Managers.Sound.Clear();
-        Managers.Sound.Play("GameOver");
         GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
         resultPopup.SetActive(true);
 

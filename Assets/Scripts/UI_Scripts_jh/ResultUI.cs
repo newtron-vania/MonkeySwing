@@ -28,14 +28,15 @@ public class ResultUI : MonoBehaviour
 
         if (GameManagerEx.Instance.distance.Dist > GameManagerEx.Instance.player.BestScore)
         {
+            Managers.Sound.Play("BestScore");
             BestScoreSticker.gameObject.SetActive(true);
             GameManagerEx.Instance.player.BestScore = GameManagerEx.Instance.distance.Dist;
             ceremonyAnime.SetInteger("IsBest", 2);
             Debug.Log($"bestScore : {GameManagerEx.Instance.player.BestScore}");
             return;
         }
+        Managers.Sound.Play("GameOver");
         ceremonyAnime.SetInteger("IsBest", 1);
-
 
         AdmobManager.Instance.ShowFrontAd();
     }

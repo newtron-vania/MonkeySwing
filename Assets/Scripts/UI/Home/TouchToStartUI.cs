@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TouchToStartUI : MonoBehaviour
 {
+    [SerializeField]
+    SpriteRenderer monkeyBody;
+    [SerializeField]
+    SpriteRenderer monkeyTale;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +22,7 @@ public class TouchToStartUI : MonoBehaviour
             GameManagerEx.Instance.player.LoadData();
             GameManagerEx.Instance.isPlaying = true;
         }
-
         Debug.Log($"BestScore : {GameManagerEx.Instance.player.BestScore}");
     }
+
 }
