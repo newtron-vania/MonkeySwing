@@ -13,12 +13,10 @@ public class BoostEffect : MonoBehaviour
     float TTL = 4f;
     float waitInvincibleTime = 2f;
     float curTime = 0f;
-    void Start()
+    void OnEnable()
     {
-        GameManagerEx.Instance.monkey.StartBoost(TTL, waitInvincibleTime);
-        GameManagerEx.Instance.makeLines.BoostLineSpeed(TTL, boostForce);
+        ResetTime();
         Managers.Sound.Play("FeverBGM", Define.Sound.Bgm);
-        Managers.Sound.Play("Boost");
     }
 
     private void Update()

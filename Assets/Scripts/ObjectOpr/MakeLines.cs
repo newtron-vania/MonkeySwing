@@ -20,6 +20,13 @@ public class MakeLines : MonoBehaviour
     string curLineName = string.Empty;
 
     Rito.WeightedRandomPicker<int> wrPicker;
+
+    public double level1;
+
+    public double level2;
+
+    public double level3;
+
     [SerializeField]
     private float wNum = 30;
     private int createCount = 0;
@@ -63,16 +70,7 @@ public class MakeLines : MonoBehaviour
     }
 
 
-    void SetWrPick()
-    {
-        float w = wNum;
-        wrPicker = new Rito.WeightedRandomPicker<int>();
-        for (int i = 1; i <= maxLineLv; i++)
-        {
-            wrPicker.Add(i, w);
-            w /= 10;
-        }
-    }
+    
 
     void SetDictionary()
     {
@@ -111,6 +109,26 @@ public class MakeLines : MonoBehaviour
             distance = 0;
         }
         distance = NewLines.transform.position.y - StartPosition.y;
+
+        CheckPickNum();
+    }
+
+    void SetWrPick()
+    {
+        float w = wNum;
+        wrPicker = new Rito.WeightedRandomPicker<int>();
+        for (int i = 1; i <= maxLineLv; i++)
+        {
+            wrPicker.Add(i, w);
+            w /= wNum + 10;
+        }
+    }
+
+    private void CheckPickNum()
+    {
+        level1 = wrPicker.GetWeight(1);
+        level2 = wrPicker.GetWeight(2);
+        level3 = wrPicker.GetWeight(3);
     }
 
     GameObject MakeLinesPlay(){
@@ -167,7 +185,7 @@ public class MakeLines : MonoBehaviour
             double w = wrPicker.GetWeight(i);
             if (wrPicker.GetWeight(i) < wNum*i)
             {
-                    wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.2);
+                    wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.1f);
             }
                 Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
         }

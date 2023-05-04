@@ -11,7 +11,7 @@ public class AdmobManager : MonoBehaviour
 
     public static AdmobManager Instance { get { Init(); return instance; } }
 
-    public bool isTestMode = true;
+    public bool isTestMode = false;
 
 
     private float time = 0f;
