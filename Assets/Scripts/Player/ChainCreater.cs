@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ChainCreater : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ChainCreater : MonoBehaviour
 
     public List<GameObject> chainList = new List<GameObject>();
 
+    public Action<List<SpriteRenderer>> createMonkeyEvent;
+
     [SerializeField]
     float length = 2.5f;
     void Start()
@@ -17,14 +20,22 @@ public class ChainCreater : MonoBehaviour
         ChainLastObject();
         //CalculateChainCount();
     }
-
     private void ChainLastObject()
     {
         lastChainedObject = Managers.Resource.Instantiate(lastChainedObject, startChainedObject.transform.position, startChainedObject.transform.parent);
-        
         HingeJoint2D hingeJoint2D = lastChainedObject.GetComponent<HingeJoint2D>();
+        FixedJoint2D fixedJoint2D = lastChainedObject.GetComponent<FixedJoint2D>();
         hingeJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();
+        fixedJoint2D.connectedBody = startChainedObject.GetComponent<Rigidbody2D>();
         hingeJoint2D.anchor = new Vector2(0, length);
+        fixedJoint2D.anchor = new Vector2(0, length);
+        fixedJoint2D.enabled = true;
+
+        List<SpriteRenderer> skinPositons = lastChainedObject.GetComponent<MonkeyController>().GetSkin();
+        skinPositons.Add(GetComponent<SpriteRenderer>());
+
+        if(createMonkeyEvent != null)
+            createMonkeyEvent.Invoke(skinPositons);
     }
 
     private void CalculateChainCount()

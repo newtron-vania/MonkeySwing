@@ -20,6 +20,10 @@ public class MagnetField : MonoBehaviour
         time = 0f;
     }
 
+    private void OnEnable()
+    {
+        ResetTime();
+    }
     private void OnDestroy()
     {
         Debug.Log($"Destory in {time}");

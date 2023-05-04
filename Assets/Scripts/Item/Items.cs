@@ -15,7 +15,7 @@ public abstract class Items : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Monkey")
+        if(collision.tag == "ItemZone")
         {
             ItemEvent();
             Managers.Resource.Destroy(this.gameObject);

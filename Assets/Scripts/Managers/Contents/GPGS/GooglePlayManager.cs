@@ -12,10 +12,10 @@ using TMPro;
 
 public class GooglePlayManager : MonoBehaviour
 {
-    static public GameObject GPGSUI;
-    static TextMeshProUGUI GPGSUIText;
     static private GooglePlayManager instance;
-    static public GooglePlayManager Instance { get { Init();  return instance; }
+    static public GooglePlayManager Instance
+    {
+        get { Init(); return instance; }
     }
 
     static GameObject hideUI;
@@ -30,6 +30,7 @@ public class GooglePlayManager : MonoBehaviour
         get;
         private set;
     }
+
     private const string m_saveFileName = "playerData";
     public bool isAuthenticated
     {
@@ -39,26 +40,24 @@ public class GooglePlayManager : MonoBehaviour
         }
     }
 
-    static void Init() 
-    { 
-        if(instance == null)
+    static void Init()
+    {
+        if (instance == null)
         {
             GameObject go = GameObject.Find("@GooglePlayManager");
-            if(go == null)
+            if (go == null)
             {
                 go = new GameObject { name = "@GooglePlayManager" };
                 go.AddComponent<GooglePlayManager>();
                 hideUI = Managers.Resource.Instantiate("UI/HideUI");
                 hideUI.SetActive(false);
-                GPGSUI = Managers.Resource.Instantiate("UI/GPGSUI");
-                GPGSUIText = GPGSUI.FindChild<TextMeshProUGUI>();
             }
             DontDestroyOnLoad(go);
             DontDestroyOnLoad(hideUI);
-            DontDestroyOnLoad(GPGSUI);
             instance = go.GetComponent<GooglePlayManager>();
         }
     }
+
     private void InitiatePlayGames()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
@@ -79,19 +78,19 @@ public class GooglePlayManager : MonoBehaviour
         hideUI.SetActive(true);
         Social.localUser.Authenticate((bool success) =>
         {
-            Debug.Log(Social.localUser.id + "\n" + Social.localUser.userName);
+            Debug.Log($"Login Check {Social.localUser.id + "\n" + Social.localUser.userName}");
             hideUIAction.Invoke();
             if (!success)
             {
-
                 Debug.Log("Fail Login");
             }
             else
             {
                 successAction.Invoke();
+                AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
-            
+
         });
     }
 
@@ -114,7 +113,7 @@ public class GooglePlayManager : MonoBehaviour
 
     public void LoadFromCloud(Action<string> afterLoadAction)
     {
-        
+
         if (isAuthenticated && !isProcessing)
         {
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
@@ -151,8 +150,9 @@ public class GooglePlayManager : MonoBehaviour
         if (isAuthenticated)
         {
             loadedData = dataToSave;
+            Debug.Log("loadedData");
             isProcessing = true;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(m_saveFileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseLongestPlaytime, OnFileOpenToSave);
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(m_saveFileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseMostRecentlySaved, OnFileOpenToSave);
         }
         else
         {
@@ -233,4 +233,95 @@ public class GooglePlayManager : MonoBehaviour
 
     public void ShowBestScoreLeaderboardUI() =>
         Social.ShowLeaderboardUI();
+
+
+
+    public void LoadBestScoreRankingArray(int rowCount, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, UserRankData[]> onLoadedMyRankAction = null, Action<bool, UserRankData[]> onLoadedRankAction = null)
+    {
+        hideUI.SetActive(true);
+
+        CustomLoadLeaderBoard(GPGSIds.leaderboard_bestscore, 
+            LeaderboardStart.PlayerCentered, 
+            1, 
+            LeaderboardCollection.Public, 
+            leaderboardTimeSpan, 
+            onLoadedMyRankAction);
+        CustomLoadLeaderBoard(GPGSIds.leaderboard_bestscore, 
+            LeaderboardStart.TopScores, 
+            10, 
+            LeaderboardCollection.Public, 
+            leaderboardTimeSpan, 
+            onLoadedRankAction, 
+            true);
+    }
+
+    private void CustomLoadLeaderBoard(string leaderBoardID, LeaderboardStart startPosition, int rowCount, LeaderboardCollection leaderboardCollection, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, UserRankData[]> onLoadedAction, bool controllhideUI = false)
+    {
+        PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_bestscore, 
+            startPosition, 
+            rowCount, 
+            leaderboardCollection, 
+            leaderboardTimeSpan, 
+            data =>
+        {
+            Debug.Log($"UserScore Load success : {data.Status == ResponseStatus.Success}");
+            LoadUsers(data.Status == ResponseStatus.Success, data.Scores, onLoadedAction, controllhideUI);
+        });
+    }
+
+    private void LoadUsers(bool success, IScore[] scores, Action<bool, UserRankData[]> onloaded = null, bool controllhideUI = false)
+    {
+        if (success)
+        {
+            string[] userIds = new string[scores.Length];
+
+            for (int i = 0; i < scores.Length; i++)
+            {
+                userIds[i] = scores[i].userID;
+                Debug.Log($"userIds : {userIds[i]}");
+            }
+            // forward scores with loaded profiles
+            Debug.Log("LoadUser Start");
+            Social.LoadUsers(userIds, profiles => loadUserName(profiles, scores, onloaded, controllhideUI));
+        }
+        else
+        {
+            onloaded?.Invoke(success, null);
+            if (controllhideUI)
+                hideUI.SetActive(false);
+        }
+    }
+
+    private void loadUserName(IUserProfile[] profiles, IScore[] scores, Action<bool, UserRankData[]> onloaded = null, bool controllhideUI = false)
+    {
+        UserRankData[] userRankDatas = new UserRankData[profiles.Length];
+        Debug.Log($"profile length : {profiles.Length}");
+        foreach(IUserProfile profile in profiles)
+        {
+            Debug.Log($"profile id : {profile.id}");
+            Debug.Log($"profile id : {profile.userName}");
+        }
+        for (int i = 0; i < profiles.Length; i++)
+        {
+            Debug.Log($"userScore : {scores[i].value}");
+            Debug.Log($"rank : {scores[i].rank}");
+            Debug.Log($"profile name : {profiles[i].userName}");
+            userRankDatas[i] = new UserRankData() { userName = profiles[i].userName, userScore = scores[i].value , rank = scores[i].rank};
+            Debug.Log($"userdata {i} = {userRankDatas[i].userName}, {userRankDatas[i].userScore}, {userRankDatas[i].rank}");
+            Debug.Log($"{i} complete");
+        }
+        Debug.Log($" userRankData Set Complete!");
+        onloaded?.Invoke(true, userRankDatas);
+
+        if(controllhideUI)
+            hideUI.SetActive(false);
+    }
+
+}
+
+public class UserRankData
+{
+    public string userName;
+    public long userScore;
+    public int rank;
 }

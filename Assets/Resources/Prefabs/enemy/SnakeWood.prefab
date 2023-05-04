@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 1503479843922156899}
   - component: {fileID: 1503479843922156898}
   - component: {fileID: 4204934568905605295}
-  - component: {fileID: 5532248349527375416}
   m_Layer: 0
   m_Name: obj_wood_short
   m_TagString: Enemy
@@ -230,27 +229,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3937659, y: 0.18737526}
   m_EdgeRadius: 0
---- !u!50 &5532248349527375416
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503479843922156900}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1503479844257104942
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,9 +239,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1503479844257104941}
   - component: {fileID: 1503479844257104940}
-  - component: {fileID: 1503479844257104939}
-  - component: {fileID: 8352201755849110904}
   - component: {fileID: 6976948056789010700}
+  - component: {fileID: 921522400654516489}
+  - component: {fileID: 4803229533016381245}
+  - component: {fileID: 1812315123890327745}
   m_Layer: 0
   m_Name: SnakeBody
   m_TagString: Enemy
@@ -309,40 +288,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1503479844257104939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503479844257104942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5fff44ccffa114b9c918c2bcfcb1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  length: 80
-  lineRend: {fileID: 2061256147513027162}
-  segmentPoses: []
-  SnakeModel: {fileID: 1503479844257104941}
-  targetDir: {fileID: 6548097456688019727}
-  targetDist: 0.08
-  body: {fileID: 0}
-  bodyParts: []
-  startPoint: {x: 0, y: 0, z: 0}
---- !u!114 &8352201755849110904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503479844257104942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 099b137addbe34d4488a4f1927bd89f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider: {fileID: 6976948056789010700}
 --- !u!68 &6976948056789010700
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -365,6 +310,63 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &921522400654516489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503479844257104942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099b137addbe34d4488a4f1927bd89f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 6976948056789010700}
+--- !u!50 &4803229533016381245
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503479844257104942}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1812315123890327745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503479844257104942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5fff44ccffa114b9c918c2bcfcb1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 80
+  lineRend: {fileID: 2061256147513027162}
+  segmentPoses: []
+  SnakeModel: {fileID: 1503479844257104941}
+  targetDir: {fileID: 6548097456688019727}
+  targetDist: 0.08
+  body: {fileID: 0}
+  bodyParts: []
+  startPoint: {x: 0, y: 0, z: 0}
+  anime: {fileID: 1503479844257104940}
+  generateCollider: {fileID: 921522400654516489}
 --- !u!1 &4189768176596800436
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +625,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.20404503, y: 0.000000007450581}

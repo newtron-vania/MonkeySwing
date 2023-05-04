@@ -5,13 +5,6 @@ using System;
 
 public class MonkeyController : MonoBehaviour
 {
-    enum CharacterState
-    {
-        Hunger,
-        Normal,
-        Full,
-        Damaged,
-    }
 
 
 
@@ -23,7 +16,7 @@ public class MonkeyController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer monkeyFace;
     [SerializeField]
-    private SpriteRenderer[] monkeyBody; // 0 : tail 1 : head  2 : face
+    private List<SpriteRenderer> monkeyBody; // 0 : tail 1 : head
 
     private int health;
     public int Health
@@ -50,45 +43,45 @@ public class MonkeyController : MonoBehaviour
         set 
         {
             weight = value;
-            weightEvent.Invoke(weight);
+            if (weightEvent != null)
+                weightEvent.Invoke(weight);
             if (isDamaged)
                 return;
             if (weight <= 30)
-                PlayerState = CharacterState.Hunger;
+                PlayerState = Define.CharacterState.Hunger;
             else if (weight <= 80)
-                PlayerState = CharacterState.Normal;
+                PlayerState = Define.CharacterState.Normal;
             else
-                PlayerState = CharacterState.Full;
+                PlayerState = Define.CharacterState.Full;
         } 
     }
 
     public Action<int> weightEvent;
 
-    CharacterState playerState = CharacterState.Normal;
-    CharacterState PlayerState { 
+    Define.CharacterState playerState = Define.CharacterState.Normal;
+    Define.CharacterState PlayerState { 
         get { return playerState; } 
         set 
         { 
             playerState = value;
             switch (playerState)
             {
-                case CharacterState.Hunger:
-                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Hunger];
-                    rigid.drag = .5f;
+                case Define.CharacterState.Hunger:
+                    monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Hunger];
+                    rigid.drag = .8f;
                     break;
-                case CharacterState.Normal:
-                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Normal];
+                case Define.CharacterState.Normal:
+                    monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Normal];
                     rigid.drag = 2f;
                     break;
-                case CharacterState.Full:
-                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Full];
-                    rigid.drag = 4f;
+                case Define.CharacterState.Full:
+                    monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Full];
+                    rigid.drag = 5f;
                     break;
-                case CharacterState.Damaged:
+                case Define.CharacterState.Damaged:
                     Debug.Log("isDamaged!");
                     BeDamaged();
-                    anime.Play("BeDamaged");
-                    monkeyFace.sprite = monkeyFaceMode[(int)CharacterState.Damaged];
+                    monkeyFace.sprite = monkeyFaceMode[(int)Define.CharacterState.Damaged];
                     isDamaged = true;
                     break;
             }
@@ -102,25 +95,28 @@ public class MonkeyController : MonoBehaviour
     
 
 
-    void Start()
+    private void Awake()
     {
-        health = 3;
-        weight = 50;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
+        Health = 3;
+        Weight = 50;
         StartCoroutine(LooseWeight());
-
-        //monkeyBody = transform.GetComponentsInChildren<SpriteRenderer>();
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //VelocityCheck();
-
         CheckGravity();
     }
 
+    public List<SpriteRenderer> GetSkin()
+    {
+        return monkeyBody;
+    }
+    
     void CheckVelocity()
     {
         maxVelocityForce = (-12 / 90f * Weight) + 49 / 3f;
@@ -147,7 +143,7 @@ public class MonkeyController : MonoBehaviour
         if(!isInvincible && (collision.tag == "Enemy"))
         {
             Debug.Log($"collision name : {collision.name } collision tag : {collision.tag}");
-            PlayerState = CharacterState.Damaged;
+            PlayerState = Define.CharacterState.Damaged;
         }
             
         else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
@@ -165,35 +161,35 @@ public class MonkeyController : MonoBehaviour
         }
 
     }
-    Coroutine OnDamagedCoroutine;
+    Coroutine Coroutine;
     Coroutine InvinvibleCoroutine;
-    Coroutine BoostCoroutine;
 
     public void StartOnDamaged(float damagedTime)
     {
         StopOnDamaged();
-        OnDamagedCoroutine = StartCoroutine(OnDamaged(damagedTime));
+        Coroutine = StartCoroutine(OnDamaged(damagedTime));
     }
 
     private void StopOnDamaged() 
     {
-        if (OnDamagedCoroutine != null)
+        if (Coroutine != null)
         {
             Debug.Log("OnDamaged Coroutine Out!");
-            isDamaged = false;
-            anime.Play("Normal");
             Weight = weight;
-            StopCoroutine(OnDamagedCoroutine);
+            StopCoroutine(Coroutine);
+            isDamaged = false;
         }
     }
 
     public void BeDamaged()
     {
+        Managers.Sound.Play("Damaged");
         StartCoroutine(OnDamaged(damagedTime));
     }
 
     IEnumerator OnDamaged(float damagedTime)
     {
+        anime.Play("BeDamaged");
         Health -= 1;
         CameraShake(0.4f, 0.5f);
         StartInvinvible(damagedTime);
@@ -207,21 +203,24 @@ public class MonkeyController : MonoBehaviour
     public void StartBoost(float continuousTime, float waitTime)
     {
         StopBoost();
-        BoostCoroutine = StartCoroutine(OnBoost(continuousTime, waitTime));
+        Coroutine = StartCoroutine(OnBoost(continuousTime, waitTime));
     }
 
     private void StopBoost()
     {
-        if (BoostCoroutine != null)
+        if (Coroutine != null)
         {
-            anime.Play("Normal");
-            StopCoroutine(BoostCoroutine);
+            StopCoroutine(Coroutine);
+            Debug.Log("BoostStop");
         }
     }
 
     IEnumerator OnBoost(float continuousTime, float waitTime)
     {
+
         StartInvinvible(continuousTime + waitTime);
+        anime.Play("Booster");
+        Debug.Log("Boost On");
         yield return new WaitForSeconds(continuousTime);
         Debug.Log("Boost Over! Invinvible continue");
         anime.Play("BoostOver");
@@ -229,19 +228,6 @@ public class MonkeyController : MonoBehaviour
         Debug.Log("Boost Over! Invinvible Over!");
         anime.Play("Normal");
     }
-
-
-
-
-    public void StartDamagedAnime()
-    {
-        anime.SetBool("isDamaged", true);
-    }
-    public void EndDamagedAnime()
-    {
-        anime.SetBool("isDamaged", false);
-    }
-
 
 
     public void StartInvinvible(float time)
@@ -254,9 +240,7 @@ public class MonkeyController : MonoBehaviour
     {
         if (InvinvibleCoroutine != null)
         {
-            StopOnDamaged();
             isInvincible = false;
-            anime.Play("Normal");
             Weight = weight;
             StopCoroutine(InvinvibleCoroutine);
         }
@@ -267,7 +251,6 @@ public class MonkeyController : MonoBehaviour
 
     IEnumerator OnInvincible(float time)
     {
-        yield return new WaitForFixedUpdate();
         isInvincible = true;
         yield return new WaitForSeconds(time);
         isInvincible = false;

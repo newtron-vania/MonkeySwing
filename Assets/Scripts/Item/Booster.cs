@@ -13,6 +13,5 @@ public class Booster : Items
         {
             GameObject go = Managers.Resource.Instantiate("Item/BoostEffect");
         }
-        
     }
 }

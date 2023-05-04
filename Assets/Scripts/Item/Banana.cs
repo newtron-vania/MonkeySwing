@@ -23,7 +23,7 @@ public class Banana : Items
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Monkey")
+        if (collision.tag == "ItemZone")
         {
             ItemEvent();
             Managers.Sound.Play("Coin");

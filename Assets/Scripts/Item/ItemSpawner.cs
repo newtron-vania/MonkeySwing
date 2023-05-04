@@ -7,14 +7,12 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]
     GameObject[] items;
 
-
  
     [SerializeField]
     Define.Items lockItem = Define.Items.None;
 
     private void OnEnable()
     {
-        Debug.Log($"{this.gameObject.name} OnEnable!");
         SpawnItem();
     }
 
@@ -26,8 +24,8 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
-        int itemNum = Random.Range(0, items.Length);//(int)RandomItem();
-        if (itemNum > items.Length)
+        int itemNum = (int)RandomItem();
+        if (itemNum >= (int)Define.Items.Count)
             return;
 
         Collider2D[] goes = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
@@ -46,13 +44,11 @@ public class ItemSpawner : MonoBehaviour
     Define.Items RandomItem()
     {
         float rand = Random.Range(0, 1f) * 100;
-        if (rand < 60)
-            return Define.Items.None;
-        else if (rand < 80)
+        if (rand < 8)
             return Define.Items.CaloryBanana;
-        else if (rand < 90)
+        else if (rand < 10)
             return Define.Items.Boost;
-        else if (rand <= 100)
+        else if (rand <= 13)
             return Define.Items.Magnet;
         else
             return Define.Items.None;

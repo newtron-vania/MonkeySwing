@@ -18,32 +18,12 @@ public class Popup_manager : MonoBehaviour
         Time.timeScale = time;
     }
 
-    public void ResultPopupOpen()
-    {   
-        SetTimeScale(0);
-        //GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
-        //resultPopup.SetActive(true);
-        OnClickCloseButton();
-        // StartCoroutine(DelayCoroution());
-        //UI ?? ? ??
-    }
-
-    /*IEnumerator DelayCoroution()
-    {
-        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
-        
-        
-        resultPopup.SetActive(true);
-        yield return new WaitForSeconds(5);
-    }*/
-
-
     public void OnClick_Purchase_Yes_Btn()
     { 
-        GameObject current_slot_object = SkinData_Manager.current_slot;
-        SlotData_Manager slotData_manager = current_slot_object.GetComponent<SlotData_Manager>();
-        slotData_manager.OnClick_Purchase_Yes_Btn();
+        GameObject clicked_slot_object = SkinData_Manager.clicked_slot;
+        SlotData_Manager slotData_manager = clicked_slot_object.GetComponent<SlotData_Manager>();
         OnClickCloseButton();
+        slotData_manager.OnClick_Purchase_Yes_Btn();
     }
 
     public void OnClick_Purchase_No_Btn()
@@ -54,26 +34,31 @@ public class Popup_manager : MonoBehaviour
         OnClickCloseButton();
     }
 
+    public void ResultPopupOpen()
+    {   
+        SetTimeScale(0);
+        OnClickCloseButton();
+    }
+
     public void OnClickStartButton()
     {   
         SetTimeScale(1);
         // OnClickCloseButton();
         // æ¿ ¿Ã∏ß πŸ≤Ó∏È πŸ≤„æﬂ«‘
         // SceneManager.LoadScene("PlayerMoveTestScene2");
-        changeScene.ChangeSceneBtn("MainScene");
+        LoadingScene.LoadScene(Define.SceneType.MainScene);
     }
 
     public void OnClickHomeButton()
     {
         OnClickCloseButton();
-        changeScene.ChangeSceneBtn("Home");
+        LoadingScene.LoadScene(Define.SceneType.Home);
     }
 
     public void OnClickGameOver()
     {
-        AddBanana();
-        OnClickCloseButton();
-        changeScene.ChangeSceneBtn("Home");
+        AdmobManager.Instance.ShowFrontAdWithClick();
+        LoadingScene.LoadScene(Define.SceneType.Home);
     }
 
     public void OnClickContinueButton()
@@ -81,11 +66,6 @@ public class Popup_manager : MonoBehaviour
         OnClickCloseButton();
     }
 
-    void AddBanana()
-    {
-        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
-        BananaCount.bananacount = 0;
-    }
 
     public void OnClickCloseButton()
     {
@@ -104,11 +84,25 @@ public class Popup_manager : MonoBehaviour
 
     public void OnClickRetryButton()
     {
+        Managers.Sound.StopPlayingSound(Define.Sound.Effect);
         gameObject.SetActive(false);
         countUI.gameObject.SetActive(true);
         countUI.SetCount(3f);
 
         HeartCount.is_retry = true;
+    }
+
+    public void OnClickReplayButton()
+    {
+        SetTimeScale(1);
+        AddBanana();
+        LoadingScene.LoadScene(Define.SceneType.MainScene);
+    }
+
+    public void AddBanana()
+    {
+        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+        BananaCount.bananacount = 0;
     }
 
     public void OnClickExitButton()

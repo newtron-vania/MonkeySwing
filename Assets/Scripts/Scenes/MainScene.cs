@@ -18,6 +18,7 @@ public class MainScene : BaseScene
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
 
+
     public override void Clear()
     {
         throw new System.NotImplementedException();

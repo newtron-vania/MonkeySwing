@@ -12,9 +12,6 @@ public class PlayerCoinText : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log($"Player : {GameManagerEx.Instance.player}");
-        Debug.Log($"player money : {GameManagerEx.Instance.player.Money}");
-
         BananaCounttext.text = GameManagerEx.Instance.player.Money.ToString();
     }
 }

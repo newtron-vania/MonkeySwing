@@ -13,12 +13,14 @@ public class SnakeThree : MonoBehaviour
     public Transform targetDir;
     public float targetDist;
 
-    public GameObject body;
-    public Transform[] bodyParts;
-
     public Vector3 startPoint;
 
-    Animator anime;
+    [SerializeField]
+    private Animator anime;
+    [SerializeField]
+    private GenerateCollider generateCollider;
+
+    private Vector3 dirVec;
 
     // Start is called before the first frame update
     void Start()
@@ -28,22 +30,33 @@ public class SnakeThree : MonoBehaviour
         segmentV = new Vector3[length];
 
         startPoint = targetDir.position - SnakeModel.position;
-        ResetPosition();
 
-        anime = GetComponent<Animator>();
+        dirVec = transform.parent.localScale;
+
+        GameManagerEx.Instance.makeLines.lineSpeedAction -= SetAnimeSpeed;
+        GameManagerEx.Instance.makeLines.lineSpeedAction += SetAnimeSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
         SetLinePos();
-        GetComponent<GenerateCollider>().SetEdgeCollider(lineRend);
-
+        generateCollider.SetEdgeCollider(lineRend);
     }
+    private void OnEnable()
+    {
+        anime.Play("None");
+    }
+
+    void SetAnimeSpeed(float value)
+    {
+        anime.speed = value * 0.5f;
+    }
+
     void SetLinePos()
     {
-        segmentPoses[0] = targetDir.position - SnakeModel.position;
-
+        Vector3 movePos = targetDir.position - SnakeModel.position;
+        segmentPoses[0] = new Vector3(movePos.x * dirVec.x, movePos.y * dirVec.y, 0f);
         float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;
         if (dir < targetDist)
             return;
@@ -53,7 +66,7 @@ public class SnakeThree : MonoBehaviour
         }
         lineRend.SetPositions(segmentPoses);
     }
-    void ResetPosition()
+    public void ResetPosition()
     {
         for (int i = 0; i < segmentPoses.Length; i++)
         {
@@ -64,13 +77,21 @@ public class SnakeThree : MonoBehaviour
 
     void lastSetLinePos()
     {
-        segmentPoses[0] = targetDir.position - SnakeModel.position;
+        Vector3 movePos = targetDir.position - SnakeModel.position;
+        segmentPoses[0] = new Vector3(movePos.x * dirVec.x, movePos.y * dirVec.y, 0f);
 
-        float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;
         for (int i = segmentPoses.Length - 1; i >= 1; i--)
         {
             segmentPoses[i] = segmentPoses[i - 1];
         }
         lineRend.SetPositions(segmentPoses);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("TriggerZone"))
+        {
+            anime.Play("snakeMove");
+        }
     }
 }

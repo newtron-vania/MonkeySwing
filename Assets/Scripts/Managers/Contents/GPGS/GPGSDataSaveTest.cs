@@ -32,7 +32,6 @@ public class GPGSDataSaveTest : MonoBehaviour
         PlayerData player = CallPlayerData();
         string data = JsonUtility.ToJson(player);
         GPGSBinder.Inst.SaveCloud("playerData", data, success => log = $"{success}");
-
     }
 
     PlayerData CallPlayerData()

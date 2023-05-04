@@ -1,39 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoostEffect : MonoBehaviour
 {
-    public float boostForce = 2f;
-    MonkeyController monkey;
-    MakeLines lineGenerator;
+    public float boostForce = 3f;
 
-    float TTL = 8f;
+    [SerializeField]
+    Image BoostSlider;
+
+    float TTL = 4f;
     float waitInvincibleTime = 2f;
     float curTime = 0f;
-    void Start()
+    void OnEnable()
     {
-        monkey = GameManagerEx.Instance.monkey;
-        monkey.StartBoost(TTL, waitInvincibleTime);
-        lineGenerator = GameManagerEx.Instance.makeLines;
-        lineGenerator.BoostLineSpeed(TTL, boostForce);
-        Managers.Sound.Play("Boost");
+        ResetTime();
+        Managers.Sound.Play("FeverBGM", Define.Sound.Bgm);
     }
 
     private void Update()
     {
         if (curTime > TTL)
         {
+            Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
             Managers.Resource.Destroy(this.gameObject);
         }
         curTime += Time.deltaTime;
+        BoostSlider.fillAmount = (TTL - curTime) * (1 / TTL);
+        Debug.Log($"Boost gage : {(TTL - curTime) * (1 / TTL)}");
     }
 
     public void ResetTime()
     {
         Managers.Sound.Play("Boost");
         curTime = 0f;
-        monkey.StartBoost(TTL, waitInvincibleTime);
-        lineGenerator.BoostLineSpeed(TTL, boostForce);
+        GameManagerEx.Instance.monkey.StartBoost(TTL, waitInvincibleTime);
+        GameManagerEx.Instance.makeLines.BoostLineSpeed(TTL, boostForce);
     }
 }

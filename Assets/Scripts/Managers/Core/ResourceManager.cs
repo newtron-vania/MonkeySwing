@@ -24,7 +24,7 @@ public class ResourceManager
 
     public Sprite LoadSprite(string name)
     {
-        string path = $"Prefabs/SpriteIcon/{name}";
+        string path = $"Sprites/{name}";
 
         Sprite original = Resources.Load<Sprite>(path);
         if (original == null)

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 public class MakeLines : MonoBehaviour
 {
@@ -17,11 +17,29 @@ public class MakeLines : MonoBehaviour
     GameObject NewLines = null;
 
     public Queue<GameObject> lineQueue = new Queue<GameObject>();
+    string curLineName = string.Empty;
+
+    Rito.WeightedRandomPicker<int> wrPicker;
+
+    public double level1;
+
+    public double level2;
+
+    public double level3;
+
+    [SerializeField]
+    private float wNum = 30;
+    private int createCount = 0;
+
+    [SerializeField]
+    private int MaxCreateCount = 8;
 
     [SerializeField]
     float lineSpeed = 2f;
     float appliedLineSpeed = 2f;
     bool isBoosting = false;
+
+    public Action<float> lineSpeedAction;
 
     public float LineSpeed { 
         get { return lineSpeed; } 
@@ -29,6 +47,8 @@ public class MakeLines : MonoBehaviour
             lineSpeed = value;
             if (isBoosting)
                 return;
+            if(lineSpeedAction != null)
+                lineSpeedAction.Invoke(lineSpeed);
             appliedLineSpeed = lineSpeed;
             foreach (GameObject go in lineQueue)
             {
@@ -42,15 +62,39 @@ public class MakeLines : MonoBehaviour
         EndPosition = new Vector3(0,10,0);
         appliedLineSpeed = lineSpeed;
         SetDictionary();
+        SetWrPick();
+        GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
+        GameManagerEx.Instance.distance.distanceEvent += AddWrPick;
+        GameManagerEx.Instance.distance.distanceEvent -= LineSpeedUp;
+        GameManagerEx.Instance.distance.distanceEvent += LineSpeedUp;
     }
+
+
+    
 
     void SetDictionary()
     {
-        for(int i=1; i<=maxLineLv; i++)
+        string maplevel = string.Empty;
+        GameObject[] maps = null;
+        for (int i=1; i<=maxLineLv; i++)
         {
-            string maplevel = $"level {i}";
-            GameObject[] maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
+            maplevel = $"level {i}";
+            maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
             levelLinesDict.Add(i, maps);
+        }
+        maplevel = $"level Event";
+        maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
+        levelLinesDict.Add(maxLineLv+1, maps);
+
+        foreach(KeyValuePair<int, GameObject[]> keyValuePair in levelLinesDict)
+        {
+            int i = keyValuePair.Key;
+            string name = string.Empty;
+            foreach (GameObject go in keyValuePair.Value)
+            {
+                name += go.name+", ";
+            }
+            Debug.Log($"level {i} list - {name}");
         }
     }
 
@@ -66,19 +110,42 @@ public class MakeLines : MonoBehaviour
         }
         distance = NewLines.transform.position.y - StartPosition.y;
 
+        CheckPickNum();
+    }
+
+    void SetWrPick()
+    {
+        float w = wNum;
+        wrPicker = new Rito.WeightedRandomPicker<int>();
+        for (int i = 1; i <= maxLineLv; i++)
+        {
+            wrPicker.Add(i, w);
+            w /= wNum + 10;
+        }
+    }
+
+    private void CheckPickNum()
+    {
+        level1 = wrPicker.GetWeight(1);
+        level2 = wrPicker.GetWeight(2);
+        level3 = wrPicker.GetWeight(3);
     }
 
     GameObject MakeLinesPlay(){
-        int level = settingLevel();
-
-
-        int lineNum = SettingLineNum(level);
-        GameObject line = levelLinesDict[level][lineNum];
-
-
         GameObject mNewLines = null;
 
-        mNewLines = Managers.Resource.Instantiate(line, transform.position);
+        while (true)
+        {
+            int level = settingLevel();
+
+            int lineNum = SettingLineNum(level);
+
+            if(curLineName.Equals(string.Empty) || curLineName.Equals(levelLinesDict[level][lineNum].name))
+            {
+                mNewLines = Managers.Resource.Instantiate(levelLinesDict[level][lineNum], transform.position);
+                break;
+            }
+        }
 
         LinesMove linesMove = mNewLines.GetComponent<LinesMove>();
         
@@ -86,21 +153,51 @@ public class MakeLines : MonoBehaviour
         return mNewLines;
     }
 
-    int SettingLineNum(int level)
+    private int SettingLineNum(int level)
     {
         //각 라인의 생성유무(pool을 확인)하여 제외하고 다시 반복
-        int num = Random.Range(0, levelLinesDict[level].Length);
+        int num = UnityEngine.Random.Range(0, levelLinesDict[level].Length);
         return num;
     }
 
-    int settingLevel()
+    private int settingLevel()
     {
-        //각 레벨별 가중치 처리 필요
-        int level = Random.Range(1, levelLinesDict.Count+1);
-
+        int level = 0;
+        if (createCount < MaxCreateCount)
+        {
+            //각 레벨별 가중치 처리 필요
+            level = wrPicker.GetRandomPick();
+            createCount += 1;
+        }
+        else
+        {
+            level = maxLineLv + 1;
+            createCount = 0;
+        }
         return level;
     }
 
+    private void AddWrPick(int value)
+    {
+        if(value > 0 && value % 100 == 0)
+        for (int i = 1; i <= maxLineLv; i++)
+        {
+            double w = wrPicker.GetWeight(i);
+            if (wrPicker.GetWeight(i) < wNum*i)
+            {
+                    wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.1f);
+            }
+                Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
+        }
+    }
+
+    private void LineSpeedUp(int dist)
+    {
+        if (dist > 0 && dist % 100 == 0)
+        {
+            GameManagerEx.Instance.makeLines.LineSpeed += 0.3f;
+        }
+    }
 
     Coroutine boostLineSpeedCoroutine;
     public void BoostLineSpeed(float time, float force)
