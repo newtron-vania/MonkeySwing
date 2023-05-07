@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using AssetKits.ParticleImage;
 
 public class ResultUI : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class ResultUI : MonoBehaviour
     TextMeshProUGUI rewardText;
     [SerializeField]
     Image BestScoreSticker;
+
+    [SerializeField]
+    ParticleImage particle;
 
     [SerializeField]
     Button continueButton;
@@ -29,6 +33,7 @@ public class ResultUI : MonoBehaviour
         if (GameManagerEx.Instance.distance.Dist > GameManagerEx.Instance.player.BestScore)
         {
             Managers.Sound.Play("BestScore");
+            StartParticle();
             BestScoreSticker.gameObject.SetActive(true);
             GameManagerEx.Instance.player.BestScore = GameManagerEx.Instance.distance.Dist;
             ceremonyAnime.SetInteger("IsBest", 2);
@@ -68,5 +73,17 @@ public class ResultUI : MonoBehaviour
     {
         Debug.Log("ShowContinueAd Complete!");
         continueButton.interactable = false;
+    }
+
+    private void StartParticle()
+    {
+        StartCoroutine(StartParticleCoroutine());
+    }
+
+    IEnumerator StartParticleCoroutine()
+    {
+        yield return null;
+        particle.gameObject.SetActive(true);
+        particle.Play();
     }
 }

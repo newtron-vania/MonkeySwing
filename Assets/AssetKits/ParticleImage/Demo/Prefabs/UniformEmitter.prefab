@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -85,8 +85,8 @@ MonoBehaviour:
   _fitRect: 0
   _emitOnSurface: 0
   _emitterThickness: 0
-  _loop: 1
-  _duration: 1
+  _loop: 0
+  _duration: 0.1
   _playMode: 2
   _startSize:
     separable: 1
@@ -188,7 +188,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_GradientMax:
@@ -218,7 +217,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
@@ -239,7 +237,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 2
+    m_ConstantMax: 1
   _startSpeed:
     m_Mode: 0
     m_CurveMultiplier: 0
@@ -256,7 +254,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 2
+    m_ConstantMax: 4
   _colorOverLifetime:
     m_Mode: 1
     m_GradientMin:
@@ -286,7 +284,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_GradientMax:
@@ -316,7 +313,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
@@ -350,7 +346,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_GradientMax:
@@ -380,7 +375,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
@@ -404,8 +398,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: -0.006919861
-          value: 0.76000977
+          time: -0.023399353
+          value: 1.3485107
           inSlope: 2
           outSlope: 2
           tangentMode: 0
@@ -413,8 +407,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.63510233
-          value: 0.98042357
+          time: 0.16293436
+          value: 1.454743
           inSlope: -0.5398059
           outSlope: -0.5398059
           tangentMode: 0
@@ -422,8 +416,8 @@ MonoBehaviour:
           inWeight: 0.07989562
           outWeight: 0.15928395
         - serializedVersion: 3
-          time: 0.9953613
-          value: -0.00799942
+          time: 0.44354248
+          value: 0.022670746
           inSlope: -6.269179
           outSlope: -6.269179
           tangentMode: 0
@@ -556,8 +550,8 @@ MonoBehaviour:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 1
+          time: 0.14713287
+          value: 1.5103302
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1206,11 +1200,11 @@ MonoBehaviour:
     to: 1
   _textureSheetFPS: 25
   _textureSheetCycles: 1
-  _rate: 200
+  _rate: 600
   _rateOverLifetime: 0
   _rateOverDistance: 0
   _bursts: []
-  _trailRenderer: {fileID: 0}
+  _particleTrailRenderer: {fileID: 0}
   _trailModule:
     enabled: 0
   _trailWidth:
@@ -1279,7 +1273,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_GradientMax:
@@ -1309,7 +1302,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
@@ -1343,7 +1335,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_GradientMax:
@@ -1373,7 +1364,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
@@ -1403,4 +1393,4 @@ MonoBehaviour:
   moduleParticleFoldout: 1
   moduleMovementFoldout: 1
   moduleEventsFoldout: 0
-  m_Texture: {fileID: 2800000, guid: 71dac4c4afcf74f3c92a49afcf7036dc, type: 3}
+  m_Texture: {fileID: 2800000, guid: 74ac16302f2994b898e17f225c303437, type: 3}
