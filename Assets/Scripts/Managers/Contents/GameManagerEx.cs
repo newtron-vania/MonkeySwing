@@ -7,6 +7,8 @@ public class GameManagerEx
     static GameManagerEx g_instance;
     public static GameManagerEx Instance { get { Init(); return g_instance; } }
 
+
+    public int currentCoin;
     public PlayerData player;
     public MakeLines makeLines;
     public Distance distance;
@@ -24,6 +26,7 @@ public class GameManagerEx
             g_instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
             g_instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
             g_instance.player = new PlayerData();
+            g_instance.currentCoin = g_instance.player.Money;
             Debug.Log($"g_instance.player : { g_instance.player.Money}");
         }
     }

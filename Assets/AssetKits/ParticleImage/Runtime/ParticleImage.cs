@@ -1130,6 +1130,7 @@ namespace AssetKits.ParticleImage
         /// </summary>
         public void Pause()
         {
+            Debug.Log("particle Pause");
             main.DoPause();
         }
 
@@ -1164,6 +1165,7 @@ namespace AssetKits.ParticleImage
         /// </param>
         public void Stop(bool stopAndClear)
         {
+            Debug.Log($"particle Stop : {stopAndClear}");
             main.DoStop(stopAndClear);
         }
 
@@ -1302,8 +1304,9 @@ namespace AssetKits.ParticleImage
                     particleTrailRenderer.SetMaterialDirty();
                 }
             }
-            
-            
+
+
+
             if (isEmitting)
             {
                 //Emit per second
@@ -1321,6 +1324,7 @@ namespace AssetKits.ParticleImage
                         }
                     }
                 }
+
 
                 //Emit over lifetime
                 if (_rateOverLifetime > 0)
@@ -1365,7 +1369,7 @@ namespace AssetKits.ParticleImage
                         }
                     }
                 }
-                
+
                 if (_loop && _burstTimer >= _duration)
                 {
                     _burstTimer = 0;
@@ -1375,9 +1379,13 @@ namespace AssetKits.ParticleImage
                     }
                 }
 
+                Debug.Log($"After Emit bursts - time: {_time}");
+
                 if (_time >= _duration + _startDelay && !_loop)
                 {
+                    Debug.Log($"_time : {_time}, _duration : {_duration}, _startDelay : {_startDelay}, isEmitting : {isEmitting}");
                     isEmitting = false;
+                    Debug.Log($"_time : {_time}, _duration : {_duration}, _startDelay : {_startDelay}, isEmitting : {isEmitting}");
                 }
                 
                 if(_loop && _loopTimer >= _duration + _startDelay)
