@@ -184,7 +184,7 @@ public class MonkeyController : MonoBehaviour
     public void BeDamaged()
     {
         Managers.Sound.Play("Damaged");
-        StartCoroutine(OnDamaged(damagedTime));
+        Coroutine = StartCoroutine(OnDamaged(damagedTime));
     }
 
     IEnumerator OnDamaged(float damagedTime)

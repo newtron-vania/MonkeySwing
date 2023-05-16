@@ -25,7 +25,7 @@ public class PlayerData
 
     public void LoadData()
     {
-        GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); });
+        GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money; });
     }
 
     private void UploadToBestScoreRanking()
