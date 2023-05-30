@@ -10,8 +10,9 @@ using System;
 using GooglePlayGames.BasicApi.SavedGame;
 using TMPro;
 using Firebase.Auth;
+using Firebase.Database;
 
-public class GooglePlayManager : MonoBehaviour
+public class GooglePlayManager2 : MonoBehaviour
 {
     static private GooglePlayManager instance;
     static public GooglePlayManager Instance
@@ -41,8 +42,17 @@ public class GooglePlayManager : MonoBehaviour
         }
     }
 
+    public bool isFirebaseAuth
+    {
+        get
+        {
+            return FireBaseId == null ? true : false;
+        }
+    }
+
     private FirebaseAuth auth;
-    public string FireBaseId = string.Empty;
+    private string FireBaseId = string.Empty;
+    DatabaseReference database;
 
     static void Init()
     {
@@ -93,8 +103,7 @@ public class GooglePlayManager : MonoBehaviour
             }
             else
             {
-                StartCoroutine(TryFirebaseLogin());
-                successAction.Invoke();
+                StartCoroutine(TryFirebaseLogin(successAction, hideUIAction));
                 AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
@@ -111,7 +120,7 @@ public class GooglePlayManager : MonoBehaviour
         }
     }
 
-    IEnumerator TryFirebaseLogin()
+    IEnumerator TryFirebaseLogin(Action successAction, Action hideUIAction)
     {
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
             yield return null;
@@ -124,12 +133,13 @@ public class GooglePlayManager : MonoBehaviour
             if (task.IsCanceled)
             {
                 Debug.Log("SignInWithCredentialAsync was canceled!!");
+                hideUIAction.Invoke();
                 return;
             }
             if (task.IsFaulted)
             {
                 Debug.Log("SignInWithCredentialAsync encountered an error: " + task.Exception);
-
+                hideUIAction.Invoke();
                 return;
             }
 
@@ -139,6 +149,10 @@ public class GooglePlayManager : MonoBehaviour
             Debug.Log("Success!");
             Debug.Log($"FireBaseId : " + FireBaseId);
             Debug.Log("firebase Success!!");
+
+            database = FirebaseDatabase.DefaultInstance.RootReference;
+
+            successAction.Invoke();
         });
     }
 
@@ -166,6 +180,10 @@ public class GooglePlayManager : MonoBehaviour
         {
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
         }
+        else if(!isFirebaseAuth)
+        {
+            StartCoroutine(TryFirebaseLogin(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false)));
+        }
         else
         {
             Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false));
@@ -183,6 +201,8 @@ public class GooglePlayManager : MonoBehaviour
             DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime,
             OnFileOpenToLoad);
+
+
 
         while (isProcessing)
         {
@@ -365,11 +385,4 @@ public class GooglePlayManager : MonoBehaviour
             hideUI.SetActive(false);
     }
 
-}
-
-public class UserRankData
-{
-    public string userName;
-    public long userScore;
-    public int rank;
 }

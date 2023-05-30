@@ -34,7 +34,7 @@ public class PoolManager
             if (poolable == null)
                 return;
             //pool역할을 하는 Object의 자식오브젝트로 배치하고, 비활성화하여 사용되지 않음을 확인시킨다.
-            poolable.transform.parent = Root;
+            poolable.transform.SetParent(Root);
             poolable.gameObject.SetActive(false);
             poolable.isUsing = false;
             //poolStack에 저장
@@ -57,9 +57,9 @@ public class PoolManager
             poolable.gameObject.SetActive(true);
             //부모 오브젝트로 배치되지 않을 경우 Scene 위치에 배치된다.
             if (parent == null)
-                poolable.transform.parent = Managers.Scene.CurrentScene.transform;
+                poolable.transform.SetParent(Managers.Scene.CurrentScene.transform);
 
-            poolable.transform.parent = parent;
+            poolable.transform.SetParent(parent);
             poolable.isUsing = true;
             return poolable;
         }
@@ -105,7 +105,7 @@ public class PoolManager
         //pool 객체를 생성하고 해당 원본과 지정 개수에 맞춰 pool을 초기화한다.
         Pool pool = new Pool();
         pool.Init(original, count);
-        pool.Root.parent = _root;
+        pool.Root.SetParent(_root);
         //해당 풀을 pool을 _pool 딕셔너리에 추가
         _pool.Add(original.name, pool);
     }

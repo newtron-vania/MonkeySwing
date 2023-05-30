@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Define
 {
+    public enum TouchEvent
+    {
+        Began,
+        Touched,
+        Moved,
+        Ended
+    }
     public enum WorldObject
     {
         Unknown,
