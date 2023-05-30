@@ -272,6 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaac7fbf0511d1547b287925a623ef47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  AfterRenderingCamera: {fileID: 0}
 --- !u!4 &528362084
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaac7fbf0511d1547b287925a623ef47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  AfterRenderingCamera: {fileID: 0}
 --- !u!1 &1221405991
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +915,7 @@ GameObject:
   - component: {fileID: 1417253422}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

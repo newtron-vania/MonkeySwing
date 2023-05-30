@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6422145856665376024}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.33333376
+  m_Size: 0.3333338
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2759,6 +2759,7 @@ GameObject:
   - component: {fileID: 6422145856834798023}
   - component: {fileID: 6422145856834798022}
   - component: {fileID: 6422145856834798021}
+  - component: {fileID: 835037089}
   m_Layer: 5
   m_Name: Manual
   m_TagString: Untagged
@@ -2814,3 +2815,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab8a445a4dc57741acbc18fcd259f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &835037089
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6422145856834798072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 327b76afb8be0774fbbecfce72d0171e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
