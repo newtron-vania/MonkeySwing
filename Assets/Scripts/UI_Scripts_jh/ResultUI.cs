@@ -43,7 +43,7 @@ public class ResultUI : MonoBehaviour
         Managers.Sound.Play("GameOver");
         ceremonyAnime.SetInteger("IsBest", 1);
 
-        AdmobManager.Instance.ShowFrontAd();
+
     }
 
     public void AddBanana()
@@ -54,12 +54,12 @@ public class ResultUI : MonoBehaviour
 
     public void ShowAdsWithContinue()
     {
-        AdmobManager.Instance.ShowRewardAd(1, (sender, rewardEvent) => { StartContinue(); });
+        //AdmobManager.Instance.ShowRewardAd(1, (sender, rewardEvent) => { StartContinue(); });
     }
 
     public void ShowAdsWithBanana()
     {
-        AdmobManager.Instance.ShowRewardAd(0, (sender, rewardEvent) => { GiveMulCoin(); });
+        //AdmobManager.Instance.ShowRewardAd(0, (sender, rewardEvent) => { GiveMulCoin(); });
     }
 
     private void GiveMulCoin()

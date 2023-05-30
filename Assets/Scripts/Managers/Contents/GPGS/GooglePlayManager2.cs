@@ -104,7 +104,7 @@ public class GooglePlayManager2 : MonoBehaviour
             else
             {
                 StartCoroutine(TryFirebaseLogin(successAction, hideUIAction));
-                AdmobManager.Instance.call();
+                //AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
 

@@ -57,7 +57,7 @@ public class Popup_manager : MonoBehaviour
 
     public void OnClickGameOver()
     {
-        AdmobManager.Instance.ShowFrontAdWithClick();
+        //AdmobManager.Instance.ShowFrontAdWithClick();
         LoadingScene.LoadScene(Define.SceneType.Home);
     }
 
