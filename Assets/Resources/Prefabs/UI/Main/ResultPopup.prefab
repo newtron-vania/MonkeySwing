@@ -275,6 +275,7 @@ MonoBehaviour:
   scoreText: {fileID: 2006335653846541719}
   rewardText: {fileID: 2006335654996980679}
   BestScoreSticker: {fileID: 1174110456020466475}
+  countUI: {fileID: 0}
   particle: {fileID: 5762321810337190857}
   continueButton: {fileID: 9103251942229871539}
   ceremonyAnime: {fileID: 8729180875526927369}
@@ -340,7 +341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2007}
+  m_AnchoredPosition: {x: 0, y: 300}
   m_SizeDelta: {x: 855.775, y: 1898.881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2006335653534999467
@@ -1236,18 +1237,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2006335653389989648}
-        m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickGameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &4235762326289554529
 Animator:
   serializedVersion: 5
@@ -2075,18 +2064,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2006335653389989648}
-        m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickRetryButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7315678652299810510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2559037202506892822, guid: 88a59c8e316774bf68b9a81e990ede96, type: 3}
       propertyPath: _length
-      value: 0
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 2559037202506892822, guid: 88a59c8e316774bf68b9a81e990ede96, type: 3}
       propertyPath: _duration

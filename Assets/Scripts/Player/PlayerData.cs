@@ -7,7 +7,7 @@ public class PlayerData
     [SerializeField]
     int money = 0;
 
-    public int Money { get { return money; } set { money = value; SetData(); } }
+    public int Money { get { return money; } set { money = value; SetData(); if (GameManagerEx.Instance.currentCoin > money) GameManagerEx.Instance.currentCoin = money; } }
     [SerializeField]
     int currentSkinId = 0;
     public int MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
