@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -13,7 +13,7 @@ public class CameraResolution : MonoBehaviour
     private void Start()
     {
         FindCamera();
-        SetResolution(); // 초기에 게임 해상도 고정
+        SetResolution(); // 珥덇린??寃뚯엫 ?댁긽??怨좎젙
         //ResolutionFix();
     }
 
@@ -27,29 +27,29 @@ public class CameraResolution : MonoBehaviour
         Object.DontDestroyOnLoad(MainCamera);
         Object.DontDestroyOnLoad(AfterRenderingCamera);
     }
-    /* 해상도 설정하는 함수 */
+    /* ?댁긽???ㅼ젙?섎뒗 ?⑥닔 */
     public void SetResolution()
     {
         
-        int setWidth = 1080; // 사용자 설정 너비
-        int setHeight = 1920; // 사용자 설정 높이
+        int setWidth = 1080; // ?ъ슜???ㅼ젙 ?덈퉬
+        int setHeight = 1920; // ?ъ슜???ㅼ젙 ?믪씠
 
-        int deviceWidth = Screen.width; // 기기 너비 저장
-        int deviceHeight = Screen.height; // 기기 높이 저장
+        int deviceWidth = Screen.width; // 湲곌린 ?덈퉬 ???
+        int deviceHeight = Screen.height; // 湲곌린 ?믪씠 ???
 
-        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution 함수 제대로 사용하기
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution ?⑥닔 ?쒕?濡??ъ슜?섍린
 
-        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // 기기의 해상도 비가 더 큰 경우
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // 湲곌린???댁긽??鍮꾧? ????寃쎌슦
         {
-            Debug.Log("기기의 해상도가 더 높음!");
-            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // 새로운 너비
-            MainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // 새로운 Rect 적용
+            Debug.Log("湲곌린???댁긽?꾧? ???믪쓬!");
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // ?덈줈???덈퉬
+            MainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // ?덈줈??Rect ?곸슜
         }
-        else // 게임의 해상도 비가 더 큰 경우
+        else // 寃뚯엫???댁긽??鍮꾧? ????寃쎌슦
         {
-            Debug.Log("게임의 해상도가 더 높음!");
-            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // 새로운 높이
-            MainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
+            Debug.Log("寃뚯엫???댁긽?꾧? ???믪쓬!");
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // ?덈줈???믪씠
+            MainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // ?덈줈??Rect ?곸슜
         }
 
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_endCameraRendering;

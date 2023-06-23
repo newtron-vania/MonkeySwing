@@ -10,12 +10,11 @@ using System;
 using GooglePlayGames.BasicApi.SavedGame;
 using TMPro;
 using Firebase.Auth;
-using Firebase.Database;
 
-public class GooglePlayManager2 : MonoBehaviour
+public class GooglePlayManager_Prototype: MonoBehaviour
 {
-    static private GooglePlayManager instance;
-    static public GooglePlayManager Instance
+    static private GooglePlayManager_Prototype instance;
+    static public GooglePlayManager_Prototype Instance
     {
         get { Init(); return instance; }
     }
@@ -42,17 +41,8 @@ public class GooglePlayManager2 : MonoBehaviour
         }
     }
 
-    public bool isFirebaseAuth
-    {
-        get
-        {
-            return FireBaseId == null ? true : false;
-        }
-    }
-
     private FirebaseAuth auth;
-    private string FireBaseId = string.Empty;
-    DatabaseReference database;
+    public string FireBaseId = string.Empty;
 
     static void Init()
     {
@@ -62,13 +52,13 @@ public class GooglePlayManager2 : MonoBehaviour
             if (go == null)
             {
                 go = new GameObject { name = "@GooglePlayManager" };
-                go.AddComponent<GooglePlayManager>();
+                go.AddComponent<GooglePlayManager_Prototype>();
                 hideUI = Managers.Resource.Instantiate("UI/HideUI");
                 hideUI.SetActive(false);
             }
             DontDestroyOnLoad(go);
             DontDestroyOnLoad(hideUI);
-            instance = go.GetComponent<GooglePlayManager>();
+            instance = go.GetComponent<GooglePlayManager_Prototype>();
         }
     }
 
@@ -103,7 +93,8 @@ public class GooglePlayManager2 : MonoBehaviour
             }
             else
             {
-                StartCoroutine(TryFirebaseLogin(successAction, hideUIAction));
+                StartCoroutine(TryFirebaseLogin());
+                successAction.Invoke();
                 //AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
@@ -120,7 +111,7 @@ public class GooglePlayManager2 : MonoBehaviour
         }
     }
 
-    IEnumerator TryFirebaseLogin(Action successAction, Action hideUIAction)
+    IEnumerator TryFirebaseLogin()
     {
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
             yield return null;
@@ -133,13 +124,12 @@ public class GooglePlayManager2 : MonoBehaviour
             if (task.IsCanceled)
             {
                 Debug.Log("SignInWithCredentialAsync was canceled!!");
-                hideUIAction.Invoke();
                 return;
             }
             if (task.IsFaulted)
             {
                 Debug.Log("SignInWithCredentialAsync encountered an error: " + task.Exception);
-                hideUIAction.Invoke();
+
                 return;
             }
 
@@ -149,10 +139,6 @@ public class GooglePlayManager2 : MonoBehaviour
             Debug.Log("Success!");
             Debug.Log($"FireBaseId : " + FireBaseId);
             Debug.Log("firebase Success!!");
-
-            database = FirebaseDatabase.DefaultInstance.RootReference;
-
-            successAction.Invoke();
         });
     }
 
@@ -180,10 +166,6 @@ public class GooglePlayManager2 : MonoBehaviour
         {
             StartCoroutine(LoadFromCloudRoutin(afterLoadAction));
         }
-        else if(!isFirebaseAuth)
-        {
-            StartCoroutine(TryFirebaseLogin(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false)));
-        }
         else
         {
             Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false));
@@ -201,8 +183,6 @@ public class GooglePlayManager2 : MonoBehaviour
             DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime,
             OnFileOpenToLoad);
-
-
 
         while (isProcessing)
         {
@@ -374,8 +354,8 @@ public class GooglePlayManager2 : MonoBehaviour
             Debug.Log($"userScore : {scores[i].value}");
             Debug.Log($"rank : {scores[i].rank}");
             Debug.Log($"profile name : {profiles[i].userName}");
-            userRankDatas[i] = new UserRankData() { userName = profiles[i].userName, userScore = scores[i].value, rank = scores[i].rank };
-            Debug.Log($"userdata {i} = {userRankDatas[i].userName}, {userRankDatas[i].userScore}, {userRankDatas[i].rank}");
+            userRankDatas[i] = new UserRankData() { userName = profiles[i].userName, bestScore = scores[i].value, rank = scores[i].rank };
+            Debug.Log($"userdata {i} = {userRankDatas[i].userName}, {userRankDatas[i].bestScore}, {userRankDatas[i].rank}");
             Debug.Log($"{i} complete");
         }
         Debug.Log($" userRankData Set Complete!");
@@ -386,3 +366,4 @@ public class GooglePlayManager2 : MonoBehaviour
     }
 
 }
+
