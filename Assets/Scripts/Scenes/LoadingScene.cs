@@ -22,6 +22,7 @@ public class LoadingScene : MonoBehaviour
 
     public static void LoadScene(Define.SceneType sceneType)
     {
+        Managers.Input.Clear();
         nextScene = sceneType.ToString();
         SceneManager.LoadScene("LoadingScene");
     }

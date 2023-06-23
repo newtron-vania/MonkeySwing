@@ -7,7 +7,7 @@ public class PlayerData
     [SerializeField]
     int money = 0;
 
-    public int Money { get { return money; } set { money = value; SetData(); } }
+    public int Money { get { return money; } set { money = value; SetData(); if (GameManagerEx.Instance.currentCoin > money) GameManagerEx.Instance.currentCoin = money; } }
     [SerializeField]
     int currentSkinId = 0;
     public int MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
@@ -15,7 +15,7 @@ public class PlayerData
     List<int> collectedSkinId = new List<int>() { 0 };
     [SerializeField]
     int bestScore = 0;
-    public int BestScore { get { return bestScore; } set { bestScore = value; SetData(); UploadToBestScoreRanking(); } }
+    public int BestScore { get { return bestScore; } set { bestScore = value; SetData(); } }
 
 
     private void SetData()
@@ -25,13 +25,7 @@ public class PlayerData
 
     public void LoadData()
     {
-        GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); });
-    }
-
-    private void UploadToBestScoreRanking()
-    {
-        GooglePlayManager.Instance.ReportLeaderboard(GPGSIds.leaderboard_bestscore, BestScore, null);
-        Debug.Log("Upload LeaderBoard Complete!");
+        GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money; });
     }
 
     public void AddSkinId(int id)

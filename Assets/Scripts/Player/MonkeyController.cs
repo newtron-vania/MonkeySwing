@@ -22,7 +22,8 @@ public class MonkeyController : MonoBehaviour
     public int Health
     {
         get { return health; }
-        set { 
+        set
+        {
             health = value;
             HeartCount.heartcount = health;
             if (health <= 0)
@@ -38,9 +39,10 @@ public class MonkeyController : MonoBehaviour
     public float gravity = 1f;
     [SerializeField]
     private int weight;
-    public int Weight { 
-        get { return weight; } 
-        set 
+    public int Weight
+    {
+        get { return weight; }
+        set
         {
             weight = value;
             if (weightEvent != null)
@@ -53,16 +55,17 @@ public class MonkeyController : MonoBehaviour
                 PlayerState = Define.CharacterState.Normal;
             else
                 PlayerState = Define.CharacterState.Full;
-        } 
+        }
     }
 
     public Action<int> weightEvent;
 
     Define.CharacterState playerState = Define.CharacterState.Normal;
-    Define.CharacterState PlayerState { 
-        get { return playerState; } 
-        set 
-        { 
+    Define.CharacterState PlayerState
+    {
+        get { return playerState; }
+        set
+        {
             playerState = value;
             switch (playerState)
             {
@@ -85,14 +88,14 @@ public class MonkeyController : MonoBehaviour
                     isDamaged = true;
                     break;
             }
-        } 
+        }
     }
 
     [SerializeField]
     private float damagedTime = 2f;
     private bool isDamaged = false;
     private bool isInvincible = false;
-    
+
 
 
     private void Awake()
@@ -116,7 +119,7 @@ public class MonkeyController : MonoBehaviour
     {
         return monkeyBody;
     }
-    
+
     void CheckVelocity()
     {
         maxVelocityForce = (-12 / 90f * Weight) + 49 / 3f;
@@ -140,13 +143,13 @@ public class MonkeyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!isInvincible && (collision.tag == "Enemy"))
+        if (!isInvincible && (collision.tag == "Enemy"))
         {
             Debug.Log($"collision name : {collision.name } collision tag : {collision.tag}");
             PlayerState = Define.CharacterState.Damaged;
         }
-            
-        else if(collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
+
+        else if (collision.gameObject.tag == "LineMid" || collision.gameObject.tag == "LineTop")
         {
             GameManagerEx.Instance.distance.Dist += 5;
         }
@@ -156,7 +159,7 @@ public class MonkeyController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if(Weight > 10)
+            if (Weight > 10)
                 Weight -= 1;
         }
 
@@ -170,7 +173,7 @@ public class MonkeyController : MonoBehaviour
         Coroutine = StartCoroutine(OnDamaged(damagedTime));
     }
 
-    private void StopOnDamaged() 
+    private void StopOnDamaged()
     {
         if (Coroutine != null)
         {
@@ -184,7 +187,7 @@ public class MonkeyController : MonoBehaviour
     public void BeDamaged()
     {
         Managers.Sound.Play("Damaged");
-        StartCoroutine(OnDamaged(damagedTime));
+        Coroutine = StartCoroutine(OnDamaged(damagedTime));
     }
 
     IEnumerator OnDamaged(float damagedTime)

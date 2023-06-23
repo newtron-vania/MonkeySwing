@@ -16,6 +16,9 @@ public class ResultUI : MonoBehaviour
     Image BestScoreSticker;
 
     [SerializeField]
+    CountUI countUI;
+
+    [SerializeField]
     ParticleImage particle;
 
     [SerializeField]
@@ -43,7 +46,17 @@ public class ResultUI : MonoBehaviour
         Managers.Sound.Play("GameOver");
         ceremonyAnime.SetInteger("IsBest", 1);
 
-        AdmobManager.Instance.ShowFrontAd();
+
+    }
+
+    public void OnClickRetryButton()
+    {
+        Managers.Sound.StopPlayingSound(Define.Sound.Effect);
+        gameObject.SetActive(false);
+        countUI.gameObject.SetActive(true);
+        countUI.SetCount(3f);
+
+        HeartCount.is_retry = true;
     }
 
     public void AddBanana()
@@ -54,12 +67,14 @@ public class ResultUI : MonoBehaviour
 
     public void ShowAdsWithContinue()
     {
-        AdmobManager.Instance.ShowRewardAd(1, (sender, rewardEvent) => { StartContinue(); });
+        //AdmobManager.Instance.ShowRewardAd(1, (sender, rewardEvent) => { StartContinue(); });
+        AdsInitializer.Instance.ShowRewardAd(() => { StartContinue(); OnClickRetryButton(); });
     }
 
     public void ShowAdsWithBanana()
     {
-        AdmobManager.Instance.ShowRewardAd(0, (sender, rewardEvent) => { GiveMulCoin(); });
+        //AdmobManager.Instance.ShowRewardAd(0, (sender, rewardEvent) => { GiveMulCoin(); });
+        AdsInitializer.Instance.ShowRewardAd(() => { GiveMulCoin(); LoadingScene.LoadScene(Define.SceneType.Home); });
     }
 
     private void GiveMulCoin()
