@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 81
+  controlID: 20
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 82
+  controlID: 21
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 71
+  controlID: 22
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SimulatorWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -348,22 +348,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts/UI/Shop
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts/UI/Shop
   m_LastFoldersGridSize: 16
   m_LastProjectPath: F:\Unity\Projects\MonkeySwing
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 15.800018}
-    m_SelectedIDs: 8e7a0000
-    m_LastClickedID: 31374
-    m_ExpandedIDs: 00000000667a0000687a0000
+    scrollPos: {x: 0, y: 639.80005}
+    m_SelectedIDs: 688e0000
+    m_LastClickedID: 36456
+    m_ExpandedIDs: 00000000667a0000687a00008c7a0000907a0000e87a0000f67a00001a920000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300006471000088700000426a0000446e0000746b0000086c0000626d0000f6680000167200000c6c0000ca61000062650000106f0000226a000064640000b0830000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -479,9 +479,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 24fbffff
+      m_SelectedIDs: feb00000
+      m_LastClickedID: 45310
+      m_ExpandedIDs: 967cffffa28effffa48effffa68effff888fffffdc90ffff1494ffff6a9effff4e9fffff609fffff6a9fffff7a9fffff7e9fffff909fffff9a9fffffaa9fffffc49fffffde9fffffe49fffff02a0ffff12a0ffff36a0ffff3aa0ffff8ea0ffffb0a0ffffbca0ffffc6a0ffffd2a0ffffdca0ffff04a1ffff0ea1ffff18a1ffff28a1ffff40a1ffff4aa1ffff54a1ffff5ea1ffff66a1ffffdaa1fffff0a1ffff04a2ffff18a2ffff1ea2ffff3ea2ffff4aa2ffff5ea2ffff64a2ffff84a2ffff88a2ffffdaa2ffffe2a2ffffe8a2ffff00a3ffff08a3ffff0ea3ffff26a3ffff2ea3ffff34a3ffff4ca3ffff64a3ffff6ca3ffff72a3ffff8aa3ffff92a3ffff98a3ffffb0a3ffffb8a3ffffbea3ffffd6a3ffffdea3ffffe4a3fffffca3ffff04a4ffff0aa4ffff22a4ffff2aa4ffff30a4ffff48a4ffff50a4ffff56a4ffff5ea4ffff68a4ffff72a4ffff8aa4ffff92a4ffff98a4ffffb0a4ffffe2a4ffff00a5ffff08a8ffffbab2ffffc4b2ffffceb2ffffdeb2ffff18b3ffff34b8fffffeb9ffff96beffffb2beffffc2beffffc6beffffd8beffffe2befffff2beffff0cbfffff26bfffff2cbfffff4abfffff5abfffff7ebfffff82bfffff96bfffffd6bffffff8bfffff04c0ffff0ec0ffff1ac0ffff24c0ffff4cc0ffff56c0ffff60c0ffff70c0ffff88c0ffff92c0ffff9cc0ffffa6c0ffffaec0ffff22c1ffff38c1ffff40c1ffff4cc1ffff60c1ffff66c1ffff86c1ffff92c1ffffa6c1ffffacc1ffffccc1ffffd0c1ffff22c2ffff2ac2ffff30c2ffff48c2ffff50c2ffff56c2ffff6ec2ffff76c2ffff7cc2ffff94c2ffffacc2ffffb4c2ffffbac2ffffd2c2ffffdac2ffffe0c2fffff8c2ffff00c3ffff06c3ffff1ec3ffff26c3ffff2cc3ffff44c3ffff4cc3ffff52c3ffff6ac3ffff72c3ffff78c3ffff90c3ffff98c3ffff9ec3ffffa6c3ffffb0c3ffffbac3ffffd2c3ffffdac3ffffe0c3fffff8c3ffff2ac4ffff48c4fffff6ceffff64dbffffc4e1fffff0eeffff0cefffff22efffff2eefffffb6f3ffff24fbfffff4ffffff367b0000407b00006e7c0000727c00008c7c00009e7c0000689500006c95000076950000be950000d09500002a96000030960000529600005c9600006e9600008096000092960000249700007697000088970000a29c0000a89c0000ca9c0000d49c0000e69c0000f89c00000a9d00002aa4000034a400003ca4000040a400005ea400007ca40000c2a40000eca4000008a50000acb0000010b10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -797,9 +797,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 544.80884, y: 722.134, z: -0.5664064}
+    m_Target: {x: 98.36466, y: 241.87584, z: -0.23611522}
     speed: 2
-    m_Value: {x: 544.80884, y: 722.134, z: -0.5664064}
+    m_Value: {x: 98.36466, y: 241.87584, z: -0.23611522}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -850,9 +850,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 138.03474
+    m_Target: 315.2053
     speed: 2
-    m_Value: 138.03474
+    m_Value: 315.2053
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -897,10 +897,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 238.40001
-    y: 80.8
-    width: 357.2
-    height: 403.8
+    x: 230.40001
+    y: 73.6
+    width: 368.4
+    height: 412.6
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2183,15 +2183,15 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13974, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Simulator
-    m_Image: {fileID: 3038311277492192215, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Game
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -2205,33 +2205,68 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_SerializedViewNames:
-  - UnityEditor.GameView
+  - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - F:\Unity\Projects\MonkeySwing\Library\PlayModeViewStates\5e0dbcab754a71d468cc9cb1fc413445
-  m_PlayModeViewName: Device Simulator
+  - F:\Unity\Projects\MonkeySwing\Library\PlayModeViewStates\47f7afa3d61272749a0fedcdd0a8dd87
+  m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
-  m_ClearColor: {r: 0, g: 0, b: 0, a: 1}
-  m_TargetSize: {x: 1620, y: 2160}
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetSize: {x: 275, y: 489.5}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 2
+  m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
-  m_SimulatorState:
-    controlPanelVisible: 0
-    controlPanelWidth: 0
-    controlPanelFoldoutKeys:
-    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
-    controlPanelFoldoutValues: 00
-    pluginNames:
-    - UnityEditor.DeviceSimulation.ApplicationSettingsPlugin
-    pluginStates:
-    - '{}'
-    scale: 13
-    fitToScreenEnabled: 0
-    rotationDegree: 0
-    highlightSafeAreaEnabled: 0
-    friendlyName: Apple iPad (7th gen)
-    networkReachability: 1
-    systemLanguage: 10
+  m_VSyncEnabled: 0
+  m_Gizmos: 0
+  m_Stats: 0
+  m_SelectedSizes: 0000000000000000000000000d000000000000000000000000000000000000000000000000000000
+  m_ZoomArea:
+    m_HRangeLocked: 0
+    m_VRangeLocked: 0
+    hZoomLockedByDefault: 0
+    vZoomLockedByDefault: 0
+    m_HBaseRangeMin: -110
+    m_HBaseRangeMax: 110
+    m_VBaseRangeMin: -195.8
+    m_VBaseRangeMax: 195.8
+    m_HAllowExceedBaseRangeMin: 1
+    m_HAllowExceedBaseRangeMax: 1
+    m_VAllowExceedBaseRangeMin: 1
+    m_VAllowExceedBaseRangeMax: 1
+    m_ScaleWithWindow: 0
+    m_HSlider: 0
+    m_VSlider: 0
+    m_IgnoreScrollWheelUntilClicked: 0
+    m_EnableMouseInput: 1
+    m_EnableSliderZoomHorizontal: 0
+    m_EnableSliderZoomVertical: 0
+    m_UniformScale: 1
+    m_UpDirection: 1
+    m_DrawArea:
+      serializedVersion: 2
+      x: 0
+      y: 21
+      width: 410.8
+      height: 391.6
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 205.4, y: 195.8}
+    m_MarginLeft: 0
+    m_MarginRight: 0
+    m_MarginTop: 0
+    m_MarginBottom: 0
+    m_LastShownAreaInsideMargins:
+      serializedVersion: 2
+      x: -205.4
+      y: -195.8
+      width: 410.8
+      height: 391.6
+    m_MinimalGUI: 1
+  m_defaultScale: 1
+  m_LastWindowPixelSize: {x: 513.5, y: 515.75}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 01000000000000000000
+  m_XRRenderMode: 0
+  m_RenderTexture: {fileID: 0}
