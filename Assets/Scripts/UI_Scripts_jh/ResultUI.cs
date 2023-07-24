@@ -56,7 +56,7 @@ public class ResultUI : MonoBehaviour
         countUI.gameObject.SetActive(true);
         countUI.SetCount(3f);
 
-        HeartCount.is_retry = true;
+        GameManagerEx.Instance.monkey.SetMonkeyStat();
     }
 
     public void AddBanana()

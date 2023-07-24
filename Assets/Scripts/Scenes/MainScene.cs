@@ -21,7 +21,9 @@ public class MainScene : BaseScene
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+        GameManagerEx.Instance.distance = null;
+        GameManagerEx.Instance.makeLines = null;
+        GameManagerEx.Instance.monkey = null;
     }
 
     IEnumerator FindMonkey()

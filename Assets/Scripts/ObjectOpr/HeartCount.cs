@@ -6,45 +6,44 @@ using TMPro;
 
 public class HeartCount : MonoBehaviour
 {
-    public static int heartcount = 3;
-    public GameObject[] hearts;
-    private static bool[] flag = new bool[3] {true, true, true};   
-    public static bool is_retry = false;
-    public GameObject resultPopup;
+    private int heartcount = 3;
+    public List<Transform> hearts;
 
-    void OnEnable()
+    [SerializeField]
+    MainScene gameScene;
+    public int Heart
     {
-        heartcount = 3;
-        heartImg_reset();
-    }
-
-    void Update()
-    {   
-        // GameObject.Find("HeartCount").GetComponent<TextMeshProUGUI>().text = "heartcount : " + heartcount.ToString();
-
-        if (heartcount != 3 && flag[heartcount])
+        get { return heartcount; }
+        set
         {
-            GameObject ht = hearts[heartcount];
-            ht.SetActive(false);
-            flag[heartcount] = false;
-        }
-
-        if (is_retry)
-        {
-            heartImg_reset();
-        }
-    }
-
-    
-    public void heartImg_reset()
-    {
-        if (heartcount == 3 && flag[heartcount-1] == false)
-        {
-            for (int i = 0; i < 3; i++)
+            heartcount = value;
+            for(int i = 0; i < heartcount; i++)
             {
-                GameObject.Find("HeartContainer").transform.GetChild(i).gameObject.SetActive(true);
-                flag[heartcount-(i+1)] = true;
+                hearts[i].gameObject.SetActive(true);
+            }
+            for(int i = heartcount; i < hearts.Count; i++)
+            {
+                hearts[i].gameObject.SetActive(false);
             }
         }
-    } 
+    }
+    
+
+
+    private void Awake()
+    {
+        gameScene.monkeySetEvent -= SetHealthEvent;
+        gameScene.monkeySetEvent += SetHealthEvent;
+    }
+
+    private void SetHealthEvent(MonkeyController monkey)
+    {
+        monkey.healthEvent -= SetHeart;
+        monkey.healthEvent += SetHeart;
+    }
+
+    private void SetHeart(int health)
+    {
+        Heart = health;
+    }
 }

@@ -63,7 +63,8 @@ public class Define
         Home,
         LoadingScene,
         MainScene,
-        GameScene
+        GameScene,
+        SelectScene
     }
 
     public enum Items

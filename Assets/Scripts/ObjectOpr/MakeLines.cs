@@ -60,7 +60,7 @@ public class MakeLines : MonoBehaviour
     void Start() {
         StartPosition = new Vector3(0,-10,0);
         EndPosition = new Vector3(0,10,0);
-        appliedLineSpeed = lineSpeed;
+        LineSpeed = Managers.Data.GetSkin(GameManagerEx.Instance.player.MonkeySkinId).Speed;
         SetDictionary();
         SetWrPick();
         GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
@@ -79,7 +79,7 @@ public class MakeLines : MonoBehaviour
         for (int i=1; i<=maxLineLv; i++)
         {
             maplevel = $"level {i}";
-            maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
+            maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{GameManagerEx.Instance.mapID}/{maplevel}");
             levelLinesDict.Add(i, maps);
         }
         maplevel = $"level Event";
@@ -223,4 +223,5 @@ public class MakeLines : MonoBehaviour
             go.GetComponent<LinesMove>().speed = appliedLineSpeed;
         }
     }
+
 }

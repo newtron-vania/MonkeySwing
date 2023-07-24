@@ -15,7 +15,7 @@ public class HomeScene : BaseScene
 
     public override void Clear()
     {
-        throw new System.NotImplementedException();
+
     }
 
 }

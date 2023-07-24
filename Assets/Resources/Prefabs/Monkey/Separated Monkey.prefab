@@ -719,6 +719,7 @@ GameObject:
   - component: {fileID: 430970296097590601}
   - component: {fileID: 349223501205394449}
   - component: {fileID: 5387247190393693179}
+  - component: {fileID: -2482759745968622988}
   m_Layer: 0
   m_Name: Separated Monkey
   m_TagString: Monkey
@@ -871,3 +872,18 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &-2482759745968622988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923223496050003487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c65b062c8a38441a954171538191a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+  weight: 50
+  speed: 2

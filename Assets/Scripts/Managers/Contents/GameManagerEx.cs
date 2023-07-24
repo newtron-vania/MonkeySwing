@@ -14,8 +14,10 @@ public class GameManagerEx
     public Distance distance;
     public MonkeyController monkey;
     public BananaCount banana;
+
     public bool isPlaying = false;
 
+    public int mapID = 0;
     static void Init()
     {
         if (g_instance == null)
@@ -36,7 +38,7 @@ public class GameManagerEx
     {
         GameManagerEx.Instance.GameStop();
         Managers.Sound.Clear();
-        GameObject resultPopup = GameObject.FindObjectOfType<HeartCount>().resultPopup;
+        GameObject resultPopup = GameObject.FindObjectOfType<ResultUI>(true).gameObject;
         resultPopup.SetActive(true);
 
         // Invoke("Delay", 5);

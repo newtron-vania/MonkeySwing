@@ -6,7 +6,7 @@ using System;
 public class MonkeyController : MonoBehaviour
 {
 
-
+    public Action<int> healthEvent;
 
     private Rigidbody2D rigid;
     private Animator anime;
@@ -18,6 +18,7 @@ public class MonkeyController : MonoBehaviour
     [SerializeField]
     private List<SpriteRenderer> monkeyBody; // 0 : tail 1 : head
 
+    private MonkeyStat stat;
     private int health;
     public int Health
     {
@@ -25,7 +26,7 @@ public class MonkeyController : MonoBehaviour
         set
         {
             health = value;
-            HeartCount.heartcount = health;
+            healthEvent?.Invoke(health);
             if (health <= 0)
             {
                 GameManagerEx.Instance.GameOver();
@@ -102,11 +103,16 @@ public class MonkeyController : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
-        Health = 3;
-        Weight = 50;
+        stat = GetComponent<MonkeyStat>();
+        SetMonkeyStat();
         StartCoroutine(LooseWeight());
     }
 
+    public void SetMonkeyStat()
+    {
+        Health = stat.Hp;
+        Weight = stat.Weight;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
