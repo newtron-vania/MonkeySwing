@@ -21,9 +21,4 @@ public class MonkeyStat : MonoBehaviour
         weight = skinData.Weight;
         speed = skinData.Speed;
     }
-
-    private void Awake()
-    {
-        SetMonkeyStat();
-    }
 }
