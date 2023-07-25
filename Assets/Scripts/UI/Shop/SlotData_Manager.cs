@@ -18,11 +18,7 @@ public class SlotData_Manager : MonoBehaviour
     private static int currentSkin_ID;
     private PlayerData player = new PlayerData();
 
-<<<<<<< HEAD
-    SkinData_Manager skinData_manager;
-=======
     private SkinData_Manager skinData_manager = new SkinData_Manager();
->>>>>>> Shop
 
     public Sprite BodySprite;
     public Sprite TailSprite;
@@ -105,13 +101,10 @@ public class SlotData_Manager : MonoBehaviour
 
     public void OnClick_purchase_Btn()
     {
-<<<<<<< HEAD
-        
-        SkinData_Manager.Player_SkinData_ID = Skin_id;
-=======
+
         SkinData_Manager.Player_SkinData_ID = Skin_id; 
         GameManagerEx.Instance.player.MonkeySkinId = Skin_id; // 장착중인 player의 skinid 변경
->>>>>>> Shop
+
         SkinData_Manager.clicked_slot = this.gameObject;
         
         if (Slot_SkinData.is_locked){

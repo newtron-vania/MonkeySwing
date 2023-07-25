@@ -41,7 +41,6 @@ public class SkinData_LoadSave : MonoBehaviour
     private Sprite TailSprite;
     private SkinData_Manager skinData_manager = new SkinData_Manager();
 
-<<<<<<< HEAD
     [SerializeField]
     private SkinData_Manager skinDataManager;
 
@@ -57,10 +56,6 @@ public class SkinData_LoadSave : MonoBehaviour
     }
 
     public void Init()
-=======
-    
-    private void Awake()
->>>>>>> Shop
     {
         LoadData();
         Origin_Slot = Resources.Load<GameObject>("Prefabs/Shop/Slot");
@@ -75,7 +70,6 @@ public class SkinData_LoadSave : MonoBehaviour
         TextAsset textAsset = Resources.Load<TextAsset>(filename);
         MySkinList = JsonUtility.FromJson<SkinDatas>(textAsset.text);
         Debug.Log("data load");
-<<<<<<< HEAD
 
         List<int> skinlist = GameManagerEx.Instance.player.GetSkinIds();
         for (int i = 0; i < MySkinList.skins.Count; i++)
@@ -92,8 +86,6 @@ public class SkinData_LoadSave : MonoBehaviour
                 Monkey_prefab_tail.sprite = Resources.Load<Sprite>(MySkinList.skins[i].monkey_skin_path[1]);
             }
         }
-=======
->>>>>>> Shop
         // Application.persistentDataPath + "/" + filename; 
     }
 
