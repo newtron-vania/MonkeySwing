@@ -16,8 +16,13 @@ public class SlotData_Manager : MonoBehaviour
     {
     public int Skin_id;
     private static int currentSkin_ID;
+    private PlayerData player = new PlayerData();
 
+<<<<<<< HEAD
     SkinData_Manager skinData_manager;
+=======
+    private SkinData_Manager skinData_manager = new SkinData_Manager();
+>>>>>>> Shop
 
     public Sprite BodySprite;
     public Sprite TailSprite;
@@ -100,8 +105,13 @@ public class SlotData_Manager : MonoBehaviour
 
     public void OnClick_purchase_Btn()
     {
+<<<<<<< HEAD
         
         SkinData_Manager.Player_SkinData_ID = Skin_id;
+=======
+        SkinData_Manager.Player_SkinData_ID = Skin_id; 
+        GameManagerEx.Instance.player.MonkeySkinId = Skin_id; // 장착중인 player의 skinid 변경
+>>>>>>> Shop
         SkinData_Manager.clicked_slot = this.gameObject;
         
         if (Slot_SkinData.is_locked){
@@ -124,8 +134,6 @@ public class SlotData_Manager : MonoBehaviour
                 Debug.Log("스킨을 변경합니다. 스킨 변경이 완료되었습니다.");
                 Reset_is_current_PlayerSkin();
                 Slot_SkinData.is_current_PlayerSkin = true;
-                GameManagerEx.Instance.player.MonkeySkinId = Skin_id;
-
                 SkinData_Manager.last_slot = SkinData_Manager.current_slot;
                 SkinData_Manager.current_slot = this.gameObject;
                 if (SkinData_Manager.last_slot != SkinData_Manager.current_slot)
@@ -145,17 +153,14 @@ public class SlotData_Manager : MonoBehaviour
         Debug.Log("구매시작합니다아아");
         Debug.Log(Slot_SkinData.price + " : 스킨 가격");
 
-        // GameManagerEx.Instance.player.Money = 10000; // 활성화 시키면 재화 10000으로 증가
+        GameManagerEx.Instance.player.Money = 10000; // 활성화 시키면 재화 10000으로 증가
         int bananacount = GameManagerEx.Instance.player.Money;
         Debug.Log(bananacount + " : 전체 바나나");
         if (bananacount >= Slot_SkinData.price){
             Debug.Log("스킨을 구매합니다.");
             Slot_SkinData.is_locked = false;
-            bananacount -= Slot_SkinData.price;
-            GameManagerEx.Instance.player.Money = bananacount;
-            GameManagerEx.Instance.player.MonkeySkinId = Skin_id;
-            GameManagerEx.Instance.player.AddSkinId(Skin_id);
-            //PlayerPrefs.SetInt("Money", bananacount); // 이거 적용시켜야 재화저장 가능
+            GameManagerEx.Instance.player.Money -=  Slot_SkinData.price;
+            GameManagerEx.Instance.player.AddSkinId(Skin_id); // collected_skinid에 구매한 id 추가
             PurchaseBtn_Load(); // 버튼 상태를 장착으로 바꾸기
             PreviewBtn_Img_Load();
         }

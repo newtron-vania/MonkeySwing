@@ -38,7 +38,8 @@ public class SkinData_Manager : MonoBehaviour
         DataLoad();
         Set_Player_SkinData_ID();
         current_slot = Get_current_slot();
-        Set_Monkey();
+        DontDestroyOnLoad(gameObject);
+        //Set_Monkey();
     }
 
     private void DataLoad()
