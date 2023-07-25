@@ -110,6 +110,7 @@ public class MonkeyController : MonoBehaviour
 
     public void SetMonkeyStat()
     {
+        stat.SetMonkeyStat();
         Health = stat.Hp;
         Weight = stat.Weight;
     }

@@ -34,12 +34,14 @@ public class HeartCount : MonoBehaviour
     {
         gameScene.monkeySetEvent -= SetHealthEvent;
         gameScene.monkeySetEvent += SetHealthEvent;
+        
     }
 
     private void SetHealthEvent(MonkeyController monkey)
     {
         monkey.healthEvent -= SetHeart;
         monkey.healthEvent += SetHeart;
+        Heart = GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().Hp;
     }
 
     private void SetHeart(int health)

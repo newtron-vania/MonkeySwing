@@ -65,6 +65,7 @@ public class WeightSliders : MonoBehaviour
     {
         monkey.weightEvent -= SetValue;
         monkey.weightEvent += SetValue;
+        monkey.weightEvent.Invoke(monkey.GetComponent<MonkeyStat>().Weight);
         Debug.Log("weight 이벤트 할당됨");
     }
 
