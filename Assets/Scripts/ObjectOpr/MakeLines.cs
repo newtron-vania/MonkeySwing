@@ -21,11 +21,9 @@ public class MakeLines : MonoBehaviour
 
     Rito.WeightedRandomPicker<int> wrPicker;
 
-    public double level1;
+    public double[] levelWeight = new double[3];
 
-    public double level2;
-
-    public double level3;
+    public float[] levelLine = new float[3]; 
 
     [SerializeField]
     private float wNum = 30;
@@ -62,7 +60,7 @@ public class MakeLines : MonoBehaviour
         EndPosition = new Vector3(0,10,0);
         LineSpeed = Managers.Data.GetSkin(GameManagerEx.Instance.player.MonkeySkinId).Speed;
         SetDictionary();
-        SetWrPick();
+        SetWrPick(1);
         GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
         GameManagerEx.Instance.distance.distanceEvent += AddWrPick;
         GameManagerEx.Instance.distance.distanceEvent -= LineSpeedUp;
@@ -113,22 +111,25 @@ public class MakeLines : MonoBehaviour
         CheckPickNum();
     }
 
-    void SetWrPick()
+    void SetWrPick(int lv)
     {
-        float w = wNum;
         wrPicker = new Rito.WeightedRandomPicker<int>();
-        for (int i = 1; i <= maxLineLv; i++)
+        for(int i = 1; i <= maxLineLv; i++)
         {
-            wrPicker.Add(i, w);
-            w /= wNum + 10;
+            wrPicker.Remove(i);
+            if (i == lv)
+                wrPicker.Add(i, 10);
+            else
+                wrPicker.Add(i, 0);
         }
     }
 
     private void CheckPickNum()
     {
-        level1 = wrPicker.GetWeight(1);
-        level2 = wrPicker.GetWeight(2);
-        level3 = wrPicker.GetWeight(3);
+        for(int i = 0; i < levelWeight.Length; i++)
+        {
+            levelWeight[i] = wrPicker.GetWeight(i + 1);
+        }
     }
 
     GameObject MakeLinesPlay(){
@@ -179,16 +180,15 @@ public class MakeLines : MonoBehaviour
 
     private void AddWrPick(int value)
     {
-        if(value > 0 && value % 100 == 0)
-        for (int i = 1; i <= maxLineLv; i++)
+        for(int i = 2; i > 0; i++)
         {
-            double w = wrPicker.GetWeight(i);
-            if (wrPicker.GetWeight(i) < wNum*i)
+            if (levelLine[i] > value && wrPicker.GetWeight(i) > 0f)
             {
-                    wrPicker.ModifyWeight(i, w + wrPicker.GetWeight(i-1) *0.1f);
+                SetWrPick(i + 1);
+                break;
             }
-                Debug.Log($"weight {i} : {wrPicker.GetWeight(i)}");
         }
+        
     }
 
     private void LineSpeedUp(int dist)
