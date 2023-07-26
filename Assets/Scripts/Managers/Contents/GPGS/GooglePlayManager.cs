@@ -48,6 +48,8 @@ public class GooglePlayManager : MonoBehaviour
     {
         get
         {
+            if (string.IsNullOrEmpty(Social.localUser.userName))
+                return "BionicMystery1236";
             return Social.localUser.userName;
         }
     }
@@ -100,7 +102,7 @@ public class GooglePlayManager : MonoBehaviour
     {
         InitiatePlayGames();
     }
-    public void Login(Action successAction, Action hideUIAction)
+    public void Login(Action successAction)
     {
         hideUI.SetActive(true);
         Social.localUser.Authenticate((bool success) =>
@@ -115,7 +117,7 @@ public class GooglePlayManager : MonoBehaviour
                 //AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
-            StartCoroutine(TryFirebaseLogin(successAction, hideUIAction));
+            StartCoroutine(TryFirebaseLogin(successAction));
         });
     }
 
@@ -135,11 +137,17 @@ public class GooglePlayManager : MonoBehaviour
         StartCoroutine(LoadFromCloudRoutin(null));
 
     }
-    IEnumerator TryFirebaseLogin(Action successAction, Action hideUIAction)
+    IEnumerator TryFirebaseLogin(Action successAction)
     {
         Debug.Log("Gooo");
+        float time = 3f;
         while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
+        {
             yield return null;
+            time -= Time.unscaledTime;
+            if (time < 0f)
+                break;
+        }
         string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
         Debug.Log($"firebase idtoken - " + idToken);
 
@@ -147,16 +155,17 @@ public class GooglePlayManager : MonoBehaviour
         Debug.Log($"credential - " + credential);
         auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
         {
+            Debug.Log("SignInWithCredentialAsync start");
+            database = FirebaseDatabase.DefaultInstance.GetReference("users");
+            hideUI.SetActive(false);
             if (task.IsCanceled)
             {
                 Debug.Log("SignInWithCredentialAsync was canceled!!");
-                hideUIAction.Invoke();
                 return;
             }
             if (task.IsFaulted)
             {
                 Debug.Log("SignInWithCredentialAsync encountered an error: " + task.Exception);
-                hideUIAction.Invoke();
                 return;
             }
 
@@ -167,7 +176,7 @@ public class GooglePlayManager : MonoBehaviour
             Debug.Log($"FireBaseId : " + FireBaseId);
             Debug.Log("firebase Success!!");
 
-            database = FirebaseDatabase.DefaultInstance.GetReference("users");
+            
 
             successAction.Invoke();
         });
@@ -182,7 +191,7 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false));
+            Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction))) ;
         }
     }
 
@@ -192,10 +201,9 @@ public class GooglePlayManager : MonoBehaviour
         Debug.Log("Loading game progress from the cloud.");
         hideUI.SetActive(true);
         //Test
-        FireBaseId = "abcde";
         database.Child(FireBaseId).GetValueAsync().ContinueWithOnMainThread(task =>
         {
-            if (task.IsFaulted)
+            if (task.IsFaulted || task.IsCanceled)
             {
                 // Handle the error...
                 Debug.Log($"Firebase DataLoad Error. {task.Exception.ToString()}");
@@ -252,7 +260,7 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            Login(() => SaveToCloud(dataToSave), () => hideUI.SetActive(false));
+            Login(() => SaveToCloud(dataToSave));
         }
     }
 
@@ -260,11 +268,12 @@ public class GooglePlayManager : MonoBehaviour
     public void LoadBestScoreRankingArray(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null)
     {
         hideUI.SetActive(true);
-        database.OrderByChild("bestscore").LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
+        database.OrderByChild("bestScore").LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
         {
+            Debug.Log("bestScore is in");
             List<UserRankData> userRankDatas = new List<UserRankData>();
             bool success = false;
-            if (task.IsFaulted)
+            if (task.IsFaulted || task.IsCanceled)
             {
                 // Handle the error...
                 Debug.Log($"Firebase DataLoad Error. {task.Exception}");
@@ -273,16 +282,20 @@ public class GooglePlayManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
+                Debug.Log($"rankingLoad is Complete! {snapshot.GetRawJsonValue()}");
                 int i = 0;
                 foreach(DataSnapshot data in snapshot.Children)
                 {
-                    IDictionary snap = (IDictionary)data.Value;
-                    UserRankData userData = new UserRankData() { userName = snap["username"].ToString(), skinID = (int)snap["currentskinid"], bestScore = (long)snap["bestscore"], rank = i+1 };
+                    Debug.Log($"rank {i} , {data.GetRawJsonValue()}, {JsonUtility.ToJson((IDictionary)data.Value)}");
+                    PlayerData snap = JsonUtility.FromJson<PlayerData>(data.GetRawJsonValue());
+                    UserRankData userData = new UserRankData() { userName = snap.UserName, skinID = snap.MonkeySkinId, bestScore = snap.BestScore, rank = ++i };
                     userRankDatas.Add(userData);
                 }
                 success = true;
             }
-
+            Debug.Log("RankLoad is Over");
+            hideUI.SetActive(false);
+            Debug.Log("Rank HideUI False");
             onLoadedRankAction.Invoke(success, userRankDatas);
             // Do something with snapshot...
         });

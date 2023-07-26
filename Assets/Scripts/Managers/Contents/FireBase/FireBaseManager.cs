@@ -39,7 +39,7 @@ public class FireBaseManager : MonoBehaviour
 
     public void Start()
     {
-        Login();
+        StartCoroutine(TryFirebaseLogin());
     }
 
     public void Login()

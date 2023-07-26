@@ -7,11 +7,15 @@ public class SelectItem : MonoBehaviour
 {
     public int mapID;
     [SerializeField]
-    Button button;
+    Button Playbutton;
+    [SerializeField]
+    Button MedalButton;
+    [SerializeField]
+    Button RankButton;
     // Start is called before the first frame update
     void Start()
     {
-        button.onClick.AddListener(() => StartMap());
+        Playbutton.onClick.AddListener(() => StartMap());
     }
 
 

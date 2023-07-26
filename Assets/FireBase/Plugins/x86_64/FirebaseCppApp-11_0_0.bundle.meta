@@ -1,81 +1,52 @@
 fileFormatVersion: 2
-guid: 26a5591931b54313a49ef5a88e53b993
-labels:
-- gvh
-- gvh_version-11.0.0
-- gvhp_exportpath-Firebase/Plugins/x86_64/FirebaseCppApp-11_0_0.bundle
-timeCreated: 1480838400
+guid: 20b1b8a1ed5645341843da780cb649cf
 PluginImporter:
-  serializedVersion: 1
+  externalObjects: {}
+  serializedVersion: 2
   iconMap: {}
   executionOrder: {}
+  defineConstraints: []
   isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
   platformData:
-    Android:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Any:
-      enabled: 0
-      settings: {}
-    Editor:
+  - first:
+      Any: 
+    second:
       enabled: 1
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: x86_64
         DefaultValueInitialized: true
-        OS: AnyOS
-    Linux:
-      enabled: 0
-      settings:
-        CPU: None
-    Linux64:
-      enabled: 0
-      settings:
-        CPU: None
-    LinuxUniversal:
-      enabled: 0
-      settings:
-        CPU: None
-    OSXIntel:
-      enabled: 0
-      settings:
-        CPU: None
-    OSXIntel64:
+  - first:
+      Standalone: Linux64
+    second:
       enabled: 1
       settings:
         CPU: x86_64
-    OSXUniversal:
+  - first:
+      Standalone: OSXUniversal
+    second:
       enabled: 1
       settings:
-        CPU: AnyCPU
-    Web:
-      enabled: 0
-      settings: {}
-    WebStreamed:
-      enabled: 0
-      settings: {}
-    Win:
+        CPU: x86_64
+  - first:
+      Standalone: Win
+    second:
       enabled: 0
       settings:
         CPU: None
-    Win64:
-      enabled: 0
+  - first:
+      Standalone: Win64
+    second:
+      enabled: 1
       settings:
-        CPU: None
-    WindowsStoreApps:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    iOS:
-      enabled: 0
-      settings:
-        CompileFlags:
-        FrameworkDependencies:
-    tvOS:
-      enabled: 0
-      settings:
-        CompileFlags:
-        FrameworkDependencies:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+        CPU: x86_64
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
