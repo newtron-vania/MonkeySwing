@@ -11,10 +11,11 @@ public class SwipeMenu : MonoBehaviour
 
     float[] pos;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    [SerializeField]
+    bool moveSet;
+    [SerializeField]
+    bool scaleSet;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +26,15 @@ public class SwipeMenu : MonoBehaviour
         {
             pos[i] = distance * i;
         }
+        if(moveSet)
+            ChildScrollMove(distance);
+        if(scaleSet)
+            SetChildScale(distance);
 
+    }
+
+    private void ChildScrollMove(float distance)
+    {
         if (Input.GetMouseButton(0))
         {
             scroll_pos = scrollBar.GetComponent<Scrollbar>().value;
@@ -40,8 +49,10 @@ public class SwipeMenu : MonoBehaviour
                 }
             }
         }
+    }
 
-
+    private void SetChildScale(float distance)
+    {
         for (int i = 0; i < pos.Length; i++)
         {
             if (scroll_pos < pos[i] + (distance / 2) && scroll_pos > pos[i] - (distance / 2))
@@ -50,7 +61,7 @@ public class SwipeMenu : MonoBehaviour
             }
             for (int a = 0; a < pos.Length; a++)
             {
-                if(a != i)
+                if (a != i)
                 {
                     transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(a).localScale, new Vector2(0.8f, 0.8f), 0.1f);
                 }

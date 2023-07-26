@@ -20,4 +20,9 @@ public class SelectItem : MonoBehaviour
         GameManagerEx.Instance.mapID = mapID;
         LoadingScene.LoadScene(Define.SceneType.MainScene);
     }
+
+    private void ShowMedals()
+    {
+        //Show MedalUI with ID
+    }
 }
