@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 116220536}
   - component: {fileID: 116220535}
   m_Layer: 5
-  m_Name: Ranking
+  m_Name: Medal_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 523e963837e78a44096e806874f79768, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef8f88903ab29444dac64dd48b40cab8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2112,6 +2112,7 @@ GameObject:
   - component: {fileID: 6068757193994046669}
   - component: {fileID: 6068757193994046668}
   - component: {fileID: 72694259}
+  - component: {fileID: 1929855366}
   m_Layer: 5
   m_Name: GameStartBtn
   m_TagString: Untagged
@@ -2221,18 +2222,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6068757195447307826}
-        m_TargetAssemblyTypeName: Popup_manager, Assembly-CSharp
-        m_MethodName: OnClickStartButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 929747207}
         m_TargetAssemblyTypeName: ButtonSoundPlay, Assembly-CSharp
         m_MethodName: PlayToStartPlay
@@ -2266,6 +2255,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1929855366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068757193994046658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eaedf171e641824b9ebae0d722ee17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6068757195225547044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2516,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2373e8cd8f3903e4d881f215793fb600, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -2626,6 +2627,14 @@ PrefabInstance:
     - target: {fileID: 7775776299727238647, guid: f79e6cf845c7e0e4f9f9e68a128cf9c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775776300180947095, guid: f79e6cf845c7e0e4f9f9e68a128cf9c5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775776300180947095, guid: f79e6cf845c7e0e4f9f9e68a128cf9c5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.500008
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79e6cf845c7e0e4f9f9e68a128cf9c5, type: 3}

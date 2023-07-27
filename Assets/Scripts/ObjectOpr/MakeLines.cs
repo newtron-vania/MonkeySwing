@@ -23,14 +23,12 @@ public class MakeLines : MonoBehaviour
 
     public double[] levelWeight = new double[3];
 
-    public float[] levelLine = new float[3]; 
+    public float[] levelLine = new float[3];
 
     [SerializeField]
-    private float wNum = 30;
-    private int createCount = 0;
-
+    private int level;
     [SerializeField]
-    private int MaxCreateCount = 8;
+    private int currentLevel;
 
     [SerializeField]
     float lineSpeed = 2f;
@@ -60,7 +58,7 @@ public class MakeLines : MonoBehaviour
         EndPosition = new Vector3(0,10,0);
         LineSpeed = Managers.Data.GetSkin(GameManagerEx.Instance.player.MonkeySkinId).Speed;
         SetDictionary();
-        SetWrPick(1);
+        SetWrPick(0);
         GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
         GameManagerEx.Instance.distance.distanceEvent += AddWrPick;
         GameManagerEx.Instance.distance.distanceEvent -= LineSpeedUp;
@@ -74,14 +72,14 @@ public class MakeLines : MonoBehaviour
     {
         string maplevel = string.Empty;
         GameObject[] maps = null;
-        for (int i=1; i<=maxLineLv; i++)
+        for (int i=0; i<=maxLineLv; i++)
         {
             maplevel = $"level {i}";
             maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{GameManagerEx.Instance.mapID}/{maplevel}");
             levelLinesDict.Add(i, maps);
         }
         maplevel = $"level Event";
-        maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{maplevel}");
+        maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{GameManagerEx.Instance.mapID}/{maplevel}");
         levelLinesDict.Add(maxLineLv+1, maps);
 
         foreach(KeyValuePair<int, GameObject[]> keyValuePair in levelLinesDict)
@@ -114,11 +112,15 @@ public class MakeLines : MonoBehaviour
     void SetWrPick(int lv)
     {
         wrPicker = new Rito.WeightedRandomPicker<int>();
-        for(int i = 1; i <= maxLineLv; i++)
+        for(int i = 0; i <= maxLineLv; i++)
         {
-            wrPicker.Remove(i);
+            Debug.Log($"{level}");
             if (i == lv)
+            {
                 wrPicker.Add(i, 10);
+                level = i;
+                currentLevel = maxLineLv+1;
+            }
             else
                 wrPicker.Add(i, 0);
         }
@@ -163,32 +165,23 @@ public class MakeLines : MonoBehaviour
 
     private int settingLevel()
     {
-        int level = 0;
-        if (createCount < MaxCreateCount)
+        if (level != currentLevel)
         {
-            //각 레벨별 가중치 처리 필요
-            level = wrPicker.GetRandomPick();
-            createCount += 1;
+            int lv = currentLevel;
+            currentLevel = level;
+            return lv;
         }
-        else
-        {
-            level = maxLineLv + 1;
-            createCount = 0;
-        }
-        return level;
+            
+        return currentLevel;
     }
 
     private void AddWrPick(int value)
     {
-        for(int i = 2; i > 0; i++)
-        {
-            if (levelLine[i] > value && wrPicker.GetWeight(i) > 0f)
+            if (levelLine[level] < value)
             {
-                SetWrPick(i + 1);
-                break;
+            Debug.Log($"{level} {levelLine[level]}, {value}");
+                SetWrPick(level + 1);
             }
-        }
-        
     }
 
     private void LineSpeedUp(int dist)

@@ -248,7 +248,7 @@ namespace Rito
         /// <summary> 가중치 �?범위 검??0보다 커야 ?? </summary>
         private void CheckValidWeight(in double weight)
         {
-            if (weight <= 0f)
+            if (weight < 0f)
                 throw new Exception("가중치 값�? 0보다 커야 ?�니??");
         }
 

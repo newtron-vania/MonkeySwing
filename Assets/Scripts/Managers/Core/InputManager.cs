@@ -96,11 +96,8 @@ public class InputManager
             Vector3 rPosition = touchPos;
             
 #endif
-            Debug.Log("TouchEvent Start!");
-            Debug.Log($"TouchPos - {rPosition}");
 
             Managers.Resource.Instantiate("UI/Effect/TouchEffect", rPosition, GameObject.FindWithTag("Canvas").transform);
-            Debug.Log("Vector Position Update!");
         }
     }
 

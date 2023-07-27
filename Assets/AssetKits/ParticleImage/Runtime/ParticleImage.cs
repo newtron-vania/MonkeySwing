@@ -1165,7 +1165,6 @@ namespace AssetKits.ParticleImage
         /// </param>
         public void Stop(bool stopAndClear)
         {
-            Debug.Log($"particle Stop : {stopAndClear}");
             main.DoStop(stopAndClear);
         }
 
