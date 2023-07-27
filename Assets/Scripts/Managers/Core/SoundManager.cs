@@ -44,6 +44,13 @@ public class SoundManager
         _audioClips.Clear();
     }
 
+    public void Play(string name, bool isContinue, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
+    {
+        if (name == BGM.ToString() && isContinue)
+            return;
+        Play(name, type, pitch = 1.0f);
+    }
+
     public void Play(string name, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
     {
         AudioClip audioClip = GetOrAddAudioClip(name, type);
@@ -74,6 +81,8 @@ public class SoundManager
 			audioSource.PlayOneShot(audioClip);
 		}
 	}
+
+
 
 	AudioClip GetOrAddAudioClip(string name, Define.Sound type = Define.Sound.Effect)
     {

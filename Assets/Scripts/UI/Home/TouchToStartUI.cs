@@ -11,7 +11,7 @@ public class TouchToStartUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Managers.Sound.Play("HomeBGM", Define.Sound.Bgm);
+        Managers.Sound.Play("HomeBGM", true, Define.Sound.Bgm);
         
         if (GameManagerEx.Instance.isPlaying)
         {
