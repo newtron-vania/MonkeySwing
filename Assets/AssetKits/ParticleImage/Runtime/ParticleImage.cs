@@ -1379,13 +1379,11 @@ namespace AssetKits.ParticleImage
                     }
                 }
 
-                Debug.Log($"After Emit bursts - time: {_time}");
-
                 if (_time >= _duration + _startDelay && !_loop)
                 {
-                    Debug.Log($"_time : {_time}, _duration : {_duration}, _startDelay : {_startDelay}, isEmitting : {isEmitting}");
+ 
                     isEmitting = false;
-                    Debug.Log($"_time : {_time}, _duration : {_duration}, _startDelay : {_startDelay}, isEmitting : {isEmitting}");
+
                 }
                 
                 if(_loop && _loopTimer >= _duration + _startDelay)

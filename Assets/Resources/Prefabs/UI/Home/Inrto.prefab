@@ -114,7 +114,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6180482698722258722}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 5d48161a80c0b7e44a0ed62f2e86e23e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d31a37e59842dfa418894ce70a3620d2, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -275,19 +275,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6180482698820367601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IntroChanger, Assembly-CSharp
-        m_MethodName: Tutorial_Start
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6180482699058995481
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6180482699058995482
 RectTransform:
   m_ObjectHideFlags: 0

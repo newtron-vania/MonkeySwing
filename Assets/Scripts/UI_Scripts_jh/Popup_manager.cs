@@ -46,7 +46,8 @@ public class Popup_manager : MonoBehaviour
         // OnClickCloseButton();
         // ¾À ÀÌ¸§ ¹Ù²î¸é ¹Ù²ã¾ßÇÔ
         // SceneManager.LoadScene("PlayerMoveTestScene2");
-        LoadingScene.LoadScene(Define.SceneType.MainScene);
+        AdsInitializer.Instance.ShowIntertitalAd(() => { LoadingScene.LoadScene(Define.SceneType.MainScene); });
+        
     }
 
     public void OnClickHomeButton()
@@ -57,7 +58,7 @@ public class Popup_manager : MonoBehaviour
 
     public void OnClickGameOver()
     {
-        AdmobManager.Instance.ShowFrontAdWithClick();
+        //AdmobManager.Instance.ShowFrontAdWithClick();
         LoadingScene.LoadScene(Define.SceneType.Home);
     }
 
@@ -89,14 +90,14 @@ public class Popup_manager : MonoBehaviour
         countUI.gameObject.SetActive(true);
         countUI.SetCount(3f);
 
-        HeartCount.is_retry = true;
+        GameManagerEx.Instance.monkey.SetMonkeyStat();
     }
 
     public void OnClickReplayButton()
     {
         SetTimeScale(1);
         AddBanana();
-        LoadingScene.LoadScene(Define.SceneType.MainScene);
+        AdsInitializer.Instance.ShowIntertitalAd(() => { LoadingScene.LoadScene(Define.SceneType.MainScene); });
     }
 
     public void AddBanana()

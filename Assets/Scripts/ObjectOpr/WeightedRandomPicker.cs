@@ -3,40 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-// 날짜 : 2021-03-09 AM 1:08:48
-// 작성자 : Rito
+// ?�짜 : 2021-03-09 AM 1:08:48
+// ?�성??: Rito
 
 /*
-    [가중치 랜덤 뽑기]
+    [가중치 ?�덤 뽑기]
 
-    - 제네릭을 통해 아이템의 타입을 지정해 객체화하여 사용한다.
-    - 중복되는 아이템이 없도록 딕셔너리로 구현하였다.
-    - 가중치가 0보다 작은 경우 예외를 호출한다.
+    - ?�네�?�� ?�해 ?�이?�의 ?�?�을 지?�해 객체?�하???�용?�다.
+    - 중복?�는 ?�이?�이 ?�도�??�셔?�리�?구현?��???
+    - 가중치가 0보다 ?��? 경우 ?�외�??�출?�다.
 
-    - double SumOfWeights : 전체 아이템의 가중치 합(읽기 전용 프로퍼티)
+    - double SumOfWeights : ?�체 ?�이?�의 가중치 ???�기 ?�용 ?�로?�티)
 
-    - void Add(T, double) : 새로운 아이템-가중치 쌍을 추가한다.
-    - void Add(params (T, double)[]) : 새로운 아이템-가중치 쌍을 여러 개 추가한다.
-    - void Remove(T) : 대상 아이템을 목록에서 제거한다.
-    - void ModifyWeight(T, double) : 대상 아이템의 가중치를 변경한다.
-    - void ReSeed(int) : 랜덤 시드를 재설정한다.
+    - void Add(T, double) : ?�로???�이??가중치 ?�을 추�??�다.
+    - void Add(params (T, double)[]) : ?�로???�이??가중치 ?�을 ?�러 �?추�??�다.
+    - void Remove(T) : ?�???�이?�을 목록?�서 ?�거?�다.
+    - void ModifyWeight(T, double) : ?�???�이?�의 가중치�?변경한??
+    - void ReSeed(int) : ?�덤 ?�드�??�설?�한??
 
-    - T GetRandomPick() : 현재 아이템 목록에서 가중치를 계산하여 랜덤으로 항목 하나를 뽑아온다.
-    - T GetRandomPick(double) : 이미 계산된 확률 값을 매개변수로 넣어, 해당되는 항목 하나를 뽑아온다.
-    - double GetWeight(T) : 대상 아이템의 가중치를 얻어온다.
-    - double GetNormalizedWeight(T) : 대상 아이템의 정규화된 가중치를 얻어온다.
+    - T GetRandomPick() : ?�재 ?�이??목록?�서 가중치�?계산?�여 ?�덤?�로 ??�� ?�나�?뽑아?�다.
+    - T GetRandomPick(double) : ?��? 계산???�률 값을 매개변?�로 ?�어, ?�당?�는 ??�� ?�나�?뽑아?�다.
+    - double GetWeight(T) : ?�???�이?�의 가중치�??�어?�다.
+    - double GetNormalizedWeight(T) : ?�???�이?�의 ?�규?�된 가중치�??�어?�다.
 
-    - ReadonlyDictionary<T, double> GetItemDictReadonly() : 전체 아이템 목록을 읽기전용 컬렉션으로 받아온다.
+    - ReadonlyDictionary<T, double> GetItemDictReadonly() : ?�체 ?�이??목록???�기?�용 컬렉?�으�?받아?�다.
     - ReadonlyDictionary<T, double> GetNormalizedItemDictReadonly()
-      : 전체 아이템의 가중치 총합이 1이 되도록 정규화된 아이템 목록을 읽기전용 컬렉션으로 받아온다.
+      : ?�체 ?�이?�의 가중치 총합??1???�도�??�규?�된 ?�이??목록???�기?�용 컬렉?�으�?받아?�다.
 */
 
 namespace Rito
 {
-    /// <summary> 가중치 랜덤 뽑기 </summary>
+    /// <summary> 가중치 ?�덤 뽑기 </summary>
     public class WeightedRandomPicker<T>
     {
-        /// <summary> 전체 아이템의 가중치 합 </summary>
+        /// <summary> ?�체 ?�이?�의 가중치 ??</summary>
         public double SumOfWeights
         {
             get
@@ -48,9 +48,9 @@ namespace Rito
 
         private System.Random randomInstance;
         private readonly Dictionary<T, double> itemWeightDict;
-        private readonly Dictionary<T, double> normalizedItemWeightDict; // 확률이 정규화된 아이템 목록
+        private readonly Dictionary<T, double> normalizedItemWeightDict; // ?�률???�규?�된 ?�이??목록
 
-        /// <summary> 가중치 합이 계산되지 않은 상태인지 여부 </summary>
+        /// <summary> 가중치 ?�이 계산?��? ?��? ?�태?��? ?��? </summary>
         private bool isDirty;
         private double _sumOfWeights;
 
@@ -82,7 +82,7 @@ namespace Rito
         ***********************************************************************/
         #region .
 
-        /// <summary> 새로운 아이템-가중치 쌍 추가 </summary>
+        /// <summary> ?�로???�이??가중치 ??추�? </summary>
         public void Add(T item, double weight)
         {
             CheckDuplicatedItem(item);
@@ -92,7 +92,7 @@ namespace Rito
             isDirty = true;
         }
 
-        /// <summary> 새로운 아이템-가중치 쌍들 추가 </summary>
+        /// <summary> ?�로???�이??가중치 ?�들 추�? </summary>
         public void Add(params (T item, double weight)[] pairs)
         {
             foreach (var pair in pairs)
@@ -111,7 +111,7 @@ namespace Rito
         ***********************************************************************/
         #region .
 
-        /// <summary> 목록에서 대상 아이템 제거 </summary>
+        /// <summary> 목록?�서 ?�???�이???�거 </summary>
         public void Remove(T item)
         {
             CheckNotExistedItem(item);
@@ -120,7 +120,7 @@ namespace Rito
             isDirty = true;
         }
 
-        /// <summary> 대상 아이템의 가중치 수정 </summary>
+        /// <summary> ?�???�이?�의 가중치 ?�정 </summary>
         public void ModifyWeight(T item, double weight)
         {
             CheckNotExistedItem(item);
@@ -130,7 +130,7 @@ namespace Rito
             isDirty = true;
         }
 
-        /// <summary> 랜덤 시드 재설정 </summary>
+        /// <summary> ?�덤 ?�드 ?�설??</summary>
         public void ReSeed(int seed)
         {
             randomInstance = new System.Random(seed);
@@ -142,17 +142,17 @@ namespace Rito
         ***********************************************************************/
         #region .
 
-        /// <summary> 랜덤 뽑기 </summary>
+        /// <summary> ?�덤 뽑기 </summary>
         public T GetRandomPick()
         {
-            // 랜덤 계산
+            // ?�덤 계산
             double chance = randomInstance.NextDouble(); // [0.0, 1.0)
             chance *= SumOfWeights;
 
             return GetRandomPick(chance);
         }
 
-        /// <summary> 직접 랜덤 값을 지정하여 뽑기 </summary>
+        /// <summary> 직접 ?�덤 값을 지?�하??뽑기 </summary>
         public T GetRandomPick(double randomValue)
         {
             if (randomValue < 0.0) randomValue = 0.0;
@@ -173,26 +173,26 @@ namespace Rito
             //return itemPairList[itemPairList.Count - 1].item; // Last Item
         }
 
-        /// <summary> 대상 아이템의 가중치 확인 </summary>
+        /// <summary> ?�???�이?�의 가중치 ?�인 </summary>
         public double GetWeight(T item)
         {
             return itemWeightDict[item];
         }
 
-        /// <summary> 대상 아이템의 정규화된 가중치 확인 </summary>
+        /// <summary> ?�???�이?�의 ?�규?�된 가중치 ?�인 </summary>
         public double GetNormalizedWeight(T item)
         {
             CalculateSumIfDirty();
             return normalizedItemWeightDict[item];
         }
 
-        /// <summary> 아이템 목록 확인(읽기 전용) </summary>
+        /// <summary> ?�이??목록 ?�인(?�기 ?�용) </summary>
         public ReadOnlyDictionary<T, double> GetItemDictReadonly()
         {
             return new ReadOnlyDictionary<T, double>(itemWeightDict);
         }
 
-        /// <summary> 가중치 합이 1이 되도록 정규화된 아이템 목록 확인(읽기 전용) </summary>
+        /// <summary> 가중치 ?�이 1???�도�??�규?�된 ?�이??목록 ?�인(?�기 ?�용) </summary>
         public ReadOnlyDictionary<T, double> GetNormalizedItemDictReadonly()
         {
             CalculateSumIfDirty();
@@ -205,7 +205,7 @@ namespace Rito
         ***********************************************************************/
         #region .
 
-        /// <summary> 모든 아이템의 가중치 합 계산해놓기 </summary>
+        /// <summary> 모든 ?�이?�의 가중치 ??계산?�놓�?</summary>
         private void CalculateSumIfDirty()
         {
             if(!isDirty) return;
@@ -217,11 +217,11 @@ namespace Rito
                 _sumOfWeights += pair.Value;
             }
 
-            // 정규화 딕셔너리도 업데이트
+            // ?�규???�셔?�리???�데?�트
             UpdateNormalizedDict();
         }
 
-        /// <summary> 정규화된 딕셔너리 업데이트 </summary>
+        /// <summary> ?�규?�된 ?�셔?�리 ?�데?�트 </summary>
         private void UpdateNormalizedDict()
         {
             normalizedItemWeightDict.Clear();
@@ -231,25 +231,25 @@ namespace Rito
             }
         }
 
-        /// <summary> 이미 아이템이 존재하는지 여부 검사 </summary>
+        /// <summary> ?��? ?�이?�이 존재?�는지 ?��? 검??</summary>
         private void CheckDuplicatedItem(T item)
         {
             if(itemWeightDict.ContainsKey(item))
-                throw new Exception($"이미 [{item}] 아이템이 존재합니다.");
+                throw new Exception($"?��? [{item}] ?�이?�이 존재?�니??");
         }
 
-        /// <summary> 존재하지 않는 아이템인 경우 </summary>
+        /// <summary> 존재?��? ?�는 ?�이?�인 경우 </summary>
         private void CheckNotExistedItem(T item)
         {
             if(!itemWeightDict.ContainsKey(item))
-                throw new Exception($"[{item}] 아이템이 목록에 존재하지 않습니다.");
+                throw new Exception($"[{item}] ?�이?�이 목록??존재?��? ?�습?�다.");
         }
 
-        /// <summary> 가중치 값 범위 검사(0보다 커야 함) </summary>
+        /// <summary> 가중치 �?범위 검??0보다 커야 ?? </summary>
         private void CheckValidWeight(in double weight)
         {
             if (weight <= 0f)
-                throw new Exception("가중치 값은 0보다 커야 합니다.");
+                throw new Exception("가중치 값�? 0보다 커야 ?�니??");
         }
 
         #endregion

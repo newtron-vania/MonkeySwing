@@ -9,6 +9,8 @@ public class PlayerCoinText : MonoBehaviour
     [SerializeField]
     ParticleImage particle;
 
+    private int diff;
+
     private void Start()
     {
         BananaCounttext = GetComponent<TextMeshProUGUI>();
@@ -29,14 +31,14 @@ public class PlayerCoinText : MonoBehaviour
     {
         yield return null;
         Debug.Log("coin get start");
-        particle.rateOverTime = (GameManagerEx.Instance.player.Money - GameManagerEx.Instance.currentCoin) * 10;
+        particle.rateOverTime = Mathf.Min((GameManagerEx.Instance.player.Money - GameManagerEx.Instance.currentCoin) * 2, 50*10);
         particle.gameObject.SetActive(true);
         particle.Play();
     }
 
     public void ParticleOnEvent()
     {
-        GameManagerEx.Instance.currentCoin += 1;
+        GameManagerEx.Instance.currentCoin += 5;
     }
 
     public void ParticleFinishEvent()

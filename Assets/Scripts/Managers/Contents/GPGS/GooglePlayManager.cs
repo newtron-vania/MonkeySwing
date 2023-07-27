@@ -9,6 +9,11 @@ using UnityEngine.UI;
 using System;
 using GooglePlayGames.BasicApi.SavedGame;
 using TMPro;
+using Firebase.Auth;
+using Firebase.Database;
+using Firebase.Extensions;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 public class GooglePlayManager : MonoBehaviour
 {
@@ -31,7 +36,6 @@ public class GooglePlayManager : MonoBehaviour
         private set;
     }
 
-    private const string m_saveFileName = "playerData";
     public bool isAuthenticated
     {
         get
@@ -39,6 +43,28 @@ public class GooglePlayManager : MonoBehaviour
             return Social.localUser.authenticated;
         }
     }
+
+    public string LocalUser
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(Social.localUser.userName))
+                return "BionicMystery1236";
+            return Social.localUser.userName;
+        }
+    }
+
+    public bool isFirebaseAuth
+    {
+        get
+        {
+            return FireBaseId == null ? true : false;
+        }
+    }
+
+    private FirebaseAuth auth;
+    private string FireBaseId = string.Empty;
+    DatabaseReference database;
 
     static void Init()
     {
@@ -61,55 +87,100 @@ public class GooglePlayManager : MonoBehaviour
     private void InitiatePlayGames()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .RequestIdToken()
             .EnableSavedGames() // Saved Games 기능 활성화
             .Build();
 
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
+
+        auth = FirebaseAuth.DefaultInstance;
     }
 
     private void Awake()
     {
         InitiatePlayGames();
     }
-    public void Login(Action successAction, Action hideUIAction)
+    public void Login(Action successAction)
     {
         hideUI.SetActive(true);
         Social.localUser.Authenticate((bool success) =>
         {
             Debug.Log($"Login Check {Social.localUser.id + "\n" + Social.localUser.userName}");
-            hideUIAction.Invoke();
             if (!success)
             {
                 Debug.Log("Fail Login");
             }
             else
             {
-                successAction.Invoke();
-                AdmobManager.Instance.call();
+                //AdmobManager.Instance.call();
                 Debug.Log("Login Succeed");
             }
-
+            StartCoroutine(TryFirebaseLogin(successAction));
         });
     }
 
-
-    private void ProcessCloudData(byte[] cloudData)
+    public void TryGoogleLogout()
     {
-        if (cloudData == null || cloudData.Length < 10)
+        if (Social.localUser.authenticated) // 로그인 되어 있다면
         {
-            Debug.Log("No Data saved to the cloud");
-            loadedData = JsonUtility.ToJson(new PlayerData());
-            return;
+            PlayGamesPlatform.Instance.SignOut(); // Google 로그아웃
+            auth.SignOut(); // Firebase 로그아웃
         }
-        //TODO : 
-        Debug.Log("Load Completed!");
-        string progress = BytesToString(cloudData);
-        //json File
-        loadedData = progress;
     }
 
+
+    public void TryFirebase()
+    {
+        database = FirebaseDatabase.DefaultInstance.GetReference("users");
+        StartCoroutine(LoadFromCloudRoutin(null));
+
+    }
+    IEnumerator TryFirebaseLogin(Action successAction)
+    {
+        Debug.Log("Gooo");
+        float time = 3f;
+        while (string.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
+        {
+            yield return null;
+            time -= Time.unscaledTime;
+            if (time < 0f)
+                break;
+        }
+        string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
+        Debug.Log($"firebase idtoken - " + idToken);
+
+        Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
+        Debug.Log($"credential - " + credential);
+        auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
+        {
+            Debug.Log("SignInWithCredentialAsync start");
+            database = FirebaseDatabase.DefaultInstance.GetReference("users");
+            hideUI.SetActive(false);
+            if (task.IsCanceled)
+            {
+                Debug.Log("SignInWithCredentialAsync was canceled!!");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.Log("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.FirebaseUser newUser = task.Result;
+            FireBaseId = newUser.UserId;
+
+            Debug.Log("Success!");
+            Debug.Log($"FireBaseId : " + FireBaseId);
+            Debug.Log("firebase Success!!");
+
+            
+
+            successAction.Invoke();
+        });
+    }
 
     public void LoadFromCloud(Action<string> afterLoadAction)
     {
@@ -120,7 +191,7 @@ public class GooglePlayManager : MonoBehaviour
         }
         else
         {
-            Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction)), () => hideUI.SetActive(false));
+            Login(() => StartCoroutine(LoadFromCloudRoutin(afterLoadAction))) ;
         }
     }
 
@@ -129,199 +200,113 @@ public class GooglePlayManager : MonoBehaviour
         isProcessing = true;
         Debug.Log("Loading game progress from the cloud.");
         hideUI.SetActive(true);
-
-        ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(
-            m_saveFileName, //name of file.
-            DataSource.ReadCacheOrNetwork,
-            ConflictResolutionStrategy.UseLongestPlaytime,
-            OnFileOpenToLoad);
+        //Test
+        database.Child(FireBaseId).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                // Handle the error...
+                Debug.Log($"Firebase DataLoad Error. {task.Exception.ToString()}");
+                loadedData = JsonUtility.ToJson(new PlayerData());
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log(snapshot.Key);
+                Debug.Log(snapshot.GetRawJsonValue());
+                loadedData = snapshot.GetRawJsonValue();
+                if (string.IsNullOrEmpty(loadedData))
+                {
+                    loadedData = JsonUtility.ToJson(new PlayerData());
+                }
+                loadedData = Regex.Unescape(loadedData);
+                Debug.Log(loadedData);
+            }
+            isProcessing = false;
+            // Do something with snapshot...
+        });
 
         while (isProcessing)
         {
             yield return null;
         }
-
-        hideUI.SetActive(false);
         loadAction.Invoke(loadedData);
+        hideUI.SetActive(false);
+        //loadAction.Invoke(loadedData);
     }
+
 
     public void SaveToCloud(string dataToSave)
     {
         if (isAuthenticated)
         {
             loadedData = dataToSave;
+            loadedData = Regex.Unescape(loadedData);
             Debug.Log("loadedData");
             isProcessing = true;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithAutomaticConflictResolution(m_saveFileName, DataSource.ReadCacheOrNetwork, ConflictResolutionStrategy.UseMostRecentlySaved, OnFileOpenToSave);
+            database.Child(FireBaseId).SetRawJsonValueAsync(loadedData).ContinueWithOnMainThread(task => 
+            {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Debug.Log("Firebase Save Error!");
+                }
+                else if (task.IsCompleted)
+                {
+                    Debug.Log("Firebase Save Complete");
+                    Debug.Log(loadedData);
+                }
+                isProcessing = false;
+            });
         }
         else
         {
-            Login(() => SaveToCloud(dataToSave), () => hideUI.SetActive(false));
+            Login(() => SaveToCloud(dataToSave));
         }
     }
 
-    private void OnFileOpenToSave(SavedGameRequestStatus status, ISavedGameMetadata metaData)
+
+    public void LoadBestScoreRankingArray(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null)
     {
         hideUI.SetActive(true);
-        if (status == SavedGameRequestStatus.Success)
+        database.OrderByChild("bestScore").LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
         {
-            byte[] data = StringToBytes(loadedData);
-
-            SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
-
-            SavedGameMetadataUpdate updatedMetadata = builder.Build();
-
-            ((PlayGamesPlatform)Social.Active).SavedGame.CommitUpdate(metaData, updatedMetadata, data, OnGameSave);
-        }
-        else
-        {
-            Debug.Log("Error opening Saved Game" + status);
-        }
-        hideUI.SetActive(false);
-    }
-
-
-    private void OnFileOpenToLoad(SavedGameRequestStatus status, ISavedGameMetadata metaData)
-    {
-        if (status == SavedGameRequestStatus.Success)
-        {
-            ((PlayGamesPlatform)Social.Active).SavedGame.ReadBinaryData(metaData, OnGameLoad);
-        }
-        else
-        {
-            Debug.Log("Error opening Saved Game" + status);
-        }
-    }
-
-
-    private void OnGameLoad(SavedGameRequestStatus status, byte[] bytes)
-    {
-        if (status != SavedGameRequestStatus.Success)
-        {
-            Debug.Log("Error Saving" + status);
-        }
-        else
-        {
-            ProcessCloudData(bytes);
-        }
-
-        isProcessing = false;
-    }
-
-    private void OnGameSave(SavedGameRequestStatus status, ISavedGameMetadata metaData)
-    {
-        if (status != SavedGameRequestStatus.Success)
-        {
-            Debug.Log("Error Saving" + status);
-        }
-
-        isProcessing = false;
-    }
-
-    private byte[] StringToBytes(string stringToConvert)
-    {
-        return Encoding.UTF8.GetBytes(stringToConvert);
-    }
-
-    private string BytesToString(byte[] bytes)
-    {
-        return Encoding.UTF8.GetString(bytes);
-    }
-
-    public void ReportLeaderboard(string gpgsId, long score, Action<bool> onReported = null) =>
-        Social.ReportScore(score, gpgsId, success => onReported?.Invoke(success));
-
-    public void ShowBestScoreLeaderboardUI() =>
-        Social.ShowLeaderboardUI();
-
-
-
-    public void LoadBestScoreRankingArray(int rowCount, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, UserRankData[]> onLoadedMyRankAction = null, Action<bool, UserRankData[]> onLoadedRankAction = null)
-    {
-        hideUI.SetActive(true);
-
-        CustomLoadLeaderBoard(GPGSIds.leaderboard_bestscore, 
-            LeaderboardStart.PlayerCentered, 
-            1, 
-            LeaderboardCollection.Public, 
-            leaderboardTimeSpan, 
-            onLoadedMyRankAction);
-        CustomLoadLeaderBoard(GPGSIds.leaderboard_bestscore, 
-            LeaderboardStart.TopScores, 
-            10, 
-            LeaderboardCollection.Public, 
-            leaderboardTimeSpan, 
-            onLoadedRankAction, 
-            true);
-    }
-
-    private void CustomLoadLeaderBoard(string leaderBoardID, LeaderboardStart startPosition, int rowCount, LeaderboardCollection leaderboardCollection, LeaderboardTimeSpan leaderboardTimeSpan, Action<bool, UserRankData[]> onLoadedAction, bool controllhideUI = false)
-    {
-        PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_bestscore, 
-            startPosition, 
-            rowCount, 
-            leaderboardCollection, 
-            leaderboardTimeSpan, 
-            data =>
-        {
-            Debug.Log($"UserScore Load success : {data.Status == ResponseStatus.Success}");
-            LoadUsers(data.Status == ResponseStatus.Success, data.Scores, onLoadedAction, controllhideUI);
+            Debug.Log("bestScore is in");
+            List<UserRankData> userRankDatas = new List<UserRankData>();
+            bool success = false;
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                // Handle the error...
+                Debug.Log($"Firebase DataLoad Error. {task.Exception}");
+                success = false;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log($"rankingLoad is Complete! {snapshot.GetRawJsonValue()}");
+                int i = 0;
+                foreach(DataSnapshot data in snapshot.Children)
+                {
+                    Debug.Log($"rank {i} , {data.GetRawJsonValue()}, {JsonUtility.ToJson((IDictionary)data.Value)}");
+                    PlayerData snap = JsonUtility.FromJson<PlayerData>(data.GetRawJsonValue());
+                    UserRankData userData = new UserRankData() { userName = snap.UserName, skinID = snap.MonkeySkinId, bestScore = snap.BestScore, rank = ++i };
+                    userRankDatas.Add(userData);
+                }
+                success = true;
+            }
+            Debug.Log("RankLoad is Over");
+            hideUI.SetActive(false);
+            Debug.Log("Rank HideUI False");
+            onLoadedRankAction.Invoke(success, userRankDatas);
+            // Do something with snapshot...
         });
     }
-
-    private void LoadUsers(bool success, IScore[] scores, Action<bool, UserRankData[]> onloaded = null, bool controllhideUI = false)
-    {
-        if (success)
-        {
-            string[] userIds = new string[scores.Length];
-
-            for (int i = 0; i < scores.Length; i++)
-            {
-                userIds[i] = scores[i].userID;
-                Debug.Log($"userIds : {userIds[i]}");
-            }
-            // forward scores with loaded profiles
-            Debug.Log("LoadUser Start");
-            Social.LoadUsers(userIds, profiles => loadUserName(profiles, scores, onloaded, controllhideUI));
-        }
-        else
-        {
-            onloaded?.Invoke(success, null);
-            if (controllhideUI)
-                hideUI.SetActive(false);
-        }
-    }
-
-    private void loadUserName(IUserProfile[] profiles, IScore[] scores, Action<bool, UserRankData[]> onloaded = null, bool controllhideUI = false)
-    {
-        UserRankData[] userRankDatas = new UserRankData[profiles.Length];
-        Debug.Log($"profile length : {profiles.Length}");
-        foreach(IUserProfile profile in profiles)
-        {
-            Debug.Log($"profile id : {profile.id}");
-            Debug.Log($"profile id : {profile.userName}");
-        }
-        for (int i = 0; i < profiles.Length; i++)
-        {
-            Debug.Log($"userScore : {scores[i].value}");
-            Debug.Log($"rank : {scores[i].rank}");
-            Debug.Log($"profile name : {profiles[i].userName}");
-            userRankDatas[i] = new UserRankData() { userName = profiles[i].userName, userScore = scores[i].value , rank = scores[i].rank};
-            Debug.Log($"userdata {i} = {userRankDatas[i].userName}, {userRankDatas[i].userScore}, {userRankDatas[i].rank}");
-            Debug.Log($"{i} complete");
-        }
-        Debug.Log($" userRankData Set Complete!");
-        onloaded?.Invoke(true, userRankDatas);
-
-        if(controllhideUI)
-            hideUI.SetActive(false);
-    }
-
 }
 
 public class UserRankData
 {
     public string userName;
-    public long userScore;
+    public int skinID;
+    public long bestScore;
     public int rank;
+
 }
