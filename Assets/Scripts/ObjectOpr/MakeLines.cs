@@ -119,7 +119,12 @@ public class MakeLines : MonoBehaviour
             {
                 wrPicker.Add(i, 10);
                 level = i;
-                currentLevel = maxLineLv+1;
+                if(i == 0)
+                    currentLevel = maxLineLv+1;
+                else
+                {
+                    currentLevel = level;
+                }
             }
             else
                 wrPicker.Add(i, 0);
