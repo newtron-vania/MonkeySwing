@@ -1,0 +1,1994 @@
+[33mcommit ec6debe398e6b80fec394a96444e69c15570c866[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 23:46:56 2023 +0900
+
+    - all Delete
+
+[33mcommit e3d428f6f33b95ba74b350d37529d059893b9549[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 23:39:42 2023 +0900
+
+    no message
+
+[33mcommit a23ddec965f6b37f03507c8226981d181429e869[m
+Merge: 7611757 e94cd57
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 23:34:39 2023 +0900
+
+    Merge branch 'FirebaseBranch'
+    
+    # Conflicts:
+    #       Assets/GooglePlayGames/GameInfo.cs
+    #       Assets/Plugins/Android/androidx.lifecycle.lifecycle-process-2.4.1.aar
+    #       Assets/Plugins/Android/androidx.startup.startup-runtime-1.1.1.aar
+    #       Assets/Plugins/Android/androidx.work.work-runtime-2.7.0.aar
+    #       Assets/Plugins/Android/com.google.android.gms.play-services-ads-lite-21.0.0.aar
+    #       Assets/Prefabs/Map/1/level 1/A-1.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-2.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-2.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2/B-9.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-1.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-1.prefab.meta
+    #       Assets/Prefabs/Map/1/level Event.meta
+    #       Assets/Prefabs/UI/Home/Manual.prefab
+    #       Assets/Prefabs/UI/Home/Setting.prefab
+    #       Assets/Prefabs/UI/Home/TouchToStart.prefab
+    #       Assets/Prefabs/UI/subItem/StagePanel.prefab
+    #       Assets/Prefabs/UI/subItem/StagePanel.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-1.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-1_BASE_2400.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-1_LOCAL_2400.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-1_REMOTE_2400.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-2.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-2.prefab_BASE_2464.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-2.prefab_LOCAL_2464.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-2.prefab_REMOTE_2464.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3.prefab_BASE_2718.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3.prefab_LOCAL_2718.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3.prefab_REMOTE_2718.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3_BASE_2699.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3_LOCAL_2699.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-3_REMOTE_2699.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4.prefab_BASE_2762.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4.prefab_LOCAL_2762.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4.prefab_REMOTE_2762.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4_BASE_2743.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4_LOCAL_2743.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-4_REMOTE_2743.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5.prefab_BASE_2804.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5.prefab_LOCAL_2804.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5.prefab_REMOTE_2804.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5_BASE_2782.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5_LOCAL_2782.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-5_REMOTE_2782.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6.prefab_BASE_2886.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6.prefab_LOCAL_2886.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6.prefab_REMOTE_2886.meta
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6_BASE_2819.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6_LOCAL_2819.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 1/A-6_REMOTE_2819.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1.prefab_BASE_2932.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1.prefab_LOCAL_2932.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1.prefab_REMOTE_2932.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1_BASE_2904.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1_LOCAL_2904.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-1_REMOTE_2904.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-2.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-2_BASE_2953.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-2_LOCAL_2953.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-2_REMOTE_2953.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7.prefab_BASE_3025.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7.prefab_LOCAL_3025.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7.prefab_REMOTE_3025.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7_BASE_2997.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7_LOCAL_2997.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-7_REMOTE_2997.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8.prefab_BASE_3066.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8.prefab_LOCAL_3066.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8.prefab_REMOTE_3066.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8_BASE_3039.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8_LOCAL_3039.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-8_REMOTE_3039.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-9.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-9.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-9.prefab_BASE_3106.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-9.prefab_LOCAL_3106.meta
+    #       Assets/Resources/Prefabs/Map/1/level 2/B-9.prefab_REMOTE_3106.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-1.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2.prefab_BASE_3479.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2.prefab_LOCAL_3479.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2.prefab_REMOTE_3479.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2_BASE_3178.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2_LOCAL_3178.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-2_REMOTE_3178.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3.prefab_BASE_3494.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3.prefab_LOCAL_3494.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3.prefab_REMOTE_3494.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3_BASE_3484.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3_LOCAL_3484.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-3_REMOTE_3484.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4.prefab_BASE_3515.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4.prefab_LOCAL_3515.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4.prefab_REMOTE_3515.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4_BASE_3502.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4_LOCAL_3502.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-4_REMOTE_3502.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5.prefab_BASE_3551.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5.prefab_LOCAL_3551.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5.prefab_REMOTE_3551.meta
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5_BASE_3531.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5_LOCAL_3531.prefab
+    #       Assets/Resources/Prefabs/Map/1/level 3/C-5_REMOTE_3531.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket.prefab_BASE_3791.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket.prefab_LOCAL_3791.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket.prefab_REMOTE_3791.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket_BASE_3769.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket_LOCAL_3769.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/Rocket_REMOTE_3769.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart.prefab.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart.prefab_BASE_3737.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart.prefab_LOCAL_3737.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart.prefab_REMOTE_3737.meta
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart_BASE_3566.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart_LOCAL_3566.prefab
+    #       Assets/Resources/Prefabs/Map/1/level Event/heart_REMOTE_3566.prefab
+    #       Assets/Resources/Prefabs/Map/level 1.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-3.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-4.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-5.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-6.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-6.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1_BASE_2318.meta
+    #       Assets/Resources/Prefabs/Map/level 2.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-7.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-7.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-8.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-8.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-9.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-9.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2_BASE_2328.meta
+    #       Assets/Resources/Prefabs/Map/level 3.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-3.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-4.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-5.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3_BASE_2350.meta
+    #       Assets/Resources/Prefabs/Map/level Event.meta
+    #       Assets/Resources/Prefabs/Map/level Event/Rocket.prefab
+    #       Assets/Resources/Prefabs/Map/level Event/Rocket.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level Event/heart.prefab
+    #       Assets/Resources/Prefabs/Map/level Event/heart.prefab.meta
+    #       Assets/Scenes/Home.unity
+    #       ProjectSettings/ProjectSettings.asset
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 7611757ca0421908d571ff787d2206e4a7ea8ec1[m
+Merge: 39fd7b2 6346e38
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 23:29:29 2023 +0900
+
+    Merge branch 'main' of https://github.com/newtron-vania/MonkeySwing
+    
+    # Conflicts:
+    #       Assets/Prefabs/Map/1.meta
+    #       Assets/Prefabs/Map/1/level 0.meta
+    #       Assets/Prefabs/Map/1/level 1.meta
+    #       Assets/Prefabs/Map/1/level 1/A-1.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-1.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-2.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-2.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-3.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-3.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-4.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-4.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-5.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-5.prefab.meta
+    #       Assets/Prefabs/Map/1/level 1/A-6.prefab
+    #       Assets/Prefabs/Map/1/level 1/A-6.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2.meta
+    #       Assets/Prefabs/Map/1/level 2/B-1.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-1.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2/B-2.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-2.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2/B-7.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-7.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2/B-8.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-8.prefab.meta
+    #       Assets/Prefabs/Map/1/level 2/B-9.prefab
+    #       Assets/Prefabs/Map/1/level 2/B-9.prefab.meta
+    #       Assets/Prefabs/Map/1/level 3.meta
+    #       Assets/Prefabs/Map/1/level 3/C-1.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-1.prefab.meta
+    #       Assets/Prefabs/Map/1/level 3/C-2.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-2.prefab.meta
+    #       Assets/Prefabs/Map/1/level 3/C-3.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-3.prefab.meta
+    #       Assets/Prefabs/Map/1/level 3/C-4.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-4.prefab.meta
+    #       Assets/Prefabs/Map/1/level 3/C-5.prefab
+    #       Assets/Prefabs/Map/1/level 3/C-5.prefab.meta
+    #       Assets/Prefabs/Map/1/level Event.meta
+    #       Assets/Prefabs/Map/1/level Event/Rocket.prefab
+    #       Assets/Prefabs/Map/1/level Event/Rocket.prefab.meta
+    #       Assets/Prefabs/Map/1/level Event/heart.prefab
+    #       Assets/Prefabs/Map/1/level Event/heart.prefab.meta
+    #       Assets/Prefabs/Map/level 1.meta
+    #       Assets/Prefabs/Map/level 1/A-1.prefab
+    #       Assets/Prefabs/Map/level 1/A-1.prefab.meta
+    #       Assets/Prefabs/Map/level 1/A-2.prefab
+    #       Assets/Prefabs/Map/level 1/A-2.prefab.meta
+    #       Assets/Prefabs/Map/level 1/A-3.prefab
+    #       Assets/Prefabs/Map/level 1/A-3.prefab.meta
+    #       Assets/Prefabs/Map/level 1/A-4.prefab
+    #       Assets/Prefabs/Map/level 1/A-4.prefab.meta
+    #       Assets/Prefabs/Map/level 1/A-5.prefab
+    #       Assets/Prefabs/Map/level 1/A-5.prefab.meta
+    #       Assets/Prefabs/Map/level 1/A-6.prefab
+    #       Assets/Prefabs/Map/level 1/A-6.prefab.meta
+    #       Assets/Prefabs/Map/level 2.meta
+    #       Assets/Prefabs/Map/level 2/B-1.prefab
+    #       Assets/Prefabs/Map/level 2/B-1.prefab.meta
+    #       Assets/Prefabs/Map/level 2/B-2.prefab
+    #       Assets/Prefabs/Map/level 2/B-2.prefab.meta
+    #       Assets/Prefabs/Map/level 2/B-7.prefab
+    #       Assets/Prefabs/Map/level 2/B-7.prefab.meta
+    #       Assets/Prefabs/Map/level 2/B-8.prefab
+    #       Assets/Prefabs/Map/level 2/B-8.prefab.meta
+    #       Assets/Prefabs/Map/level 2/B-9.prefab
+    #       Assets/Prefabs/Map/level 2/B-9.prefab.meta
+    #       Assets/Prefabs/Map/level 3.meta
+    #       Assets/Prefabs/Map/level 3/C-1.prefab
+    #       Assets/Prefabs/Map/level 3/C-1.prefab.meta
+    #       Assets/Prefabs/Map/level 3/C-2.prefab
+    #       Assets/Prefabs/Map/level 3/C-2.prefab.meta
+    #       Assets/Prefabs/Map/level 3/C-3.prefab
+    #       Assets/Prefabs/Map/level 3/C-3.prefab.meta
+    #       Assets/Prefabs/Map/level 3/C-4.prefab
+    #       Assets/Prefabs/Map/level 3/C-4.prefab.meta
+    #       Assets/Prefabs/Map/level 3/C-5.prefab
+    #       Assets/Prefabs/Map/level 3/C-5.prefab.meta
+    #       Assets/Prefabs/Map/level Event.meta
+    #       Assets/Prefabs/Map/level Event/Rocket.prefab
+    #       Assets/Prefabs/Map/level Event/Rocket.prefab.meta
+    #       Assets/Prefabs/Map/level Event/heart.prefab
+    #       Assets/Prefabs/Map/level Event/heart.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-3.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-4.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-5.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/A-6.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/A-6.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-7.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-7.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-8.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-8.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 2/B-9.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/B-9.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-1.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-2.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-3.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-4.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-5.prefab
+    #       Assets/Resources/Prefabs/Map/level 3/C-5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level Event.meta
+    #       Assets/Resources/Prefabs/Map/level Event/Rocket.prefab
+    #       Assets/Resources/Prefabs/Map/level Event/Rocket.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level Event/heart.prefab
+    #       Assets/Resources/Prefabs/Map/level Event/heart.prefab.meta
+
+[33mcommit 39fd7b23803e692192b237927d2ce1c1acd6bd70[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 23:14:30 2023 +0900
+
+    - commit
+
+[33mcommit e94cd5790f9aea8b89540ec53698036b8d782578[m[33m ([m[1;31morigin/FirebaseBranch[m[33m, [m[1;32mToMain[m[33m, [m[1;32mFirebaseBranch[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 21:35:55 2023 +0900
+
+    - Block Stopping BGM Playing in Scene Move
+
+[33mcommit 2702a6cf436863f2588db888bfc0a31aaee211a4[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 08:37:58 2023 +0900
+
+    -SelectFix
+
+[33mcommit 0da60b52959f40412c2968039e890db2db1a6c44[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Jul 27 07:13:30 2023 +0900
+
+    - SelectScene Update
+
+[33mcommit f99a305e35f79922cfc0d18ee1fa162434ae24ca[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Jul 26 20:58:19 2023 +0900
+
+    - Select UI
+
+[33mcommit 81f227836a6f74340c6f66ee527feb039ace755b[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Jul 26 03:19:28 2023 +0900
+
+    Merge branch 'FirebaseBranch' of https://github.com/newtron-vania/MonkeySwing into FirebaseBranch
+    # Please enter a commit message to explain why this merge is necessary,
+    # especially if it merges an updated upstream into a topic branch.
+    #
+    # Lines starting with '#' will be ignored, and an empty message aborts
+    # the commit.
+
+[33mcommit 8167fe9203f1a7cddc553ba2f3b63c8cc4352c0e[m
+Merge: 1195437 7616128
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Jul 26 03:15:28 2023 +0900
+
+    merge branch 'FirebaseBranch' of https://github.com/newtron-vania/MonkeySwing into FirebaseBranch
+
+[33mcommit 1195437fc50b0cf2b7723bc894ce537aebd1097b[m[33m ([m[1;32mFirebaseBranchBackup[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Jul 26 03:11:10 2023 +0900
+
+    - git Update
+
+[33mcommit 7616128e4cd32a2bc45d0f36bea2058ecb5e9e4b[m
+Merge: ea10f64 ac432b8
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Jul 26 03:05:59 2023 +0900
+
+    Merge branch 'FirebaseBranch' of https://github.com/newtron-vania/MonkeySwing into FirebaseBranch
+
+[33mcommit ea10f6415059160d01e6aca032ec973c83098c13[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Jul 25 09:59:06 2023 +0900
+
+    - Bug Fix
+
+[33mcommit 6346e38d7e8cd9ae3ec752f3871e5a9e0c8b2160[m
+Author: j01h02@gmail.com <j01h02@gmail.com>
+Date:   Tue Jul 25 11:43:12 2023 +0900
+
+    no message
+
+[33mcommit 9a9f1914ea0cae2ea46465e7359b2bfb7bff6eb5[m
+Merge: c5b1609 d106ef0
+Author: j01h02@gmail.com <j01h02@gmail.com>
+Date:   Tue Jul 25 11:25:13 2023 +0900
+
+    Merge branch 'Shop'
+    
+    # Conflicts:
+    #       Assets/Prefabs/Item/BananaAttraction.prefab
+    #       Assets/Prefabs/Item/BananaAttraction.prefab.meta
+    #       Assets/Prefabs/Item/New Material.mat
+    #       Assets/Prefabs/Item/New Material.mat.meta
+    #       Assets/Prefabs/Map/Background/BG_jungle_1.png
+    #       Assets/Prefabs/Map/Background/BG_jungle_1.png.meta
+    #       Assets/Prefabs/Map/Background/BG_jungle_2.png
+    #       Assets/Prefabs/Map/Background/BG_jungle_2.png.meta
+    #       Assets/Prefabs/UI/Home/Manual.prefab
+    #       Assets/Prefabs/UI/Home/Manual.prefab.meta
+    #       Assets/Prefabs/UI/Home/Shop/Purchase_popup.prefab
+    #       Assets/Prefabs/UI/Home/Shop/Slot.prefab
+    #       Assets/Prefabs/UI/Loading.meta
+    #       Assets/Prefabs/UI/Loading/manual_1.prefab
+    #       Assets/Prefabs/UI/Loading/manual_1.prefab.meta
+    #       Assets/Prefabs/UI/Loading/manual_2.prefab
+    #       Assets/Prefabs/UI/Loading/manual_2.prefab.meta
+    #       Assets/Prefabs/UI/Loading/manual_3(Scroll View).prefab
+    #       Assets/Prefabs/UI/Loading/manual_3(Scroll View).prefab.meta
+    #       Assets/Prefabs/UI/Main/ResultPopup.prefab
+    #       Assets/Prefabs/UI/Main/SettingPopup.prefab
+    #       Assets/Resources/Json/SkinDatas.json
+    #       Assets/Resources/Prefabs/Map/Background/BG_jungle_1.png
+    #       Assets/Resources/Prefabs/Map/Background/BG_jungle_1.png.meta
+    #       Assets/Resources/Prefabs/Map/Background/BG_jungle_2.png
+    #       Assets/Resources/Prefabs/Map/Background/BG_jungle_2.png.meta
+    #       Assets/Resources/Prefabs/UI/Home/Inrto.prefab
+    #       Assets/Resources/Prefabs/UI/Home/Main.prefab
+    #       Assets/Resources/Prefabs/UI/Home/RankUI.prefab
+    #       Assets/Resources/Shop/Skin/Monkey_cloud.png
+    #       Assets/Resources/Shop/Skin/Monkey_cloud.png.meta
+    #       Assets/Resources/Sprites/background/BG_jungle_1.png
+    #       Assets/Resources/Sprites/background/BG_jungle_1.png.meta
+    #       Assets/Resources/Sprites/background/BG_jungle_2.png
+    #       Assets/Resources/Sprites/background/BG_jungle_2.png.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/MainScene.unity
+    #       Assets/Scripts/Player/PlayerData.cs
+    #       Assets/Scripts/UI/Shop/SkinData_LoadSave.cs
+    #       Assets/Scripts/UI/Shop/SlotData_Manager.cs
+    #       ProjectSettings/ProjectSettings.asset
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit d106ef07a4a8a00f8ffc5bff399ff1eaccfec9f2[m
+Author: j01h02@gmail.com <j01h02@gmail.com>
+Date:   Tue Jul 25 11:14:44 2023 +0900
+
+    UI 해상도 수정
+
+[33mcommit ac432b86becfa04fedecc71294da3f9f7d97258e[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Jul 25 09:59:06 2023 +0900
+
+    - Bug Fix
+
+[33mcommit e0fd97ba592752cc06dccf1330d6dcf98c35f2fb[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Jul 25 08:24:02 2023 +0900
+
+    - lfs Update
+    - Map Update
+    
+    
+    Former-commit-id: d053bd15b4ea214a28b9f698a0e7336f5315b78d
+
+[33mcommit 974862eed3895dbec01753433144378a7c889979[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sun Jul 2 19:34:28 2023 +0900
+
+    - lfs Update
+    
+    
+    Former-commit-id: b87034406fcefbe090c36d25dc1aaf73a6b381f3
+
+[33mcommit 8dbb1f8db1633bd491ca418a1708b93385285e15[m
+Merge: cc97aba 8b9b000
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Jun 23 17:36:02 2023 +0900
+
+    Merge branch 'FirebaseUpdate' into FireBaseBranch
+    
+    # Conflicts:
+    #       Assets/FireBase/Plugins/x86_64/FirebaseCppApp-11_0_0.dll.meta
+    
+    
+    Former-commit-id: b79b06951db6abd59f0d14703275ac69c205b134
+
+[33mcommit cc97abaace8d4377a3f4917e11fb57e1f9461ed3[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Jun 23 17:29:06 2023 +0900
+
+    no message
+
+[33mcommit 8b9b000090a68b4d31a00771ab4b12c9f154075e[m[33m ([m[1;32mFirebaseUpdate[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Jun 23 15:57:12 2023 +0900
+
+    -Firebase Save, Load, Rank Testing...
+    
+    
+    Former-commit-id: 2e05a38178d429ccdec363e926a8bd16a48aee44
+
+[33mcommit 4fc04bc730dcfdd01c3edd4d69010f973ba05f0b[m[33m ([m[1;32mUnityAds2[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Mon Jun 5 22:15:08 2023 +0900
+
+    -Unity Ads Update
+    
+    
+    Former-commit-id: 4419c35308c8d9c151c3c707059f7d1c938c643e
+
+[33mcommit f5f5ccb13127872f9f337dccdfd883f548cb9edd[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed May 31 01:32:21 2023 +0900
+
+    Unity ads Build Complete
+    
+    
+    Former-commit-id: 9b2c9c1ce6c8fb6d581e2bcbff739ef1380ba2ea
+
+[33mcommit 335d9b2c20b750a8630008f716fb113b1bd440df[m[33m ([m[1;32mUIDebugging[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue May 30 17:24:49 2023 +0900
+
+    -Canvas Update
+    
+    
+    Former-commit-id: a5e5f6a14c602c1e54b6d54ca98105df179713bf
+
+[33mcommit 245c0825addef52ec0cca92c492eac76b8b9ed3b[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue May 30 17:08:20 2023 +0900
+
+    -update
+    
+    
+    Former-commit-id: 11e76775750cac4b844d45903063176391ab6118
+
+[33mcommit 3989981a0222de9fccfd4316ade22c918e8d0e1c[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue May 30 16:47:29 2023 +0900
+
+    no message
+    
+    
+    Former-commit-id: ce98f5b24255412051baaa0c367baf615c1126d9
+
+[33mcommit c5b160996c40a71fd6b97a0f42d33c6b7b0f3d14[m
+Author: Bright Kim <118050445+newtron-vania@users.noreply.github.com>
+Date:   Mon May 22 15:52:42 2023 +0900
+
+    Update README.md
+
+[33mcommit a928856704a3eac238d9d01db96fd7ea52ace9cc[m
+Author: Bright Kim <118050445+newtron-vania@users.noreply.github.com>
+Date:   Mon May 22 15:36:10 2023 +0900
+
+    Update README.md
+
+[33mcommit a8638a115025149abfce7c2fed3d62ae2095240e[m
+Author: Bright Kim <118050445+newtron-vania@users.noreply.github.com>
+Date:   Mon May 22 15:24:17 2023 +0900
+
+    Update README.md
+
+[33mcommit eca6f89b0bd3492056064ee997adb64a2a688c23[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue May 16 17:01:09 2023 +0900
+
+    - update
+    
+    
+    Former-commit-id: 9f735f43d5bd4f53e5a5682698bcd7249bf7c3fb
+
+[33mcommit b3be20a0a8ce26095c2c68c15becd0a7dfb3d12d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Mon May 8 00:03:39 2023 +0900
+
+    - Effect System Update
+
+[33mcommit c6304c9a1da3c93065a56f937df37cdc42c13e56[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sun May 7 13:48:14 2023 +0900
+
+    - Optimize game performance
+    - Effect Update(Magnet, Banana Add)
+
+[33mcommit 2180a4b0ba83ad6883071745c1fc622deec061a7[m
+Merge: cbb6610 4348df1
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu May 4 16:00:21 2023 +0900
+
+    Merge branch 'BackgroundUpdate'
+    
+    # Conflicts:
+    #       Assets/AssetKits.meta
+    #       Assets/Plugins/Android/androidx.annotation.annotation-1.2.0.jar.meta
+    #       Assets/Plugins/Android/androidx.annotation.annotation-experimental-1.1.0.aar.meta
+    #       Assets/Plugins/Android/androidx.arch.core.core-common-2.1.0.jar.meta
+    #       Assets/Plugins/Android/androidx.arch.core.core-runtime-2.1.0.aar.meta
+    #       Assets/Resources/Prefabs/Map/level 3/C-4.prefab.meta
+
+[33mcommit 4348df1d46b7f8be3569e617e0233d8ec662e1a0[m[33m ([m[1;31morigin/BackgroundUpdate[m[33m, [m[1;32mBackgroundUpdate[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu May 4 15:56:52 2023 +0900
+
+    -New Effect Update
+
+[33mcommit 664c305da9e208d15d08b977d59a550ac1542ea1[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 29 04:18:49 2023 +0900
+
+    - Ads Update
+    - Rank UI Update
+    - ResultUI Sound Update
+
+[33mcommit 8854a6ea6198c4a857c665c83cdcf6715c06e264[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 29 01:05:11 2023 +0900
+
+    - Ads System Update!
+
+[33mcommit cbb6610929c790eb7717fbf27ef537541f9679ad[m
+Merge: 47df5b3 c6f3e9f
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 28 04:51:29 2023 +0900
+
+    Merge branch 'main' of https://github.com/newtron-vania/MonkeySwing
+
+[33mcommit 3f1b2cfb317de47cf4580976c8864afcb7145044[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 28 04:49:49 2023 +0900
+
+    - Add Admob
+
+[33mcommit 48565a710fed28d68bca6ea531cf5688d0852860[m
+Merge: 7ea197d 435c021
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Apr 27 23:12:01 2023 +0900
+
+    Merge branch 'BackgroundUpdate' of https://github.com/newtron-vania/MonkeySwing into BackgroundUpdate
+    
+    # Conflicts:
+    #       Assets/GoogleMobileAds.meta
+    #       Assets/Resources/Animation/Monkey_Home/Monkey_LeftMove.anim.meta
+    #       Assets/Resources/Animation/Monkey_Home/Monkey_default.anim.meta
+    #       Assets/Resources/Animation/UI/Ceremony.anim.meta
+    #       Assets/Resources/Animation/UI/ResultUI.meta
+    #       Assets/Resources/Animation/UI/ResultUI/BestCeremony.anim.meta
+    #       Assets/Resources/Animation/UI/ResultUI/Ceremony.anim
+    #       Assets/Resources/Animation/UI/ResultUI/Ceremony.anim.meta
+    #       Assets/Resources/Animation/UI/ResultUI/CeremonyMonkiesController.controller
+    #       Assets/Resources/Animation/UI/ResultUI/FailCeremony.anim.meta
+    #       Assets/Resources/Animation/UI/ShopUP/OpenShopUIAnime.anim
+    #       Assets/Resources/Animation/UI/ShopUP/OpenShopUIAnime.anim.meta
+    #       Assets/Resources/Animation/UI/ShopUP/ShopUIController.overrideController.meta
+    #       Assets/Resources/Prefabs/UI/Home/Shop 1.prefab
+    #       Assets/Resources/Sprites/배경.meta
+    #       Assets/Scenes/Home.unity
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 7ea197d8f9fcc9641c527f12fcb8a02756b99b1d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 22 07:23:14 2023 +0900
+
+    - ShopBackground Updated
+    - ShopAnimation Added
+    - Home MonkeyObject Animation Updated
+    - Main BackgroundScrolling Updated
+    - Beach Sprite Added to Main Background
+
+[33mcommit 435c021843c3027c5cc96b94f832448bc2c33ac9[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 22 07:23:14 2023 +0900
+
+    - ShopBackground Updated
+    - ShopAnimation Added
+    - Home MonkeyObject Animation Updated
+    - Main BackgroundScrolling Updated
+    - Beach Sprite Added to Main Background
+
+[33mcommit 304768e48b7d78245f625d7ece4a69b312e4aac7[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 21 16:17:29 2023 +0900
+
+    - Shop Background Update
+
+[33mcommit a2effc6579fbaa9e440cf93aadd292194ad36ff4[m[33m ([m[1;31morigin/BetaUpdate[m[33m, [m[1;32mBetaUpdate[m[33m)[m
+Merge: 0b7ae1c 5e257a1
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 21 15:22:28 2023 +0900
+
+    Merge branch 'BetaUpdate' of https://github.com/newtron-vania/MonkeySwing into BetaUpdate
+    
+    # Conflicts:
+    #       Assets/Scripts/ObjectOpr/MakeLines.cs
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 0b7ae1c34198cc02b77790727c8e0132f0cc127d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 09:08:04 2023 +0900
+
+    Setting Level Design
+
+[33mcommit 47df5b3dbba7eddcfd5c2fc0445b7e7f79990688[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 05:53:35 2023 +0900
+
+    - bug Fixed
+    - OnDamaged System
+    - Enemy Object Collider
+    - LineRenderer(snake's body) SortingOrder
+    - Add WeightSlider
+
+[33mcommit 638eb2ca45713aa3f9c7741adccc666bc9e355db[m[33m ([m[1;31morigin/Shop_error_correction[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Fri Apr 21 00:41:26 2023 +0900
+
+    상점 ui 수정
+
+[33mcommit 1a79ce8c3250503184d56779ee6efaeea7f47e5c[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Wed Apr 12 10:04:21 2023 +0900
+
+    no message
+
+[33mcommit 5e257a109ad374004097ca7b9cd1fb0ea94382de[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 09:08:04 2023 +0900
+
+    Setting Level Design
+
+[33mcommit ce377e7659fa91e85557e934910aef84845c5b31[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 07:00:58 2023 +0900
+
+    - Shop Error Fix
+
+[33mcommit 2dc2e28898cbace07f81bcc85eb535e424dc8d7a[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 04:20:55 2023 +0900
+
+    Revert "no message"
+    
+    This reverts commit dc20ba7c18ba0ac1e9307f798b35ac0c166faf39.
+
+[33mcommit 83ae981f0decfab8cb8600a3adb1f7f149aa829a[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Wed Apr 12 03:52:04 2023 +0900
+
+    no message
+
+[33mcommit dc20ba7c18ba0ac1e9307f798b35ac0c166faf39[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 03:50:57 2023 +0900
+
+    no message
+
+[33mcommit fc33c9207104a404bb6f1a199c92d5a680f5e714[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Wed Apr 12 02:41:22 2023 +0900
+
+    shop 저장방식 수정
+
+[33mcommit 9c533c8d3e99d85a847f9349d186572a38a98f00[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 02:34:44 2023 +0900
+
+    no message
+
+[33mcommit 17c2ef348cf2f7596328d91d3fd7412158642696[m
+Merge: 68360cb 2c6d4aa
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Apr 12 02:31:45 2023 +0900
+
+    Merge branch 'BetaUpdate' of https://github.com/newtron-vania/MonkeySwing into BetaUpdate
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/UI/Home/Main.prefab
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/MainScene.unity
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+
+[33mcommit 68360cb31360b68ad4801ac8adf4990e1c3b8759[m
+Merge: 6eb32da a44da68
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Apr 11 22:48:25 2023 +0900
+
+    Merge remote-tracking branch 'origin/Tutorial' into BetaUpdate
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/UI/Home/Main.prefab
+    #       Assets/Resources/Prefabs/UI/Home/Setting.prefab
+    #       Assets/Resources/Prefabs/UI/Main/SettingPopup.prefab
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch1.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch1.png.meta
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch2.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch2.png.meta
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch3.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual.meta
+    #       Assets/Resources/Sprites/UI/Manual/1페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/1페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/2페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/2페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/3페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/3페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/Btn_next.png
+    #       Assets/Resources/Sprites/UI/Manual/Btn_next.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/Btn_prev.png
+    #       Assets/Resources/Sprites/UI/Manual/Btn_prev.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/UI_info_base.png
+    #       Assets/Resources/Sprites/UI/Manual/UI_info_base.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/background.png
+    #       Assets/Resources/Sprites/UI/Manual/background.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button.png
+    #       Assets/Resources/Sprites/UI/Manual/button.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button_off.png
+    #       Assets/Resources/Sprites/UI/Manual/button_off.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button_on.png
+    #       Assets/Resources/Sprites/UI/Manual/button_on.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page1_1.png
+    #       Assets/Resources/Sprites/UI/Manual/page1_1.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page1_2.png
+    #       Assets/Resources/Sprites/UI/Manual/page1_2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page2.png
+    #       Assets/Resources/Sprites/UI/Manual/page2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_1.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_1.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_2.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_3.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_4.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_4.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page_3.png
+    #       Assets/Resources/Sprites/UI/Manual/page_3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/slide.png
+    #       Assets/Resources/Sprites/UI/Manual/slide.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/slideBar.png
+    #       Assets/Resources/Sprites/UI/Manual/slideBar.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/tutorial_btn.png
+    #       Assets/Resources/Sprites/UI/Manual/tutorial_btn.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit_shadowO.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit_shadowO.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/rank_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/rank_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/랭킹ui예시수정.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/랭킹ui예시수정.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/debug.log
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/debug.log.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용).meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/rank_base_light.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/rank_base_light.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거).meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_base_dark.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_base_dark.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_shop_select.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_shop_select.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/loading.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/loading.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/score_BG.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/score_BG.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Fat_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Fat_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Thin_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Thin_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_button.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_button.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_blue.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_blue.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_red.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_red.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_yellow.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_yellow.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle_b.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle_b.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/튜토리얼앞뒤이동버튼.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_BG.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_BG.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill 1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill 1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_stroke.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_stroke.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/홈화면배경 나무 추가리소스.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/MainScene.unity
+    #       Assets/Scripts/UI/Home/SoundOnOff.cs
+    #       Assets/Scripts/UI/Home/SoundOnOff.cs.meta
+    #       Assets/Scripts/UI/Home/SoundSlider.cs
+    #       Assets/Scripts/UI/Home/SoundSlider.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/Page_Switch.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundOnOff.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundSlider.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundUI.cs.meta
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 2c6d4aa47baa20aa7cf73edc3f13368ab71f1302[m
+Merge: 6eb32da a44da68
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Apr 11 22:48:25 2023 +0900
+
+    Merge remote-tracking branch 'origin/Tutorial' into BetaUpdate
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/UI/Home/Main.prefab
+    #       Assets/Resources/Prefabs/UI/Home/Setting.prefab
+    #       Assets/Resources/Prefabs/UI/Main/SettingPopup.prefab
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch1.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch1.png.meta
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch2.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch2.png.meta
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch3.png
+    #       Assets/Resources/Sprites/UI/HomeUi/BG_branch3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual.meta
+    #       Assets/Resources/Sprites/UI/Manual/1페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/1페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/2페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/2페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/3페이지예시.png
+    #       Assets/Resources/Sprites/UI/Manual/3페이지예시.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/Btn_next.png
+    #       Assets/Resources/Sprites/UI/Manual/Btn_next.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/Btn_prev.png
+    #       Assets/Resources/Sprites/UI/Manual/Btn_prev.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/UI_info_base.png
+    #       Assets/Resources/Sprites/UI/Manual/UI_info_base.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/background.png
+    #       Assets/Resources/Sprites/UI/Manual/background.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button.png
+    #       Assets/Resources/Sprites/UI/Manual/button.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button_off.png
+    #       Assets/Resources/Sprites/UI/Manual/button_off.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/button_on.png
+    #       Assets/Resources/Sprites/UI/Manual/button_on.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page1_1.png
+    #       Assets/Resources/Sprites/UI/Manual/page1_1.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page1_2.png
+    #       Assets/Resources/Sprites/UI/Manual/page1_2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page2.png
+    #       Assets/Resources/Sprites/UI/Manual/page2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_1.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_1.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_2.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_2.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_3.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page3_4.png
+    #       Assets/Resources/Sprites/UI/Manual/page3_4.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/page_3.png
+    #       Assets/Resources/Sprites/UI/Manual/page_3.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/slide.png
+    #       Assets/Resources/Sprites/UI/Manual/slide.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/slideBar.png
+    #       Assets/Resources/Sprites/UI/Manual/slideBar.png.meta
+    #       Assets/Resources/Sprites/UI/Manual/tutorial_btn.png
+    #       Assets/Resources/Sprites/UI/Manual/tutorial_btn.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit_shadowO.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/Btn_exit_shadowO.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/UI_rank_base_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/rank_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/rank_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/랭킹ui예시수정.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/랭킹ui예시수정.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/debug.log
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/숫자/debug.log.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용).meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/myrank_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/rank_base_light.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(밝은거_내 랭킹10위안에있을때사용)/rank_base_light.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거).meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_10.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_10.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_2.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_2.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_3.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_3.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_4.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_4.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_5.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_5.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_6.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_6.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_7.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_7.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_8.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_8.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_9.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_9.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_base_dark.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_rank/판넬(어두운거)/rank_base_dark.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_shop_select.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/UI_shop_select.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/loading.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/loading.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/score_BG.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/score_BG.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Fat_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Fat_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Thin_txt.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/Thin_txt.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_button.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_button.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_base.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_base.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_blue.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_blue.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_red.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_red.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_yellow.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/무게바수정/UI_weightBar_stick_yellow.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle_b.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/배경중간/BG_middle_b.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/튜토리얼앞뒤이동버튼.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_BG.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_BG.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill 1.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill 1.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_fill.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_stroke.png
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/피버타임ui/SUPERM_stroke.png.meta
+    #       Assets/Resources/Sprites/UI/추가리소스_0410/홈화면배경 나무 추가리소스.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/MainScene.unity
+    #       Assets/Scripts/UI/Home/SoundOnOff.cs
+    #       Assets/Scripts/UI/Home/SoundOnOff.cs.meta
+    #       Assets/Scripts/UI/Home/SoundSlider.cs
+    #       Assets/Scripts/UI/Home/SoundSlider.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/Page_Switch.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundOnOff.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundSlider.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/SoundUI.cs.meta
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 6eb32da2cc2337ae67d5b287830b7e950fc0e1bd[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Apr 11 22:28:56 2023 +0900
+
+    - Snake Animation Update
+
+[33mcommit 5c74940bd5880bfe1bd5cee4e71d44bd40b40404[m[33m ([m[1;31morigin/BoosterEffect[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Apr 11 20:34:51 2023 +0900
+
+    - Booster Effect Update ! Show Gauge
+
+[33mcommit a44da68bb5b98cca99962a55a08bd802cc8ff8d8[m[33m ([m[1;31morigin/Tutorial[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Tue Apr 11 15:35:47 2023 +0900
+
+    music asset 추가
+
+[33mcommit 76c7cdb8743a7b0ae9a90767789c4ce31331307e[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Tue Apr 11 05:44:26 2023 +0900
+
+    sound UI 수정
+
+[33mcommit c3634d524c8ee189dc8ffeeeea48a0d641da3447[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Apr 11 00:28:44 2023 +0900
+
+    -ffff
+
+[33mcommit f7b6ca4f6ba9da723a51545fbcbdb45d89ccb333[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Mon Apr 10 23:23:52 2023 +0900
+
+    no message
+
+[33mcommit b76407656b3067204121dde73b18380656719662[m[33m ([m[1;31morigin/MergeUi&shop[m[33m, [m[1;31morigin/AnimationBranch[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sun Apr 9 13:23:20 2023 +0900
+
+    - 현재까지의 버전 업데이트
+
+[33mcommit 29267d48c2a110094c902c909a32555eac18453d[m
+Merge: 237c051 cdc4ac1
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 8 10:56:23 2023 +0900
+
+    Merge remote-tracking branch 'origin/ui&shop' into MergeUi&shop
+    
+    # Conflicts:
+    #       Assets/Resources/Sprites/수정파일모음/캐릭터다양화/Monkey_cloud_ex.png
+    #       Assets/Resources/Sprites/수정파일모음/캐릭터다양화/Monkey_cloud_ex.png.meta
+    #       Assets/Resources/Sprites/수정파일모음/캐릭터다양화/Monkey_cloud_tail.png
+    #       Assets/Resources/Sprites/수정파일모음/캐릭터다양화/Monkey_cloud_tail.png.meta
+    #       Assets/Resources/수정파일모음/캐릭터다양화/Monkey_cloud_ex.png.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scripts/UI/Shop/SkinData_Manager.cs
+    #       Assets/Scripts/UI_Scripts_jh/Click_Right_Monkey.cs
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit cdc4ac118f58ec4084ea86dc3526d0e943608947[m[33m ([m[1;31morigin/ui&shop[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Apr 8 07:08:13 2023 +0900
+
+    shop 완성
+
+[33mcommit 237c0516f9cca4fcb8f4b007e6796fd2e0cc49ed[m[33m ([m[1;31morigin/AnimationBranchTest[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 8 04:16:20 2023 +0900
+
+    - Font Style Update
+    - ResultUI set
+
+[33mcommit 1c20dc64349e2d9d6c4120c3d2a5872d76e1fc6a[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 8 03:50:25 2023 +0900
+
+    - Debugging
+    - Boost Debug
+    - Save System Debug
+    - Skin Application Succeed
+
+[33mcommit cba5d7c5e0953638ed41b80a0f3dc5e9036e60d2[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 20:48:15 2023 +0900
+
+    Test
+
+[33mcommit 0bea425be4432e51038fb7ed33ea5d153b8732e6[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 20:13:12 2023 +0900
+
+    - Map Generator Modified
+    - Map Prefab Setting
+
+[33mcommit 9927d49497b095b76cea734fde9ba6d8ed2349de[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 17:22:40 2023 +0900
+
+    - ResultUIAnimation Set!
+
+[33mcommit 475aaf2a9d7d7381ca1a9c97e0089af76050066a[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 06:53:37 2023 +0900
+
+    - Map Generator System Modified! It will make good level design.
+
+[33mcommit c6f3e9fd7d6519bf1a4efa727c74ac549d093ca3[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 05:53:35 2023 +0900
+
+    - bug Fixed
+    - OnDamaged System
+    - Enemy Object Collider
+    - LineRenderer(snake's body) SortingOrder
+    - Add WeightSlider
+
+[33mcommit 058a627e94bd9cf2703fe5f2ab7a1cafd7d84a38[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Apr 7 03:00:51 2023 +0900
+
+    GPGS Complete!
+
+[33mcommit fcd4cbf679a9e862d94f6fd0e71dfb29a447629d[m
+Merge: ae56402 8f86382
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Apr 6 16:16:55 2023 +0900
+
+    Merge remote-tracking branch 'origin/ui&shop' into GPGS_UI_Merge
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/Map/Load/level 3/4.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_1.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_2.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_3.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_4.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_5.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_5.prefab.meta
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_6.prefab
+    #       Assets/Resources/Prefabs/Map/Load/level 3/B_6.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/level1-test 1.prefab
+    #       Assets/Resources/Prefabs/Map/level 1/level1-test 1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level 1/level2_test1.prefab.meta
+    #       Assets/Scenes/MainScene.unity
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit ae56402377e0d0ab7c6c8764fe1f51fb450e92fa[m[33m ([m[1;31morigin/GPGSTest[m[33m)[m
+Merge: 904b133 6a1b124
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Apr 6 12:52:41 2023 +0900
+
+    Merge branch 'GPGSTest' of https://github.com/newtron-vania/MonkeySwing into GPGSTest
+    
+    # Conflicts:
+    #       Assets/Scenes/MainScene.unity
+    #       Assets/Scripts/Managers/Contents/GPGS/GooglePlayManager.cs
+    #       Assets/Scripts/UI_Scripts_jh/Popup_manager.cs
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 904b1339bcf0c0e5d73f6e39573881078cfd8324[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Apr 6 09:28:55 2023 +0900
+
+    GPGSTest
+
+[33mcommit 8f863822339d33ff817c72d14d6d6adb08f8958e[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Thu Apr 6 10:37:38 2023 +0900
+
+    상점 & ui 수정
+
+[33mcommit 6a1b1248f8d7f21112c1e021ed016f3b0dce1698[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Apr 6 09:28:55 2023 +0900
+
+    GPGSTest
+
+[33mcommit 0e587b5ad0b5bb6f1e7b4d45095a4637feadd14e[m[33m ([m[1;31morigin/SnakeTest[m[33m)[m
+Merge: 3ee87e7 95592d3
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 1 16:22:16 2023 +0900
+
+    Merge remote-tracking branch 'origin/level_B-2' into SnakeTest
+
+[33mcommit 3ee87e770ff0fba946154fb583d4b3fc8d87f753[m
+Merge: e62d766 189c849
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 1 16:22:08 2023 +0900
+
+    Merge remote-tracking branch 'origin/level_A' into SnakeTest
+
+[33mcommit e62d766b47d9f9fd1efe781a8addd206ca12566d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 1 16:11:41 2023 +0900
+
+    snake Test
+
+[33mcommit 95592d3b87ebadfc35bb2f3915867a5d8ea92e6b[m[33m ([m[1;31morigin/level_B-2[m[33m)[m
+Author: kkongzzz <sykuma022@gmail.com>
+Date:   Sat Apr 1 16:07:14 2023 +0900
+
+    sungyun_prefab
+    
+    level_B(6~9)
+
+[33mcommit d7fa965bd024da2a813796f6295f81adbd2d8051[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Apr 1 16:03:27 2023 +0900
+
+    Snake Test
+
+[33mcommit 8c7b811700624da71a183906796a428a3b1b962e[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Apr 1 16:02:16 2023 +0900
+
+    shop develop (아직 에러 있음)
+
+[33mcommit 189c849324e706a17a1e6d3b5402dd37845f27d3[m[33m ([m[1;31morigin/level_A[m[33m)[m
+Author: naoong <naong0801@swu.ac.kr>
+Date:   Sat Apr 1 16:02:10 2023 +0900
+
+    naong_prefab (levelA)
+    
+    LEVEL_A
+
+[33mcommit fe32051d083ac0c9badb0ad1bd837e8b0140bd20[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Apr 1 16:01:35 2023 +0900
+
+    B_level Add
+
+[33mcommit 5cbe8f1ab0171433c94ed587b9dca0e4a108ba2f[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Apr 1 01:49:27 2023 +0900
+
+    Store_Modify
+
+[33mcommit 1c1d35a180f6947d0a9f9ea0404735c49ec35556[m[33m ([m[1;31morigin/DataManager[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 30 21:05:26 2023 +0900
+
+    - 스킨데이터 불러오기
+    - DataManager에서 SkinData를 불러오면 id순서로 불러올 수 있음
+    - id : 스킨아이디
+    - rarelity : 레어도(필요한지 모르겠는데 이걸로 스킨 가격을 고정할 수도 있을것 같음)
+    - skin_tail, skin_head, skin_wood : 적용 스킨
+    - cost : 가격(혹시 몰라서 추가)
+
+[33mcommit dccbf2031a86386d34113f2e0652c3684baa49c8[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Thu Mar 30 07:41:52 2023 +0900
+
+    json_log
+
+[33mcommit 196ab989219a4b1e3203aec4edd26aa1df5a7bb3[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Tue Mar 28 08:00:30 2023 +0900
+
+    no message
+
+[33mcommit 95b25f739693801ebd5e7e82a88a9bbfb5615e16[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Mar 25 14:59:49 2023 +0900
+
+    UI 수정
+
+[33mcommit 0eff26d11ace233ef78a6fb00134c8c94e173179[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Mar 25 09:06:00 2023 +0900
+
+    - 레벨 난이도 개선
+
+[33mcommit 4e25d755ec515ed8bd33e73c3d9866b1ec93bcc6[m
+Merge: 041cbb2 8c23247
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Mar 25 07:49:16 2023 +0900
+
+    Merge branch 'Add_heartCount'
+    
+    # Conflicts:
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs.meta
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+
+[33mcommit 8c2324748522b0c54324e9dcf687bda19a44c206[m[33m ([m[1;31morigin/Add_heartCount[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Mar 25 07:41:43 2023 +0900
+
+    Add heatcount UI
+
+[33mcommit 041cbb2255461e14e3b570af29a97e1462383f12[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 23:02:48 2023 +0900
+
+    - CaloryBanana 사운드 변경
+
+[33mcommit 70aef2c2ae5653eca02a0dad4413da4c0778fb32[m[33m ([m[1;31morigin/SoundUIMerge2[m[33m)[m
+Merge: bff67be aa1ae30
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 21:02:38 2023 +0900
+
+    Merge branch 'SoundUIMerge2' of https://github.com/newtron-vania/MonkeySwing into SoundUIMerge2
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/UI/subItem/Sound_setting.prefab
+    #       Assets/Resources/Prefabs/UI/subItem/Sound_setting.prefab.meta
+    #       Assets/Resources/Prefabs/UI/subItem/TitleDeco.prefab
+    #       Assets/Resources/Prefabs/UI/subItem/TitleDeco.prefab.meta
+    #       Assets/Resources/Sprites/UI/Sound_setting.prefab
+    #       Assets/Resources/Sprites/UI/Sound_setting.prefab.meta
+    #       Assets/Resources/Sprites/UI/TitleDeco.prefab
+    #       Assets/Resources/Sprites/UI/TitleDeco.prefab.meta
+    #       Assets/Resources/UI/Sound_setting.prefab
+    #       Assets/Resources/UI/Sound_setting.prefab.meta
+    #       Assets/Resources/UI/TitleDeco.prefab
+    #       Assets/Resources/UI/TitleDeco.prefab.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/PlayerMoveTestScene2.unity
+    #       Assets/Scripts/ObjectOpr/Distance.cs
+    #       Assets/Scripts/UI/Home/ChangeScene.cs
+    #       Assets/Scripts/UI_Scripts_jh/BackGroundMusic.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs.meta
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit bff67be46880b1d01e0dabe0a0dea9fb78ced489[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 20:56:57 2023 +0900
+
+    -프로토타입 최종
+
+[33mcommit 592b27e8b2557b05da87b7b7c8d79e1074af1505[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 17:17:10 2023 +0900
+
+    -1차 알파 프로젝트 준비
+
+[33mcommit 55dd4e5b6aa468fae58cca94414f93d101fc2503[m
+Merge: c84fc8b f868f48
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 10:13:44 2023 +0900
+
+    Merge branch 'GameOver_Popup' into SoundUIMerge2
+    
+    # Conflicts:
+    #       Assets/Resources/Sprites/캐릭터1차수정본/MonkeyDamaged.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/MonkeyDamaged.png.meta
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red.png.meta
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red_tail.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red_tail.png.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/PlayerMoveTestScene2.unity
+    #       Assets/Scripts/ObjectOpr/Distance.cs
+    #       Assets/Scripts/UI/Home/BackGroundMusic.cs.meta
+    #       Assets/Scripts/UI/Home/ChangeScene.cs
+    #       Assets/Scripts/UI_Scripts_jh/BackGroundMusic.cs
+    #       Assets/Scripts/UI_Scripts_jh/BackGroundMusic.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs.meta
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit aa1ae303164ea282bb38b92f15f631d210f0d31d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 10:08:41 2023 +0900
+
+    no message
+
+[33mcommit 1fd42c499adc55ce98b479bdc026acfdf7c88a0a[m
+Merge: c84fc8b f868f48
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 09:07:26 2023 +0900
+
+    Merge branch 'GameOver_Popup' into SoundUIMerge2
+    
+    # Conflicts:
+    #       Assets/Resources/Sprites/캐릭터1차수정본/MonkeyDamaged.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/MonkeyDamaged.png.meta
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red.png.meta
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red_tail.png
+    #       Assets/Resources/Sprites/캐릭터1차수정본/Monkey_red_tail.png.meta
+    #       Assets/Scenes/Home.unity
+    #       Assets/Scenes/PlayerMoveTestScene2.unity
+    #       Assets/Scripts/ObjectOpr/Distance.cs
+    #       Assets/Scripts/UI/Home/BackGroundMusic.cs.meta
+    #       Assets/Scripts/UI/Home/ChangeScene.cs
+    #       Assets/Scripts/UI_Scripts_jh/BackGroundMusic.cs
+    #       Assets/Scripts/UI_Scripts_jh/BackGroundMusic.cs.meta
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs
+    #       Assets/Scripts/UI_Scripts_jh/ButtonSoundPlay.cs.meta
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit c84fc8b2c2603c587b0280f6cf9f34ab102ea6ed[m[33m ([m[1;31morigin/SoundUIMerge[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 08:52:26 2023 +0900
+
+    no message
+
+[33mcommit f868f486af6c867a5854920185fceddfa616c6cf[m[33m ([m[1;31morigin/GameOver_Popup[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Fri Mar 24 08:41:39 2023 +0900
+
+    UI develop & scene connection
+
+[33mcommit 361e4920dce6a640019542bdb89770548f2aee18[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 24 04:43:00 2023 +0900
+
+    - 아이템 이펙트 제거(오류때문인지 이펙트가 제대로 설정이 안됨)
+    - 사운드 추가
+    - 맵 추가
+    -  PlayerData 추가
+
+[33mcommit 62c1a736305f5f061ab77d5525f5a1e79bff6fd6[m
+Merge: 836a6fa 03f333b
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 23 22:01:35 2023 +0900
+
+    Merge remote-tracking branch 'origin/GameOver_Popup' into SoundUIMerge
+    
+    # Conflicts:
+    #       Assets/Resources/Prefabs/Map/level 1/level1-test.prefab
+    #       Assets/Resources/Prefabs/Map/level 2/level2-test.prefab
+    #       Assets/Scenes/PlayerMoveTestScene2.unity
+    #       Assets/Scripts/ObjectOpr/Weight.cs
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit 836a6fa3f86a09bd8903a375efb7ce90db3f3494[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 23 21:58:45 2023 +0900
+
+    no message
+
+[33mcommit 03f333bbe13248a681b69878737a7b1a757adc03[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Thu Mar 23 21:37:56 2023 +0900
+
+    Gameover, PlaySetting add & UI develop
+
+[33mcommit 788fd6e008ef809be1c4da9587c20f42c968d7c6[m[33m ([m[1;31morigin/SoundManager[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 23 20:11:39 2023 +0900
+
+    no message
+
+[33mcommit 4209ab460191f68bbc175c1ec72dc3d37bf8e4c9[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 23 19:05:10 2023 +0900
+
+    -Sound Manager Update
+
+[33mcommit 38af82d73c08a4d201809c27fc66a56a1daafe9b[m[33m ([m[1;31morigin/SecondTime[m[33m, [m[1;31morigin/ManagerUpdate[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Mar 22 18:28:32 2023 +0900
+
+    - 부스터 이펙트 추가
+    - 몽키 애니메이션 추가(무게에 따른 변화, 피격 애니메이션)
+
+[33mcommit 84e86a4351aaf08e41a993c11cb82f09c6b0d444[m[33m ([m[1;31morigin/ItemEvent[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 21 22:41:03 2023 +0900
+
+    - 아이템 업데이트
+    - 자석 끌어당기는 모션 개선
+    - 자성공간(MagnetField) 이펙트 추가
+
+[33mcommit 20f7f241e4abfcc07bd013a1b2736a66ee0ff463[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 21 20:35:29 2023 +0900
+
+    - 배경화면 이동, 밤낮 변경
+
+[33mcommit 8e7f9b7f9077b202c587e596921a3090cdd52fc3[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 21 16:41:10 2023 +0900
+
+    맵 생성 오류 처리
+
+[33mcommit 0f8695eaa34eaf91f407c0203b014ed22fee9043[m
+Merge: 5d0d606 fbea162
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 21 13:36:30 2023 +0900
+
+    Merge branch 'Merge_jh_home' into SecondTime
+    
+    # Conflicts:
+    #       Assets/JungHyeon/Prefabs/Snake.prefab
+    #       Assets/Resources/Prefabs/Map/level1.prefab
+    #       Assets/Resources/Prefabs/Map/level2.prefab
+    #       Assets/Scripts/LinesMove.cs
+    #       Assets/Scripts/MonkeyScore.cs
+
+[33mcommit fbea162e6b9303e87c454a6a654a2fe6816e3bd8[m[33m ([m[1;31morigin/Merge_jh_home[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 21 13:33:45 2023 +0900
+
+    Merge Style Update
+
+[33mcommit 77787f83f963550e112db72d3c5f7360a6e83427[m
+Merge: 0b5f87b ff1ad34
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Mon Mar 20 10:18:37 2023 +0900
+
+    Merge remote-tracking branch 'origin/jh_home' into Merge_jh_home
+    
+    # Conflicts:
+    #       Assets/JungHyeon/Prefabs/BANANA.prefab
+    #       Assets/JungHyeon/Prefabs/BANANA.prefab.meta
+    #       Assets/JungHyeon/Prefabs/LineCollider.prefab
+    #       Assets/JungHyeon/Prefabs/LineCollider.prefab.meta
+    #       Assets/JungHyeon/Prefabs/Snake.prefab
+    #       Assets/JungHyeon/Prefabs/Snake.prefab.meta
+    #       Assets/JungHyeon/Prefabs/enemy.prefab
+    #       Assets/JungHyeon/Prefabs/enemy.prefab.meta
+    #       Assets/JungHyeon/Prefabs/enemy1.prefab
+    #       Assets/JungHyeon/Prefabs/enemy1.prefab.meta
+    #       Assets/JungHyeon/Prefabs/enemy2.prefab
+    #       Assets/JungHyeon/Prefabs/enemy2.prefab.meta
+    #       Assets/JungHyeon/Prefabs/enemy3.prefab
+    #       Assets/JungHyeon/Prefabs/enemy3.prefab.meta
+    #       Assets/JungHyeon/Prefabs/enemy4.prefab
+    #       Assets/JungHyeon/Prefabs/enemy4.prefab.meta
+    #       Assets/JungHyeon/Prefabs/level1.prefab
+    #       Assets/JungHyeon/Prefabs/level1.prefab.meta
+    #       Assets/JungHyeon/Prefabs/level2.prefab
+    #       Assets/JungHyeon/Prefabs/level2.prefab.meta
+    #       Assets/Prefabs/BANANA.prefab
+    #       Assets/Prefabs/BANANA.prefab.meta
+    #       Assets/Prefabs/LineCollider.prefab
+    #       Assets/Prefabs/LineCollider.prefab.meta
+    #       Assets/Prefabs/Snake.prefab
+    #       Assets/Prefabs/Snake.prefab.meta
+    #       Assets/Prefabs/enemy.prefab
+    #       Assets/Prefabs/enemy.prefab.meta
+    #       Assets/Prefabs/enemy1.prefab
+    #       Assets/Prefabs/enemy1.prefab.meta
+    #       Assets/Prefabs/enemy2.prefab
+    #       Assets/Prefabs/enemy2.prefab.meta
+    #       Assets/Prefabs/enemy3.prefab
+    #       Assets/Prefabs/enemy3.prefab.meta
+    #       Assets/Prefabs/enemy4.prefab
+    #       Assets/Prefabs/enemy4.prefab.meta
+    #       Assets/Prefabs/level1.prefab
+    #       Assets/Prefabs/level1.prefab.meta
+    #       Assets/Prefabs/level2.prefab
+    #       Assets/Prefabs/level2.prefab.meta
+    #       Assets/Resources/Prefabs/Item/BANANA.prefab
+    #       Assets/Resources/Prefabs/Item/BANANA.prefab.meta
+    #       Assets/Resources/Prefabs/Map/LineCollider.prefab
+    #       Assets/Resources/Prefabs/Map/LineCollider.prefab.meta
+    #       Assets/Resources/Prefabs/Map/enemy1.prefab
+    #       Assets/Resources/Prefabs/Map/enemy1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/enemy2.prefab
+    #       Assets/Resources/Prefabs/Map/enemy2.prefab.meta
+    #       Assets/Resources/Prefabs/Map/enemy3.prefab
+    #       Assets/Resources/Prefabs/Map/enemy3.prefab.meta
+    #       Assets/Resources/Prefabs/Map/enemy4.prefab
+    #       Assets/Resources/Prefabs/Map/enemy4.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level1.prefab
+    #       Assets/Resources/Prefabs/Map/level1.prefab.meta
+    #       Assets/Resources/Prefabs/Map/level2.prefab
+    #       Assets/Resources/Prefabs/Map/level2.prefab.meta
+    #       Assets/Resources/Prefabs/enemy/Snake.prefab
+    #       Assets/Resources/Prefabs/enemy/Snake.prefab.meta
+    #       Assets/Resources/Prefabs/enemy/enemy.prefab
+    #       Assets/Resources/Prefabs/enemy/enemy.prefab.meta
+    #       Assets/Scenes/PlayerMoveTestScene2.unity
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit ff1ad34397247345af1fdf2f54ca8b4981c84e60[m[33m ([m[1;31morigin/jh_home[m[33m)[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Mon Mar 20 06:27:50 2023 +0900
+
+    컷씬, 메인화면 UI
+
+[33mcommit 0b5f87bfa9abbb0a712236b40f001bd864a18c21[m[33m ([m[1;31morigin/bounceTest[m[33m, [m[1;31morigin/Test2[m[33m, [m[1;31morigin/PlayerMove_Test[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sun Mar 19 19:20:41 2023 +0900
+
+    - 진자운동 시스템 업데이트(벽 사이에 끼이는 버그 존재)
+    - 몽키 이동 제한용 벽 추가
+    - 게임 오버 함수 추가
+    - GameManagerEx 추가
+    - 시간 정지＊재생 추가
+    - 진행도에 따른 속도조절 추가
+
+[33mcommit ea5377fbeb7e5cff3460df8bce492326a4802e6c[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Mar 18 10:52:34 2023 +0900
+
+    Wall bounce Test
+
+[33mcommit 683544faf176266ef260c27ed66b7a5b2f1c8f80[m[33m ([m[1;31morigin/PlayerMove_ResolutionSystem[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sat Mar 18 00:50:49 2023 +0900
+
+    - 기기에 맞춰 해상도 자동 변경
+
+[33mcommit 7e540f93c5f8ddb65653e3587e0522b51309cc8b[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Fri Mar 17 15:56:21 2023 +0900
+
+    no message
+
+[33mcommit a65aa762f2c4624b8558c473058c7a4356088038[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 17 11:35:49 2023 +0900
+
+    - Game Manager Update
+    - Scene  Created(Main Scene, Game Scene, Loading Scene)
+    - pendulum motion Update
+
+[33mcommit 657cb5ccf25c58b0cefcfab65edf842f8642c24f[m
+Merge: 2fec1ab c6f4dab
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Sun Mar 12 14:53:48 2023 +0900
+
+    Merge branch 'PlayerMove_Test' of https://github.com/newtron-vania/MonkeySwing into PlayerMove_Test
+    
+    # Conflicts:
+    #       Assets/Scenes/PlayerMoveTestSCene.unity
+    #       UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+
+[33mcommit 2fec1abcffe2700751ec60e774ccf68f8d08921c[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 10 13:40:25 2023 +0900
+
+    Bug fixed
+
+[33mcommit 3142496b2a88b77e9add6f1858e51cf2b28c1e8e[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Sat Mar 11 16:11:32 2023 +0900
+
+    level 수정
+
+[33mcommit c6f4dab14e84632ff25e87e25f12b168fd633281[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 10 13:40:25 2023 +0900
+
+    Bug fixed
+
+[33mcommit 0cabc4b580faddd4963e2659489ce795bf804a0d[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 10 12:45:09 2023 +0900
+
+    MergeSetting
+
+[33mcommit 5d0d606f4364dd7bda4deb21b41513a4e7986053[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Fri Mar 10 10:31:39 2023 +0900
+
+    jh_modify
+
+[33mcommit 75c53df2d5afa90ec7f71e32654a46e22c377522[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Fri Mar 10 03:35:39 2023 +0900
+
+    Item Update : Magnet
+
+[33mcommit a5450c767c15fa242d3d5ed3e0404bee3ec62468[m
+Merge: 4f80f01 7bb07a6
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 23:39:53 2023 +0900
+
+    Merge Error 처리
+
+[33mcommit 4f80f017cc79c0e8d44b149094d551821f2d7751[m
+Merge: 09b318a 5dc844f
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 23:36:59 2023 +0900
+
+    Merge branch 'PlayerMove_Test'
+
+[33mcommit 09b318a86e470b9de23b8bbfe425e9617081dd2c[m
+Merge: 3f8a14a feda5b8
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 23:31:32 2023 +0900
+
+    Merge branch 'main' of https://github.com/newtron-vania/MonkeySwing
+    
+    # Conflicts:
+    #       Assets/Scripts/Player/MonkeyController.cs
+
+[33mcommit 7bb07a6f5d6c80c82a162ceb5b0bf038b22216e8[m
+Merge: 3f8a14a feda5b8
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 23:31:32 2023 +0900
+
+    dafa
+
+[33mcommit 5dc844febb8c1a59fc54fd42ebc105f847732981[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 23:22:22 2023 +0900
+
+    Merge branch 'main' of https://github.com/newtron-vania/MonkeySwing
+    
+    # Conflicts:
+    #       Assets/Scripts/Player/MonkeyController.cs
+
+[33mcommit 3f8a14a0626cfc6b9ecb4f6b259c9bcb961d70d6[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 01:49:15 2023 +0900
+
+    - 진자운동 코드 리팩토링(꼬리랑 몸체가 일체화되어있어서 재구성해야했음)
+    - 캐릭터 충돌 시 체력 감소
+    - 무게 감소 시스템(1초가 지날 때마다 무게 1 감소)
+    - 아이템 이벤트(바나나 O, 칼로리 바나나 O, 부스터 △, 자석 X)
+    - 피격 시 카메라 쉐이크 이벤트 실행
+
+[33mcommit feda5b8761cb3a3ae95044573c279b708b8ffb60[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Thu Mar 9 01:49:15 2023 +0900
+
+    - 진자운동 코드 리팩토링(꼬리랑 몸체가 일체화되어있어서 재구성해야했음)
+    - 캐릭터 충돌 시 체력 감소
+    - 무게 감소 시스템(1초가 지날 때마다 무게 1 감소)
+    - 아이템 이벤트(바나나 O, 칼로리 바나나 O, 부스터 △, 자석 X)
+    - 피격 시 카메라 쉐이크 이벤트 실행
+
+[33mcommit 17777e1e1202e8b5d6ff571d08e26f488a0f2728[m
+Merge: ecdce3a ae7ba7e
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Mar 8 12:10:56 2023 +0900
+
+    Merge remote-tracking branch 'origin/main' into PlayerMove_Test
+    
+    # Conflicts:
+    #       Assets/Prefabs.meta
+    #       Assets/Scenes/SampleScene.unity
+    #       Assets/Scripts.meta
+    #       ProjectSettings/ProjectSettings.asset
+    #       ProjectSettings/TagManager.asset
+    #       UserSettings/EditorUserSettings.asset
+    #       UserSettings/Layouts/default-2021.dwlt
+
+[33mcommit ecdce3a0e7f576fe953b528fc0b804409f36bc65[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Wed Mar 8 12:07:35 2023 +0900
+
+    safsaf
+
+[33mcommit ae7ba7ef4061056a790d675f6a9af4a8b2fe8bfe[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Wed Mar 8 10:22:24 2023 +0900
+
+    junghyeon commit
+
+[33mcommit a1366b97f9cc276e71596aa4bf9fdea3c248113d[m[33m ([m[1;31morigin/PlayerMove[m[33m)[m
+Author: newtron-vania <galtab0403@gmail.com>
+Date:   Tue Mar 7 18:19:10 2023 +0900
+
+    PlayerMove Update
+
+[33mcommit 71aaf34ed951776f171bbfa05ac1b01f49e70a30[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Tue Mar 7 01:09:39 2023 +0900
+
+    second commit
+
+[33mcommit 179e8ab85f82c9b0c79f7d1a74540a7dfe0085c0[m
+Author: jung_hyeon <j01h02@gmail.com>
+Date:   Tue Mar 7 01:06:44 2023 +0900
+
+    initial version commit
+
+[33mcommit 9a94465bffd73008a069b72c8fc32698efb9b4a4[m[33m ([m[1;31morigin/MainCycle[m[33m)[m
+Author: Bright Kim <118050445+newtron-vania@users.noreply.github.com>
+Date:   Sat Mar 4 15:53:09 2023 +0900
+
+    Initial commit
