@@ -55,6 +55,7 @@ public class SnakeThree : MonoBehaviour
 
     void SetLinePos()
     {
+        //
         Vector3 movePos = targetDir.position - SnakeModel.position;
         segmentPoses[0] = new Vector3(movePos.x * dirVec.x, movePos.y * dirVec.y, 0f);
         float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;

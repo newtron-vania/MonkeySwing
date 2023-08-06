@@ -301,7 +301,7 @@ SpriteRenderer:
   m_Size: {x: 5.495, y: 1.505}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &721741556
@@ -405,7 +405,7 @@ SpriteRenderer:
   m_Size: {x: 9.235, y: 1.155}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1067107141
@@ -564,7 +564,7 @@ SpriteRenderer:
   m_Size: {x: 6.375, y: 1.345}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1200933674
@@ -2104,6 +2104,10 @@ PrefabInstance:
     - target: {fileID: 7738711881550095628, guid: 98d579c6f1d9cc449b61e44e667a8a35, type: 3}
       propertyPath: m_Name
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738711881550095628, guid: 98d579c6f1d9cc449b61e44e667a8a35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7738711881550095629, guid: 98d579c6f1d9cc449b61e44e667a8a35, type: 3}
       propertyPath: m_Pivot.x

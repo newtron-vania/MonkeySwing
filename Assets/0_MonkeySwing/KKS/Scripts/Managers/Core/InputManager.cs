@@ -43,14 +43,17 @@ public class InputManager
                 _pressed = true;
             }
 #elif (UNITY_ANDROID || UNITY_IOS)
+            //입력 확인
             if (Input.touchCount > 0)
             {
+                //터치 시작 이벤트
                 if(Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     Debug.Log("Touch Began");
                     TouchAction.Invoke(Define.TouchEvent.Began);
                     _pressedTime = Time.time;
                 }
+                //터치 후 드래그 이벤트
                 if(Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     TouchAction.Invoke(Define.TouchEvent.Moved);
@@ -62,16 +65,19 @@ public class InputManager
 #endif
             else
             {
+                //터치가 끝난 상태
                 if (_pressed)
                 {
+                    //터치한 시간이 지정된 시간보다 짧은 경우, 터치 이벤트 실행
                     if (Time.time < _pressedTime + 0.2f)
                     {
                         TouchAction.Invoke(Define.TouchEvent.Touched);
                     }
                         
                 }
-
+                //터치 확인 초기화
                 _pressed = false;
+                //터치 시간 초기화
                 _pressedTime = 0;
             }
         }
