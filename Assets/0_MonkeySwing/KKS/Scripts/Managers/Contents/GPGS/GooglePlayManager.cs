@@ -49,7 +49,7 @@ public class GooglePlayManager : MonoBehaviour
         get
         {
             if (string.IsNullOrEmpty(Social.localUser.userName))
-                return "BionicMystery1236";
+                return "melon";
             return Social.localUser.userName;
         }
     }
@@ -65,6 +65,9 @@ public class GooglePlayManager : MonoBehaviour
     private FirebaseAuth auth;
     private string FireBaseId = string.Empty;
     DatabaseReference database;
+
+    string userDataName = "users";
+    string userScoreName = "ranks";
 
     static void Init()
     {
@@ -156,7 +159,7 @@ public class GooglePlayManager : MonoBehaviour
         auth.SignInWithCredentialAsync(credential).ContinueWith(task =>
         {
             Debug.Log("SignInWithCredentialAsync start");
-            database = FirebaseDatabase.DefaultInstance.GetReference("users");
+            database = FirebaseDatabase.DefaultInstance.RootReference;
             hideUI.SetActive(false);
             if (task.IsCanceled)
             {
@@ -195,13 +198,14 @@ public class GooglePlayManager : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadFromCloudRoutin(Action<string> loadAction)
+    private IEnumerator LoadFromCloudRoutin(Action<string> loadAction, string id = null)
     {
         isProcessing = true;
         Debug.Log("Loading game progress from the cloud.");
         hideUI.SetActive(true);
         //Test
-        database.Child(FireBaseId).GetValueAsync().ContinueWithOnMainThread(task =>
+        if (id == null) id = FireBaseId;
+        database.Child(userDataName).Child(id).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted || task.IsCanceled)
             {
@@ -235,6 +239,7 @@ public class GooglePlayManager : MonoBehaviour
         //loadAction.Invoke(loadedData);
     }
 
+    
 
     public void SaveToCloud(string dataToSave)
     {
@@ -244,7 +249,8 @@ public class GooglePlayManager : MonoBehaviour
             loadedData = Regex.Unescape(loadedData);
             Debug.Log("loadedData");
             isProcessing = true;
-            database.Child(FireBaseId).SetRawJsonValueAsync(loadedData).ContinueWithOnMainThread(task => 
+
+            database.Child(userDataName).Child(FireBaseId).SetRawJsonValueAsync(loadedData).ContinueWithOnMainThread(task => 
             {
                 if (task.IsFaulted || task.IsCanceled)
                 {
@@ -265,10 +271,10 @@ public class GooglePlayManager : MonoBehaviour
     }
 
 
-    public void LoadBestScoreRankingArray(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null)
+    public void LoadBestScoreRankingArray(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
     {
         hideUI.SetActive(true);
-        database.OrderByChild("bestScore").LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
+        database.Child(userScoreName).OrderByChild(mapid.ToString()).LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             Debug.Log("bestScore is in");
             List<UserRankData> userRankDatas = new List<UserRankData>();
@@ -299,6 +305,97 @@ public class GooglePlayManager : MonoBehaviour
             onLoadedRankAction.Invoke(success, userRankDatas);
             // Do something with snapshot...
         });
+    }
+    public void LoadBestScoreRankingArray_Proto(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
+    {
+        bool isProcessing = false;
+        hideUI.SetActive(true);
+        database.Child(userScoreName).OrderByChild(mapid.ToString()).LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            Debug.Log("bestScore is in");
+            UserRankData[] userRankDatas = new UserRankData[rowCount];
+            bool success = false;
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                // Handle the error...
+                Debug.Log($"Firebase DataLoad Error. {task.Exception}");
+                success = false;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log($"rankingLoad is Complete! {snapshot.GetRawJsonValue()}");
+                int i = 0;
+                foreach (DataSnapshot data in snapshot.Children)
+                {
+                    Debug.Log($"rank {i} , {data.GetRawJsonValue()}, {JsonUtility.ToJson((IDictionary)data.Value)}");
+                    ScoreData snap = JsonUtility.FromJson<ScoreData>(data.GetRawJsonValue());
+                    string userId = data.Key;
+                    StartCoroutine(LoadFromFirebaseRoutin_Proto((loadData) =>
+                   {
+                       PlayerData playerData = JsonUtility.FromJson<PlayerData>(loadData);
+                       UserRankData rankData = new UserRankData()
+                       {
+                           userName = playerData.UserName,
+                           skinID = playerData.MonkeySkinId,
+                           bestScore = snap.GetScore(mapid),
+                           rank = ++i
+                       };
+                       userRankDatas[rankData.rank-1] = rankData; 
+                   }, 
+                    userId));
+                }
+                success = true;
+            }
+            Debug.Log("RankLoad is Over");
+            hideUI.SetActive(false);
+            Debug.Log("Rank HideUI False");
+            onLoadedRankAction.Invoke(success, userRankDatas.ToList());
+            // Do something with snapshot...
+        });
+    }
+
+    private IEnumerator LoadFromFirebaseRoutin_Proto(Action<string> loadAction, string id = null)
+    {
+        string loadedData = string.Empty;
+        isProcessing = true;
+        Debug.Log("Loading game progress from the cloud.");
+        hideUI.SetActive(true);
+        //Test
+        if (id == null) id = FireBaseId;
+        database.Child(userDataName).Child(id).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                // Handle the error...
+                Debug.Log($"Firebase DataLoad Error. {task.Exception.ToString()}");
+                loadedData = JsonUtility.ToJson(new PlayerData());
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log(snapshot.Key);
+                Debug.Log(snapshot.GetRawJsonValue());
+                loadedData = snapshot.GetRawJsonValue();
+                if (string.IsNullOrEmpty(loadedData))
+                {
+                    loadedData = JsonUtility.ToJson(new PlayerData());
+                }
+                loadedData = Regex.Unescape(loadedData);
+                Debug.Log(loadedData);
+            }
+            isProcessing = false;
+            // Do something with snapshot...
+        });
+
+        while (isProcessing)
+        {
+            yield return null;
+        }
+
+        loadAction.Invoke(loadedData);
+        hideUI.SetActive(false);
+        //loadAction.Invoke(loadedData);
     }
 }
 

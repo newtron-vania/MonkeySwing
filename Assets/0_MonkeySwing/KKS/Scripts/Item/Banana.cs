@@ -30,6 +30,4 @@ public class Banana : Items
             this.gameObject.SetActive(false);
         }
     }
-
-
 }

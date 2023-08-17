@@ -14,6 +14,12 @@ public class MagnetField : MonoBehaviour
         transform.rotation = Quaternion.identity;
         time += Time.fixedDeltaTime;
     }
+    private void SetItemStat()
+    {
+        ItemDataSO itemStat = Managers.Data.GetItem("Magnet");
+        maxTTL = itemStat.time;
+        transform.localScale = Vector3.one * itemStat.size;
+    }
 
     public void ResetTime()
     {
@@ -22,6 +28,7 @@ public class MagnetField : MonoBehaviour
 
     private void OnEnable()
     {
+        SetItemStat();
         ResetTime();
     }
     private void OnDestroy()

@@ -30,6 +30,27 @@ public class DataManager
     public void Init()
     {
         CreateSkinDict();
+        CreateItemDict();
     }
+
+
+    private Dictionary<string, ItemDataSO> itemDict = new Dictionary<string, ItemDataSO>();
+
+    private void CreateItemDict()
+    {
+        List<ItemDataSO> itemDataList = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("Prefabs/ItemSO"));
+        foreach(ItemDataSO item in itemDataList)
+        {
+            itemDict.Add(item.name, item);
+        }
+    }
+
+    public ItemDataSO GetItem(string itemName)
+    {
+        ItemDataSO item = null;
+        itemDict.TryGetValue(itemName, out item);
+        return item;
+    }
+
 }
 

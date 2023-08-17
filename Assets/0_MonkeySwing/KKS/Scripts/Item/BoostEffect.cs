@@ -13,9 +13,15 @@ public class BoostEffect : MonoBehaviour
     float TTL = 4f;
     float waitInvincibleTime = 2f;
     float curTime = 0f;
+    private void SetItemStat()
+    {
+        ItemDataSO itemStat = Managers.Data.GetItem("Booster");
+        TTL = itemStat.time;
+        boostForce = itemStat.value;
+    }
     void OnEnable()
     {
-        ResetTime();
+        SetItemStat();
         Managers.Sound.Play("FeverBGM", Define.Sound.Bgm);
     }
 

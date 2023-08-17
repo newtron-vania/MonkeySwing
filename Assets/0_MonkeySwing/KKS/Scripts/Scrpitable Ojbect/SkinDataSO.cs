@@ -35,4 +35,8 @@ public class SkinDataSO : ScriptableObject
     [SerializeField]
     private float speed;
     public float Speed { get { return speed; } }
+
+    bool hasItemBuff;
+    bool hasBuff;
+
 }

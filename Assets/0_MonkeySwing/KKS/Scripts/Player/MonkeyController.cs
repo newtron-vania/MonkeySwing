@@ -152,7 +152,6 @@ public class MonkeyController : MonoBehaviour
     {
         if (!isInvincible && (collision.tag == "Enemy"))
         {
-            Debug.Log($"collision name : {collision.name } collision tag : {collision.tag}");
             PlayerState = Define.CharacterState.Damaged;
         }
 

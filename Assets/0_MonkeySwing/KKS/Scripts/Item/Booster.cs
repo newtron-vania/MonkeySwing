@@ -6,12 +6,17 @@ public class Booster : Items
 {
     protected override void ItemEvent()
     {
+        GameObject go = null;
         //CameraController.CameraShakeEvent(invinciblityTime, 1f);
         if (GameObject.FindWithTag("BoostEffect"))
-            GameObject.FindWithTag("BoostEffect").GetComponent<BoostEffect>().ResetTime();
+        {
+            go = GameObject.FindWithTag("BoostEffect");
+        }
         else
         {
-            GameObject go = Managers.Resource.Instantiate("Item/BoostEffect");
+            go = Managers.Resource.Instantiate("Item/BoostEffect");
         }
+
+        go.GetComponent<BoostEffect>().ResetTime();
     }
 }
