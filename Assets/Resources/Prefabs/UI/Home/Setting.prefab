@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 845dbd2b4b0bf1c4f9be3605fd8d6407, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f354c6d981c2dd4d8c3d6fe6884313c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5478998404720508003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2686d630e67487d4eb22f5ca82bb5f22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f825d5de9daa3ad43ad3f88a47d478bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d2be9ceabc857cc4eb545b3f0ba3db63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21c0aaf110e3a5842921c85fa8de3ebf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -404,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5478998406147442028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -470,6 +470,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5478998404720508003}
     m_Modifications:
+    - target: {fileID: 935342630272097656, guid: b50a645ba640083419bb40aa80072553, type: 3}
+      propertyPath: OnImg
+      value: 
+      objectReference: {fileID: 21300000, guid: a6fbd5972828db14b9541d9fcedbdd0e, type: 3}
+    - target: {fileID: 935342630272097656, guid: b50a645ba640083419bb40aa80072553, type: 3}
+      propertyPath: OffImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 1aa4b4d0ba2182b499f5994a052395ac, type: 3}
+    - target: {fileID: 935342630272097657, guid: b50a645ba640083419bb40aa80072553, type: 3}
+      propertyPath: OnImg
+      value: 
+      objectReference: {fileID: 21300000, guid: a6fbd5972828db14b9541d9fcedbdd0e, type: 3}
+    - target: {fileID: 935342630272097657, guid: b50a645ba640083419bb40aa80072553, type: 3}
+      propertyPath: OffImg
+      value: 
+      objectReference: {fileID: 21300000, guid: 1aa4b4d0ba2182b499f5994a052395ac, type: 3}
     - target: {fileID: 4590026146307981060, guid: b50a645ba640083419bb40aa80072553, type: 3}
       propertyPath: m_Name
       value: Sound_setting
@@ -560,19 +576,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4590026146338715157, guid: b50a645ba640083419bb40aa80072553, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4590026147903912372, guid: b50a645ba640083419bb40aa80072553, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4590026147916165547, guid: b50a645ba640083419bb40aa80072553, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4590026148157429839, guid: b50a645ba640083419bb40aa80072553, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50a645ba640083419bb40aa80072553, type: 3}
