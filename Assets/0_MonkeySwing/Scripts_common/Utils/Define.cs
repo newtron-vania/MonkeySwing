@@ -80,8 +80,7 @@ public class Define
     {
         Normal,
         Rare,
-        Unique,
-        Legendary
+        Epic,
     }
 
 }
