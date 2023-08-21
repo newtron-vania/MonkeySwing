@@ -9,12 +9,10 @@ public class ButtonSoundPlay : MonoBehaviour
         Managers.Sound.Play("ButtonConfirm");
         GameManagerEx.Instance.GameStop();
     }
-
     public void PlayToStartPlay()
     {
         Managers.Sound.Play("GameStart");
     }
-
 
     public void SelectMonkey()
     {

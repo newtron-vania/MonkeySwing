@@ -68,17 +68,17 @@ public class SkinData_LoadSave : MonoBehaviour
         List<int> skinlist = GameManagerEx.Instance.player.GetSkinIds();
         for (int i = 0; i < MySkinList.skins.Count; i++)
         {
-            if (skinlist.Contains(MySkinList.skins[i].id))
-            {
-                MySkinList.skins[i].is_locked = false;
-            }
-            if (MySkinList.skins[i].id == GameManagerEx.Instance.player.MonkeySkinId)
-            {
-                MySkinList.skins[i].is_current_PlayerSkin = true;
-                MySkinList.skins[i].is_current_PreviewSkin = true;
-                Monkey_prefab_body.sprite = Resources.Load<Sprite>(MySkinList.skins[i].monkey_skin_path[0]);
-                Monkey_prefab_tail.sprite = Resources.Load<Sprite>(MySkinList.skins[i].monkey_skin_path[1]);
-            }
+            //if (skinlist.Contains(slot.id))
+            //{
+            //    slot.is_locked = false;
+            //}
+            //if (slot.id == GameManagerEx.Instance.player.MonkeySkinId)
+            //{
+            //    slot.is_current_PlayerSkin = true;
+            //    slot.is_current_PreviewSkin = true;
+            //    Monkey_prefab_body.sprite = Resources.Load<Sprite>(slot.monkey_skin_path[0]);
+            //    Monkey_prefab_tail.sprite = Resources.Load<Sprite>(slot.monkey_skin_path[1]);
+            //}
         }
         // Application.persistentDataPath + "/" + filename; 
     }
@@ -87,7 +87,7 @@ public class SkinData_LoadSave : MonoBehaviour
         for (int i=0; i < MySkinList.skins.Count; i++){
             GameObject Slot = Instantiate(Origin_Slot, Skin_content.transform);
             SlotData_Manager slotData_manager = Slot.GetComponent<SlotData_Manager>();
-            slotData_manager.Skin_id = MySkinList.skins[i].id;
+            //slotData_manager.Skin_id = slot.id;
             slotData_manager.init(skinDataManager);
         }  
     }

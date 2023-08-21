@@ -37,25 +37,28 @@ public class MakeLines : MonoBehaviour
 
     public Action<float> lineSpeedAction;
 
-    public float LineSpeed { 
-        get { return lineSpeed; } 
-        set { 
+    public float LineSpeed
+    {
+        get { return lineSpeed; }
+        set
+        {
             lineSpeed = value;
             if (isBoosting)
                 return;
-            if(lineSpeedAction != null)
+            if (lineSpeedAction != null)
                 lineSpeedAction.Invoke(lineSpeed);
             appliedLineSpeed = lineSpeed;
             foreach (GameObject go in lineQueue)
             {
                 go.GetComponent<LinesMove>().speed = appliedLineSpeed;
             }
-        } 
+        }
     }
 
-    void Start() {
-        StartPosition = new Vector3(0,-10,0);
-        EndPosition = new Vector3(0,10,0);
+    void Start()
+    {
+        StartPosition = new Vector3(0, -10, 0);
+        EndPosition = new Vector3(0, 10, 0);
         LineSpeed = Managers.Data.GetSkin(GameManagerEx.Instance.player.MonkeySkinId).Speed;
         SetDictionary();
         SetWrPick(0);
@@ -66,13 +69,13 @@ public class MakeLines : MonoBehaviour
     }
 
 
-    
+
 
     void SetDictionary()
     {
         string maplevel = string.Empty;
         GameObject[] maps = null;
-        for (int i=0; i<=maxLineLv; i++)
+        for (int i = 0; i <= maxLineLv; i++)
         {
             maplevel = $"level {i}";
             maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{GameManagerEx.Instance.mapID}/{maplevel}");
@@ -80,15 +83,15 @@ public class MakeLines : MonoBehaviour
         }
         maplevel = $"level Event";
         maps = Resources.LoadAll<GameObject>($"Prefabs/Map/{GameManagerEx.Instance.mapID}/{maplevel}");
-        levelLinesDict.Add(maxLineLv+1, maps);
+        levelLinesDict.Add(maxLineLv + 1, maps);
 
-        foreach(KeyValuePair<int, GameObject[]> keyValuePair in levelLinesDict)
+        foreach (KeyValuePair<int, GameObject[]> keyValuePair in levelLinesDict)
         {
             int i = keyValuePair.Key;
             string name = string.Empty;
             foreach (GameObject go in keyValuePair.Value)
             {
-                name += go.name+", ";
+                name += go.name + ", ";
             }
             Debug.Log($"level {i} list - {name}");
         }
@@ -97,7 +100,8 @@ public class MakeLines : MonoBehaviour
 
     void Update()
     {
-        if(distance >= 10.0f){
+        if (distance >= 10.0f)
+        {
             NewLines = MakeLinesPlay();
             // Debug.Log("create success");
             NewLines.transform.position = StartPosition;
@@ -112,14 +116,14 @@ public class MakeLines : MonoBehaviour
     void SetWrPick(int lv)
     {
         wrPicker = new Rito.WeightedRandomPicker<int>();
-        for(int i = 0; i <= maxLineLv; i++)
+        for (int i = 0; i <= maxLineLv; i++)
         {
             Debug.Log($"{level}");
             if (i == lv)
             {
                 wrPicker.Add(i, 10);
                 level = i;
-                if(i == 0)
+                if (i == 0)
                     currentLevel = level;
                 else
                 {
@@ -133,13 +137,14 @@ public class MakeLines : MonoBehaviour
 
     private void CheckPickNum()
     {
-        for(int i = 0; i < levelWeight.Length; i++)
+        for (int i = 0; i < levelWeight.Length; i++)
         {
             levelWeight[i] = wrPicker.GetWeight(i + 1);
         }
     }
 
-    GameObject MakeLinesPlay(){
+    GameObject MakeLinesPlay()
+    {
         GameObject mNewLines = null;
 
         while (true)
@@ -148,7 +153,7 @@ public class MakeLines : MonoBehaviour
 
             int lineNum = SettingLineNum(level);
 
-            if(curLineName.Equals(string.Empty) || curLineName.Equals(levelLinesDict[level][lineNum].name))
+            if (curLineName.Equals(string.Empty) || curLineName.Equals(levelLinesDict[level][lineNum].name))
             {
                 mNewLines = Managers.Resource.Instantiate(levelLinesDict[level][lineNum], transform.position);
                 break;
@@ -156,7 +161,7 @@ public class MakeLines : MonoBehaviour
         }
 
         LinesMove linesMove = mNewLines.GetComponent<LinesMove>();
-        
+
         linesMove.speed = appliedLineSpeed;
         return mNewLines;
     }
@@ -176,17 +181,17 @@ public class MakeLines : MonoBehaviour
             currentLevel = level;
             return lv;
         }
-            
+
         return currentLevel;
     }
 
     private void AddWrPick(int value)
     {
-            if (levelLine[level] < value)
-            {
+        if (levelLine[level] < value)
+        {
             Debug.Log($"{level} {levelLine[level]}, {value}");
-                SetWrPick(level + 1);
-            }
+            SetWrPick(level + 1);
+        }
     }
 
     private void LineSpeedUp(int dist)
@@ -200,7 +205,7 @@ public class MakeLines : MonoBehaviour
     Coroutine boostLineSpeedCoroutine;
     public void BoostLineSpeed(float time, float force)
     {
-        if(boostLineSpeedCoroutine != null)
+        if (boostLineSpeedCoroutine != null)
             StopCoroutine(boostLineSpeedCoroutine);
         boostLineSpeedCoroutine = StartCoroutine(BoostLineSpeedCoroutine(time, force));
     }
