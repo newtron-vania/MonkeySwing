@@ -22,7 +22,7 @@ public class Distance : MonoBehaviour
     bool isReach = false;
     private void Start()
     {
-        bestScore = GameManagerEx.Instance.player.BestScore;
+        bestScore = GameManagerEx.Instance.scoreData.GetScore(GameManagerEx.Instance.mapID);
         bestScoreText.text = "BEST  " + bestScore.ToString() + "m";
     }
 

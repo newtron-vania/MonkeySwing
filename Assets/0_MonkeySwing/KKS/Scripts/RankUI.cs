@@ -5,6 +5,7 @@ using TMPro;
 
 public class RankUI : MonoBehaviour
 {
+    public int mapid = 1;
 
     [SerializeField]
     RankItemController myRankItem;
@@ -24,7 +25,7 @@ public class RankUI : MonoBehaviour
     void OnEnable()
     {
         GooglePlayManager.Instance.LoadBestScoreRankingArray(10,
-            (success, data) => { ShowRankScoreData(success,  data); }) ;
+            (success, data) => { ShowRankScoreData(success,  data); }, mapid) ;
     }
 
 
@@ -33,7 +34,7 @@ public class RankUI : MonoBehaviour
         //Set My Rank Score
         PlayerData player = GameManagerEx.Instance.player;
         string userName = GooglePlayManager.Instance.LocalUser;
-        myRankItem.SetData(userName, player.BestScore.ToString());
+        myRankItem.SetMyData(userName, GameManagerEx.Instance.scoreData.GetScore(mapid), GameManagerEx.Instance.player.MonkeySkinId, mapid);
         if (success)
         {
             int i = 0;
@@ -41,23 +42,13 @@ public class RankUI : MonoBehaviour
             {
                 rankItems[i].SetActive(true);
                 RankItemController rankItem = rankItems[i].GetComponent<RankItemController>();
-                rankItem.SetData(score.rank, score.userName == userName, score.userName, score.bestScore.ToString());
+                rankItem.SetData(score, score.userName == userName, mapid);
                 i++;
             }
         }
         else
         {
             errorText.gameObject.SetActive(true);
-        }
-    }
-
-    void ShowMyRankScoreData(bool success, UserRankData[] data)
-    {
-        if (success)
-        {
-            UserRankData mydata = data[0];
-            myRankNum = mydata.rank;
-            myRankItem.SetData(mydata.userName, mydata.bestScore.ToString());
         }
     }
 

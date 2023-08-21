@@ -10,6 +10,7 @@ public class GameManagerEx
 
     public int currentCoin;
     public PlayerData player;
+    public ScoreData scoreData;
     public MakeLines makeLines;
     public Distance distance;
     public MonkeyController monkey;
@@ -17,7 +18,7 @@ public class GameManagerEx
 
     public bool isPlaying = false;
 
-    public int mapID = 0;
+    public int mapID = 1;
     static void Init()
     {
         if (g_instance == null)
@@ -28,6 +29,7 @@ public class GameManagerEx
             g_instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
             g_instance.monkey = GameObject.FindFirstObjectByType<MonkeyController>();
             g_instance.player = new PlayerData();
+            g_instance.scoreData = new ScoreData();
             g_instance.currentCoin = g_instance.player.Money;
             Debug.Log($"g_instance.player : { g_instance.player.Money}");
         }

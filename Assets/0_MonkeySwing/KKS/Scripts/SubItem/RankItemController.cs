@@ -7,34 +7,53 @@ using TMPro;
 public class RankItemController : MonoBehaviour
 {
     [SerializeField]
-    Image rankPanel;
-
+    Image monkeySkin;
+    [SerializeField]
+    Image medalImg;
+    [SerializeField]
+    Image rankImg;
+    [SerializeField]
+    Image panelImg;
     [SerializeField]
     private TextMeshProUGUI idText;
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
-    string basicPath = "UI/UI_rank/rankPanel/";
-    string brightPath = "myrank_";
-    string dartPath = "rank_";
+    string panelPath = "UI/UI_rank/rankPanel/";
+    string rankPath = "UI/UI_rank/Number/";
 
-    public void SetData(int rank, bool myRank, string id, string score)
+    string rankBoxMy = "UI_rank_box_my";
+    string rankBox = "UI_rank_box";
+
+    public void SetData(UserRankData score, bool myRank, int mapid)
     {
-        string path = basicPath;
+        rankImg.sprite = Managers.Resource.LoadSprite(rankPath + score.rank.ToString());
 
-        if (myRank)
-            path += brightPath + rank.ToString();
-        else
-            path += dartPath + rank.ToString();
-        rankPanel.sprite = Managers.Resource.LoadSprite(path);
-        idText.text = id;
-        scoreText.text = score + "M";
+        SkinDataSO skindata = Managers.Data.GetSkin(score.skinID);
+
+        monkeySkin.sprite = skindata.SkinHead;
+
+        idText.text = score.userName;
+        scoreText.text = score.bestScore.ToString() + " M";
+
+        SetMedal((int)score.bestScore, mapid);
     }
 
-    public void SetData(string id, string score)
+    public void SetMedal(int score,int mapid)
     {
+        medalImg.sprite = Managers.Resource.LoadSprite(Managers.Data.GetMedalSpritePath(score, mapid));
+    }
+    public void SetMyData(string id, int score, int skinId, int mapid)
+    {
+        SkinDataSO skindata = Managers.Data.GetSkin(skinId);
+
+        monkeySkin.sprite = skindata.SkinHead;
+
         idText.text = id;
-        scoreText.text = score + "M";
+        scoreText.text = score.ToString() + " M";
+
+
+        SetMedal(score, mapid);
     }
 }

@@ -15,10 +15,10 @@ using Firebase.Extensions;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public class GooglePlayManager_2 : MonoBehaviour
+public class GooglePlayManager_legacy2 : MonoBehaviour
 {
-    static private GooglePlayManager instance;
-    static public GooglePlayManager Instance
+    static private GooglePlayManager_legacy2 instance;
+    static public GooglePlayManager_legacy2 Instance
     {
         get { Init(); return instance; }
     }
@@ -77,13 +77,13 @@ public class GooglePlayManager_2 : MonoBehaviour
             if (go == null)
             {
                 go = new GameObject { name = "@GooglePlayManager" };
-                go.AddComponent<GooglePlayManager>();
+                go.AddComponent<GooglePlayManager_legacy2>();
                 hideUI = Managers.Resource.Instantiate("UI/HideUI");
                 hideUI.SetActive(false);
             }
             DontDestroyOnLoad(go);
             DontDestroyOnLoad(hideUI);
-            instance = go.GetComponent<GooglePlayManager>();
+            instance = go.GetComponent<GooglePlayManager_legacy2>();
         }
     }
 
@@ -397,4 +397,13 @@ public class GooglePlayManager_2 : MonoBehaviour
         hideUI.SetActive(false);
         //loadAction.Invoke(loadedData);
     }
+}
+
+public class UserRankData
+{
+    public string userName;
+    public int skinID;
+    public long bestScore;
+    public int rank;
+
 }

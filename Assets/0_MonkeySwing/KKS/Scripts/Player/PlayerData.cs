@@ -25,12 +25,22 @@ public class PlayerData
     private void SetData()
     {
         if (username == string.Empty) username = GooglePlayManager.Instance.LocalUser;
-        GooglePlayManager.Instance.SaveToCloud(JsonUtility.ToJson(GameManagerEx.Instance.player));
+        GooglePlayManager.Instance.SaveUser(JsonUtility.ToJson(GameManagerEx.Instance.player));
+        GooglePlayManager.Instance.SaveScore(DictionaryJsonUtility.ToJson(GameManagerEx.Instance.scoreData.BestScore, false));
     }
 
     public void LoadData()
     {
-        GooglePlayManager.Instance.LoadFromCloud((data) => { GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money; });
+        GooglePlayManager.Instance.LoadFromCloud(
+            (data) => 
+            { 
+            GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money; 
+            },
+            (data) =>
+            {
+                GameManagerEx.Instance.scoreData.BestScore = DictionaryJsonUtility.FromJson<string, int>(data);
+            }
+        );
     }
 
     public void AddSkinId(int id)

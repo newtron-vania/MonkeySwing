@@ -4,97 +4,69 @@ using UnityEngine;
 
 public class GooglePlayTest : MonoBehaviour
 {
-    string log;
-
-    private void Start()
+    private void OnGUI()
     {
-        GPGSBinder.Inst.LoginCheck((success, localUser) =>
-            log = $"{success}, {localUser.userName}, {localUser.id}, {localUser.state}, {localUser.underage}");
-    }
-
-    void OnGUI()
-    {
-        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one * 3);
-
-
-        if (GUILayout.Button("ClearLog"))
-            log = "";
-
-        if (GUILayout.Button("Login"))
-            GPGSBinder.Inst.LoginCheck((success, localUser) =>
-            log = $"{success}, {localUser.userName}, {localUser.id}, {localUser.state}, {localUser.underage}");
-
-        if (GUILayout.Button("Logout"))
-            GPGSBinder.Inst.Logout();
-
-        if (GUILayout.Button("SaveCloud"))
-            GPGSBinder.Inst.SaveCloud("mysave", "want data", success => log = $"{success}");
-
-        if (GUILayout.Button("LoadCloud"))
-            GPGSBinder.Inst.LoadCloud("mysave", (success, data) => log = $"{success}, {data}");
-
-        if (GUILayout.Button("DeleteCloud"))
-            GPGSBinder.Inst.DeleteCloud("mysave", success => log = $"{success}");
-
-        if (GUILayout.Button("ShowAchievementUI"))
-            GPGSBinder.Inst.ShowAchievementUI();
-
-        if (GUILayout.Button("ShowAllLeaderboardUI"))
-            GPGSBinder.Inst.ShowAllLeaderboardUI();
-
-        if (GUILayout.Button("ShowTargetLeaderboardUI_num"))
-            GPGSBinder.Inst.ShowTargetLeaderboardUI(GPGSIds.leaderboard_bestscore);
-
-        if (GUILayout.Button("ReportLeaderboard_num"))
-            GPGSBinder.Inst.ReportLeaderboard(GPGSIds.leaderboard_bestscore, 100, success => log = $"{success}");
-
-        if (GUILayout.Button("LoadAllLeaderboardArray_num"))
-            GPGSBinder.Inst.LoadAllLeaderboardArray(GPGSIds.leaderboard_bestscore, scores =>
-            {
-                log = "";
-                for (int i = 0; i < scores.Length; i++)
-                    log += $"{i}, {scores[i].rank}, {scores[i].value}, {scores[i].userID}, {scores[i].date}\n";
-            });
-
-        if (GUILayout.Button("LoadCustomLeaderboardArray_num"))
+        int x = 0;
+        int y = 0;
+        if (GUI.Button(new Rect(x, y, 150, 100), "UseFirebase"))
         {
-            GPGSBinder.Inst.LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, 3,
-                GooglePlayGames.BasicApi.LeaderboardStart.PlayerCentered, GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime, (success, scoreData) =>
-                {
-                    log = $"{success}\n";
-                    var scores = scoreData.Scores;
-                    for (int i = 0; i < scores.Length; i++)
-                        log += $"{i}, {scores[i].rank}, {scores[i].value}, {scores[i].userID}, {scores[i].date}\n";
-                });
-            GPGSBinder.Inst.LoadCustomLeaderboardArray(GPGSIds.leaderboard_bestscore, 3,
-                GooglePlayGames.BasicApi.LeaderboardStart.TopScores, GooglePlayGames.BasicApi.LeaderboardTimeSpan.AllTime, (success, scoreData) =>
-                {
-                    log = $"{success}\n";
-                    var scores = scoreData.Scores;
-                    for (int i = 0; i < scores.Length; i++)
-                        log += $"{i}, {scores[i].rank}, {scores[i].value}, {scores[i].userID}, {scores[i].date}\n";
-                });
+            GooglePlayManager.Instance.UseFirebase();
+            GooglePlayManager.Instance.FireBaseID = "Dx4C0mjiQmWChtba22EoJFHrX6z1";
         }
-            
+        y += 100;
 
-        if (GUILayout.Button("IncrementEvent_event"))
-            GPGSBinder.Inst.IncrementEvent(GPGSIds.event_depth, 1);
-
-        if (GUILayout.Button("LoadEvent_event"))
-            GPGSBinder.Inst.LoadEvent(GPGSIds.event_depth, (success, iEvent) =>
+        if (GUI.Button(new Rect(x, y, 150, 100), "LoadUser"))
+        {
+            GooglePlayManager.Instance.LoadUser(loadData =>
             {
-                log = $"{success}, {iEvent.Name}, {iEvent.CurrentCount}";
-            });
-
-        if (GUILayout.Button("LoadAllEvent"))
-            GPGSBinder.Inst.LoadAllEvent((success, iEvents) =>
+                PlayerData player = JsonUtility.FromJson<PlayerData>(loadData);
+                Debug.Log($"userName : {player.UserName}\n currentskinid : {player.MonkeySkinId} \n money : {player.Money}");
+            },
+            "Dx4C0mjiQmWChtba22EoJFHrX6z1"
+            );
+        }
+        y += 100;
+        if (GUI.Button(new Rect(x, y, 150, 100), "LoadScore"))
+        {
+            GooglePlayManager.Instance.LoadScore(loadData =>
             {
-                log = $"{success}\n";
-                foreach (var iEvent in iEvents)
-                    log += $"{iEvent.Name}, {iEvent.CurrentCount}\n";
-            });
+                ScoreData scoreData = new ScoreData();
 
-        GUILayout.Label(log);
+                Debug.Log($"LoadScore Start! : {loadData}");
+                scoreData.BestScore = DictionaryJsonUtility.FromJson<string, int>(loadData);
+                
+                foreach(var d in scoreData.BestScore)
+                {
+                    Debug.Log($"{d.Key} : {d.Value}");
+                }
+            },
+            "Dx4C0mjiQmWChtba22EoJFHrX6z1"
+            );
+        }
+        y += 100;
+        if (GUI.Button(new Rect(x, y, 150, 100), "SaveScore"))
+        {
+            ScoreData data = new ScoreData();
+            data.SetScore(1, 300);
+            data.SetScore(2, 35);
+            data.ShowScore();
+            GooglePlayManager.Instance.SaveScore(DictionaryJsonUtility.ToJson(data.BestScore, false));
+        }
+        y += 100;
+        if (GUI.Button(new Rect(x, y, 150, 100), "ShowRanking"))
+        {
 
+            GooglePlayManager.Instance.LoadBestScoreRankingArray(10,
+                (sucess, sender) =>
+                {
+                    Debug.Log($"rank count : {sender.Count}");
+                    foreach (UserRankData data in sender)
+                    {
+                        Debug.Log($"name : {data.userName} skin : {data.skinID} score : {data.bestScore} rank : {data.rank}");
+                    }
+                }
+            );
+        }
+        y += 100;
     }
 }

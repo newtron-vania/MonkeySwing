@@ -17,6 +17,7 @@ public class StartButton : MonoBehaviour
 
     private void GoToSelect()
     {
+        GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.Money;
         SceneManager.LoadScene("SelectScene");
     }
 }

@@ -30,17 +30,19 @@ public class ResultUI : MonoBehaviour
     {
         scoreText.text = $"{GameManagerEx.Instance.distance.Dist.ToString()}m";
         rewardText.text = BananaCount.bananacount.ToString();
-        Debug.Log($" score : {GameManagerEx.Instance.distance.Dist}, BestScore : {GameManagerEx.Instance.player.BestScore}");
+
+        int bestscore = GameManagerEx.Instance.scoreData.GetScore(GameManagerEx.Instance.mapID);
+        Debug.Log($" score : {GameManagerEx.Instance.distance.Dist}, BestScore : {bestscore}");
 
 
-        if (GameManagerEx.Instance.distance.Dist > GameManagerEx.Instance.player.BestScore)
+        if (GameManagerEx.Instance.distance.Dist > bestscore)
         {
             Managers.Sound.Play("BestScore");
             StartParticle();
             BestScoreSticker.gameObject.SetActive(true);
-            GameManagerEx.Instance.player.BestScore = GameManagerEx.Instance.distance.Dist;
+            GameManagerEx.Instance.scoreData.SetScore(GameManagerEx.Instance.mapID, GameManagerEx.Instance.distance.Dist);
             ceremonyAnime.SetInteger("IsBest", 2);
-            Debug.Log($"bestScore : {GameManagerEx.Instance.player.BestScore}");
+            Debug.Log($"bestScore : {GameManagerEx.Instance.scoreData.GetScore(GameManagerEx.Instance.mapID)}");
             return;
         }
         Managers.Sound.Play("GameOver");

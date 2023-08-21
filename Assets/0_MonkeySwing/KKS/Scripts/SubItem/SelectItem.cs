@@ -8,6 +8,8 @@ public class SelectItem : MonoBehaviour
 {
     public int mapID;
     [SerializeField]
+    Image medalImg;
+    [SerializeField]
     Button Playbutton;
     [SerializeField]
     Button MedalButton;
@@ -16,9 +18,14 @@ public class SelectItem : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI mapIdText;
 
+    [SerializeField]
+    TextMeshProUGUI scoreText;
+
 
     [SerializeField]
     Transform rankUI;
+    [SerializeField]
+    Transform medalUI;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +33,16 @@ public class SelectItem : MonoBehaviour
         
         mapIdText.text = mapID.ToString();
 
-        rankUI = FindObjectOfType<RankUI>().transform;
+        rankUI = FindObjectOfType<RankUI>(true).transform;
+        medalUI = FindObjectOfType<MedalUI>(true).transform;
+
+        int score = GameManagerEx.Instance.scoreData.GetScore(mapID);
+        medalImg.sprite = Managers.Resource.LoadSprite(Managers.Data.GetMedalSpritePath(score, mapID));
+
+        scoreText.text = score.ToString();
         RankButton.onClick.AddListener(() => ShowRankUI());
         Playbutton.onClick.AddListener(() => StartMap());
-
+        MedalButton.onClick.AddListener(() => ShowMedals());
     }
 
 
@@ -42,11 +55,14 @@ public class SelectItem : MonoBehaviour
 
     private void ShowRankUI()
     {
+        rankUI.GetComponent<RankUI>().mapid = mapID;
         rankUI.gameObject.SetActive(true);
     }
 
     private void ShowMedals()
     {
         //Show MedalUI with ID
+        medalUI.GetComponent<MedalUI>().mapid = mapID;
+        medalUI.gameObject.SetActive(true);
     }
 }
