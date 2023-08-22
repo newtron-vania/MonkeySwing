@@ -17,7 +17,7 @@ public class BananaCount : MonoBehaviour
         // bestbananacount는 변수만 저장해둠, 아직 ui따로 안만듦.
         if ((int)bananacount >= bestbananacount){
             bestbananacount = bananacount;
-            bananaCountUpEvent.Invoke();
+            bananaCountUpEvent?.Invoke();
         }
         GetComponent<TextMeshProUGUI>().text = ((int)bananacount).ToString();
     }

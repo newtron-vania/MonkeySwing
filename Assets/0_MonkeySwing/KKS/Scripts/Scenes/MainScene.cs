@@ -5,20 +5,31 @@ using System;
 
 public class MainScene : BaseScene
 {
+    [SerializeField]
+    Distance distance;
+    [SerializeField]
+    MakeLines makeline;
     public override Define.SceneType _sceneType { get { return Define.SceneType.MainScene; } }
 
     public Action<MonkeyController> monkeySetEvent;
-    private void Start()
+    public Action<int> distanceSetEvent;
+    private void Awake()
     {
         Managers.Data.CreateItemDict();
-        GameManagerEx.Instance.distance = GameObject.FindFirstObjectByType<Distance>();
-        GameManagerEx.Instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
+        GameManagerEx.Instance.distance = distance;
+        GameManagerEx.Instance.distance.distanceEvent -= StartDistanceEvent;
+        GameManagerEx.Instance.distance.distanceEvent += StartDistanceEvent;
+
+        GameManagerEx.Instance.makeLines = makeline;
         StartCoroutine(FindMonkey());
         BananaCount.bananacount = 0;
         GameManagerEx.Instance.GameStart();
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
-
+    public void StartDistanceEvent(int score)
+    {
+        distanceSetEvent.Invoke(score);
+    }
 
     public override void Clear()
     {

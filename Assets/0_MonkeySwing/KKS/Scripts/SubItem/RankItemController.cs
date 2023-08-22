@@ -29,8 +29,10 @@ public class RankItemController : MonoBehaviour
     public void SetData(UserRankData score, bool myRank, int mapid)
     {
         rankImg.sprite = Managers.Resource.LoadSprite(rankPath + score.rank.ToString());
+        Debug.Log(rankImg.sprite.name);
 
         SkinDataSO skindata = Managers.Data.GetSkin(score.skinID);
+        Debug.Log($"{skindata.SkinId}");
 
         monkeySkin.sprite = skindata.SkinHead;
 
@@ -47,7 +49,7 @@ public class RankItemController : MonoBehaviour
     public void SetMyData(string id, int score, int skinId, int mapid)
     {
         SkinDataSO skindata = Managers.Data.GetSkin(skinId);
-
+        Debug.Log($"{skindata.SkinId}");
         monkeySkin.sprite = skindata.SkinHead;
 
         idText.text = id;

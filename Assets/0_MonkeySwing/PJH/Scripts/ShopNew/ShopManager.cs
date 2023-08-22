@@ -46,7 +46,6 @@ public class ShopManager : Singleton<ShopManager>
 
     private void Awake()
     {
-        GameManagerEx.Instance.player.Money += 10000; // TEST용 이거 지우기
 
         // 처음 키면 totalSkin창이 먼저 뜨도록 설정
         currrentSkinButtonMiniMonkey = TotalSkinButton;
@@ -88,7 +87,7 @@ public class ShopManager : Singleton<ShopManager>
         previewMonkeyName.text = currentSlot.MonkeyName;
         previewMonkeyExplanation.text = currentSlot.MonkeyExplanation;
     }
-    public void SlotStateChange()
+    public void SlotStateChange(int MonkeyId)
     {
         switch (currentSlot.slotState)
         {
@@ -101,6 +100,7 @@ public class ShopManager : Singleton<ShopManager>
                 currentSlot.selectSlotImg.gameObject.SetActive(true);
                 currentSlot.slotStateButton.GetComponentInChildren<TextMeshProUGUI>().text = "사용중";
                 currentSlot.slotStateButton.GetComponent<Image>().sprite = isUsingImg;
+                GameManagerEx.Instance.player.MonkeySkinId = MonkeyId;
                 break;
             case (SlotState.isUsing):  // 현재 사용중(사용중)이면 => 이미 장착중인 skin이라고 debug 띄우기
                 ActiveDebug("이미 사용중인 스킨입니다.");

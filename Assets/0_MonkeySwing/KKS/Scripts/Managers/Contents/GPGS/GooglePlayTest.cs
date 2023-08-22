@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class GooglePlayTest : MonoBehaviour
 {
+    [SerializeField]
+    bool isUnscaled;
+    private void Update()
+    {
+        if (isUnscaled)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
+    }
     private void OnGUI()
     {
         int x = 0;
@@ -56,7 +65,7 @@ public class GooglePlayTest : MonoBehaviour
         if (GUI.Button(new Rect(x, y, 150, 100), "ShowRanking"))
         {
 
-            GooglePlayManager.Instance.LoadBestScoreRankingArray(10,
+            GooglePlayManager.Instance.LoadBestScoreRankingArray2(10,
                 (sucess, sender) =>
                 {
                     Debug.Log($"rank count : {sender.Count}");

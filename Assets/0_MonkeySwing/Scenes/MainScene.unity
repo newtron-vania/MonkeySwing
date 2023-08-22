@@ -815,6 +815,17 @@ Transform:
   m_Father: {fileID: 1450563960}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &852300688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3434005430654068211, guid: 0ac8471dcc75df84b87b13c8894254e7, type: 3}
+  m_PrefabInstance: {fileID: 3434005430925053347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc18ab53017de69489c9cd8df67bfae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &879408193
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceb90a5923e1564e90d9b896783b63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: {fileID: 852300688}
+  makeline: {fileID: 1062539916}
 --- !u!4 &879408195
 Transform:
   m_ObjectHideFlags: 0
@@ -1372,6 +1385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fb64003d78114f9b3e3d3871ab22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: {fileID: 879408194}
   startPoint: {fileID: 1253774437}
   endPoint: {fileID: 847103285}
   ScrollBackgroundList:
@@ -1408,6 +1422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f8c14455bbc274a801570b49fc9e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameScene: {fileID: 879408194}
   _backgroundSprite:
   - {fileID: 21300000, guid: 54b3e4dfaced8c84cad3d0a2825f5059, type: 3}
   - {fileID: 21300000, guid: ab0853a0ba8043b4abbbc365f3e3a78b, type: 3}
@@ -1762,6 +1777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 232489536632331005, guid: b95061817e39d2843bdd1d1045db60d0, type: 3}
+      propertyPath: gameScene
+      value: 
+      objectReference: {fileID: 879408194}
     - target: {fileID: 232489536632331005, guid: b95061817e39d2843bdd1d1045db60d0, type: 3}
       propertyPath: maxLineLv
       value: 3

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BackgroundChanger : MonoBehaviour
 {
+    [SerializeField]
+    MainScene gameScene;
     private byte _backgroundState = 0;
 
     [SerializeField]
@@ -16,8 +18,8 @@ public class BackgroundChanger : MonoBehaviour
 
     private void Start()
     {
-        GameManagerEx.Instance.distance.distanceEvent -= ChangeBackground;
-        GameManagerEx.Instance.distance.distanceEvent += ChangeBackground;
+        gameScene.distanceSetEvent -= ChangeBackground;
+        gameScene.distanceSetEvent += ChangeBackground;
     }
 
     public void ChangeToNextState()

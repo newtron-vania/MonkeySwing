@@ -6,7 +6,7 @@ public class MilkSkill : MonoBehaviour, BaseSkill
 {
     public int GetSkillId()
     {
-        return 100;
+        return 101;
     }
     public void UseDeadSkill()
     {

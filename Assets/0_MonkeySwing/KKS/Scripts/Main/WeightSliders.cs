@@ -35,7 +35,7 @@ public class WeightSliders : MonoBehaviour
     public void SetValue(int value)
     {
         //특정 구간을 지날 때마다 사운드 추가
-        slideView.fillAmount = (value - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]) / (GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[3] - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]);
+        slideView.fillAmount = (float)(value - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]) / (GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[3] - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]);
         weightSlider.value = value;
         ChangeStates(value);
     }

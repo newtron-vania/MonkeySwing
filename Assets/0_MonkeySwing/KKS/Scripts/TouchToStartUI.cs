@@ -20,6 +20,9 @@ public class TouchToStartUI : MonoBehaviour
         else
         {
             GameManagerEx.Instance.player.LoadData();
+            //Test with PlayerData
+            GameManagerEx.Instance.player.Money = 10000; // TEST용 이거 지우기
+            GameManagerEx.Instance.currentCoin = 10000; // TEST용 이거 지우기
             GameManagerEx.Instance.isPlaying = true;
         }
     }

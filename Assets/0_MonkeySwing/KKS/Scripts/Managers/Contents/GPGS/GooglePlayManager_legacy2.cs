@@ -398,11 +398,3 @@ public class GooglePlayManager_legacy2 : MonoBehaviour
     }
 }
 
-public class UserRankData
-{
-    public string userName;
-    public int skinID;
-    public long bestScore;
-    public int rank;
-
-}

@@ -72,7 +72,7 @@ public class DataManager
         List<ItemDataSO> itemDataList = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("Prefabs/ItemSO"));
         foreach(ItemDataSO item in itemDataList)
         {
-            itemDict.Add(item.name, item);
+            itemDict[item.itemName.ToString()] = item;
         }
     }
 

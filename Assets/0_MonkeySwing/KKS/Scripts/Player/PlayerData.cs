@@ -33,7 +33,9 @@ public class PlayerData
         GooglePlayManager.Instance.LoadFromCloud(
             (data) => 
             { 
-            GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money; 
+            GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money;
+                //Test
+                GameManagerEx.Instance.player.Money = 10000; // TEST용 이거 지우기
             },
             (data) =>
             {

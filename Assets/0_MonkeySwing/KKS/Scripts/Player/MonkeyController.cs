@@ -103,16 +103,18 @@ public class MonkeyController : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         skill = Managers.Data.skillDict[GameManagerEx.Instance.player.MonkeySkinId];
-        skill.UseStartSkill();
-        GameManagerEx.Instance.distance.distanceEvent -= skill.UseTermSkill;
-        GameManagerEx.Instance.distance.distanceEvent += skill.UseTermSkill;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         stat = GetComponent<MonkeyStat>();
-        
+
+
+
+        GameManagerEx.Instance.distance.distanceEvent -= skill.UseTermSkill;
+        GameManagerEx.Instance.distance.distanceEvent += skill.UseTermSkill;
+        skill.UseStartSkill();
         SetMonkeyStat();
         StartCoroutine(LooseWeight());
     }

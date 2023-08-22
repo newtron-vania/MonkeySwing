@@ -7,7 +7,7 @@ public class HeartSkill : MonoBehaviour, BaseSkill
     private int resurrectionCount = 1;
     public int GetSkillId()
     {
-        return 200;
+        return 102;
     }
     public void UseDeadSkill()
     {

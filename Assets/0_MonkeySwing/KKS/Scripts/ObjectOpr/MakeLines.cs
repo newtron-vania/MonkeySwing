@@ -6,6 +6,8 @@ using System;
 public class MakeLines : MonoBehaviour
 {
     [SerializeField]
+    MainScene gameScene;
+    [SerializeField]
     Dictionary<int, GameObject[]> levelLinesDict = new Dictionary<int, GameObject[]>();
     [SerializeField]
     int maxLineLv = 3;
@@ -61,10 +63,10 @@ public class MakeLines : MonoBehaviour
         EndPosition = new Vector3(0, 10, 0);
         SetDictionary();
         SetWrPick(0);
-        GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;
-        GameManagerEx.Instance.distance.distanceEvent += AddWrPick;
-        GameManagerEx.Instance.distance.distanceEvent -= LineSpeedUp;
-        GameManagerEx.Instance.distance.distanceEvent += LineSpeedUp;
+        gameScene.distanceSetEvent -= AddWrPick;
+        gameScene.distanceSetEvent += AddWrPick;
+        gameScene.distanceSetEvent -= LineSpeedUp;
+        gameScene.distanceSetEvent += LineSpeedUp;
     }
 
 

@@ -15,7 +15,16 @@ public class PinkSkill : MonoBehaviour, BaseSkill
 
     public void UseStartSkill()
     {
-        GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().Hp = 4;
+        if (GameManagerEx.Instance.monkey == null)
+        {
+            GameObject.FindAnyObjectByType<MainScene>().monkeySetEvent += (monkey) =>
+            { 
+                monkey.GetComponent<MonkeyStat>().Hp = 4;
+                monkey.SetMonkeyStat();
+            };
+        }
+        else
+            GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().Hp = 4;
     }
 
     public void UseTermSkill(int score)

@@ -6,6 +6,8 @@ public class BackgroundScrolling : MonoBehaviour
 {
     BackgroundChanger backgroundChanger;
 
+    [SerializeField]
+    MainScene gameScene;
     
     [SerializeField]
     Transform startPoint;
@@ -28,8 +30,8 @@ public class BackgroundScrolling : MonoBehaviour
     {
         backgroundChanger = this.GetComponent<BackgroundChanger>();
         StartCoroutine("ScrollBackground");
-        GameManagerEx.Instance.distance.distanceEvent -= ChangeDay;
-        GameManagerEx.Instance.distance.distanceEvent += ChangeDay;
+        gameScene.distanceSetEvent -= ChangeDay;
+        gameScene.distanceSetEvent += ChangeDay;
 
     }
 

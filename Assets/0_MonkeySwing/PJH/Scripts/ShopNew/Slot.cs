@@ -29,6 +29,6 @@ public class Slot : MonoBehaviour
     public void SlotStateButtonClick()
     {
         PreviewButtonClick();
-        ShopManager.instance.SlotStateChange();
+        ShopManager.instance.SlotStateChange(MonkeyId);
     }
 }

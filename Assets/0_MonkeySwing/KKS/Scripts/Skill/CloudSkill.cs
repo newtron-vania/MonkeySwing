@@ -6,7 +6,7 @@ public class CloudSkill : MonoBehaviour, BaseSkill
 {
     public int GetSkillId()
     {
-        return 201;
+        return 103;
     }
     public void UseDeadSkill()
     {

@@ -330,6 +330,10 @@ public class GooglePlayManager : MonoBehaviour
     {
         StartCoroutine(LoadBestScoreRankingCoroutine(rowCount, onLoadedRankAction, mapid));
     }
+    public void LoadBestScoreRankingArray2(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
+    {
+        StartCoroutine(LoadBestScoreRankingCoroutine2(rowCount, onLoadedRankAction, mapid));
+    }
     public IEnumerator LoadBestScoreRankingCoroutine(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
     {
         bool success = false;
@@ -362,7 +366,7 @@ public class GooglePlayManager : MonoBehaviour
                        {
                            userName = playerData.UserName,
                            skinID = playerData.MonkeySkinId,
-                           bestScore = snap[mapid.ToString()],
+                           bestScore = -1 * snap[mapid.ToString()],
                            rank = ++i
                        };
                        userRankDatas[rankData.rank-1] = rankData;
@@ -392,5 +396,80 @@ public class GooglePlayManager : MonoBehaviour
         onLoadedRankAction.Invoke(success, userRankDatas.ToList());
         // Do something with snapshot...
     }
+
+    public IEnumerator LoadBestScoreRankingCoroutine2(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
+    {
+        bool success = false;
+        List<UserRankData> userRankDatas = new List<UserRankData>();
+
+        hideUI.SetActive(true);
+        database.Child(userScoreName).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            Debug.Log("bestScore is in");
+            if (task.IsFaulted || task.IsCanceled)
+            {
+                // Handle the error...
+                Debug.Log($"Firebase DataLoad Error. {task.Exception}");
+                success = false;
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log($"rankingLoad is Complete! {snapshot.GetRawJsonValue()}");
+                int i = 0;
+                foreach (DataSnapshot data in snapshot.Children)
+                {
+                    Debug.Log($"{data.GetRawJsonValue()}, {JsonUtility.ToJson((IDictionary)data.Value)}");
+                    Dictionary<string, int> snap = DictionaryJsonUtility.FromJson<string, int>(data.GetRawJsonValue());
+                    string userId = data.Key;
+                    LoadUser((loadData) =>
+                    {
+                        PlayerData playerData = JsonUtility.FromJson<PlayerData>(loadData);
+                        UserRankData rankData = new UserRankData()
+                        {
+                            userName = playerData.UserName,
+                            skinID = playerData.MonkeySkinId,
+                            bestScore = -1 * snap[mapid.ToString()],
+                            rank = 0
+                        };
+                        userRankDatas.Add(rankData);
+                        i++;
+                        if (i >= snapshot.ChildrenCount)
+                        {
+                            success = true;
+                        }
+                    },
+                    userId);
+                }
+            }
+        });
+
+        float time = 2f;
+        while (!success && time > 0)
+        {
+            yield return null;
+            time -= Time.deltaTime;
+        }
+        userRankDatas.Sort((a, b) => a.bestScore > b.bestScore ? -1 : 1);
+        int count = userRankDatas.Count > rowCount ? rowCount : userRankDatas.Count;
+        for (int i = 1; i <= count; i++)
+        {
+            userRankDatas[i-1].rank = i;
+        }
+        Debug.Log("RankLoad is Over");
+        hideUI.SetActive(false);
+        Debug.Log("Rank HideUI False");
+        onLoadedRankAction.Invoke(success, userRankDatas.GetRange(0, count));
+        // Do something with snapshot...
+    }
+
+}
+
+public class UserRankData
+{
+    public string userName;
+    public int skinID;
+    public long bestScore;
+    public int rank;
 
 }

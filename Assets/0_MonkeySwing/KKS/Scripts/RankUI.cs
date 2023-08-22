@@ -24,7 +24,7 @@ public class RankUI : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        GooglePlayManager.Instance.LoadBestScoreRankingArray(10,
+        GooglePlayManager.Instance.LoadBestScoreRankingArray2(10,
             (success, data) => { ShowRankScoreData(success,  data); }, mapid) ;
     }
 
@@ -34,7 +34,7 @@ public class RankUI : MonoBehaviour
         //Set My Rank Score
         PlayerData player = GameManagerEx.Instance.player;
         string userName = GooglePlayManager.Instance.LocalUser;
-        myRankItem.SetMyData(userName, GameManagerEx.Instance.scoreData.GetScore(mapid), GameManagerEx.Instance.player.MonkeySkinId, mapid);
+        myRankItem.SetMyData(userName, GameManagerEx.Instance.scoreData.GetScore(mapid), player.MonkeySkinId, mapid);
         if (success)
         {
             int i = 0;
