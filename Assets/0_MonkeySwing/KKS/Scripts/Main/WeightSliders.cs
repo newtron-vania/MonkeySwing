@@ -35,19 +35,19 @@ public class WeightSliders : MonoBehaviour
     public void SetValue(int value)
     {
         //특정 구간을 지날 때마다 사운드 추가
-        slideView.fillAmount = (value - 10) / 90f;
+        slideView.fillAmount = (value - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]) / (GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[3] - GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[0]);
         weightSlider.value = value;
         ChangeStates(value);
     }
 
     private void ChangeStates(int value)
     {
-        if (value <= 30)
+        if (value <= GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[1])
         {
             faceImg.sprite = FaceStyle[(int)Define.CharacterState.Hunger];
             slideView.sprite = slideColor[(int)ColorSlide.Blue];
         }
-        else if (value <= 80)
+        else if (value <= GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[2])
         {
             faceImg.sprite = FaceStyle[(int)Define.CharacterState.Normal];
             slideView.sprite = slideColor[(int)ColorSlide.Yellow];
@@ -65,7 +65,7 @@ public class WeightSliders : MonoBehaviour
     {
         monkey.weightEvent -= SetValue;
         monkey.weightEvent += SetValue;
-        monkey.weightEvent.Invoke(monkey.GetComponent<MonkeyStat>().Weight);
+        monkey.weightEvent.Invoke(monkey.Weight);
         Debug.Log("weight 이벤트 할당됨");
     }
 

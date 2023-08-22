@@ -59,7 +59,6 @@ public class MakeLines : MonoBehaviour
     {
         StartPosition = new Vector3(0, -10, 0);
         EndPosition = new Vector3(0, 10, 0);
-        LineSpeed = Managers.Data.GetSkin(GameManagerEx.Instance.player.MonkeySkinId).Speed;
         SetDictionary();
         SetWrPick(0);
         GameManagerEx.Instance.distance.distanceEvent -= AddWrPick;

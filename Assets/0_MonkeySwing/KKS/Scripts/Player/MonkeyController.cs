@@ -29,7 +29,7 @@ public class MonkeyController : MonoBehaviour
             healthEvent?.Invoke(health);
             if (health <= 0)
             {
-                GameManagerEx.Instance.GameOver();
+                skill.UseDeadSkill();
             }
         }
     }
@@ -40,6 +40,7 @@ public class MonkeyController : MonoBehaviour
     public float gravity = 1f;
     [SerializeField]
     private int weight;
+
     public int Weight
     {
         get { return weight; }
@@ -50,9 +51,9 @@ public class MonkeyController : MonoBehaviour
                 weightEvent.Invoke(weight);
             if (isDamaged)
                 return;
-            if (weight <= 30)
+            if (weight <= stat.WeightCut[1])
                 PlayerState = Define.CharacterState.Hunger;
-            else if (weight <= 80)
+            else if (weight <= stat.WeightCut[2])
                 PlayerState = Define.CharacterState.Normal;
             else
                 PlayerState = Define.CharacterState.Full;
@@ -92,6 +93,9 @@ public class MonkeyController : MonoBehaviour
         }
     }
 
+
+    BaseSkill skill;
+
     [SerializeField]
     private float damagedTime = 2f;
     private bool isDamaged = false;
@@ -101,16 +105,20 @@ public class MonkeyController : MonoBehaviour
 
     private void Awake()
     {
+        skill = Managers.Data.skillDict[GameManagerEx.Instance.player.MonkeySkinId];
+        skill.UseStartSkill();
+        GameManagerEx.Instance.distance.distanceEvent -= skill.UseTermSkill;
+        GameManagerEx.Instance.distance.distanceEvent += skill.UseTermSkill;
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         stat = GetComponent<MonkeyStat>();
+        
         SetMonkeyStat();
         StartCoroutine(LooseWeight());
     }
 
     public void SetMonkeyStat()
     {
-        stat.SetMonkeyStat();
         Health = stat.Hp;
         Weight = stat.Weight;
     }
@@ -165,7 +173,7 @@ public class MonkeyController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            if (Weight > 10)
+            if (Weight > stat.WeightCut[0])
                 Weight -= 1;
         }
 

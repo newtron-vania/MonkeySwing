@@ -41,7 +41,7 @@ public class HeartCount : MonoBehaviour
     {
         monkey.healthEvent -= SetHeart;
         monkey.healthEvent += SetHeart;
-        Heart = GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().Hp;
+        Heart = GameManagerEx.Instance.monkey.Health;
     }
 
     private void SetHeart(int health)

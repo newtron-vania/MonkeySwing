@@ -16,7 +16,7 @@ public class MagnetField : MonoBehaviour
     }
     private void SetItemStat()
     {
-        ItemDataSO itemStat = Managers.Data.GetItem("Magnet");
+        ItemDataSO itemStat = Managers.Data.itemDict["Magnet"];
         maxTTL = itemStat.time;
         transform.localScale = Vector3.one * itemStat.size;
     }
@@ -34,5 +34,6 @@ public class MagnetField : MonoBehaviour
     private void OnDestroy()
     {
         Debug.Log($"Destory in {time}");
+        ResetTime();
     }
 }

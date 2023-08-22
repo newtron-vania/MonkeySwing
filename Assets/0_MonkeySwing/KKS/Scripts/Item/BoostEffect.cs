@@ -15,7 +15,7 @@ public class BoostEffect : MonoBehaviour
     float curTime = 0f;
     private void SetItemStat()
     {
-        ItemDataSO itemStat = Managers.Data.GetItem("Booster");
+        ItemDataSO itemStat = Managers.Data.itemDict["Booster"];
         TTL = itemStat.time;
         boostForce = itemStat.value;
     }

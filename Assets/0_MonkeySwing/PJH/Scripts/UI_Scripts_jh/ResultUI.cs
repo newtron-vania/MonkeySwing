@@ -63,7 +63,7 @@ public class ResultUI : MonoBehaviour
 
     public void AddBanana()
     {
-        GameManagerEx.Instance.player.Money += BananaCount.bananacount;
+        GameManagerEx.Instance.player.Money += (int)BananaCount.bananacount;
         BananaCount.bananacount = 0;
     }
 

@@ -41,10 +41,13 @@ public class DataManager
     public List<SkinDataSO> SkindataList { get { return skindataList; } }
     private Dictionary<int, SkinDataSO> skinDict = new Dictionary<int, SkinDataSO>();
 
-    private void CreateSkinDict()
+
+    public void CreateSkinDict()
     {
         skindataList = new List<SkinDataSO>(Resources.LoadAll<SkinDataSO>("Prefabs/SkinSO"));
         skindataList.Sort((data1, data2) => data1.SkinId.CompareTo(data2.SkinId));
+
+
 
         foreach (SkinDataSO skindata in skindataList)
         {
@@ -62,9 +65,9 @@ public class DataManager
 
 
 
-    private Dictionary<string, ItemDataSO> itemDict = new Dictionary<string, ItemDataSO>();
+    public Dictionary<string, ItemDataSO> itemDict = new Dictionary<string, ItemDataSO>();
 
-    private void CreateItemDict()
+    public void CreateItemDict()
     {
         List<ItemDataSO> itemDataList = new List<ItemDataSO>(Resources.LoadAll<ItemDataSO>("Prefabs/ItemSO"));
         foreach(ItemDataSO item in itemDataList)
@@ -73,15 +76,23 @@ public class DataManager
         }
     }
 
-    public ItemDataSO GetItem(string itemName)
+    #endregion
+
+    #region Skill
+    public Dictionary<int, BaseSkill> skillDict = new Dictionary<int, BaseSkill>();
+
+    public void SetSkillDict()
     {
-        ItemDataSO item = null;
-        itemDict.TryGetValue(itemName, out item);
-        return item;
+        skillDict.Add(new BasicSkill().GetSkillId(), new BasicSkill());
+        skillDict.Add(new PinkSkill().GetSkillId(), new PinkSkill());
+        skillDict.Add(new YellowSkill().GetSkillId(), new YellowSkill());
+        skillDict.Add(new BlueSkill().GetSkillId(), new BlueSkill());
+        skillDict.Add(new MilkSkill().GetSkillId(), new MilkSkill());
+        skillDict.Add(new HeartSkill().GetSkillId(), new HeartSkill());
+        skillDict.Add(new CloudSkill().GetSkillId(), new CloudSkill());
     }
 
     #endregion
-
 
     #region medalCut
     public Dictionary<int, MedalCutline> medalCutDict = new Dictionary<int, MedalCutline>();
@@ -178,5 +189,6 @@ public class DataManager
         CreateItemDict();
         LoadMedalCutlines();
         LoadMedalPath();
+        SetSkillDict();
     }
 }

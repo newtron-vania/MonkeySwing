@@ -10,6 +10,7 @@ public class MainScene : BaseScene
     public Action<MonkeyController> monkeySetEvent;
     private void Start()
     {
+        Managers.Data.CreateItemDict();
         GameManagerEx.Instance.distance = GameObject.FindFirstObjectByType<Distance>();
         GameManagerEx.Instance.makeLines = GameObject.FindFirstObjectByType<MakeLines>();
         StartCoroutine(FindMonkey());

@@ -26,17 +26,7 @@ public class SkinDataSO : ScriptableObject
 
     private int cost;
     public int Cost { get { return cost; } }
-    [SerializeField]
-    private int hp;
-    public int Hp { get { return hp; } }
-    [SerializeField]
-    private int weight;
-    public int Weight { get { return weight; } }
-    [SerializeField]
-    private float speed;
-    public float Speed { get { return speed; } }
 
-    bool hasItemBuff;
-    bool hasBuff;
+
 
 }
