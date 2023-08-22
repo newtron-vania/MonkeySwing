@@ -9,9 +9,10 @@ public interface ILoader<Key, Value>
     Dictionary<Key, Value> MakeDict();
 }
 
+[Serializable]
 public class medalCutlines
 {
-    public List<MedalCutline> cutline;
+    public List<MedalCutline> medalcutlines;
 }
 
 [Serializable]
@@ -88,11 +89,17 @@ public class DataManager
     {
         TextAsset textAsset = Managers.Resource.Load<TextAsset>("Json/medalDatas");
 
-        medalCutlines medalCutlines = JsonUtility.FromJson<medalCutlines>(textAsset.text);
+        medalCutlines medalcutlines = JsonUtility.FromJson<medalCutlines>(textAsset.text);
+        Debug.Log(textAsset.text);
 
-        foreach(MedalCutline cutline in medalCutlines.cutline)
+        foreach(MedalCutline cutline in medalcutlines.medalcutlines)
         {
             medalCutDict[cutline.mapid] = cutline;
+            Debug.Log(cutline.mapid + " cutlines ");
+            foreach(int num in medalCutDict[cutline.mapid].cutline)
+            {
+                Debug.Log(num);
+            }
         }
     }
     #endregion
@@ -105,12 +112,19 @@ public class DataManager
         TextAsset textAsset = Managers.Resource.Load<TextAsset>("Json/Medals");
 
         medals medals = JsonUtility.FromJson<medals>(textAsset.text);
+        Debug.Log(textAsset.text);
 
         medalDict["bronze"] = medals.bronze;
         medalDict["silver"] = medals.silver;
         medalDict["gold"] = medals.gold;
         medalDict["platinum"] = medals.platinum;
         medalDict["diamond"] = medals.diamond;
+
+        Debug.Log("medals path dictionary");
+        foreach(var kv in medalDict)
+        {
+            Debug.Log($"{kv.Key} : {kv.Value}");
+        }
     }
 
 

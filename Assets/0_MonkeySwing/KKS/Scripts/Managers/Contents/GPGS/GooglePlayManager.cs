@@ -160,7 +160,7 @@ public class GooglePlayManager : MonoBehaviour
         {
             Debug.Log("SignInWithCredentialAsync start");
             database = FirebaseDatabase.DefaultInstance.RootReference;
-            hideUI.SetActive(false);
+            //hideUI.SetActive(false);
             if (task.IsCanceled)
             {
                 Debug.Log("SignInWithCredentialAsync was canceled!!");

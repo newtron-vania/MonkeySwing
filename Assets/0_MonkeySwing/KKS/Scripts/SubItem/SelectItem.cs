@@ -37,6 +37,7 @@ public class SelectItem : MonoBehaviour
         medalUI = FindObjectOfType<MedalUI>(true).transform;
 
         int score = GameManagerEx.Instance.scoreData.GetScore(mapID);
+        Debug.Log($"{mapID} score : {score}");
         medalImg.sprite = Managers.Resource.LoadSprite(Managers.Data.GetMedalSpritePath(score, mapID));
 
         scoreText.text = score.ToString();

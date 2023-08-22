@@ -26,7 +26,6 @@ public class PlayerData
     {
         if (username == string.Empty) username = GooglePlayManager.Instance.LocalUser;
         GooglePlayManager.Instance.SaveUser(JsonUtility.ToJson(GameManagerEx.Instance.player));
-        GooglePlayManager.Instance.SaveScore(DictionaryJsonUtility.ToJson(GameManagerEx.Instance.scoreData.BestScore, false));
     }
 
     public void LoadData()
