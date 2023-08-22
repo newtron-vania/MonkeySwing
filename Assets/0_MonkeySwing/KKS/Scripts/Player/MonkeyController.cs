@@ -121,6 +121,7 @@ public class MonkeyController : MonoBehaviour
     {
         Health = stat.Hp;
         Weight = stat.Weight;
+        GameManagerEx.Instance.makeLines.LineSpeed = stat.Speed;
     }
 
     // Update is called once per frame

@@ -308,7 +308,6 @@ public class GooglePlayManager_legacy2 : MonoBehaviour
     }
     public void LoadBestScoreRankingArray_Proto(int rowCount, Action<bool, List<UserRankData>> onLoadedRankAction = null, int mapid = 1)
     {
-        bool isProcessing = false;
         hideUI.SetActive(true);
         database.Child(userScoreName).OrderByChild(mapid.ToString()).LimitToFirst(rowCount).GetValueAsync().ContinueWithOnMainThread(task =>
         {
