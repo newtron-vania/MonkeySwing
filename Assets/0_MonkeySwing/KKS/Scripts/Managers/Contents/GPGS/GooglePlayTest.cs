@@ -77,5 +77,14 @@ public class GooglePlayTest : MonoBehaviour
             );
         }
         y += 100;
+        if (GUI.Button(new Rect(x, y, 150/2, 100), "ShowIntertitalAd"))
+        {
+
+            AdsInitializer.Instance.ShowIntertitalAd();
+        }
+        if (GUI.Button(new Rect(150/2, y, 150, 100), "ShowRewardAd"))
+        {
+            AdsInitializer.Instance.ShowRewardAd();
+        }
     }
 }

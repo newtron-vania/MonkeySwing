@@ -56,7 +56,7 @@ public class RewardAds : IUnityAdsLoadListener, IUnityAdsShowListener
     {
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            rewardEvent.Invoke();
+            rewardEvent?.Invoke();
             LoadAd();
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.

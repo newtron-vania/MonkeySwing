@@ -28,6 +28,10 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         InitializeAds();
     }
 
+    private void Update()
+    {
+        intertitalAds.OnUpdate();
+    }
 
     static void Init()
     {
@@ -44,7 +48,7 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         }
     }
 
-    public void ShowRewardAd(Action rewardAction)
+    public void ShowRewardAd(Action rewardAction = null)
     {
         rewardAds.ShowAd(rewardAction);
     }
@@ -66,7 +70,10 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         if (!Advertisement.isInitialized && Advertisement.isSupported)
         {
             Advertisement.Initialize(_gameId, _testMode, this);
+            Debug.Log($"android game Id : {instance._gameId}");
+            Debug.Log($"Test Mode : {instance._testMode}");
         }
+        
     }
 
 

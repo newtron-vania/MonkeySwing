@@ -56,7 +56,7 @@ public class IntertitalAds : IUnityAdsLoadListener, IUnityAdsShowListener
         }
         else
         {
-            intertitialEvent.Invoke();
+            intertitialEvent?.Invoke();
         }
         
     }
@@ -83,7 +83,7 @@ public class IntertitalAds : IUnityAdsLoadListener, IUnityAdsShowListener
     public void OnUnityAdsShowClick(string _adUnitId) { }
     public void OnUnityAdsShowComplete(string _adUnitId, UnityAdsShowCompletionState showCompletionState) 
     {
-        intertitialEvent.Invoke();
+        intertitialEvent?.Invoke();
         LoadAd();
         time = 0f;
         count = 0;
