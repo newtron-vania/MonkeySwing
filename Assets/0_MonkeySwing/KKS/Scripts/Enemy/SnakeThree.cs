@@ -22,6 +22,7 @@ public class SnakeThree : MonoBehaviour
 
     private Vector3 dirVec;
 
+    public bool testing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,8 @@ public class SnakeThree : MonoBehaviour
 
         dirVec = transform.parent.localScale;
 
+        if (testing)
+            return;
         GameManagerEx.Instance.makeLines.lineSpeedAction -= SetAnimeSpeed;
         GameManagerEx.Instance.makeLines.lineSpeedAction += SetAnimeSpeed;
     }
@@ -57,7 +60,7 @@ public class SnakeThree : MonoBehaviour
     {
         //
         Vector3 movePos = targetDir.position - SnakeModel.position;
-        segmentPoses[0] = new Vector3(movePos.x * dirVec.x, movePos.y * dirVec.y, 0f);
+        segmentPoses[0] =  new Vector3(movePos.x * dirVec.x, movePos.y * dirVec.y, 0f);
         float dir = (segmentPoses[0] - segmentPoses[1]).magnitude;
         if (dir < targetDist)
             return;
