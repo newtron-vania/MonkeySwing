@@ -34,11 +34,11 @@ public class InputManager
             {
                 if (!_pressed)
                 {
-                    Debug.Log("Touch Began");
+                    //Debug.Log("Touch Began");
                     TouchAction.Invoke(Define.TouchEvent.Began);
                     _pressedTime = Time.time;
                 }
-                Debug.Log("Touch Moved");
+                //Debug.Log("Touch Moved");
                 TouchAction.Invoke(Define.TouchEvent.Moved);
                 _pressed = true;
             }
