@@ -216,9 +216,9 @@ public class ShopSkinManager : Singleton<ShopSkinManager>
     {
         switch (currentSlot.MonkeyRarelity) 
         {
-            case (Define.Rarelity.Normal): return 1000;
-            case (Define.Rarelity.Rare): return 3000;
-            case (Define.Rarelity.Epic): return 5000;
+            case (Define.Rarelity.Normal): return 1200;
+            case (Define.Rarelity.Rare): return 1700;
+            case (Define.Rarelity.Epic): return 3000;
             default: return 0;
         }
     }
