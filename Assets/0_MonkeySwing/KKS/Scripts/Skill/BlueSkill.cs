@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueSkill : MonoBehaviour, BaseSkill
+public class BlueSkill :  BaseSkill
 {
     public int GetSkillId()
     {

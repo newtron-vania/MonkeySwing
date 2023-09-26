@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MilkSkill : MonoBehaviour, BaseSkill
+public class MilkSkill :  BaseSkill
 {
     public int GetSkillId()
     {

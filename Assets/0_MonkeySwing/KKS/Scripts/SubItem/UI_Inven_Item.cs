@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class UI_Inven_Item : UI_Base
 {
 
-    string _name;
+    private string _name;
     enum GameObjects
     {
         ItemIcon,

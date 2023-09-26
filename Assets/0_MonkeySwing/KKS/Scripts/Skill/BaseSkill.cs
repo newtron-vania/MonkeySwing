@@ -20,5 +20,4 @@ public interface BaseSkill
 
     public abstract void UseDeadSkill();
 
-
 }

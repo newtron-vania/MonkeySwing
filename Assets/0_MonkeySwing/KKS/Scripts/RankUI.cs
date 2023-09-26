@@ -5,19 +5,19 @@ using TMPro;
 
 public class RankUI : MonoBehaviour
 {
-    public int mapid = 1;
+    public int _mapid = 1;
 
     [SerializeField]
-    RankItemController myRankItem;
+    private RankItemController _myRankItem;
 
     [SerializeField]
-    private int myRankNum;
+    private int _myRankNum;
 
     [SerializeField]
-    GameObject[] rankItems;
+    private GameObject[] _rankItems;
 
     [SerializeField]
-    TextMeshProUGUI errorText;
+    private TextMeshProUGUI _errorText;
 
     
 
@@ -25,7 +25,7 @@ public class RankUI : MonoBehaviour
     void OnEnable()
     {
         GooglePlayManager.Instance.LoadBestScoreRankingArray2(10,
-            (success, data) => { ShowRankScoreData(success,  data); }, mapid) ;
+            (success, data) => { ShowRankScoreData(success,  data); }, _mapid) ;
     }
 
 
@@ -34,29 +34,29 @@ public class RankUI : MonoBehaviour
         //Set My Rank Score
         PlayerData player = GameManagerEx.Instance.player;
         string userName = GooglePlayManager.Instance.LocalUser;
-        myRankItem.SetMyData(userName, GameManagerEx.Instance.scoreData.GetScore(mapid), player.MonkeySkinId, mapid);
+        _myRankItem.SetMyData(userName, GameManagerEx.Instance.scoreData.GetScore(_mapid), player.MonkeySkinId, _mapid);
         if (success)
         {
             int i = 0;
             foreach(var score in data)
             {
-                rankItems[i].SetActive(true);
-                RankItemController rankItem = rankItems[i].GetComponent<RankItemController>();
-                rankItem.SetData(score, score.userName == userName, mapid);
+                _rankItems[i].SetActive(true);
+                RankItemController rankItem = _rankItems[i].GetComponent<RankItemController>();
+                rankItem.SetData(score, score.userName == userName, _mapid);
                 i++;
             }
         }
         else
         {
-            errorText.gameObject.SetActive(true);
+            _errorText.gameObject.SetActive(true);
         }
     }
 
     public void ClearRank()
     {
-        foreach (GameObject item in rankItems)
+        foreach (GameObject item in _rankItems)
             item.SetActive(false);
-        errorText.gameObject.SetActive(false);
+        _errorText.gameObject.SetActive(false);
     }
 
     public void OnClickClose()

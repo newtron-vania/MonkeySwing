@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudSkill : MonoBehaviour, BaseSkill
+public class CloudSkill :  BaseSkill
 {
     public int GetSkillId()
     {
@@ -15,7 +15,16 @@ public class CloudSkill : MonoBehaviour, BaseSkill
 
     public void UseStartSkill()
     {
-        GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[3] = 120;
+        if (GameManagerEx.Instance.monkey == null)
+        {
+            GameObject.FindAnyObjectByType<MainScene>().monkeySetEvent += (monkey) =>
+            {
+                monkey.GetComponent<MonkeyStat>().WeightCut[3] = 120;
+                monkey.SetMonkeyStat();
+            };
+        }
+        else
+            GameManagerEx.Instance.monkey.GetComponent<MonkeyStat>().WeightCut[3] = 120;
     }
 
     public void UseTermSkill(int score)

@@ -6,9 +6,9 @@ using UnityEngine.Rendering;
 public class CameraResolution : MonoBehaviour
 {
     [SerializeField]
-    Camera MainCamera;
+    private Camera _mainCamera;
     [SerializeField]
-    private Camera AfterRenderingCamera;
+    private Camera _afterRenderingCamera;
 
     private void Start()
     {
@@ -19,13 +19,13 @@ public class CameraResolution : MonoBehaviour
 
     private void FindCamera()
     {
-        if (MainCamera == null || AfterRenderingCamera == null)
+        if (_mainCamera == null || _afterRenderingCamera == null)
         {
-            MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-            AfterRenderingCamera = GameObject.FindWithTag("AfterRenderingTag").GetComponent<Camera>();
+            _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+            _afterRenderingCamera = GameObject.FindWithTag("AfterRenderingTag").GetComponent<Camera>();
         }
-        Object.DontDestroyOnLoad(MainCamera);
-        Object.DontDestroyOnLoad(AfterRenderingCamera);
+        Object.DontDestroyOnLoad(_mainCamera);
+        Object.DontDestroyOnLoad(_afterRenderingCamera);
     }
     /* ?댁긽???ㅼ젙?섎뒗 ?⑥닔 */
     public void SetResolution()
@@ -43,13 +43,13 @@ public class CameraResolution : MonoBehaviour
         {
             Debug.Log("湲곌린???댁긽?꾧? ???믪쓬!");
             float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // ?덈줈???덈퉬
-            MainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // ?덈줈??Rect ?곸슜
+            _mainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // ?덈줈??Rect ?곸슜
         }
         else // 寃뚯엫???댁긽??鍮꾧? ????寃쎌슦
         {
             Debug.Log("寃뚯엫???댁긽?꾧? ???믪쓬!");
             float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // ?덈줈???믪씠
-            MainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // ?덈줈??Rect ?곸슜
+            _mainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // ?덈줈??Rect ?곸슜
         }
 
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_endCameraRendering;

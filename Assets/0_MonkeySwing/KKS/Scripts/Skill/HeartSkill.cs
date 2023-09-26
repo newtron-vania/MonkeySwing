@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartSkill : MonoBehaviour, BaseSkill
+public class HeartSkill : BaseSkill
 {
     private int resurrectionCount = 1;
     public int GetSkillId()

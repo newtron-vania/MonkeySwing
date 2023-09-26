@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class MedalUI : MonoBehaviour
 {
-    public int mapid;
+    public int _mapid;
 
     [SerializeField]
-    List<TextMeshProUGUI> medalText;
+    private List<TextMeshProUGUI> _medalText;
 
     void OnEnable()
     {
-        List<int> cutlines = Managers.Data.medalCutDict[mapid].cutline;
+        List<int> cutlines = Managers.Data.medalCutDict[_mapid].cutline;
         for(int i = 1; i <cutlines.Count; i++)
         {
-            medalText[i].text = cutlines[i].ToString();
+            _medalText[i].text = cutlines[i-1].ToString();
         }
     }
 }

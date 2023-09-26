@@ -5,7 +5,7 @@ using UnityEngine;
 public class RessuructionItem : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Update()
+    private void Update()
     {
         GameManagerEx.Instance.GameStop();
     }

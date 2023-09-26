@@ -56,14 +56,14 @@ public class SelectItem : MonoBehaviour
 
     private void ShowRankUI()
     {
-        rankUI.GetComponent<RankUI>().mapid = mapID;
+        rankUI.GetComponent<RankUI>()._mapid = mapID;
         rankUI.gameObject.SetActive(true);
     }
 
     private void ShowMedals()
     {
         //Show MedalUI with ID
-        medalUI.GetComponent<MedalUI>().mapid = mapID;
+        medalUI.GetComponent<MedalUI>()._mapid = mapID;
         medalUI.gameObject.SetActive(true);
     }
 }

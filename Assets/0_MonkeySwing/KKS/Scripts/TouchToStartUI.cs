@@ -5,9 +5,9 @@ using UnityEngine;
 public class TouchToStartUI : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer monkeyBody;
+    private SpriteRenderer _monkeyBody;
     [SerializeField]
-    SpriteRenderer monkeyTale;
+    private SpriteRenderer _monkeyTale;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +21,6 @@ public class TouchToStartUI : MonoBehaviour
         {
             GameManagerEx.Instance.player.LoadData();
             //Test with PlayerData
-            GameManagerEx.Instance.player.Money = 10000; // TEST용 이거 지우기
-            GameManagerEx.Instance.currentCoin = 10000; // TEST용 이거 지우기
             GameManagerEx.Instance.isPlaying = true;
         }
     }

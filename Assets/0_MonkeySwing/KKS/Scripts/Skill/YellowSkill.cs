@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowSkill : MonoBehaviour, BaseSkill
+public class YellowSkill :  BaseSkill
 {
     public int GetSkillId()
     {
@@ -22,12 +22,12 @@ public class YellowSkill : MonoBehaviour, BaseSkill
     {
         if(score % 100 == 0)
         {
-            FindItem();
+            GetItem();
         }
     }
 
 
-    private void FindItem()
+    private void GetItem()
     {
         GameObject go = null;
         if (GameObject.FindAnyObjectByType<BananaUp>())

@@ -5,20 +5,19 @@ using TMPro;
 using AssetKits.ParticleImage;
 public class PlayerCoinText : MonoBehaviour
 {
-    TextMeshProUGUI BananaCounttext;
+    private TextMeshProUGUI _bananaCounttext;
     [SerializeField]
-    ParticleImage particle;
+    private ParticleImage _particle;
 
-    private int diff;
 
     private void Start()
     {
-        BananaCounttext = GetComponent<TextMeshProUGUI>();
+        _bananaCounttext = GetComponent<TextMeshProUGUI>();
         StartParticle();
     }
     private void Update()
     {
-        BananaCounttext.text = GameManagerEx.Instance.currentCoin.ToString();
+        _bananaCounttext.text = GameManagerEx.Instance.currentCoin.ToString();
     }
 
     private void StartParticle()
@@ -31,9 +30,9 @@ public class PlayerCoinText : MonoBehaviour
     {
         yield return null;
         Debug.Log("coin get start");
-        particle.rateOverTime = Mathf.Min((GameManagerEx.Instance.player.Money - GameManagerEx.Instance.currentCoin) * 2, 50*10);
-        particle.gameObject.SetActive(true);
-        particle.Play();
+        _particle.rateOverTime = Mathf.Min((GameManagerEx.Instance.player.Money - GameManagerEx.Instance.currentCoin) * 2, 50*10);
+        _particle.gameObject.SetActive(true);
+        _particle.Play();
     }
 
     public void ParticleOnEvent()
@@ -44,6 +43,6 @@ public class PlayerCoinText : MonoBehaviour
     public void ParticleFinishEvent()
     {
         GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.Money;
-        particle.gameObject.SetActive(false);
+        _particle.gameObject.SetActive(false);
     }
 }
