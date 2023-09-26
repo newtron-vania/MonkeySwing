@@ -22,13 +22,13 @@ public class Slot : MonoBehaviour
 
     public void PreviewButtonClick()
     {
-        ShopManager.instance.currentSlot = this;
-        ShopManager.instance.PreviewChange();
+        ShopSkinManager.instance.currentSlot = this;
+        ShopSkinManager.instance.PreviewChange();
     }
 
     public void SlotStateButtonClick()
     {
         PreviewButtonClick();
-        ShopManager.instance.SlotStateChange(MonkeyId);
+        ShopSkinManager.instance.SlotStateChange();
     }
 }
