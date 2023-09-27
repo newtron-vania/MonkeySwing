@@ -6,6 +6,8 @@ public class GooglePlayTest : MonoBehaviour
 {
     [SerializeField]
     bool isUnscaled;
+
+    PlayerData player;
     private void Update()
     {
         if (isUnscaled)
@@ -24,15 +26,24 @@ public class GooglePlayTest : MonoBehaviour
         }
         y += 100;
 
-        if (GUI.Button(new Rect(x, y, 150, 100), "LoadUser"))
+        if (GUI.Button(new Rect(x, y, 150/2, 100), "LoadUser"))
         {
             GooglePlayManager.Instance.LoadUser(loadData =>
             {
-                PlayerData player = JsonUtility.FromJson<PlayerData>(loadData);
-                Debug.Log($"userName : {player.UserName}\n currentskinid : {player.MonkeySkinId} \n money : {player.Money}");
+                player = JsonUtility.FromJson<PlayerData>(loadData);
+                player.ShowPlayerData();
             },
             "Dx4C0mjiQmWChtba22EoJFHrX6z1"
             );
+        }
+        
+        if(GUI.Button(new Rect(150/2, y, 150, 100), "SaveUser"))
+        {
+            player.SetItem(Item.Booster, 3);
+            player.SetItem(Item.Booster, 2);
+            string jsonPlayer = JsonUtility.ToJson(player);
+            
+            GooglePlayManager.Instance.SaveUser("Dx4C0mjiQmWChtba22EoJFHrX6z1", jsonPlayer);
         }
         y += 100;
         if (GUI.Button(new Rect(x, y, 150, 100), "LoadScore"))

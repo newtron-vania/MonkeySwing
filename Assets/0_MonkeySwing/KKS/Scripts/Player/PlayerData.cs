@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerData
 {
@@ -13,14 +14,44 @@ public class PlayerData
 
     public int Money { get { return money; } set { money = value; SetData(); if (GameManagerEx.Instance.currentCoin > money) GameManagerEx.Instance.currentCoin = money; } }
     [SerializeField]
-    int currentSkinId = 0;
+    private int currentSkinId = 0;
     public int MonkeySkinId { get { return currentSkinId; } set { currentSkinId = value; SetData(); } }
     [SerializeField]
-    List<int> collectedSkinId = new List<int>() { 0 };
+    private List<int> collectedSkinId = new List<int>() { 0 };
     [SerializeField]
-    int bestScore = 0;
+    private int bestScore = 0;
     public int BestScore { get { return -1 * bestScore; } set { bestScore = -1 * value; SetData(); } }
 
+    [SerializeField]
+    private int[] itemArr = new int[4];
+
+    public bool HasItem(Item item)
+    {
+        Debug.Log($"{item.ToString()} count : {itemArr[(int)item]} | Has : {itemArr[(int)item] > 0}");
+        return itemArr[(int)item] > 0;
+    }
+    public int GetItem(Item item)
+    {
+        return itemArr[(int)item];
+    }
+
+    public void SetItem(Item item, int value)
+    {
+        if (value < 0)
+            value = 0;
+        itemArr[(int)item] = value;
+    }
+
+    public bool UseItem(Item item)
+    {
+        int itemId = (int)item;
+        if(itemArr[itemId] > 0)
+        {
+            itemArr[itemId] -= 1;
+            return true;
+        }
+        return false;
+    }
 
     private void SetData()
     {
@@ -34,8 +65,6 @@ public class PlayerData
             (data) => 
             { 
             GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money;
-                //Test
-                GameManagerEx.Instance.player.Money = 10000; // TEST용 이거 지우기
             },
             (data) =>
             {
@@ -56,5 +85,14 @@ public class PlayerData
     public List<int> GetSkinIds()
     {
         return collectedSkinId;
+    }
+
+    public void ShowPlayerData()
+    {
+        Debug.Log($"userName : {UserName}\n currentskinid : {MonkeySkinId} \n money : {Money}");
+        foreach(Item item in Enum.GetValues(typeof(Item)))
+        {
+            Debug.Log($"{item.ToString()} count : {itemArr[(int)item]} | Has : {itemArr[(int)item] > 0}");
+        }
     }
 }

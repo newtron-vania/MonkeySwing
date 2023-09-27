@@ -22,7 +22,7 @@ public class CameraResolution : MonoBehaviour
         if (_mainCamera == null || _afterRenderingCamera == null)
         {
             _mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-            _afterRenderingCamera = GameObject.FindWithTag("AfterRenderingTag").GetComponent<Camera>();
+            _afterRenderingCamera = GameObject.FindWithTag("AfterRenderingCamera").GetComponent<Camera>();
         }
         Object.DontDestroyOnLoad(_mainCamera);
         Object.DontDestroyOnLoad(_afterRenderingCamera);
@@ -31,25 +31,23 @@ public class CameraResolution : MonoBehaviour
     public void SetResolution()
     {
         
-        int setWidth = 1080; // ?ъ슜???ㅼ젙 ?덈퉬
-        int setHeight = 1920; // ?ъ슜???ㅼ젙 ?믪씠
+        int setWidth = 1080; 
+        int setHeight = 1920; 
 
-        int deviceWidth = Screen.width; // 湲곌린 ?덈퉬 ???
-        int deviceHeight = Screen.height; // 湲곌린 ?믪씠 ???
+        int deviceWidth = Screen.width;
+        int deviceHeight = Screen.height; 
 
-        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); // SetResolution ?⑥닔 ?쒕?濡??ъ슜?섍린
+        Screen.SetResolution(setWidth, (int)(((float)deviceHeight / deviceWidth) * setWidth), true); 
 
-        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) // 湲곌린???댁긽??鍮꾧? ????寃쎌슦
+        if ((float)setWidth / setHeight < (float)deviceWidth / deviceHeight) 
         {
-            Debug.Log("湲곌린???댁긽?꾧? ???믪쓬!");
-            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight); // ?덈줈???덈퉬
-            _mainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f); // ?덈줈??Rect ?곸슜
+            float newWidth = ((float)setWidth / setHeight) / ((float)deviceWidth / deviceHeight);
+            _mainCamera.rect = new Rect((1f - newWidth) / 2f, 0f, newWidth, 1f);
         }
-        else // 寃뚯엫???댁긽??鍮꾧? ????寃쎌슦
+        else 
         {
-            Debug.Log("寃뚯엫???댁긽?꾧? ???믪쓬!");
-            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // ?덈줈???믪씠
-            _mainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // ?덈줈??Rect ?곸슜
+            float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); 
+            _mainCamera.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); 
         }
 
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_endCameraRendering;

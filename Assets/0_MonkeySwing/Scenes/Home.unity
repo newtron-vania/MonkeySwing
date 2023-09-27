@@ -2066,8 +2066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaac7fbf0511d1547b287925a623ef47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 1981369094}
-  AfterRenderingCamera: {fileID: 1187835706}
+  _mainCamera: {fileID: 0}
+  _afterRenderingCamera: {fileID: 0}
 --- !u!1 &2077298404 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6988007130672630518, guid: 40a3edf2b1e8b2244a900b91178aa3ba, type: 3}
@@ -2534,7 +2534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6180482699058995481, guid: 7a740fcb87934ad44b1297c9a7fd67b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6180482699058995482, guid: 7a740fcb87934ad44b1297c9a7fd67b1, type: 3}
       propertyPath: m_Pivot.x

@@ -261,7 +261,35 @@ public class GooglePlayManager : MonoBehaviour
             Login(() => SaveUser(dataToSave));
         }
     }
+    public void SaveUser(string tokenid, string dataToSave)
+    {
+        if (isAuthenticated || database != null)
+        {
+            loadedData = dataToSave;
+            loadedData = Regex.Unescape(loadedData);
+            Debug.Log("loadedData");
+            isProcessing = true;
 
+            database.Child(userDataName).Child(tokenid).SetRawJsonValueAsync(loadedData).ContinueWithOnMainThread(task =>
+            {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Debug.Log("Firebase Save Error!");
+                    Debug.Log(task.Exception.ToString());
+                }
+                else if (task.IsCompleted)
+                {
+                    Debug.Log("Firebase Save Complete");
+                    Debug.Log(loadedData);
+                }
+                isProcessing = false;
+            });
+        }
+        else
+        {
+            Login(() => SaveUser(dataToSave));
+        }
+    }
 
     public void LoadScore(Action<string> callback, string id = null)
     {
