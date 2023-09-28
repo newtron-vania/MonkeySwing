@@ -25,24 +25,24 @@ public class PlayerData
     [SerializeField]
     private int[] itemArr = new int[4];
 
-    public bool HasItem(Item item)
+    public bool HasItem(Define.Items item)
     {
         Debug.Log($"{item.ToString()} count : {itemArr[(int)item]} | Has : {itemArr[(int)item] > 0}");
         return itemArr[(int)item] > 0;
     }
-    public int GetItem(Item item)
+    public int GetItem(Define.Items item)
     {
         return itemArr[(int)item];
     }
 
-    public void SetItem(Item item, int value)
+    public void SetItem(Define.Items item, int value)
     {
         if (value < 0)
             value = 0;
         itemArr[(int)item] = value;
     }
 
-    public bool UseItem(Item item)
+    public bool UseItem(Define.Items item)
     {
         int itemId = (int)item;
         if(itemArr[itemId] > 0)
@@ -90,7 +90,7 @@ public class PlayerData
     public void ShowPlayerData()
     {
         Debug.Log($"userName : {UserName}\n currentskinid : {MonkeySkinId} \n money : {Money}");
-        foreach(Item item in Enum.GetValues(typeof(Item)))
+        foreach(Define.Items item in Enum.GetValues(typeof(Define.Items)))
         {
             Debug.Log($"{item.ToString()} count : {itemArr[(int)item]} | Has : {itemArr[(int)item] > 0}");
         }

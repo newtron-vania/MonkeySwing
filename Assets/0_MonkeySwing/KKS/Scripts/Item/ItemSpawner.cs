@@ -24,10 +24,7 @@ public class ItemSpawner : MonoBehaviour
             return;
         }
 
-        int itemNum = (int)RandomItem();
-        if (itemNum >= (int)Define.Items.Count)
-            return;
-
+        Define.Items item = GameManagerEx.Instance.itemManager.SpawnItem();
         Collider2D[] goes = Physics2D.OverlapCircleAll(this.transform.position, 0.5f);
         foreach(Collider2D collision in goes)
         {
@@ -37,20 +34,7 @@ public class ItemSpawner : MonoBehaviour
             }
         }
 
-        GameObject item = items[itemNum];
-        Managers.Resource.Instantiate(item, this.transform.position, transform.parent);
-    }
-
-    Define.Items RandomItem()
-    {
-        float rand = Random.Range(0, 1f) * 100;
-        if (rand < 8)
-            return Define.Items.CaloryBanana;
-        else if (rand < 9)
-            return Define.Items.Boost;
-        else if (rand <= 11)
-            return Define.Items.Magnet;
-        else
-            return Define.Items.None;
+        GameObject itemObj = items[(int)item];
+        Managers.Resource.Instantiate(itemObj, this.transform.position, transform.parent);
     }
 }

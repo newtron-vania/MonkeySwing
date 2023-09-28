@@ -94,7 +94,7 @@ public class DataManager
 
     #endregion
 
-    #region medalCut
+    #region MedalCut
     public Dictionary<int, MedalCutline> medalCutDict = new Dictionary<int, MedalCutline>();
     public void LoadMedalCutlines()
     {

@@ -39,8 +39,8 @@ public class GooglePlayTest : MonoBehaviour
         
         if(GUI.Button(new Rect(150/2, y, 150, 100), "SaveUser"))
         {
-            player.SetItem(Item.Booster, 3);
-            player.SetItem(Item.Booster, 2);
+            player.SetItem(Define.Items.Boost, 3);
+            player.SetItem(Define.Items.Boost, 2);
             string jsonPlayer = JsonUtility.ToJson(player);
             
             GooglePlayManager.Instance.SaveUser("Dx4C0mjiQmWChtba22EoJFHrX6z1", jsonPlayer);

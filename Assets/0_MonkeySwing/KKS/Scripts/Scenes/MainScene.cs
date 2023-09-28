@@ -23,6 +23,9 @@ public class MainScene : BaseScene
         GameManagerEx.Instance.makeLines = makeline;
         StartCoroutine(FindMonkey());
         BananaCount.bananacount = 0;
+
+        GameManagerEx.Instance.itemManager.Init();
+
         GameManagerEx.Instance.GameStart();
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }

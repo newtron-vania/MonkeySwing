@@ -15,6 +15,7 @@ public class GameManagerEx
     public Distance distance;
     public MonkeyController monkey;
     public BananaCount banana;
+    public ItemManager itemManager = new ItemManager();
 
     public bool isPlaying = false;
 
@@ -31,7 +32,6 @@ public class GameManagerEx
             g_instance.player = new PlayerData();
             g_instance.scoreData = new ScoreData();
             g_instance.currentCoin = g_instance.player.Money;
-            Debug.Log($"g_instance.player : { g_instance.player.Money}");
         }
     }
 
