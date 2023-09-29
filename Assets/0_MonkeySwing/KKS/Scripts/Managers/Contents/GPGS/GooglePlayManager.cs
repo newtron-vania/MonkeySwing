@@ -115,6 +115,8 @@ public class GooglePlayManager : MonoBehaviour
             if (!success)
             {
                 Debug.Log("Fail Login");
+                GameManagerEx.Instance.player = new PlayerData();
+                hideUI.SetActive(false);
             }
             else
             {

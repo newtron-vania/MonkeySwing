@@ -45,6 +45,8 @@ public class PlayerData
     public bool UseItem(Define.Items item)
     {
         int itemId = (int)item;
+        if (itemId > (int)Define.Items.Count)
+            return false;
         if(itemArr[itemId] > 0)
         {
             itemArr[itemId] -= 1;

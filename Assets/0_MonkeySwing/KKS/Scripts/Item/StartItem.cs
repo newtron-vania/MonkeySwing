@@ -5,10 +5,18 @@ using UnityEngine;
 public class StartItem : MonoBehaviour
 {
     Dictionary<string, ItemDataSO> item;
+    private bool testing = true;
 
     public void Init()
     {
         item = Managers.Data.itemDict;
+        if (testing)
+        {
+            GameManagerEx.Instance.player.SetItem(Define.Items.CaloryBanana, 1);
+            GameManagerEx.Instance.player.SetItem(Define.Items.Boost, 1);
+            GameManagerEx.Instance.player.SetItem(Define.Items.Magnet, 1);
+        }
+            
         SetItemEvent();
     }
 
