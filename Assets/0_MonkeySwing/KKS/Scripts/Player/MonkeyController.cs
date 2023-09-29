@@ -105,7 +105,7 @@ public class MonkeyController : MonoBehaviour
 
     private void Start()
     {
-        skill = Managers.Data.skillDict[GameManagerEx.Instance.player.MonkeySkinId];
+        skill = Managers.Data.GetSkill(GameManagerEx.Instance.player.MonkeySkinId);
         rigid = GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
         stat = GetComponent<MonkeyStat>();

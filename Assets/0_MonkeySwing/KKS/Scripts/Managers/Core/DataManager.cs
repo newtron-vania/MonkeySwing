@@ -79,17 +79,28 @@ public class DataManager
     #endregion
 
     #region Skill
-    public Dictionary<int, BaseSkill> skillDict = new Dictionary<int, BaseSkill>();
-
+    private Dictionary<int, BaseSkill> _skillDict = new Dictionary<int, BaseSkill>();
+    Dictionary<int, BaseSkill> _skillCopy;
     public void SetSkillDict()
     {
-        skillDict.Add(new BasicSkill().GetSkillId(), new BasicSkill());
-        skillDict.Add(new PinkSkill().GetSkillId(), new PinkSkill());
-        skillDict.Add(new YellowSkill().GetSkillId(), new YellowSkill());
-        skillDict.Add(new BlueSkill().GetSkillId(), new BlueSkill());
-        skillDict.Add(new MilkSkill().GetSkillId(), new MilkSkill());
-        skillDict.Add(new HeartSkill().GetSkillId(), new HeartSkill());
-        skillDict.Add(new CloudSkill().GetSkillId(), new CloudSkill());
+        _skillDict.Add(new BasicSkill().GetSkillId(), new BasicSkill());
+        _skillDict.Add(new PinkSkill().GetSkillId(), new PinkSkill());
+        _skillDict.Add(new YellowSkill().GetSkillId(), new YellowSkill());
+        _skillDict.Add(new BlueSkill().GetSkillId(), new BlueSkill());
+        _skillDict.Add(new MilkSkill().GetSkillId(), new MilkSkill());
+        _skillDict.Add(new HeartSkill().GetSkillId(), new HeartSkill());
+        _skillDict.Add(new CloudSkill().GetSkillId(), new CloudSkill());
+    }
+
+    public void ClearSkillDict()
+    {
+        Dictionary<int, BaseSkill> _skillCopy = new Dictionary<int, BaseSkill>(_skillDict);
+    }
+
+    public BaseSkill GetSkill(int skillId)
+    {
+        ClearSkillDict();
+        return _skillCopy[skillId];
     }
 
     #endregion
@@ -190,5 +201,6 @@ public class DataManager
         LoadMedalCutlines();
         LoadMedalPath();
         SetSkillDict();
+        ClearSkillDict();
     }
 }
