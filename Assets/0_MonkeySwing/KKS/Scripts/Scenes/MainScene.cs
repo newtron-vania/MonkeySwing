@@ -19,6 +19,7 @@ public class MainScene : BaseScene
         GameManagerEx.Instance.distance = distance;
         GameManagerEx.Instance.distance.distanceEvent -= StartDistanceEvent;
         GameManagerEx.Instance.distance.distanceEvent += StartDistanceEvent;
+        
 
         GameManagerEx.Instance.makeLines = makeline;
         StartCoroutine(FindMonkey());
@@ -29,6 +30,7 @@ public class MainScene : BaseScene
         GameManagerEx.Instance.GameStart();
         Managers.Sound.Play("MainBGM", Define.Sound.Bgm);
     }
+
     public void StartDistanceEvent(int score)
     {
         distanceSetEvent.Invoke(score);
@@ -49,6 +51,8 @@ public class MainScene : BaseScene
         }
         GameManagerEx.Instance.monkey = GameObject.FindWithTag("Monkey").GetComponent<MonkeyController>();
         monkeySetEvent.Invoke(GameManagerEx.Instance.monkey);
+
+        transform.GetComponent<StartItem>().Init();
         //Debug.Log($"{this.transform.name} find {monkey.transform.name}");
     }
 }

@@ -53,6 +53,7 @@ public class PlayerData
         return false;
     }
 
+
     private void SetData()
     {
         if (username == string.Empty) username = GooglePlayManager.Instance.LocalUser;

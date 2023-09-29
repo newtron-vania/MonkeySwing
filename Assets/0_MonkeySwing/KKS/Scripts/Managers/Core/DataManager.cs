@@ -160,19 +160,14 @@ public class DataManager
     public string GetMedal(int score, int mapid)
     {
         List<int> cutline = medalCutDict[mapid].cutline;
-        string medal = "bronze";
-        for (int i = 0; i <= cutline.Count; i++)
+        string medal = "none";
+        for (int i = 0; i < cutline.Count; i++)
         {
-            if (i == cutline.Count)
-            {
-                medal = Managers.Data.GetMedalName(i);
-                break;
-            }
             if (score < cutline[i])
             {
-                medal = Managers.Data.GetMedalName(i);
                 break;
             }
+            medal = Managers.Data.GetMedalName(i);
         }
 
         return medal;
@@ -180,6 +175,11 @@ public class DataManager
 
     public string GetMedalSpritePath(int score, int mapid)
     {
+        string medalName = GetMedal(score, mapid);
+        if(medalName == "none")
+        {
+            return "None_Medal";
+        }
         return medalDict[GetMedal(score, mapid)];
     }
     #endregion

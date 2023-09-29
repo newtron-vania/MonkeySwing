@@ -13,9 +13,9 @@ public class MedalUI : MonoBehaviour
     void OnEnable()
     {
         List<int> cutlines = Managers.Data.medalCutDict[_mapid].cutline;
-        for(int i = 1; i <cutlines.Count; i++)
+        for(int i = 0; i <cutlines.Count; i++)
         {
-            _medalText[i].text = cutlines[i-1].ToString();
+            _medalText[i].text = cutlines[i].ToString();
         }
     }
 }

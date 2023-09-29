@@ -30,7 +30,7 @@ public class ResourceManager
         if (original == null)
         {
             Debug.Log($"Faild to sprite : {path}");
-            return null;
+            original = Resources.Load<Sprite>($"Sprites/NullErrorImg/Error");
         }
         return original;
 

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BlueSkill :  BaseSkill
 {
+
+    private Action skillAction;
     public int GetSkillId()
     {
         return 3;
@@ -27,4 +30,6 @@ public class BlueSkill :  BaseSkill
     {
         return SkillType.Start;
     }
+
+
 }
