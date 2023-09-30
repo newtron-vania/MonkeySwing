@@ -30,6 +30,12 @@ public class MagnetField : MonoBehaviour
     {
         SetItemStat();
         ResetTime();
+        //if(skinid == Blue(3))
+        if(GameManagerEx.Instance.player.MonkeySkinId == 3)
+        {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            this.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
     private void OnDestroy()
     {

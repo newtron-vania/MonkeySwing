@@ -17,8 +17,7 @@ public class UI_Play_HeartBit : MonoBehaviour
     private bool isUp = true;
     void Start()
     {
-        float startSize = (minSize + maxSize) / 2;
-        currentSize = Random.Range(startSize - 0.3f, startSize + 0.03f);
+        float startSize = (minSize + maxSize) * 0.5f;
     }
 
     // Update is called once per frame

@@ -76,6 +76,21 @@ public class PlayerData
         );
     }
 
+    public void LoadData(Action _event)
+    {
+        GooglePlayManager.Instance.LoadFromCloud(
+            (data) =>
+            {
+                GameManagerEx.Instance.player = JsonUtility.FromJson<PlayerData>(data); GameManagerEx.Instance.currentCoin = GameManagerEx.Instance.player.money;
+                _event?.Invoke();
+            },
+            (data) =>
+            {
+                GameManagerEx.Instance.scoreData.BestScore = DictionaryJsonUtility.FromJson<string, int>(data);
+            }
+        );
+    }
+
     public void AddSkinId(int id)
     {
         if (!collectedSkinId.Contains(id))
