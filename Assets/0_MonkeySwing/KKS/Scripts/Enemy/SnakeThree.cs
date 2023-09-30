@@ -49,6 +49,11 @@ public class SnakeThree : MonoBehaviour
     private void OnEnable()
     {
         anime.Play("None");
+        if(transform.parent.rotation.y != 0)
+        {
+            transform.parent.rotation = Quaternion.identity;
+            transform.parent.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
     void SetAnimeSpeed(float value)
